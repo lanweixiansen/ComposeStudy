@@ -20,7 +20,9 @@ ext {
             lifecycleVersion    : '2.3.1',
             composeVersion      : '1.5.1',
             junitVersion        : '1.1.5',
-            espressoVersion     : '3.5.1'
+            espressoVersion     : '3.5.1',
+            activityVersion     : '1.6.1',
+            lottieVersion       : '6.0.0',
     ]
 
     desLibs = [
@@ -35,6 +37,8 @@ ext {
             junit               : "junit:junit:4.13.2",
             extJunit            : "androidx.test.ext:junit:${versions["junitVersion"]}",
             espresso            : "androidx.test.espresso:espresso-core:${versions[{"espressoVersion"}]}",
+            activityKtx         : "androidx.activity:activity-ktx:${versions["activityVersion"]}",
+            lottie              : "com.airbnb.android:lottie:${versions["lottieVersion"]}"
 
     ]
 }

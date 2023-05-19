@@ -18,12 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DemoApplicationTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                DemoApp()
             }
         }
     }
@@ -36,6 +31,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier
     )
 }
+
+
+
+
+
 
 @Preview(showBackground = true)
 @Composable

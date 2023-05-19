@@ -1,0 +1,40 @@
+ext {
+
+    signingConfig = [
+            storePassword       : 'xxx',
+            keyAlias            : 'xxx',
+            keyPassword         : 'xxx'
+    ]
+
+    android = [
+            applicationId       : "com.example.demoapplication",
+            minSdk              : 24,
+            targetSdk           : 33,
+            versionCode         : 1,
+            versionName         : "1.0",
+            compileSdk          : 33
+    ]
+
+    versions = [
+            coreVersion         : '1.8.0',
+            lifecycleVersion    : '2.3.1',
+            composeVersion      : '1.5.1',
+            junitVersion        : '1.1.5',
+            espressoVersion     : '3.5.1'
+    ]
+
+    desLibs = [
+            coreKtx             : "androidx.core:core-ktx:${versions["coreVersion"]}",
+            lifecycleRuntimeKtx : "androidx.lifecycle:lifecycle-runtime-ktx:${versions["lifecycleVersion"]}",
+            activityCompose     : "androidx.activity:activity-compose:${versions["composeVersion"]}",
+            composeBom          : "androidx.compose:compose-bom:2022.10.00",
+            ui                  : "androidx.compose.ui:ui",
+            uiGraphics          : "androidx.compose.ui:ui-graphics",
+            uiPreview           : "androidx.compose.ui:ui-tooling-preview",
+            material3           : "androidx.compose.material3:material3",
+            junit               : "junit:junit:4.13.2",
+            extJunit            : "androidx.test.ext:junit:${versions["junitVersion"]}",
+            espresso            : "androidx.test.espresso:espresso-core:${versions[{"espressoVersion"}]}",
+
+    ]
+}

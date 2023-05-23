@@ -6,9 +6,8 @@ plugins {
 }
 
 android {
-    resourcePrefix "base_"
-
     namespace 'com.example.lib_base'
+    resourcePrefix "base_"
     compileSdk rootProject.android.compileSdk
 
     defaultConfig {
@@ -46,4 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation(rootProject.desLibs.lottie)
+    api rootProject.desLibs.smartRefresh
+    api rootProject.desLibs.lifecycleRuntimeKtx
+    api rootProject.desLibs.adapterHelper
 }

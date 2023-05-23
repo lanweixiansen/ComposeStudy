@@ -9,7 +9,7 @@ import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseActivity<VB : ViewBinding> : ComponentActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     lateinit var mBinding: VB
     private var mLoading: LoadingDialog? = null
 
@@ -44,7 +44,7 @@ abstract class BaseActivity<VB : ViewBinding> : ComponentActivity() {
 
     abstract fun initDate()
 
-    abstract fun initListener()
+    open fun initListener() {}
 
-    fun initObserver() {}
+    open fun initObserver() {}
 }

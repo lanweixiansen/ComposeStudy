@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "Demo Application"
 include ':app'
 include ':lib_base'
+include ':lib_home'
+include ':lib_square'
+include ':lib_me'
+include ':lib_news'

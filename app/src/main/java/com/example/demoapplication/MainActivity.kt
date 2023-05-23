@@ -1,46 +1,31 @@
 package com.example.demoapplication
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.demoapplication.ui.theme.DemoApplicationTheme
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.demoapplication.databinding.ActivityMainBinding
+import com.example.demoapplication.navigation.SumFragmentNavigator
+import com.example.lib_base.BaseActivity
+import com.example.lib_base.ext.AppExit
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            DemoApplicationTheme {
-                // A surface container using the 'background' color from the theme
-                DemoApp()
-            }
-        }
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    private lateinit var navController: NavController
+
+    override fun initView() {
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val fragmentNavigator = SumFragmentNavigator(this, navHostFragment.childFragmentManager, navHostFragment.id)
+        navController.navigatorProvider.addNavigator(fragmentNavigator)
+        navController.setGraph(R.navigation.navi_host)
+        mBinding.navView.setupWithNavController(navController = navController)
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-
-
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DemoApplicationTheme {
-        Greeting("Android")
+    override fun initDate() {
     }
+
+    override fun onBackPressed() {
+        AppExit.onBackPressed(this)
+    }
+
 }

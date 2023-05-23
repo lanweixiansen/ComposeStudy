@@ -23,6 +23,8 @@ ext {
             espressoVersion     : '3.5.1',
             activityVersion     : '1.6.1',
             lottieVersion       : '6.0.0',
+            navVersion          : '2.5.3',
+            refreshVersion      : '2.0.6',
     ]
 
     desLibs = [
@@ -38,7 +40,11 @@ ext {
             extJunit            : "androidx.test.ext:junit:${versions["junitVersion"]}",
             espresso            : "androidx.test.espresso:espresso-core:${versions[{"espressoVersion"}]}",
             activityKtx         : "androidx.activity:activity-ktx:${versions["activityVersion"]}",
-            lottie              : "com.airbnb.android:lottie:${versions["lottieVersion"]}"
+            lottie              : "com.airbnb.android:lottie:${versions["lottieVersion"]}",
+            navFrgKtx           : "androidx.navigation:navigation-fragment-ktx:${versions["navVersion"]}",
+            navUIKtx            : "androidx.navigation:navigation-ui-ktx:${versions["navVersion"]}",
+            smartRefresh        : "io.github.scwang90:refresh-layout-kernel:${versions["refreshVersion"]}",
+            adapterHelper       : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta10"
 
     ]
 }

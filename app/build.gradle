@@ -71,14 +71,20 @@ android {
 
 dependencies {
     implementation project(path: ':lib_base')
+    implementation project(path: ':lib_home')
+    implementation project(path: ':lib_square')
+    implementation project(path: ':lib_news')
+    implementation project(path: ':lib_me')
     implementation rootProject.desLibs.coreKtx
-    implementation rootProject.desLibs.lifecycleRuntimeKtx
     implementation rootProject.desLibs.activityCompose
     implementation platform(rootProject.desLibs.composeBom)
     implementation rootProject.desLibs.ui
     implementation rootProject.desLibs.uiGraphics
     implementation rootProject.desLibs.uiPreview
     implementation rootProject.desLibs.material3
+    implementation rootProject.desLibs.navFrgKtx
+    implementation rootProject.desLibs.navUIKtx
+    implementation 'com.google.android.material:material:1.9.0'
     testImplementation rootProject.desLibs.junit
     androidTestImplementation rootProject.desLibs.extJunit
     androidTestImplementation rootProject.desLibs.espresso

@@ -2,4 +2,6 @@
 <resources>
     <color name="grey_50">#FFF8F9FA</color>
     <color name="grey_900">#FF202124</color>
+    <color name="primary">#FF6750A4</color>
+    <color name="splash_bg">#441F7F</color>
 </resources>

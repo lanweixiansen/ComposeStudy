@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navi_home"
+        android:icon="@drawable/home"
+        android:title="@string/tab_home" />
+
+    <item
+        android:id="@+id/navi_square"
+        android:icon="@drawable/square"
+        android:title="@string/tab_square"/>
+
+    <item
+        android:id="@+id/navi_news"
+        android:icon="@drawable/news"
+        android:title="@string/tab_news"/>
+
+    <item android:id="@+id/navi_me"
+        android:icon="@drawable/me"
+        android:title="@string/tab_me"/>
+</menu>

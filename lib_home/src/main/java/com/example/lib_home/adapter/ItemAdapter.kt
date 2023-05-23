@@ -18,7 +18,7 @@ class ItemAdapter: BaseQuickAdapter<ItemData, ItemAdapter.VH>() {
 
     override fun onBindViewHolder(holder: VH, position: Int, item: ItemData?) {
         with(holder.binding) {
-            tvNumber.text = position.toString()
+            tvNumber.text = "${position.inc()}"
             tvContent.text = item?.content
 
         }

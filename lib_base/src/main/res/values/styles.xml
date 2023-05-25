@@ -8,4 +8,27 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <declare-styleable name="PickerView">
+        <attr name="preferredMaxOffsetItemCount" />
+        <attr name="itemHeight" />
+        <attr name="textSize" />
+        <attr name="textColor" />
+        <attr name="selectTextColor" />
+        <attr name="isCyclic" />
+        <attr name="autoFitSize" />
+        <attr name="curved" />
+        <attr name="hideBackground"/>
+    </declare-styleable>
+
+    <attr name="preferredMaxOffsetItemCount" format="integer" />
+    <attr name="itemHeight" format="dimension" />
+    <attr name="textSize" format="dimension" />
+    <attr name="textColor" format="color" />
+    <attr name="selectTextColor" format="color" />
+    <attr name="isCyclic" format="boolean" />
+    <attr name="autoFitSize" format="boolean" />
+    <attr name="curved" format="boolean" />
+    <attr name="hideBackground" format="boolean"/>
+
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="cat_elevation_min_card_height">100dp</dimen>
+    <dimen name="cat_elevation_text_padding">4dp</dimen>
+    <dimen name="cat_elevation_padding">8dp</dimen>
+    <dimen name="cat_elevation_bottom_padding">16dp</dimen>
+    <dimen name="cat_elevation_max_translation_z">24dp</dimen>
+</resources>

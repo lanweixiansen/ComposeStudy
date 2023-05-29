@@ -2,42 +2,56 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/parent"
-    android:background="@drawable/home_bottom_sheet_bg"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:background="@drawable/home_bottom_sheet_bg">
 
-
-    <Button
-        android:id="@+id/home_button"
+    <TextView
+        android:id="@+id/home_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/home_button2"
-        app:layout_constraintEnd_toStartOf="@+id/home_button2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/home_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/home_button3"
-        app:layout_constraintEnd_toStartOf="@+id/home_button3"
-        app:layout_constraintStart_toEndOf="@+id/home_button"
-        app:layout_constraintTop_toTopOf="@+id/home_button3" />
-
-    <Button
-        android:id="@+id/home_button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:text="Button"
-        android:layout_marginVertical="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="24dp"
+        android:text="城市选择"
+        android:textColor="@color/base_252525"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/home_button2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.lib_base.widget.PickerView
+        android:id="@+id/picker_city"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="16dp"
+        app:itemHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/picker_local"
+        app:layout_constraintTop_toTopOf="@+id/picker_local" />
+
+    <com.example.lib_base.widget.PickerView
+        android:id="@+id/picker_local"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="16dp"
+        app:itemHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/picker_city"
+        app:layout_constraintTop_toBottomOf="@+id/home_textview" />
+
+    <Button
+        android:id="@+id/tv_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确定"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

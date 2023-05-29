@@ -41,7 +41,7 @@ class HomeFragment: BaseFragment<HomeFragmentHomeBinding>() {
                 disLoading()
             }
         }
-        mAdapter.setOnItemClickListener { adapter, view, position ->
+        mAdapter.setOnItemClickListener { _, _, _ ->
             context?.let { SheetDialog(it).show() }
         }
     }

@@ -1,7 +1,7 @@
 package com.example.demoapplication
 
 import org.junit.Test
-import kotlin.math.max
+import java.util.LinkedList
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -9,20 +9,24 @@ import kotlin.math.max
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-
-    fun rob(nums: IntArray): Int {
-        var prev = 0
-        var curr = 0
-        for (i in nums) {
-            val temp = max(curr, prev + i)
-            prev = curr
-            curr = temp
+    class ViewLinkList<T> : LinkedList<T>() {
+        override fun add(element: T): Boolean {
+            if (this.size >= 3) {
+                this.removeAt(0)
+            }
+            return super.add(element)
         }
-        return curr
     }
 
     @Test
-    fun b() {
-        rob(intArrayOf(2,1,1,2))
+    fun main() {
+        val point1 = System.currentTimeMillis()
+        val viewQueue = ViewLinkList<Int>()
+        viewQueue.add(1)
+        viewQueue.add(2)
+        viewQueue.add(3)
+        viewQueue.add(4)
+        val point2 = System.currentTimeMillis()
+        println("content: $viewQueue  runtime: ${point2 - point1}")
     }
 }

@@ -21,8 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         mBinding.navView.setupWithNavController(navController = navController)
     }
 
-    override fun initDate() {
-    }
+    override fun initDate() {}
 
     override fun onBackPressed() {
         AppExit.onBackPressed(this)

@@ -18767,7 +18767,6 @@ com.example.lib_base.BaseActivity:
     public final void disLoading()
     public static synthetic void setStatusBarTextColor$default(com.example.lib_base.BaseActivity,boolean,int,java.lang.Object)
     public final void showLoading()
-com.example.lib_base.R$anim
 com.example.lib_base.R$attr
 com.example.lib_base.R$color:
     private void <init>()

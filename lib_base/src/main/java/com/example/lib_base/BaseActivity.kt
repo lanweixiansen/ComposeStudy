@@ -2,8 +2,8 @@ package com.example.lib_base
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
@@ -47,4 +47,21 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     open fun initListener() {}
 
     open fun initObserver() {}
+
+
+    fun setStatusBarTextColor(isLight: Boolean = false) {
+        // 计算颜色亮度
+//        val luminanceValue = ColorUtils.calculateLuminance(color)
+        WindowInsetsControllerCompat(window, window.decorView).let { controller ->
+            controller.isAppearanceLightStatusBars = !isLight
+//            if (color == Color.TRANSPARENT) {
+//                // 如果是透明颜色就默认设置成黑色
+//                controller.isAppearanceLightStatusBars = true
+//            } else {
+//                // 通过亮度来决定字体颜色是黑还是白
+//                controller.isAppearanceLightStatusBars = luminanceValue >= 0.5
+//            }
+        }
+    }
+
 }

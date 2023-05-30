@@ -1,7 +1,10 @@
 package com.example.demoapplication
 
 import org.junit.Test
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.LinkedList
+import java.util.Objects
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -20,13 +23,19 @@ class ExampleUnitTest {
 
     @Test
     fun main() {
-        val point1 = System.currentTimeMillis()
-        val viewQueue = ViewLinkList<Int>()
-        viewQueue.add(1)
-        viewQueue.add(2)
-        viewQueue.add(3)
-        viewQueue.add(4)
         val point2 = System.currentTimeMillis()
-        println("content: $viewQueue  runtime: ${point2 - point1}")
+        val date = Date(point2)
+        val pattern = "HH mm ss"
+        val simpleDateFormat = SimpleDateFormat(pattern)
+        val dateStr = simpleDateFormat.format(date)
+        val timeArray = LinkedList<Int>()
+        dateStr.forEachIndexed { index, it ->
+            if (it.toString().isNotBlank()) {
+                timeArray.add(it.toString().toInt())
+            }
+        }
+
+        println("time: $timeArray  ")
+
     }
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:background="@drawable/home_bottom_sheet_bg">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ui_bottom_point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/home_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="城市选择"
+        android:textColor="@color/base_252525"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.lib_base.widget.PickerView
+        android:id="@+id/picker_city"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="16dp"
+        app:curved="true"
+        app:itemHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/picker_local"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/picker_local"
+        app:selectTextColor="#ffffff"
+        app:textColor="#666666" />
+
+    <com.example.lib_base.widget.PickerView
+        android:id="@+id/picker_local"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:curved="true"
+        app:itemHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_button"
+        app:layout_constraintEnd_toStartOf="@+id/picker_area"
+        app:layout_constraintStart_toEndOf="@+id/picker_city"
+        app:layout_constraintTop_toBottomOf="@+id/home_textview" />
+
+    <com.example.lib_base.widget.PickerView
+        android:id="@+id/picker_area"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="16dp"
+        app:curved="true"
+        app:itemHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/picker_local"
+        app:layout_constraintTop_toBottomOf="@+id/home_textview" />
+
+
+    <Button
+        android:id="@+id/tv_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:shadowRadius="8"
+        android:text="确定"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

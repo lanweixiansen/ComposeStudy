@@ -8,12 +8,7 @@ import android.util.TypedValue;
 
 public class Utils {
 
-    public static <T> T checkNotNull(T object, String message) {
-        if (object == null) {
-            throw new NullPointerException(message);
-        }
-        return object;
-    }
+
 
     public static int pixelOfScaled(Context c, int sp) {
         Resources r = c.getResources();

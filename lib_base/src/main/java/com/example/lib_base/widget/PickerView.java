@@ -1,8 +1,6 @@
 package com.example.lib_base.widget;
 
 
-import static com.example.lib_base.utils.Utils.checkNotNull;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Camera;
@@ -140,9 +138,22 @@ public class PickerView extends View {
                     };
                 }
             };
+
         } else {
+            adapter = new Adapter<PickerItem>() {
+                @Override
+                public int getItemCount() {
+                    return 0;
+                }
+
+                @Override
+                public PickerItem getItem(int index) {
+                    return null;
+                }
+            };
             selectedItemDrawable = Utils.getDrawable(getContext(), R.drawable.top_defaults_view_pickerview_selected_item);
         }
+
 
         topMask = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, gradientColors);
         bottomMask = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, gradientColors);
@@ -187,7 +198,7 @@ public class PickerView extends View {
     }
 
     public <T extends PickerItem> void setAdapter(final Adapter<T> adapter) {
-        checkNotNull(adapter, "adapter == null");
+
         if (adapter.getItemCount() > Integer.MAX_VALUE / itemHeight) {
             throw new RuntimeException("getItemCount() is too large, max count can be PickerView.getMaxCount()");
         }
@@ -337,20 +348,15 @@ public class PickerView extends View {
     }
 
     public void setSelectedItemPosition(int selectedItemPosition) {
-        checkNotNull(adapter, "adapter must be set first");
-
         notifySelectedItemChangedIfNeeded(selectedItemPosition);
         invalidate();
     }
 
     public <T extends PickerItem> T getSelectedItem(Class<T> cls) {
-        checkNotNull(adapter, "adapter must be set first");
-
         PickerItem item = adapter.getItem(getSelectedItemPosition());
         if (!cls.isInstance(item)) {
             return null;
         }
-
         return cls.cast(item);
     }
 
@@ -393,7 +399,7 @@ public class PickerView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        checkNotNull(adapter, "adapter == null");
+
 
         int height = resolveSizeAndState(calculateIntrinsicHeight(), heightMeasureSpec, 0);
         computeScrollParams();
@@ -412,7 +418,7 @@ public class PickerView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        checkNotNull(adapter, "adapter == null");
+
         if (adapter.getItemCount() == 0 || itemHeight == 0) return;
 
         if (!isInEditMode()) {
@@ -423,6 +429,7 @@ public class PickerView extends View {
         drawItems(canvas);
         drawMasks(canvas);
     }
+
 
     private void drawItems(Canvas canvas) {
         // 绘制选中项
@@ -540,6 +547,7 @@ public class PickerView extends View {
                     scroller.forceFinished(true);
                     isScrollSuspendedByDownEvent = true;
                 }
+                getParent().requestDisallowInterceptTouchEvent(true);
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (!scrolling && Math.abs(y - actionDownY) <= touchSlop) {

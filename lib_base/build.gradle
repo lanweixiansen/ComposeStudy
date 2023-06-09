@@ -1,8 +1,13 @@
-import org.gradle.api.internal.FeaturePreviews
-
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
 }
 
 android {
@@ -25,7 +30,7 @@ android {
         }
     }
     buildFeatures {
-        viewBinding  true
+        viewBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -37,7 +42,7 @@ android {
 }
 
 dependencies {
-
+    api project(path: ':uilibrary')
     implementation rootProject.desLibs.coreKtx
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
@@ -48,4 +53,7 @@ dependencies {
     api rootProject.desLibs.smartRefresh
     api rootProject.desLibs.lifecycleRuntimeKtx
     api rootProject.desLibs.adapterHelper
+    api rootProject.desLibs.gson
+    api rootProject.desLibs.arouter
+    kapt rootProject.desLibs.arouterCompiler
 }

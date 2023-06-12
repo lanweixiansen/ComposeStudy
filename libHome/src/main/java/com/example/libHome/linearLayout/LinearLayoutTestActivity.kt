@@ -5,7 +5,7 @@ import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeActivityLinearlayoutTestBinding
 
-@Route(path = RouteConsts.AR_LINEARLAYOUT)
+@Route(path = RouteConsts.HOME_LINEARLAYOUT)
 class LinearLayoutTestActivity : BaseActivity<HomeActivityLinearlayoutTestBinding>() {
 
     override fun initView() {

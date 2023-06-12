@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.lib_base.widget.PickerView
+    <com.example.uilibrary.widget.PickerView
         android:id="@+id/picker_city"
         android:layout_width="0dp"
         android:layout_height="250dp"
@@ -41,7 +41,7 @@
         app:selectTextColor="#ffffff"
         app:textColor="#666666" />
 
-    <com.example.lib_base.widget.PickerView
+    <com.example.uilibrary.widget.PickerView
         android:id="@+id/picker_local"
         android:layout_width="0dp"
         android:layout_height="250dp"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toEndOf="@+id/picker_city"
         app:layout_constraintTop_toBottomOf="@+id/home_textview" />
 
-    <com.example.lib_base.widget.PickerView
+    <com.example.uilibrary.widget.PickerView
         android:id="@+id/picker_area"
         android:layout_width="0dp"
         android:layout_height="250dp"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary">#FF6750A4</color>
-    <color name="base_translation">#00000000</color>
     <color name="base_252525">#252525</color>
 </resources>

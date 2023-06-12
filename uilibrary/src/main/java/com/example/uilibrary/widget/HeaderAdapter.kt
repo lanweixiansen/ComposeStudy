@@ -1,11 +1,11 @@
-package com.example.lib_base.widget
+package com.example.uilibrary.widget
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseSingleItemAdapter
-import com.example.lib_base.databinding.BaseAdapterHeaderLayputBinding
+import com.example.uilibrary.databinding.BaseAdapterHeaderLayputBinding
 
 class HeaderAdapter : BaseSingleItemAdapter<Any, HeaderAdapter.VM>() {
 

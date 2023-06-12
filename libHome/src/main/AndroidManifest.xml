@@ -3,5 +3,9 @@
 
     <application>
         <activity android:name="com.example.libHome.linearLayout.LinearLayoutTestActivity" />
+        <activity android:name="com.example.libHome.eventBus.EventBusTestActivity" />
+        <activity android:name="com.example.libHome.viewStub.ViewStubTestActivity" />
+        <activity android:name="com.example.libHome.arouter.RouterTestActivity" />
+        <activity android:name="com.example.libHome.arouter.RouteSearchTranslationTestActivity"/>
     </application>
 </manifest>

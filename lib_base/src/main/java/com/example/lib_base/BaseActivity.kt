@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
+import com.example.uilibrary.widget.LoadingDialog
+import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
@@ -20,12 +23,15 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         val method = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         mBinding = method.invoke(this, layoutInflater)!!.saveAsUnChecked()
         setContentView(mBinding.root)
+        if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this)
+        }
+        ARouter.getInstance().inject(this)
         initView()
         initDate()
         initListener()
         initObserver()
     }
-
 
     fun showLoading() {
         mLoading ?: run {
@@ -39,6 +45,14 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         mLoading?.dismiss()
     }
 
+    override fun onDestroy() {
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this)
+        }
+        mLoading?.dismiss()
+        super.onDestroy()
+    }
+
 
     abstract fun initView()
 
@@ -47,6 +61,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     open fun initListener() {}
 
     open fun initObserver() {}
+    open fun useEventBus() = false
 
 
     fun setStatusBarTextColor(isLight: Boolean = false) {

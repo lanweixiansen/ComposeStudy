@@ -2,7 +2,7 @@ package com.example.demoapplication
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
-import com.example.lib_base.widget.CustomRefreshHeader
+import com.example.uilibrary.widget.CustomRefreshHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
 class MyApplication: Application() {

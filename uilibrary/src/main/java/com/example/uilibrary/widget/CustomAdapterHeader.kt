@@ -1,10 +1,10 @@
-package com.example.lib_base.widget
+package com.example.uilibrary.widget
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.airbnb.lottie.LottieAnimationView
-import com.example.lib_base.R
+import com.example.uilibrary.R
 
 class CustomAdapterHeader @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null

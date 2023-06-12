@@ -1,10 +1,10 @@
-package com.example.lib_base.widget
+package com.example.uilibrary.widget
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.LinearLayoutCompat
-import com.example.lib_base.R
+import com.example.uilibrary.R
 import com.scwang.smart.refresh.layout.api.RefreshHeader
 import com.scwang.smart.refresh.layout.api.RefreshKernel
 import com.scwang.smart.refresh.layout.api.RefreshLayout

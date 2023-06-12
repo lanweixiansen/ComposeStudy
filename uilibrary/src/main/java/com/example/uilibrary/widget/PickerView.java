@@ -1,4 +1,4 @@
-package com.example.lib_base.widget;
+package com.example.uilibrary.widget;
 
 
 import android.content.Context;
@@ -20,8 +20,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.OverScroller;
 
-import com.example.lib_base.R;
-import com.example.lib_base.utils.Utils;
+
+import com.example.uilibrary.R;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -177,7 +177,7 @@ public class PickerView extends View {
         curved = typedArray.getBoolean(R.styleable.PickerView_curved, false);
         typedArray.recycle();
         if (hideBackground) {
-            selectedItemDrawable = Utils.getDrawable(getContext(), R.color.base_translation);
+            selectedItemDrawable = Utils.getDrawable(getContext(), R.color.color_translation);
         } else {
             selectedItemDrawable = Utils.getDrawable(getContext(), R.drawable.top_defaults_view_pickerview_selected_item);
         }

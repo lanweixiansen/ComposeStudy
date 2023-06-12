@@ -1,6 +1,6 @@
 package com.example.libHome.data
 
-import com.example.lib_base.widget.PickerView
+import com.example.uilibrary.widget.PickerView
 
 data class AddressBean(
     val provinces: List<RegionListResp>

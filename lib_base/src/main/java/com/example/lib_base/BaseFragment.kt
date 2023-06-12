@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
+import com.example.uilibrary.widget.LoadingDialog
+import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<VB: ViewBinding>: Fragment() {
+abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     lateinit var mBinding: VB
     private var mLoading: LoadingDialog? = null
 
@@ -34,6 +36,21 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
         initObserver()
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this)
+        }
+        mLoading?.dismiss()
+    }
+
     fun showLoading() {
         mLoading ?: run {
             mLoading = context?.let { LoadingDialog(it) }
@@ -53,4 +70,6 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     open fun initListener() {}
 
     open fun initObserver() {}
+
+    open fun useEventBus() = false
 }

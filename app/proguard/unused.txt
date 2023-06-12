@@ -18763,7 +18763,7 @@ com.example.demoapplication.ui.theme.ThemeKt$DemoApplicationTheme$1
 com.example.demoapplication.ui.theme.ThemeKt
 com.example.demoapplication.ui.theme.TypeKt
 com.example.lib_base.BaseActivity:
-    private com.example.lib_base.LoadingDialog mLoading
+    private LoadingDialog mLoading
     public final void disLoading()
     public static synthetic void setStatusBarTextColor$default(com.example.lib_base.BaseActivity,boolean,int,java.lang.Object)
     public final void showLoading()
@@ -18790,11 +18790,11 @@ com.example.lib_base.databinding.BaseDialogLoadingBinding
 com.example.lib_base.ext.AnyExtKt:
     public static final synthetic boolean isEqualType(java.lang.Object)
     public static final synthetic java.lang.Object saveAs(java.lang.Object)
-com.example.lib_base.utils.Utils:
+com.example.uilibrary.widget.Utils:
     public void <init>()
-com.example.lib_base.widget.CustomAdapterHeader:
+com.example.uilibrary.widget.CustomAdapterHeader:
     public final void startPlay()
-com.example.lib_base.widget.CustomRefreshHeader:
+com.example.uilibrary.widget.CustomRefreshHeader:
     public boolean autoOpen(int,float,boolean)
 com.example.lib_base.widget.PickerView$Adapter:
     public com.example.lib_base.widget.PickerView$PickerItem getLastItem()
@@ -28800,15 +28800,15 @@ com.example.demoapplication.navigation.SumFragmentNavigator$$InternalSyntheticTh
 com.example.demoapplication.navigation.SumFragmentNavigator:
     public static final int $stable
 com.example.lib_base.BaseFragment:
-    public com.example.lib_base.LoadingDialog mLoading
+    public LoadingDialog mLoading
     public final void disLoading()
     public final void showLoading()
-com.example.lib_base.LoadingDialog
+LoadingDialog
 com.example.lib_base.R$style
 com.example.lib_base.ext.AnyExtKt:
     public static final float toExFloat(java.lang.String)
     public static final int toExInt(java.lang.String)
-com.example.lib_base.utils.Utils:
+com.example.uilibrary.widget.Utils:
     public static android.util.TypedValue sTempValue
 com.example.lib_base.widget.PickerView$3
 com.example.lib_base.widget.PickerView$4

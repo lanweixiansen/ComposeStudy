@@ -27,6 +27,7 @@ ext {
             refreshVersion      : '2.0.6',
             gsonVersion         : '2.10.1',
             arouterVersion      : '1.5.2',
+            eventBusVersion     : '3.3.1',
     ]
 
     desLibs = [
@@ -46,9 +47,10 @@ ext {
             navFrgKtx           : "androidx.navigation:navigation-fragment-ktx:${versions["navVersion"]}",
             navUIKtx            : "androidx.navigation:navigation-ui-ktx:${versions["navVersion"]}",
             smartRefresh        : "io.github.scwang90:refresh-layout-kernel:${versions["refreshVersion"]}",
-            adapterHelper       : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta10",
+            adapterHelper       : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta14",
             gson                : "com.google.code.gson:gson:${versions["gsonVersion"]}",
             arouter             : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
-            arouterCompiler     : "com.alibaba:arouter-compiler:${versions["arouterVersion"]}"
+            arouterCompiler     : "com.alibaba:arouter-compiler:${versions["arouterVersion"]}",
+            eventBus            : "org.greenrobot:eventbus:${versions["eventBusVersion"]}",
     ]
 }

@@ -18,7 +18,7 @@
         android:id="@+id/sport_views"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/home_linearlayout_border_bg"
+        android:background="@drawable/ui_bg_252525_border_1dp_r8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -19,7 +19,6 @@ inline fun <reified T> Any.isEqualType(): Boolean {
 fun Any.toast(context: Context) {
     Toast.makeText(context, this.toString(), Toast.LENGTH_SHORT).show()
 }
-
 fun String.toExFloat(): Float {
     var float = 0f
     kotlin.runCatching {

@@ -19,12 +19,11 @@ class RouterTestActivity : BaseActivity<HomeActivityArouterTestBinding>() {
         mBinding.topBar.setTitle(routeServer?.getLibName())
     }
 
-    override fun initDate() {
-
-    }
+    override fun initDate() {}
 
     override fun initListener() {
         super.initListener()
+        // Arouter跳转加转场动画
         mBinding.btnSearch.setOnClickListener {
             val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
@@ -35,6 +34,14 @@ class RouterTestActivity : BaseActivity<HomeActivityArouterTestBinding>() {
                 .withOptionsCompat(activityOptionsCompat)
                 .navigation(this)
         }
-
+        mBinding.btnInterceptor1.setOnClickListener {
+            ARouter.getInstance().build(RouteConsts.HOME_ROUTER_INTERCEPTOR_ACTIVITY).navigation()
+        }
+        mBinding.btnInterceptor2.setOnClickListener {
+            ARouter.getInstance().build(RouteConsts.HOME_ROUTER_INTERCEPTOR2_ACTIVITY).navigation()
+        }
+        mBinding.btnInterceptor3.setOnClickListener {
+            ARouter.getInstance().build(RouteConsts.HOME_ROUTER_INTERCEPTOR3_ACTIVITY).navigation()
+        }
     }
 }

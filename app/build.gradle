@@ -62,7 +62,7 @@ android {
     }
     buildFeatures {
         compose true
-        viewBinding  true
+        viewBinding true
         buildConfig true
     }
     composeOptions {
@@ -81,6 +81,8 @@ dependencies {
     implementation project(path: ':libSquare')
     implementation project(path: ':lib_news')
     implementation project(path: ':lib_me')
+    implementation project(path: ':uilibrary')
+    implementation project(path: ':libLogin')
     implementation rootProject.desLibs.coreKtx
     implementation rootProject.desLibs.activityCompose
     implementation platform(rootProject.desLibs.composeBom)

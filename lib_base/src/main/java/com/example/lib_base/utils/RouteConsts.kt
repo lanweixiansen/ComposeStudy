@@ -9,13 +9,20 @@ object RouteConsts {
     const val HOME_EVENT_BUS_ACTIVITY = "/homeLib/EventBusTestActivity"
     const val HOME_ROUTER_ACTIVITY = "/homeLib/ARouterTestActivity"
     const val HOME_ROUTER_SEARCH_ACTIVITY = "/homeLib/RouteSearchTranslationTestActivity"
+    const val HOME_ROUTER_INTERCEPTOR_ACTIVITY = "/homeLib/InterceptorTestActivity1"
+    const val HOME_ROUTER_INTERCEPTOR2_ACTIVITY = "/homeLib/InterceptorTestActivity2"
+    const val HOME_ROUTER_INTERCEPTOR3_ACTIVITY = "/homeLib/InterceptorTestActivity3"
 
     // lib_me
     const val ROUTE_ME_TEST = "/meLib/MeTest"
 
+    // lib_home
+    const val LOGIN_LOGIN = "/loginLib/LoginActivity"
+
 
     // RouteServer
-    const val SERVER_HOME = "/server/home"
+    const val SERVER_HOME = "/homeServer/home"
+    const val SERVER_LOGIN = "/loginServer/login"
 
 
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--  -->
     <declare-styleable name="PickerView">
         <attr name="preferredMaxOffsetItemCount" />
         <attr name="itemHeight" />
@@ -22,12 +24,26 @@
     <attr name="curved" format="boolean" />
     <attr name="hideBackground" format="boolean" />
 
-
+    <!--  -->
     <declare-styleable name="CommonTopBar">
         <attr name="topBarTitle" />
 
     </declare-styleable>
 
     <attr name="topBarTitle" format="string" />
+
+
+    <!--  -->
+    <declare-styleable name="RoundImageView">
+        <attr name="riv_oval" />
+        <attr name="riv_border_color" />
+        <attr name="riv_border_width" />
+        <attr name="riv_radius" />
+    </declare-styleable>
+
+    <attr name="riv_oval" format="boolean" />
+    <attr name="riv_border_color" format="color" />
+    <attr name="riv_border_width" format="dimension" />
+    <attr name="riv_radius" format="dimension" />
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.libHome.ui
+package com.example.libHome.bottomSheetDialog
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
-class SheetDialog(context: Context) : BottomSheetDialog(context, R.style.BottomSheetDialog) {
+class SheetDialog(context: Context) :
+    BottomSheetDialog(context, com.example.lib_base.R.style.BottomSheetDialog) {
     private val mBinding: HomeBottomSheetDialogBinding
 
     init {

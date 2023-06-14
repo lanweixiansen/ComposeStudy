@@ -7,7 +7,7 @@
 
     <sumFragment
         android:id="@+id/navi_home"
-        android:name="com.example.libHome.ui.HomeFragment"
+        android:name="com.example.libHome.HomeFragment"
         android:label="@string/tab_home"
         tools:layout="@layout/home_fragment_home" />
 

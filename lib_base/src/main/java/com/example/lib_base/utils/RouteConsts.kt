@@ -23,6 +23,7 @@ object RouteConsts {
     // RouteServer
     const val SERVER_HOME = "/homeServer/home"
     const val SERVER_LOGIN = "/loginServer/login"
+    const val SERVER_APP = "/appServer/login"
 
 
 }

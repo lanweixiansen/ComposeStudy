@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
-        android:hint="点击跳转搜索页"
+        android:hint="搜索内容"
         android:transitionName="search_view">
 
         <com.google.android.material.textfield.TextInputEditText

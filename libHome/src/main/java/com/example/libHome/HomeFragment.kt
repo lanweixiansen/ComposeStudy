@@ -1,16 +1,14 @@
-package com.example.libHome.ui
+package com.example.libHome
 
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.chad.library.adapter.base.QuickAdapterHelper
+import com.example.libHome.bottomSheetDialog.SheetDialog
 import com.example.libHome.adapter.ItemAdapter
+import com.example.libHome.bottomSheetDialog.BottomShareDialog
 import com.example.libHome.data.itemData
 import com.example.lib_base.BaseFragment
-import com.example.lib_base.interfaces.RouteServer
-import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.uilibrary.widget.HeaderAdapter
 import kotlinx.coroutines.delay
@@ -48,7 +46,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
         mAdapter.setOnItemClickListener { adapter, _, position ->
             val bean = adapter.getItem(position)
             if (bean?.route.isNullOrBlank()) {
-                SheetDialog(requireContext()).show()
+                BottomShareDialog(requireContext()).show()
             } else {
                 ARouter.getInstance().build(bean?.route).navigation()
             }

@@ -21,4 +21,6 @@ class MyApplication: Application() {
         }
         ARouter.init(this)
     }
+
+    fun getContext() = this
 }

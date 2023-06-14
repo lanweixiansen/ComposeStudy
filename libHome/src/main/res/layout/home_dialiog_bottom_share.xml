@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@drawable/home_bottom_sheet_bg">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ui_bottom_point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/home_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="分享"
+        android:textColor="@color/base_252525"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.uilibrary.widget.RoundImageView
+        android:id="@+id/anim_1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:src="@mipmap/img10"
+        app:layout_constraintEnd_toStartOf="@+id/anim_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_textview"
+        app:riv_border_color="@color/base_252525"
+        app:riv_border_width="2dp"
+        app:riv_oval="true"
+        app:riv_radius="10dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <com.example.uilibrary.widget.RoundImageView
+        android:id="@+id/anim_2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/img9"
+        app:layout_constraintBottom_toBottomOf="@+id/anim_1"
+        app:layout_constraintEnd_toStartOf="@+id/anim_3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/anim_1"
+        app:layout_constraintTop_toTopOf="@+id/anim_1"
+        app:riv_border_color="@color/base_252525"
+        app:riv_border_width="2dp"
+        app:riv_oval="true"
+        app:riv_radius="10dp" />
+
+    <com.example.uilibrary.widget.RoundImageView
+        android:id="@+id/anim_3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/img8"
+        app:layout_constraintBottom_toBottomOf="@+id/anim_2"
+        app:layout_constraintEnd_toStartOf="@+id/anim_4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/anim_2"
+        app:layout_constraintTop_toTopOf="@+id/anim_2"
+        app:riv_border_color="@color/base_252525"
+        app:riv_border_width="2dp"
+        app:riv_oval="true"
+        app:riv_radius="10dp" />
+
+    <com.example.uilibrary.widget.RoundImageView
+        android:id="@+id/anim_4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/img7"
+        app:layout_constraintBottom_toBottomOf="@+id/anim_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/anim_3"
+        app:layout_constraintTop_toTopOf="@+id/anim_3"
+        app:riv_border_color="@color/base_252525"
+        app:riv_border_width="2dp"
+        app:riv_oval="true"
+        app:riv_radius="10dp" />
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="110dp"
+        android:gravity="center"
+        android:paddingBottom="16sp"
+        android:text="取消"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anim_1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

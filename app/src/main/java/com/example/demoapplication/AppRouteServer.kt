@@ -7,16 +7,17 @@ import com.example.lib_base.utils.RouteConsts
 
 @Route(path = RouteConsts.SERVER_APP)
 class AppRouteServer : RouteServer {
+    private var mContext: Context? = null
     override fun getLibName(): String {
         return "app"
     }
 
     override fun init(context: Context?) {
-
+        mContext = context
     }
 
-    override fun getApplicationContext(): Context {
-        return MyApplication().getContext()
+    override fun getContext(): Context? {
+        return mContext?.applicationContext
     }
 
 }

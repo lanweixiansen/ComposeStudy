@@ -54,4 +54,5 @@ dependencies {
     api rootProject.desLibs.arouter
     kapt rootProject.desLibs.arouterCompiler
     api rootProject.desLibs.eventBus
+    api rootProject.desLibs.fragmentKtx
 }

@@ -16,7 +16,7 @@ interface RouteServer : IProvider {
             .navigation()
     }
 
-    fun getApplicationContext(): Context? {
+    fun getContext(): Context? {
         return null
     }
 }

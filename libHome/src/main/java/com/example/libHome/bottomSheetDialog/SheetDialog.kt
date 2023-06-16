@@ -13,7 +13,9 @@ import com.example.lib_home.databinding.HomeBottomSheetDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SheetDialog(context: Context) :
     BottomSheetDialog(context, com.example.lib_base.R.style.BottomSheetDialog) {
@@ -41,13 +43,19 @@ class SheetDialog(context: Context) :
 
     private fun loadAddress() {
         lifecycleScope.launch {
-            val addressJson = jsonToString(context, "address.json")
-            val bean = Gson().fromJson(addressJson, AddressBean::class.java)
+            val bean = loadAssetsAddress()
             bean ?: return@launch
             mBinding.pickerCity.setItems(bean.provinces) { item -> setLocal(item?.city) }
             mBinding.pickerCity.notifyDataSetChanged()
             setLocal(bean.provinces[0].city)
             setArea(bean.provinces[0].city[0].area)
+        }
+    }
+
+    private suspend fun loadAssetsAddress(): AddressBean? {
+       return withContext(Dispatchers.IO) {
+            val addressJson = jsonToString(context, "address.json")
+            Gson().fromJson(addressJson, AddressBean::class.java)
         }
     }
 

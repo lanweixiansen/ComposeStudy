@@ -55,4 +55,5 @@ dependencies {
     kapt rootProject.desLibs.arouterCompiler
     api rootProject.desLibs.eventBus
     api rootProject.desLibs.fragmentKtx
+    kapt rootProject.desLibs.glideCompiler
 }

@@ -8,9 +8,14 @@ import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.ItemAdapter
 import com.example.libHome.bottomSheetDialog.BottomShareDialog
 import com.example.libHome.data.itemData
+import com.example.libHome.net.HomeApi
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
+import com.example.lib_base.ext.toast
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
+import com.example.libnet.manager.HttpManager
+import com.example.libnet.response.requestLiveData
+import com.example.libnet.viewModel.createdApi
 import com.example.uilibrary.widget.HeaderAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -19,6 +24,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
     private lateinit var mAdapter: ItemAdapter
     private lateinit var mHelper: QuickAdapterHelper
     private val mViewModel by viewModels<HomeViewModel>()
+    private val mHomeApi = HomeApi::class.java.createdApi()
 
     override fun initView() {
         with(mBinding) {
@@ -34,6 +40,13 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
     override fun initDate() {
         mAdapter.submitList(itemData)
         mViewModel.getBanner()
+        requestLiveData(requestCall = { mHomeApi.getHomeBanner() }, onComplete = {
+            "加载完成".toast()
+        }, errorBlock = { errorCode, errorMsg ->
+            "加载失败：$errorCode - $errorMsg".toast()
+        }).observe(viewLifecycleOwner) {
+            it?.size
+        }
     }
 
     override fun initListener() {

@@ -3,7 +3,6 @@ package com.example.libnet.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lib_base.ext.saveAs
-import com.example.libnet.api.TestApi
 import com.example.libnet.exception.ApiException
 import com.example.libnet.manager.HttpManager
 import com.example.libnet.response.BaseResponse
@@ -14,60 +13,27 @@ import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
+fun <T : Any> Class<T>.createdApi() = HttpManager.created(this)
 open class BaseViewModel : ViewModel() {
 
-    val api by lazy { HttpManager.created(TestApi::class.java) }
-
-    fun test() {
-        viewModelScope.launch {
-            viewModelRequest(action = { api.test() }).onComplete {
-
-            }.onSuccess {
-
-            }.onError {
-                it.errCode
-            }
-        }
-    }
-
-    fun <T : Any?> request(
+    fun <T : Any?> netRequest(
         showLoading: Boolean = false,
         action: suspend () -> BaseResponse<T>?,
-        onSuccess: ((T) -> Unit)? = null,
-        onError: ((ApiException) -> Unit)? = null,
-        onComplete: (() -> Unit)? = null,
+        result: (NetWorkResult<T>.() -> Unit)? = null,
     ) {
         viewModelScope.launch {
-            viewModelRequest(showLoading = showLoading, action = { action() }).onError {
-                onError?.invoke(it)
-            }.onComplete {
-                onComplete?.invoke()
-            }.onSuccess {
-                onSuccess?.invoke(it)
-            }
+            val date = requestFlow(
+                requestCall = {
+                    action()
+                },
+                onComplete = {
+                    result?.invoke(NetWorkResult.Complete(true))
+                },
+                errorBlock = { errorCode, errorMsg ->
+                    result?.invoke(NetWorkResult.Error(ApiException(errorCode, errorMsg)))
+                }, showLoading = showLoading)
+            date?.let { result?.invoke(NetWorkResult.Success(it)) }
         }
-    }
-
-    private suspend fun <T : Any?> viewModelRequest(
-        showLoading: Boolean = false,
-        action: suspend () -> BaseResponse<T>?,
-    ): NetWorkResult<T> {
-        var result: NetWorkResult<T> = NetWorkResult.Loading(showLoading)
-        val date = requestFlow(
-            showLoading = {
-
-            },
-            requestCall = {
-                action()
-            },
-            onComplete = {
-                result = NetWorkResult.Complete(true)
-            },
-            errorBlock = { errorCode, errorMsg ->
-                result = NetWorkResult.Error(ApiException(errorCode, errorMsg))
-            })
-        date?.let { result = NetWorkResult.Success(it) }
-        return result
     }
 }
 

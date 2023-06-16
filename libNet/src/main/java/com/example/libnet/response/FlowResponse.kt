@@ -1,5 +1,8 @@
 package com.example.libnet.response
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
+import com.example.lib_base.utils.LoadingUtils
 import com.example.libnet.exception.ApiException
 import com.example.libnet.exception.ErrorExceptionManager
 import kotlinx.coroutines.Dispatchers
@@ -11,25 +14,39 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.withTimeout
 
-
-suspend fun <T> requestFlow(
-    showLoading: ((Boolean) -> Unit)? = null,
+fun <T> requestLiveData(
+    showLoading: Boolean = false,
     requestCall: suspend () -> BaseResponse<T>?,
     errorBlock: ((Int, String?) -> Unit)? = null,
-    onComplete: (() -> Unit)? = null
+    onComplete: (() -> Unit)? = null,
+): LiveData<T?> {
+    return liveData {
+        var data: T? = null
+        flowResponse(requestCall, errorBlock, onComplete, showLoading).collect {
+            data = it?.data
+        }
+        emit(data)
+    }
+}
+
+suspend fun <T> requestFlow(
+    requestCall: suspend () -> BaseResponse<T>?,
+    errorBlock: ((Int, String?) -> Unit)? = null,
+    onComplete: (() -> Unit)? = null,
+    showLoading: Boolean = false
 ): T? {
     var data: T? = null
-    flowResponse(showLoading, requestCall, errorBlock, onComplete).collect {
+    flowResponse(requestCall, errorBlock, onComplete, showLoading).collect {
         data = it?.data
     }
     return data
 }
 
 suspend fun <T> flowResponse(
-    showLoading: ((Boolean) -> Unit)? = null,
     requestCall: suspend () -> BaseResponse<T>?,
     errorBlock: ((Int, String?) -> Unit)? = null,
-    onComplete: (() -> Unit)? = null
+    onComplete: (() -> Unit)? = null,
+    showLoading: Boolean = false
 ): Flow<BaseResponse<T>?> {
     return flow {
         //设置超时时间
@@ -41,13 +58,13 @@ suspend fun <T> flowResponse(
         }
         emit(response)
     }.flowOn(Dispatchers.IO).onStart {
-        showLoading?.invoke(true)
+        if (showLoading) LoadingUtils.showLoading()
     }.catch { e ->
         e.printStackTrace()
         val handler = ErrorExceptionManager.handlerException(e)
         errorBlock?.invoke(handler.errCode, handler.errMsg)
     }.onCompletion {
-        showLoading?.invoke(false)
+        if (showLoading) LoadingUtils.disLoading()
         onComplete?.invoke()
     }
 }

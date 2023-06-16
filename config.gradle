@@ -1,56 +1,81 @@
 ext {
 
     signingConfig = [
-            storePassword       : 'xxx',
-            keyAlias            : 'xxx',
-            keyPassword         : 'xxx'
+            storePassword: 'xxx',
+            keyAlias     : 'xxx',
+            keyPassword  : 'xxx'
     ]
 
     android = [
-            applicationId       : "com.example.demoapplication",
-            minSdk              : 24,
-            targetSdk           : 33,
-            versionCode         : 1,
-            versionName         : "1.0",
-            compileSdk          : 33
+            applicationId: "com.example.demoapplication",
+            minSdk       : 24,
+            targetSdk    : 33,
+            versionCode  : 1,
+            versionName  : "1.0",
+            compileSdk   : 33
     ]
 
     versions = [
-            coreVersion         : '1.8.0',
-            lifecycleVersion    : '2.3.1',
-            composeVersion      : '1.5.1',
-            junitVersion        : '1.1.5',
-            espressoVersion     : '3.5.1',
-            activityVersion     : '1.6.1',
-            lottieVersion       : '6.0.0',
-            navVersion          : '2.5.3',
-            refreshVersion      : '2.0.6',
-            gsonVersion         : '2.10.1',
-            arouterVersion      : '1.5.2',
-            eventBusVersion     : '3.3.1',
+            coreVersion        : '1.8.0',
+            lifecycleVersion   : '2.3.1',
+            composeVersion     : '1.5.1',
+            junitVersion       : '1.1.5',
+            espressoVersion    : '3.5.1',
+            lottieVersion      : '6.0.0',
+            navVersion         : '2.5.3',
+            refreshVersion     : '2.0.6',
+            gsonVersion        : '2.10.1',
+            arouterVersion     : '1.5.2',
+            eventBusVersion    : '3.3.1',
+            retrofitVersion    : '2.9.0',
+            retrofitGsonVersion: '2.4.0',
+            okhttp3LogVersion  : '3.11.0',
+            fragmentVersion    : '1.5.7',
+            activityVersion    : '1.7.2',
     ]
 
     desLibs = [
-            coreKtx             : "androidx.core:core-ktx:${versions["coreVersion"]}",
-            lifecycleRuntimeKtx : "androidx.lifecycle:lifecycle-runtime-ktx:${versions["lifecycleVersion"]}",
-            activityCompose     : "androidx.activity:activity-compose:${versions["composeVersion"]}",
-            composeBom          : "androidx.compose:compose-bom:2022.10.00",
-            ui                  : "androidx.compose.ui:ui",
-            uiGraphics          : "androidx.compose.ui:ui-graphics",
-            uiPreview           : "androidx.compose.ui:ui-tooling-preview",
-            material3           : "androidx.compose.material3:material3",
-            junit               : "junit:junit:4.13.2",
-            extJunit            : "androidx.test.ext:junit:${versions["junitVersion"]}",
-            espresso            : "androidx.test.espresso:espresso-core:${versions[{"espressoVersion"}]}",
-            activityKtx         : "androidx.activity:activity-ktx:${versions["activityVersion"]}",
-            lottie              : "com.airbnb.android:lottie:${versions["lottieVersion"]}",
-            navFrgKtx           : "androidx.navigation:navigation-fragment-ktx:${versions["navVersion"]}",
-            navUIKtx            : "androidx.navigation:navigation-ui-ktx:${versions["navVersion"]}",
-            smartRefresh        : "io.github.scwang90:refresh-layout-kernel:${versions["refreshVersion"]}",
-            adapterHelper       : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta14",
-            gson                : "com.google.code.gson:gson:${versions["gsonVersion"]}",
-            arouter             : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
-            arouterCompiler     : "com.alibaba:arouter-compiler:${versions["arouterVersion"]}",
-            eventBus            : "org.greenrobot:eventbus:${versions["eventBusVersion"]}",
+            coreKtx            : "androidx.core:core-ktx:${versions["coreVersion"]}",
+            lifecycleRuntimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:${versions["lifecycleVersion"]}",
+            activityCompose    : "androidx.activity:activity-compose:${versions["composeVersion"]}",
+            composeBom         : "androidx.compose:compose-bom:2022.10.00",
+            ui                 : "androidx.compose.ui:ui",
+            uiGraphics         : "androidx.compose.ui:ui-graphics",
+            uiPreview          : "androidx.compose.ui:ui-tooling-preview",
+            material3          : "androidx.compose.material3:material3",
+            junit              : "junit:junit:4.13.2",
+            extJunit           : "androidx.test.ext:junit:${versions["junitVersion"]}",
+            espresso           : "androidx.test.espresso:espresso-core:${versions[{ "espressoVersion" }]}",
+            activityKtx        : "androidx.activity:activity-ktx:${versions["activityVersion"]}",
+            lottie             : "com.airbnb.android:lottie:${versions["lottieVersion"]}",
+            navFrgKtx          : "androidx.navigation:navigation-fragment-ktx:${versions["navVersion"]}",
+            navUIKtx           : "androidx.navigation:navigation-ui-ktx:${versions["navVersion"]}",
+            smartRefresh       : "io.github.scwang90:refresh-layout-kernel:${versions["refreshVersion"]}",
+            adapterHelper      : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta14",
+            gson               : "com.google.code.gson:gson:${versions["gsonVersion"]}",
+            arouter            : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
+            arouterCompiler    : "com.alibaba:arouter-compiler:${versions["arouterVersion"]}",
+            eventBus           : "org.greenrobot:eventbus:${versions["eventBusVersion"]}",
+            liveDataKtx        : 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1',
+            viewModelKtx       : 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1',
+            retrofit2          : "com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
+            retrofit2Gson      : "com.squareup.retrofit2:converter-gson:${versions["retrofitGsonVersion"]}",
+            loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:${versions["okhttp3LogVersion"]}",
+            fragmentKtx        : "androidx.fragment:fragment-ktx:${versions["fragmentVersion"]}",
+            glideCompiler      : "com.github.bumptech.glide:compiler:4.11.0",
+            glide              : "com.github.bumptech.glide:glide:4.15.1",
+
+
     ]
+
+    debug = [
+            baseUrl: "https://www.wanandroid.com",
+    ]
+
+    release = [
+            baseUrl: "https://www.wanandroid.com",
+    ]
+
+    active = debug
+
 }

@@ -3,10 +3,10 @@ package com.example.libHome.bottomSheetDialog
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.DecelerateInterpolator
-import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import com.example.lib_base.utils.dp2px
@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 class BottomShareDialog(context: Context) :
     BottomSheetDialog(context, com.example.lib_base.R.style.BottomSheetDialog) {
     private val mBinding: HomeDialiogBottomShareBinding
+    private var mAnimList = listOf<ObjectAnimator>()
 
     init {
         mBinding = HomeDialiogBottomShareBinding.bind(
@@ -32,8 +33,13 @@ class BottomShareDialog(context: Context) :
         startAnim(mBinding.anim1, mBinding.anim2, mBinding.anim3, mBinding.anim4)
     }
 
+    override fun onStart() {
+        super.onStart()
+        mBinding.btnCancel.setOnClickListener { dismiss() }
+    }
+
     private fun startAnim(vararg view: ImageView) {
-        val list = view.map {
+        mAnimList = view.map {
             val anim1 = PropertyValuesHolder.ofFloat("translationY", dp2px(300f), dp2px(0f))
             val anim2 = PropertyValuesHolder.ofFloat("alpha", 0f, 0.2f, 1f)
             ObjectAnimator.ofPropertyValuesHolder(it, anim1, anim2).apply {
@@ -42,11 +48,15 @@ class BottomShareDialog(context: Context) :
             }
         }
         lifecycleScope.launch {
-            list.forEach {
+            mAnimList.forEach {
                 it.start()
                 delay(5)
             }
         }
     }
 
+    override fun setOnDismissListener(listener: DialogInterface.OnDismissListener?) {
+        mAnimList.forEach { it.cancel() }
+        super.setOnDismissListener(listener)
+    }
 }

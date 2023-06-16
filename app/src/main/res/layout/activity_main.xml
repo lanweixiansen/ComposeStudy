@@ -22,7 +22,7 @@
         app:itemBackground="@color/grey_50"
         app:itemIconTint="@color/select_tab_color"
         app:itemTextColor="@color/select_tab_color"
-        app:labelVisibilityMode="auto"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

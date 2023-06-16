@@ -45,7 +45,6 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField "boolean", "myFlag", "true"
         }
 
         release {
@@ -89,6 +88,7 @@ dependencies {
     implementation project(path: ':lib_me')
     implementation project(path: ':uilibrary')
     implementation project(path: ':libLogin')
+    implementation project(path: ':libNet')
     implementation rootProject.desLibs.coreKtx
     implementation rootProject.desLibs.activityCompose
     implementation platform(rootProject.desLibs.composeBom)

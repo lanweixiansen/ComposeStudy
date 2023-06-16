@@ -13,12 +13,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var navController: NavController
 
     override fun initView() {
+        val navView = mBinding.navView
         navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val fragmentNavigator = SumFragmentNavigator(this, navHostFragment.childFragmentManager, navHostFragment.id)
         navController.navigatorProvider.addNavigator(fragmentNavigator)
         navController.setGraph(R.navigation.navi_host)
-        mBinding.navView.setupWithNavController(navController = navController)
+        navView.setupWithNavController(navController)
     }
 
     override fun initDate() {}

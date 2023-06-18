@@ -2,4 +2,5 @@
 <resources>
     <color name="color_translation">#00000000</color>
     <color name="color_252525">#252525</color>
+    <color name="primary">#FF6750A4</color>
 </resources>

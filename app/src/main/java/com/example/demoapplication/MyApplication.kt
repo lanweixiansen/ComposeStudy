@@ -1,14 +1,14 @@
 package com.example.demoapplication
 
 import android.app.Application
-import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.uilibrary.widget.CustomRefreshHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
-class MyApplication: Application() {
+class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        mContext = this
         initSdk()
     }
 
@@ -23,5 +23,10 @@ class MyApplication: Application() {
         ARouter.init(this)
     }
 
-    fun getContext() = this
+    companion object {
+        lateinit var mContext: MyApplication
+
+        @JvmStatic
+        fun getContext() = mContext
+    }
 }

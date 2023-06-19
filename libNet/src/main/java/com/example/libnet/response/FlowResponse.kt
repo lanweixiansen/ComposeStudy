@@ -2,7 +2,6 @@ package com.example.libnet.response
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.example.lib_base.utils.LoadingUtils
 import com.example.libnet.exception.ApiException
 import com.example.libnet.exception.ErrorExceptionManager
 import kotlinx.coroutines.Dispatchers
@@ -58,13 +57,13 @@ suspend fun <T> flowResponse(
         }
         emit(response)
     }.flowOn(Dispatchers.IO).onStart {
-        if (showLoading) LoadingUtils.showLoading()
+//        if (showLoading) LoadingUtils.showLoading()
     }.catch { e ->
         e.printStackTrace()
         val handler = ErrorExceptionManager.handlerException(e)
         errorBlock?.invoke(handler.errCode, handler.errMsg)
     }.onCompletion {
-        if (showLoading) LoadingUtils.disLoading()
+//        if (showLoading) LoadingUtils.disLoading()
         onComplete?.invoke()
     }
 }

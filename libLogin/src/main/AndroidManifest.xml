@@ -4,6 +4,6 @@
     <application>
         <activity
             android:name=".ui.LoginActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTop" />
     </application>
 </manifest>

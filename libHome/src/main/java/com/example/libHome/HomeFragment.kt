@@ -57,12 +57,14 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
     }
 
     private fun loadData() {
+        showLoading()
         requestLiveData(
             showLoading = true,
             requestCall = { mHomeApi.getHomeBanner() },
             onComplete = {
                 "加载完成".toast()
                 mBinding.smartRefresh.finishRefresh()
+                disLoading()
             },
             errorBlock = { errorCode, errorMsg ->
                 "加载失败：$errorCode - $errorMsg".toast()

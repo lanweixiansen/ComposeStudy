@@ -104,4 +104,5 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
     kapt rootProject.desLibs.arouterCompiler
+    debugApi 'com.squareup.leakcanary:leakcanary-android:2.11'
 }

@@ -1,5 +1,8 @@
 package com.example.libHome.data
 
+import androidx.annotation.Keep
+
+@Keep
 data class Banner(
     val id: Int? = 0,
     val url: String? = "", //网站地址

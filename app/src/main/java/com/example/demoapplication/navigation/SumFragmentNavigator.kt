@@ -48,7 +48,7 @@ class SumFragmentNavigator(context: Context, manager: FragmentManager, container
         entry: NavBackStackEntry, navOptions: NavOptions?, navigatorExtras: Navigator.Extras?
     ) {
         val savedIds = try {
-            val targetClass: Class<*> = this.javaClass.superclass
+            val targetClass: Class<*> = this.javaClass.superclass as Class<*>
             val obj = targetClass.cast(this) as FragmentNavigator
             val field = targetClass.getDeclaredField("savedIds")
             //修改访问限制

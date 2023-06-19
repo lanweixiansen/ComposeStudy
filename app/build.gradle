@@ -12,12 +12,6 @@ kapt {
 
 android {
     signingConfigs {
-        debug {
-            storeFile file('spk.jks')
-            storePassword '123456'
-            keyAlias 'spk'
-            keyPassword '123456'
-        }
         release {
             storeFile file('spk.jks')
             storePassword '123456'
@@ -49,8 +43,8 @@ android {
         }
 
         release {
-            shrinkResources false
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

@@ -22,14 +22,19 @@
 
 #--------------------------1.实体类---------------------------------
 # 如果使用了Gson之类的工具要使被它解析的JavaBean类即实体类不被混淆。（这里填写自己项目中存放bean对象的具体路径）
--keep class com.php.soldout.bean.**{*;}
+-keep class com.example.libHome.data.**{*;}
+-keep class com.example.libnet.**{*;}
+-keep class com.example.libnet.manager.**{*;}
+-keep class com.example.libnet.response.FlowResponseKt {
+    *;
+}
+-keep class com.example.libnet.viewModel.BaseViewModelKt{*;}
+
 
 #--------------------------2.第三方包-------------------------------
 
 #Gson
--keepattributes Signature
 -keepattributes *Annotation*
-#-keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
 -keep class com.google.gson.examples.android.model.** { *; }
 -keep class com.google.gson.* { *;}
@@ -40,9 +45,27 @@
 -dontwarn butterknife.internal.**
 -keep class **$$ViewBinder { *; }
 
+# ARouter
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+
+# 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+
+# 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
+-keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+
 #-------------------------3.与js互相调用的类------------------------
 
 #-------------------------4.反射相关的类和方法----------------------
+
+#keep 类名和类成员都不会被移除和混淆
+-keep class * implements androidx.viewbinding.ViewBinding {
+    *;
+}
+
+
 
 #-------------------------5.基本不用动区域--------------------------
 #指定代码的压缩级别
@@ -152,16 +175,6 @@
 
 -keep class com.zhy.http.okhttp.**{*;}
 -keep class com.wiwide.util.** {*;}
-
--keep public class com.alibaba.android.arouter.routes.**{*;}
--keep public class com.alibaba.android.arouter.facade.**{*;}
--keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
-
-# 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
--keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
-
-# 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
--keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 
 # ============忽略警告，否则打包可能会不成功=============
 -ignorewarnings

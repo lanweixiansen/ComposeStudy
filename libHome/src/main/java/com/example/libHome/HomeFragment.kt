@@ -38,14 +38,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
 
     override fun initDate() {
         mAdapter.submitList(itemData)
-        mViewModel.getBanner()
-        requestLiveData(requestCall = { mHomeApi.getHomeBanner() }, onComplete = {
-            "加载完成".toast()
-        }, errorBlock = { errorCode, errorMsg ->
-            "加载失败：$errorCode - $errorMsg".toast()
-        }).observe(viewLifecycleOwner) {
-            mBannerAdapter.submitList(it)
-        }
+        loadData()
     }
 
     override fun initListener() {

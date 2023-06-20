@@ -131,11 +131,11 @@
 # apk 包内所有 class 的内部结构
 -dump proguard/class_files.txt
 # 未混淆的类和成员
--printseeds proguard/seeds.txt
+#-printseeds proguard/seeds.txt
 # 列出从 apk 中删除的代码
--printusage proguard/unused.txt
+#-printusage proguard/unused.txt
 # 混淆前后的映射
--printmapping proguard/mapping.txt
+#-printmapping proguard/mapping.txt
 
 
 # 避免混淆泛型

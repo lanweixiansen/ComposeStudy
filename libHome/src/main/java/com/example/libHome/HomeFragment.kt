@@ -72,4 +72,9 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             mBannerAdapter.submitList(it)
         }
     }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeFragment()
+    }
 }

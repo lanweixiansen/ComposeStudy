@@ -22,7 +22,7 @@ ext {
             junitVersion       : '1.1.5',
             espressoVersion    : '3.5.1',
             lottieVersion      : '6.0.0',
-            navVersion         : '2.5.3',
+            navVersion         : '2.3.5',
             refreshVersion     : '2.0.6',
             gsonVersion        : '2.10.1',
             arouterVersion     : '1.5.2',

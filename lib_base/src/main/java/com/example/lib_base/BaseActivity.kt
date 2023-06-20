@@ -15,6 +15,8 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     lateinit var mBinding: VB
     private var mLoading: LoadingDialog? = null
+    val mLoadViewTime: Long
+        get() = setStartTime() - setEndTime()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         val vbClass: Class<VB> = type!!.saveAs<ParameterizedType>().actualTypeArguments[0].saveAs()
         val method = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         mBinding = method.invoke(this, layoutInflater)!!.saveAsUnChecked()
+        setStartTime()
         setContentView(mBinding.root)
+        setEndTime()
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
@@ -62,6 +66,10 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     open fun initObserver() {}
     open fun useEventBus() = false
+
+    private fun setStartTime() = System.currentTimeMillis()
+
+    private fun setEndTime() = System.currentTimeMillis()
 
 
     fun setStatusBarTextColor(isLight: Boolean = false) {

@@ -5,10 +5,12 @@
         <activity android:name="com.example.libHome.linearLayout.LinearLayoutTestActivity" />
         <activity android:name="com.example.libHome.eventBus.EventBusTestActivity" />
         <activity android:name="com.example.libHome.viewStub.ViewStubTestActivity" />
+        <activity android:name="com.example.libHome.viewStub.ViewStubTest2Activity" />
         <activity android:name="com.example.libHome.arouter.RouterTestActivity" />
         <activity android:name="com.example.libHome.arouter.RouteSearchTranslationTestActivity"/>
         <activity android:name="com.example.libHome.arouter.InterceptorTestActivity1"/>
         <activity android:name="com.example.libHome.arouter.InterceptorTestActivity2"/>
         <activity android:name="com.example.libHome.arouter.InterceptorTestActivity3"/>
+        <activity android:name="com.example.libHome.viewStub.ViewStubActivity"/>
     </application>
 </manifest>

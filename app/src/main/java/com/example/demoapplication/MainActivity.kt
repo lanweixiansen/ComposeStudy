@@ -7,7 +7,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.demoapplication.databinding.ActivityMainBinding
 import com.example.demoapplication.navigation.SumFragmentNavigator
 import com.example.lib_base.BaseActivity
-import com.example.lib_base.ext.AppExit
 import com.example.lib_base.utils.LoadingUtils
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -28,7 +27,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initDate() {}
 
     override fun onBackPressed() {
-        AppExit.onBackPressed(this)
+        // 最小化到桌面
+        moveTaskToBack(true)
+        // 退出APP
+//        AppExit.onBackPressed(this)
     }
 
     override fun onDestroy() {

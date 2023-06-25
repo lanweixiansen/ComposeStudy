@@ -32,6 +32,7 @@ ext {
             fragmentVersion    : '1.5.7',
             activityVersion    : '1.7.2',
             moshiVersion       : '1.14.0',
+            room_version       : '2.5.0',
     ]
 
     desLibs = [
@@ -55,8 +56,8 @@ ext {
             arouter            : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
             arouterCompiler    : "com.alibaba:arouter-compiler:${versions["arouterVersion"]}",
             eventBus           : "org.greenrobot:eventbus:${versions["eventBusVersion"]}",
-            liveDataKtx        : 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1',
-            viewModelKtx       : 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1',
+            liveDataKtx        : "androidx.lifecycle:lifecycle-livedata-ktx:${versions["lifecycleVersion"]}",
+            viewModelKtx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions["lifecycleVersion"]}",
             retrofit2          : "com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
             loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:${versions["okhttp3LogVersion"]}",
             fragmentKtx        : "androidx.fragment:fragment-ktx:${versions["fragmentVersion"]}",
@@ -67,6 +68,8 @@ ext {
             moshi              : "com.squareup.moshi:moshi:${versions["moshiVersion"]}",
             moshiKotlin        : "com.squareup.moshi:moshi-kotlin:${versions["moshiVersion"]}",
             retrofitMoshi      : "com.squareup.retrofit2:converter-moshi:${versions["retrofitVersion"]}",
+            room               : "androidx.room:room-ktx:${versions["room_version"]}",
+            roomCompiler       : "androidx.room:room-compiler:${versions["room_version"]}",
 
 
     ]

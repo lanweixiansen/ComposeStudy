@@ -12,7 +12,7 @@ val itemData = listOf(
     ItemData("EventBus接受数据顺序", RouteConsts.HOME_EVENT_BUS_ACTIVITY),
     ItemData("ARouter相关", RouteConsts.HOME_ROUTER_ACTIVITY),
     ItemData("viewStub延迟加载布局实现秒开", RouteConsts.HOME_ROUTER_VIEW_STUB_ACTIVITY),
-    ItemData("Intent实现转场动画"),
+    ItemData("Room & net实现数据持久化", RouteConsts.HOME_ROUTER_ROOM_ACTIVITY),
     ItemData("Compose基本布局"),
     ItemData("Compose列表展示，图片加载"),
     ItemData("Compose & ViewModel"),

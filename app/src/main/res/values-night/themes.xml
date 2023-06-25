@@ -4,4 +4,10 @@
         <item name="android:statusBarColor">@color/grey_900</item>
     </style>
     <color name="tab_unselect">@color/grey_50</color>
+
+    <style name="Theme.SplashActivity" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
 </resources>

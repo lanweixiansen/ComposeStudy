@@ -8,7 +8,6 @@ import com.example.lib_base.utils.RouteConsts
 
 object AppManager {
 
-
     fun goLogin() {
         ARouter.getInstance().build(RouteConsts.SERVER_LOGIN)
             .navigation()
@@ -16,11 +15,11 @@ object AppManager {
             .goLogin()
     }
 
-    fun getContext(): Context? {
+    fun getApplicationContext(): Context {
         return ARouter.getInstance().build(RouteConsts.SERVER_APP)
             .navigation()
             .saveAs<RouteServer>()
-            .getContext()
+            .getContext()!!
     }
 
 

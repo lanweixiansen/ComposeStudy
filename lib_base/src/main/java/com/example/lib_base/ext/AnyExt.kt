@@ -18,11 +18,11 @@ inline fun <reified T> Any.isEqualType(): Boolean {
 }
 
 fun Any.toast(context: Context? = null) {
-    Toast.makeText(AppManager.getContext(), this.toString(), Toast.LENGTH_SHORT).show()
+    Toast.makeText(AppManager.getApplicationContext(), this.toString(), Toast.LENGTH_SHORT).show()
 }
 
 fun String.toast() {
-    Toast.makeText(AppManager.getContext(), this.toString(), Toast.LENGTH_SHORT).show()
+    Toast.makeText(AppManager.getApplicationContext(), this.toString(), Toast.LENGTH_SHORT).show()
 }
 
 fun String.toExFloat(): Float {

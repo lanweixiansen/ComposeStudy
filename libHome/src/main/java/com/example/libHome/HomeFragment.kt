@@ -1,6 +1,5 @@
 package com.example.libHome
 
-import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
@@ -13,7 +12,6 @@ import com.example.libHome.net.HomeApi
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
 import com.example.lib_base.ext.toast
-import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.libnet.response.requestLiveData
 import com.example.libnet.viewModel.createdApi
@@ -53,11 +51,13 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             if (bean?.route.isNullOrBlank()) {
                 SheetDialog(requireContext()).show()
             } else {
-                val anim = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    requireActivity(), view.findViewById(R.id.parent), "activity_anim"
-                )
-                ARouter.getInstance().build(bean?.route).withOptionsCompat(anim)
-                    .navigation(requireActivity())
+//                val anim = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                    requireActivity(), view.findViewById(R.id.parent), "activity_anim"
+//                )
+//                ARouter.getInstance().build(bean?.route).withOptionsCompat(anim)
+//                    .navigation(requireActivity())
+                ARouter.getInstance().build(bean?.route)
+                    .navigation()
             }
         }
     }

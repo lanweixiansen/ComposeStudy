@@ -12,5 +12,6 @@
         <activity android:name="com.example.libHome.arouter.InterceptorTestActivity2"/>
         <activity android:name="com.example.libHome.arouter.InterceptorTestActivity3"/>
         <activity android:name="com.example.libHome.viewStub.ViewStubActivity"/>
+        <activity android:name="com.example.libHome.room.RoomActivity"/>
     </application>
 </manifest>

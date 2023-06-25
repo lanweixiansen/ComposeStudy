@@ -31,7 +31,8 @@ open class BaseViewModel : ViewModel() {
                 },
                 errorBlock = { errorCode, errorMsg ->
                     result?.invoke(NetWorkResult.Error(ApiException(errorCode, errorMsg)))
-                }, showLoading = showLoading)
+                }, showLoading = showLoading
+            )
             date?.let { result?.invoke(NetWorkResult.Success(it)) }
         }
     }

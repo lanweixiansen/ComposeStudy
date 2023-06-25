@@ -1,24 +1,32 @@
 package com.example.libHome.net.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.libHome.data.Banner
-import com.example.libHome.net.HomeApi
+import com.example.libHome.net.repository.BannerRepository
 import com.example.lib_base.ext.toast
-import com.example.libnet.manager.HttpManager
+import com.example.libnet.room.dataBase.HomeBannerDataBase
+import com.example.libnet.room.entry.HomeBannerEntry
 import com.example.libnet.viewModel.BaseViewModel
 import com.example.libnet.viewModel.onComplete
 import com.example.libnet.viewModel.onError
 import com.example.libnet.viewModel.onSuccess
+import kotlinx.coroutines.launch
 
 class HomeViewModel : BaseViewModel() {
-    private val mHomeApi by lazy { HttpManager.created(HomeApi::class.java) }
+    private val repository = BannerRepository()
 
-    private val mBanner: MutableLiveData<MutableList<Banner>> = MutableLiveData()
+    val mBanner: MutableLiveData<MutableList<Banner>> = MutableLiveData()
+    val mDBBanner: LiveData<List<HomeBannerEntry>> =
+        HomeBannerDataBase.newInstance().getBannerDao().getPlants()
+
 
     fun getBanner() {
-        netRequest(true, action = { mHomeApi.getHomeBanner() }) {
+        netRequest(true, action = { repository.mHomeApi.getHomeBanner() }) {
             onSuccess {
                 "加载成功".toast()
+                mBanner.value = it
             }
             onError {
                 "加载失败".toast()
@@ -26,6 +34,12 @@ class HomeViewModel : BaseViewModel() {
             onComplete {
                 "加载完成".toast()
             }
+        }
+    }
+
+    fun getBannerByDB() {
+        viewModelScope.launch {
+            repository.getBanner()
         }
     }
 

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -42,4 +43,6 @@ dependencies {
     implementation rootProject.desLibs.loggingInterceptor
     implementation rootProject.desLibs.moshiKotlin
     implementation rootProject.desLibs.retrofitMoshi
+    api rootProject.desLibs.room
+    kapt rootProject.desLibs.roomCompiler
 }

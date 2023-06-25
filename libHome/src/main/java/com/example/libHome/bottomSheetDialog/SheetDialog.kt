@@ -2,17 +2,20 @@ package com.example.libHome.bottomSheetDialog
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.lifecycle.lifecycleScope
+import com.blankj.utilcode.util.ScreenUtils
 import com.example.libHome.data.AddressBean
 import com.example.libHome.data.AreaResp
 import com.example.libHome.data.CityResp
 import com.example.lib_base.ext.jsonToString
 import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeBottomSheetDialogBinding
+import com.example.libnet.manager.HttpManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
+import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -32,7 +35,8 @@ class SheetDialog(context: Context) :
         super.onStart()
         val behavior =
             BottomSheetBehavior.from(findViewById<LinearLayout>(com.google.android.material.R.id.design_bottom_sheet)!!)
-        behavior.peekHeight = 350
+        behavior.peekHeight = 550
+        behavior.maxHeight = ScreenUtils.getAppScreenHeight()
         initData()
     }
 
@@ -53,9 +57,11 @@ class SheetDialog(context: Context) :
     }
 
     private suspend fun loadAssetsAddress(): AddressBean? {
-       return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.IO) {
             val addressJson = jsonToString(context, "address.json")
-            Gson().fromJson(addressJson, AddressBean::class.java)
+            val jsonAdapter: JsonAdapter<AddressBean> =
+                HttpManager.moshi.adapter(AddressBean::class.java)
+            jsonAdapter.fromJson(addressJson)
         }
     }
 
@@ -74,4 +80,8 @@ class SheetDialog(context: Context) :
         mBinding.pickerArea.selectedItemPosition = 0
     }
 
+
+    override fun onStop() {
+        super.onStop()
+    }
 }

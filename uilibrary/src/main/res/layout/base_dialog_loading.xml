@@ -10,7 +10,7 @@
         android:layout_height="120dp"
         android:layout_margin="20dp"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="lottie/lottie_loading.json"
+        app:lottie_fileName="lottie/lottie_loading2.json"
         app:lottie_loop="true"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

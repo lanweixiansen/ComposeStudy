@@ -1,17 +1,19 @@
 package com.example.libHome
 
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
-import com.example.libHome.bottomSheetDialog.BottomShareDialog
+import com.example.libHome.bottomSheetDialog.SheetDialog
 import com.example.libHome.data.itemData
 import com.example.libHome.net.HomeApi
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
 import com.example.lib_base.ext.toast
+import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.libnet.response.requestLiveData
 import com.example.libnet.viewModel.createdApi
@@ -46,12 +48,16 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
         mBinding.smartRefresh.setOnRefreshListener {
             loadData()
         }
-        mAdapter.setOnItemClickListener { adapter, _, position ->
+        mAdapter.setOnItemClickListener { adapter, view, position ->
             val bean = adapter.getItem(position)
             if (bean?.route.isNullOrBlank()) {
-                BottomShareDialog(requireContext()).show()
+                SheetDialog(requireContext()).show()
             } else {
-                ARouter.getInstance().build(bean?.route).navigation()
+                val anim = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    requireActivity(), view.findViewById(R.id.parent), "activity_anim"
+                )
+                ARouter.getInstance().build(bean?.route).withOptionsCompat(anim)
+                    .navigation(requireActivity())
             }
         }
     }

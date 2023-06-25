@@ -5,22 +5,29 @@ import com.blankj.utilcode.util.NetworkUtils
 import com.example.libnet.BuildConfig
 import com.example.libnet.exception.ERROR
 import com.example.libnet.exception.NoNetWorkException
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object HttpManager {
     private val mRetrofit: Retrofit
+    val moshi: Moshi by lazy {
+        Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+    }
 
     init {
         mRetrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(initOkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
 

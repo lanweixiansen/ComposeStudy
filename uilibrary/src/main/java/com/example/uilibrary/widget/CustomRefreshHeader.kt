@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.LinearLayoutCompat
+import com.airbnb.lottie.LottieAnimationView
 import com.example.uilibrary.R
 import com.scwang.smart.refresh.layout.api.RefreshHeader
 import com.scwang.smart.refresh.layout.api.RefreshKernel
@@ -49,20 +50,16 @@ class CustomRefreshHeader @JvmOverloads constructor(
         offset: Int,
         height: Int,
         maxDragHeight: Int
-    ) {
-
-    }
+    ) {}
 
     override fun onReleased(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {
 
     }
 
     override fun onStartAnimator(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {
-
     }
 
     override fun onFinish(refreshLayout: RefreshLayout, success: Boolean): Int {
-
         return 0
     }
 

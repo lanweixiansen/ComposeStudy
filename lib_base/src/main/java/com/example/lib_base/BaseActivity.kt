@@ -2,7 +2,10 @@ package com.example.lib_base
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ContentFrameLayout
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
@@ -25,7 +28,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         val method = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         mBinding = method.invoke(this, layoutInflater)!!.saveAsUnChecked()
         setStartTime()
+        setWindowStyle(window)
         setContentView(mBinding.root)
+        findViewById<ContentFrameLayout>(android.R.id.content).transitionName = "activity_anim"
         setEndTime()
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
@@ -36,6 +41,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         initListener()
         initObserver()
     }
+
+    open fun setWindowStyle(window: Window) {}
 
     fun showLoading() {
         mLoading ?: run {

@@ -24,7 +24,6 @@ ext {
             lottieVersion      : '6.0.0',
             navVersion         : '2.3.5',
             refreshVersion     : '2.0.6',
-            gsonVersion        : '2.10.1',
             arouterVersion     : '1.5.2',
             eventBusVersion    : '3.3.1',
             retrofitVersion    : '2.9.0',
@@ -32,6 +31,7 @@ ext {
             okhttp3LogVersion  : '3.11.0',
             fragmentVersion    : '1.5.7',
             activityVersion    : '1.7.2',
+            moshiVersion       : '1.14.0',
     ]
 
     desLibs = [
@@ -52,18 +52,21 @@ ext {
             navUIKtx           : "androidx.navigation:navigation-ui-ktx:${versions["navVersion"]}",
             smartRefresh       : "io.github.scwang90:refresh-layout-kernel:${versions["refreshVersion"]}",
             adapterHelper      : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta14",
-            gson               : "com.google.code.gson:gson:${versions["gsonVersion"]}",
             arouter            : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
             arouterCompiler    : "com.alibaba:arouter-compiler:${versions["arouterVersion"]}",
             eventBus           : "org.greenrobot:eventbus:${versions["eventBusVersion"]}",
             liveDataKtx        : 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1',
             viewModelKtx       : 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1',
             retrofit2          : "com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
-            retrofit2Gson      : "com.squareup.retrofit2:converter-gson:${versions["retrofitGsonVersion"]}",
             loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:${versions["okhttp3LogVersion"]}",
             fragmentKtx        : "androidx.fragment:fragment-ktx:${versions["fragmentVersion"]}",
             glideCompiler      : "com.github.bumptech.glide:compiler:4.11.0",
             glide              : "com.github.bumptech.glide:glide:4.15.1",
+            stackView          : "com.yuyakaido.android:card-stack-view:2.3.4",
+            leakcanary         : "com.squareup.leakcanary:leakcanary-android:2.11",
+            moshi              : "com.squareup.moshi:moshi:${versions["moshiVersion"]}",
+            moshiKotlin        : "com.squareup.moshi:moshi-kotlin:${versions["moshiVersion"]}",
+            retrofitMoshi      : "com.squareup.retrofit2:converter-moshi:${versions["retrofitVersion"]}",
 
 
     ]

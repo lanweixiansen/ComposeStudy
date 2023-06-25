@@ -44,10 +44,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     api rootProject.desLibs.lifecycleRuntimeKtx
-    api rootProject.desLibs.gson
     api rootProject.desLibs.arouter
     kapt rootProject.desLibs.arouterCompiler
     api rootProject.desLibs.eventBus
     api rootProject.desLibs.fragmentKtx
     kapt rootProject.desLibs.glideCompiler
+    api rootProject.desLibs.moshi
+    api rootProject.desLibs.liveDataKtx
+    api rootProject.desLibs.viewModelKtx
 }

@@ -9,7 +9,6 @@ import com.example.lib_home.databinding.HomeActivityLinearlayoutTestBinding
 class LinearLayoutTestActivity : BaseActivity<HomeActivityLinearlayoutTestBinding>() {
 
     override fun initView() {
-
     }
 
     override fun initDate() {

@@ -1,7 +1,9 @@
 package com.example.libHome.data
 
 import com.example.uilibrary.widget.PickerView
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class AddressBean(
     val provinces: List<RegionListResp>
 )

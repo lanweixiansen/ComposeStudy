@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.uilibrary.R
 
 class RoundImageView @JvmOverloads constructor(
@@ -24,6 +25,7 @@ class RoundImageView @JvmOverloads constructor(
     }
 
     init {
+        this.findViewTreeViewModelStoreOwner()
         mBorderWidth = typedArray.getDimension(R.styleable.RoundImageView_riv_border_width, 0f)
         mBorderColor = typedArray.getColor(
             R.styleable.RoundImageView_riv_border_color,
@@ -35,16 +37,23 @@ class RoundImageView @JvmOverloads constructor(
         mPaint.strokeWidth = mBorderWidth
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
         if (mOval) {
             mPath.addOval(0f, 0f, width.toFloat(), height.toFloat(), Path.Direction.CW)
-            canvas?.clipPath(mPath)
         } else if (mBorderWidth >= 0) {
             mPath.addRoundRect(
                 0f, 0f, width.toFloat(),
                 height.toFloat(), mRvRadius,
                 mRvRadius, Path.Direction.CW
             )
+        }
+    }
+
+    override fun onDraw(canvas: Canvas?) {
+        if (mOval) {
+            canvas?.clipPath(mPath)
+        } else if (mBorderWidth >= 0) {
             canvas?.clipPath(mPath)
         }
         super.onDraw(canvas)

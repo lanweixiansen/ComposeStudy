@@ -38,10 +38,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    api rootProject.desLibs.liveDataKtx
-    api rootProject.desLibs.viewModelKtx
     api rootProject.desLibs.retrofit2
-    api rootProject.desLibs.retrofit2Gson
-    api rootProject.desLibs.retrofit2Gson
-    api rootProject.desLibs.loggingInterceptor
+    implementation rootProject.desLibs.loggingInterceptor
+    implementation rootProject.desLibs.moshiKotlin
+    implementation rootProject.desLibs.retrofitMoshi
 }

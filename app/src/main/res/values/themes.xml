@@ -8,9 +8,6 @@
     <color name="tab_unselect">@color/grey_900</color>
 
     <style name="Theme.SplashActivity" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:background">@color/splash_bg</item>
+
     </style>
 </resources>

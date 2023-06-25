@@ -14,6 +14,7 @@ object RouteConsts {
     const val HOME_ROUTER_INTERCEPTOR3_ACTIVITY = "/homeLib/InterceptorTestActivity3"
     const val HOME_ROUTER_VIEW_STUB_ACTIVITY = "/homeLib/ViewStubActivity"
     const val HOME_ROUTER_ROOM_ACTIVITY = "/homeLib/RoomActivity"
+    const val HOME_ROUTER_INTENT_SETTING_ACTIVITY = "/homeLib/IntentSettingActivity"
 
     // lib_me
     const val ROUTE_ME_TEST = "/meLib/MeTest"

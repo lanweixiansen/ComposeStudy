@@ -16,8 +16,4 @@ class AppRouteServer : RouteServer {
         mContext = context
     }
 
-    override fun getContext(): Context {
-        return MyApplication.getContext()
-    }
-
 }

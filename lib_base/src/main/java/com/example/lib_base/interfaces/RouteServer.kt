@@ -15,8 +15,4 @@ interface RouteServer : IProvider {
             .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             .navigation()
     }
-
-    fun getContext(): Context? {
-        return null
-    }
 }

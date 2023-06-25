@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/base_loading_bg"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/home_textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="权限提醒"
+        android:textStyle="bold"
+        android:paddingVertical="16dp"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="88dp" />
+
+    <TextView
+        android:id="@+id/home_textview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启权限能够让我们提供更好的服务"
+        android:paddingBottom="16dp"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="195dp" />
+
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启"
+        android:paddingBottom="16dp"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="285dp" />
+</LinearLayout>

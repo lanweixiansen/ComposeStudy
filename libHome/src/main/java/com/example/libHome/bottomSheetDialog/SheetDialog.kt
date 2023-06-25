@@ -33,8 +33,6 @@ class SheetDialog(context: Context) :
 
     override fun onStart() {
         super.onStart()
-        val behavior =
-            BottomSheetBehavior.from(findViewById<LinearLayout>(com.google.android.material.R.id.design_bottom_sheet)!!)
         behavior.peekHeight = 550
         behavior.maxHeight = ScreenUtils.getAppScreenHeight()
         initData()

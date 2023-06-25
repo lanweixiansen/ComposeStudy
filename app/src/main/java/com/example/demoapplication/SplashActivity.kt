@@ -18,6 +18,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     override fun setWindowStyle(window: Window) {
         super.setWindowStyle(window)
-        WindowCompat.setDecorFitsSystemWindows(window, true)
+//        WindowCompat.setDecorFitsSystemWindows(window, true)
     }
 }

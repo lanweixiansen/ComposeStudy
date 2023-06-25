@@ -9,7 +9,6 @@ import com.example.libnet.room.entry.HomeBannerEntry
 class BannerRepository : BaseRepository() {
     val mHomeApi by lazy { HttpManager.created(HomeApi::class.java) }
 
-
     suspend fun getBanner() {
         translationBanner(getBannerList()).also {
             if (it.isNotEmpty()) {
@@ -22,7 +21,7 @@ class BannerRepository : BaseRepository() {
         var list = mutableListOf<Banner>()
         kotlin.runCatching {
             mHomeApi.getHomeBanner().data
-        }.onSuccess { it ->
+        }.onSuccess {
             if (it != null) {
                 list = it
             }

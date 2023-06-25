@@ -13,5 +13,6 @@
         <activity android:name="com.example.libHome.arouter.InterceptorTestActivity3"/>
         <activity android:name="com.example.libHome.viewStub.ViewStubActivity"/>
         <activity android:name="com.example.libHome.room.RoomActivity"/>
+        <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity"/>
     </application>
 </manifest>

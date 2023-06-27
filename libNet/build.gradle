@@ -45,4 +45,5 @@ dependencies {
     implementation rootProject.desLibs.retrofitMoshi
     api rootProject.desLibs.room
     kapt rootProject.desLibs.roomCompiler
+    kapt rootProject.desLibs.theRouter
 }

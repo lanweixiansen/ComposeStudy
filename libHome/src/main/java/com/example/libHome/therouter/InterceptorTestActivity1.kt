@@ -1,6 +1,6 @@
-package com.example.libHome.arouter
+package com.example.libHome.therouter
 
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeActivityInterceptorTest1Binding

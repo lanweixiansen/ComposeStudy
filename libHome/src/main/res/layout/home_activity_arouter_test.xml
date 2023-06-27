@@ -32,7 +32,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -44,7 +44,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -64,7 +64,7 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -74,13 +74,13 @@
                     android:layout_height="wrap_content"
                     android:text="跳转" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="16dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.legacy.widget.Space
+            <Space
                 android:layout_width="wrap_content"
                 android:layout_height="16dp" />
 
@@ -92,7 +92,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -104,7 +104,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:text="跳转中拦截，不中断" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:text="跳转中拦截，中断" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="8dp" />
 
@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:text="跳转前拦截，中断" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="16dp" />
 

@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.demoapplication.databinding.ActivityMainBinding
 import com.example.demoapplication.databinding.HomeActivityStubMainBinding
 import com.example.demoapplication.navigation.SumFragmentNavigator
+import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.utils.LoadingUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 ActivityMainBinding.bind(findViewById<ViewStub>(R.id.main_stub).inflate())
             initView()
         }
-
+        RouterInterceptor.addLoginInterceptor()
     }
 
     private fun initView() {

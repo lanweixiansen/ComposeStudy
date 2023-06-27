@@ -4,11 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
+
 
 android {
     namespace 'com.example.lib_base'
@@ -44,12 +40,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     api rootProject.desLibs.lifecycleRuntimeKtx
-    api rootProject.desLibs.arouter
-    kapt rootProject.desLibs.arouterCompiler
     api rootProject.desLibs.eventBus
     api rootProject.desLibs.fragmentKtx
     kapt rootProject.desLibs.glideCompiler
     api rootProject.desLibs.moshi
     api rootProject.desLibs.liveDataKtx
     api rootProject.desLibs.viewModelKtx
+    kapt rootProject.desLibs.theRouter
+    api rootProject.desLibs.therouter
 }

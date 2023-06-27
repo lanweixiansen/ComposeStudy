@@ -22,11 +22,4 @@ object RouteConsts {
     // lib_home
     const val LOGIN_LOGIN = "/loginLib/LoginActivity"
 
-
-    // RouteServer
-    const val SERVER_HOME = "/homeServer/home"
-    const val SERVER_LOGIN = "/loginServer/login"
-    const val SERVER_APP = "/appServer/login"
-
-
 }

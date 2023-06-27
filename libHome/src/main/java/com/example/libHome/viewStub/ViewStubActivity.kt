@@ -1,7 +1,7 @@
 package com.example.libHome.viewStub
 
 import android.content.Intent
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeActivityViewStubBinding

@@ -23,7 +23,7 @@ class HomeViewModel : BaseViewModel() {
 
 
     fun getBanner() {
-        netRequest(true, action = { repository.mHomeApi.getHomeBanner() }) {
+        netRequest(action = { repository.mHomeApi.getHomeBanner() }) {
             onSuccess {
                 "加载成功".toast()
                 mBanner.value = it

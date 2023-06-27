@@ -2,7 +2,7 @@ package com.example.libHome.room
 
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.therouter.router.Route
 import com.example.libHome.adapter.BannerDBAdapter
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseActivity

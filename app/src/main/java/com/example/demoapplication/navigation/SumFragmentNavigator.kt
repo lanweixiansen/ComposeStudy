@@ -78,9 +78,7 @@ class SumFragmentNavigator(context: Context, manager: FragmentManager, container
         } else {
             frag = instantiateFragment(mContext, mManager, className, args)
             frag.arguments = args
-//            if (!frag.isAdded) {
             ft.add(mContainerId, frag, tag)
-//            }
         }
 
         ft.setPrimaryNavigationFragment(frag)

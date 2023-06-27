@@ -2,7 +2,7 @@ package com.example.libHome
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alibaba.android.arouter.launcher.ARouter
+import com.therouter.TheRouter
 import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
@@ -54,9 +54,9 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
 //                val anim = ActivityOptionsCompat.makeSceneTransitionAnimation(
 //                    requireActivity(), view.findViewById(R.id.parent), "activity_anim"
 //                )
-//                ARouter.getInstance().build(bean?.route).withOptionsCompat(anim)
+//                TheRouter.build(bean?.route).withOptionsCompat(anim)
 //                    .navigation(requireActivity())
-                ARouter.getInstance().build(bean?.route)
+                TheRouter.build(bean?.route)
                     .navigation()
             }
         }

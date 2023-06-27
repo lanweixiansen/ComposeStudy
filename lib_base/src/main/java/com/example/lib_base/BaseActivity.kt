@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ContentFrameLayout
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
-import com.alibaba.android.arouter.launcher.ARouter
+import com.therouter.TheRouter
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
 import com.example.uilibrary.widget.LoadingDialog
@@ -31,7 +31,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
-        ARouter.getInstance().inject(this)
+        TheRouter.inject(this)
         initView()
         initDate()
         initListener()

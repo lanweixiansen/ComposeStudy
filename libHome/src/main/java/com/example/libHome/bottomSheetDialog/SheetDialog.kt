@@ -14,6 +14,7 @@ import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeBottomSheetDialogBinding
 import com.example.libnet.manager.HttpManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers
@@ -36,6 +37,9 @@ class SheetDialog(context: Context) :
         behavior.peekHeight = 550
         behavior.maxHeight = ScreenUtils.getAppScreenHeight()
         initData()
+        mBinding.homeExpend.setOnClickListener {
+            behavior.state = STATE_EXPANDED
+        }
     }
 
     private fun initData() {

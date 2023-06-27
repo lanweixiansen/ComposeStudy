@@ -4,11 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
+
 
 android {
     namespace 'com.example.lib_home'
@@ -45,6 +41,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    kapt rootProject.desLibs.arouterCompiler
     kapt rootProject.desLibs.roomCompiler
+    kapt rootProject.desLibs.theRouter
 }

@@ -1,6 +1,6 @@
 package com.example.libHome.eventBus
 
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts.HOME_EVENT_BUS_ACTIVITY
 import com.example.lib_home.databinding.HomeActivityEventBusTestBinding

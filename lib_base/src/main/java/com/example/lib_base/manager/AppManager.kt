@@ -1,11 +1,10 @@
 package com.example.lib_base.manager
 
 import android.app.Application
-import android.content.Context
-import com.alibaba.android.arouter.launcher.ARouter
-import com.example.lib_base.ext.saveAs
 import com.example.lib_base.interfaces.RouteServer
-import com.example.lib_base.utils.RouteConsts
+import com.therouter.TheRouter
+import com.therouter.router.RouteItem
+import com.therouter.router.interceptor.RouterReplaceInterceptor
 
 object AppManager {
     private lateinit var app: Application
@@ -15,10 +14,7 @@ object AppManager {
     }
 
     fun goLogin() {
-        ARouter.getInstance().build(RouteConsts.SERVER_LOGIN)
-            .navigation()
-            .saveAs<RouteServer>()
-            .goLogin()
+        TheRouter.get(RouteServer::class.java)?.goLogin()
     }
 
     fun getApplicationContext(): Application {

@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.utils.RouteConsts

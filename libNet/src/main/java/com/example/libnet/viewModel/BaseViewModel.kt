@@ -17,7 +17,6 @@ fun <T : Any> Class<T>.createdApi() = HttpManager.created(this)
 open class BaseViewModel : ViewModel() {
 
     fun <T : Any?> netRequest(
-        showLoading: Boolean = false,
         action: suspend () -> BaseResponse<T>?,
         result: (NetWorkResult<T>.() -> Unit)? = null,
     ) {
@@ -31,7 +30,7 @@ open class BaseViewModel : ViewModel() {
                 },
                 errorBlock = { errorCode, errorMsg ->
                     result?.invoke(NetWorkResult.Error(ApiException(errorCode, errorMsg)))
-                }, showLoading = showLoading
+                }
             )
             date?.let { result?.invoke(NetWorkResult.Success(it)) }
         }

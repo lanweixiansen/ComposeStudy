@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Arouter跳转附带转场动画"
+                    android:text="theArouter跳转附带转场动画"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Arouter跳转拦截器"
+                    android:text="theArouter跳转拦截器"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -129,6 +129,16 @@
                     android:layout_height="8dp" />
 
                 <Button
+                    android:id="@+id/btn_open_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="跳转Fragment" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+                <Button
                     android:id="@+id/btn_interceptor3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,6 +149,61 @@
                     android:layout_height="16dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="16dp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/ui_bg_252525_border_1dp_r8"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="theArouter 动态化 ActionManager"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="8dp"
+                    android:text="模拟接收顺序不确定的三个弹窗，需要按照顺序展示" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+                <Button
+                    android:id="@+id/btn_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="弹窗展示" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <FrameLayout
+                android:id="@+id/fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

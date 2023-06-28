@@ -56,8 +56,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
 //                )
 //                TheRouter.build(bean?.route).withOptionsCompat(anim)
 //                    .navigation(requireActivity())
-                TheRouter.build(bean?.route)
-                    .navigation()
+                TheRouter.build(bean?.route).navigation()
             }
         }
     }

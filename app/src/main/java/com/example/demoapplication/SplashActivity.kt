@@ -1,23 +1,28 @@
 package com.example.demoapplication
 
 import android.content.Intent
-import android.view.Window
-import androidx.core.view.WindowCompat
+import com.example.demoapplication.appTask.ApplicationTask
 import com.example.demoapplication.databinding.ActivitySplashBinding
 import com.example.lib_base.BaseActivity
+import com.example.lib_base.manager.AppManager
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     override fun initView() {
-        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-        finish()
+        if (AppManager.isAgreePrivacy()) {
+            gotoMain()
+        } else {
+            ApplicationTask.checkPrivacy(this) {
+                gotoMain()
+            }
+        }
 //            mBinding.lottie.cancelAnimation()
     }
 
-    override fun initDate() {}
-
-    override fun setWindowStyle(window: Window) {
-        super.setWindowStyle(window)
-//        WindowCompat.setDecorFitsSystemWindows(window, true)
+    private fun gotoMain() {
+        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        finish()
     }
+
+    override fun initDate() {}
 }

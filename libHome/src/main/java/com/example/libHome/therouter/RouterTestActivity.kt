@@ -1,10 +1,12 @@
 package com.example.libHome.therouter
 
+import android.annotation.SuppressLint
 import androidx.core.app.ActivityOptionsCompat
 import com.example.libHome.utils.HomeRouteServeImpl
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.interfaces.RouteServer
 import com.example.lib_base.utils.RouteConsts
+import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeActivityArouterTestBinding
 import com.therouter.TheRouter
 import com.therouter.router.Route
@@ -40,6 +42,16 @@ class RouterTestActivity : BaseActivity<HomeActivityArouterTestBinding>() {
         }
         mBinding.btnInterceptor3.setOnClickListener {
             TheRouter.build(RouteConsts.HOME_ROUTER_INTERCEPTOR3_ACTIVITY).navigation()
+        }
+        mBinding.btnOpenFragment.setOnClickListener {
+            supportFragmentManager.beginTransaction().add(
+                R.id.fragment,
+                TheRouter.build("/http/TheRouterFragment").createFragment<TheRouterFragment>()!!
+            ).commit()
+
+        }
+        mBinding.btnAction.setOnClickListener {
+            TheRouter.build("show_dialog").action()
         }
     }
 }

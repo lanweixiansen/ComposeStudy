@@ -2,8 +2,6 @@ package com.example.libHome.bottomSheetDialog
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.WindowManager
-import android.widget.LinearLayout
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ScreenUtils
 import com.example.libHome.data.AddressBean
@@ -13,7 +11,6 @@ import com.example.lib_base.ext.jsonToString
 import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeBottomSheetDialogBinding
 import com.example.libnet.manager.HttpManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.squareup.moshi.JsonAdapter
@@ -40,12 +37,12 @@ class SheetDialog(context: Context) :
         mBinding.homeExpend.setOnClickListener {
             behavior.state = STATE_EXPANDED
         }
+        updateBottomSheetHeights()
     }
 
     private fun initData() {
         loadAddress()
     }
-
 
     private fun loadAddress() {
         lifecycleScope.launch {
@@ -82,8 +79,15 @@ class SheetDialog(context: Context) :
         mBinding.pickerArea.selectedItemPosition = 0
     }
 
-
-    override fun onStop() {
-        super.onStop()
+    private fun updateBottomSheetHeights() {
+        val modalBottomSheetChildView = mBinding.parent
+        val layoutParams = modalBottomSheetChildView.layoutParams
+        val modalBottomSheetBehavior = behavior
+        val windowHeight = ScreenUtils.getScreenHeight()
+        if (layoutParams != null) {
+            layoutParams.height = windowHeight
+            modalBottomSheetChildView.layoutParams = layoutParams
+            modalBottomSheetBehavior.isFitToContents = false
+        }
     }
 }

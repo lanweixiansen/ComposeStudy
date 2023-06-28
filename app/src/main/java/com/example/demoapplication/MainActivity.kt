@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             initView()
         }
         RouterInterceptor.addLoginInterceptor()
+        RouterInterceptor.addRouterInterceptor()
     }
 
     private fun initView() {

@@ -22,7 +22,7 @@ fun Any.toast(context: Context? = null) {
 }
 
 fun String.toast() {
-    Toast.makeText(AppManager.getApplicationContext(), this.toString(), Toast.LENGTH_SHORT).show()
+    Toast.makeText(AppManager.getApplicationContext(), this, Toast.LENGTH_SHORT).show()
 }
 
 fun String.toExFloat(): Float {

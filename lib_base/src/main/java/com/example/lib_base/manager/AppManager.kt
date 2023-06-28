@@ -3,8 +3,6 @@ package com.example.lib_base.manager
 import android.app.Application
 import com.example.lib_base.interfaces.RouteServer
 import com.therouter.TheRouter
-import com.therouter.router.RouteItem
-import com.therouter.router.interceptor.RouterReplaceInterceptor
 
 object AppManager {
     private lateinit var app: Application
@@ -20,4 +18,6 @@ object AppManager {
     fun getApplicationContext(): Application {
         return app
     }
+
+    fun isAgreePrivacy() = true
 }

@@ -7,12 +7,12 @@
         <activity android:name="com.example.libHome.viewStub.ViewStubTestActivity" />
         <activity android:name="com.example.libHome.viewStub.ViewStubTest2Activity" />
         <activity android:name="com.example.libHome.therouter.RouterTestActivity" />
-        <activity android:name="com.example.libHome.therouter.RouteSearchTranslationTestActivity"/>
-        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity1"/>
-        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity2"/>
-        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity3"/>
-        <activity android:name="com.example.libHome.viewStub.ViewStubActivity"/>
-        <activity android:name="com.example.libHome.room.RoomActivity"/>
-        <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity"/>
+        <activity android:name="com.example.libHome.therouter.RouteSearchTranslationTestActivity" />
+        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity1" />
+        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity2" />
+        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity3" />
+        <activity android:name="com.example.libHome.viewStub.ViewStubActivity" />
+        <activity android:name="com.example.libHome.room.RoomActivity" />
+        <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity" />
     </application>
 </manifest>

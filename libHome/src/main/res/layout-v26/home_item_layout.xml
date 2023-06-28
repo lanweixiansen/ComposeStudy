@@ -28,6 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="16dp"
+            android:maxLines="1"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="16sp"
+            android:autoSizeMinTextSize="10sp"
             android:textSize="16sp"
             tools:text="compose块布局" />
     </androidx.appcompat.widget.LinearLayoutCompat>

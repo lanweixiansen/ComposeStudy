@@ -1,10 +1,7 @@
 package com.example.demoapplication
 
 import android.app.Application
-import com.therouter.TheRouter
-import com.example.lib_base.manager.AppManager
-import com.example.uilibrary.widget.CustomRefreshHeader
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.example.demoapplication.appTask.ApplicationTask
 
 class MyApplication : Application() {
     override fun onCreate() {
@@ -13,9 +10,6 @@ class MyApplication : Application() {
     }
 
     private fun initSdk() {
-        AppManager.init(this)
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, _ ->
-            CustomRefreshHeader(context)
-        }
+        ApplicationTask.checkPrivacy(this)
     }
 }

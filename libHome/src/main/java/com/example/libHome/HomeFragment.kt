@@ -2,7 +2,6 @@ package com.example.libHome
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.therouter.TheRouter
 import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
@@ -16,6 +15,7 @@ import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.libnet.response.requestLiveData
 import com.example.libnet.viewModel.createdApi
 import com.example.uilibrary.widget.HeaderAdapter
+import com.therouter.TheRouter
 
 class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
     private lateinit var mAdapter: ItemAdapter
@@ -76,6 +76,15 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             }).observe(viewLifecycleOwner) {
             mBannerAdapter.submitList(it)
         }
+
+//        mViewModel.getBanner()
+//        mViewModel.mBanner.observe(viewLifecycleOwner) {
+//            mBannerAdapter.submitList(it)
+//        }
+//        mViewModel.mComplete.observe(viewLifecycleOwner) {
+//            disLoading()
+//            mBinding.smartRefresh.finishRefresh()
+//        }
     }
 
     companion object {

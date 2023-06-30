@@ -2,6 +2,7 @@ package com.example.libHome.therouter
 
 import android.content.Context
 import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.ThreadUtils
 import com.example.lib_base.ext.showMaterialDialog
 import com.therouter.router.Navigator
 import com.therouter.router.action.interceptor.ActionInterceptor
@@ -16,6 +17,7 @@ class DialogAction1 : ActionInterceptor() {
             "这是弹窗1",
             leftBtnTest = "展示下一个",
         )
+        Thread.sleep(1000)
         return true
     }
 

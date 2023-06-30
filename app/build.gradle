@@ -35,7 +35,6 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-
         }
 
         release {
@@ -102,4 +101,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect"
     debugApi rootProject.desLibs.leakcanary
     kapt rootProject.desLibs.theRouter
+    implementation rootProject.desLibs.mmkv
 }

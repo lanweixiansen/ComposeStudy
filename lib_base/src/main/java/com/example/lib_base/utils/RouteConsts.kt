@@ -22,4 +22,8 @@ object RouteConsts {
     // lib_home
     const val LOGIN_LOGIN = "/loginLib/LoginActivity"
 
+
+    // lib_news
+    const val NEWS_ROUTE_OBJECT_ANIM_FRAGMENT = "/newsLib/ObjectAnimFragment"
+
 }

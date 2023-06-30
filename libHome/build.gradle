@@ -4,8 +4,6 @@ plugins {
     id 'kotlin-kapt'
 }
 
-
-
 android {
     namespace 'com.example.lib_home'
     resourcePrefix "home_"

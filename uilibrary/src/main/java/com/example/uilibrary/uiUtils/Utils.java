@@ -1,4 +1,4 @@
-package com.example.uilibrary.widget;
+package com.example.uilibrary.uiUtils;
 
 import android.content.Context;
 import android.content.res.Resources;

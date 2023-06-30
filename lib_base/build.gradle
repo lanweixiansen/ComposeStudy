@@ -5,7 +5,6 @@ plugins {
 }
 
 
-
 android {
     namespace 'com.example.lib_base'
     resourcePrefix "base_"
@@ -17,10 +16,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField "String", "APPLICATION_ID", "\"${rootProject.android.applicationId}\""
     }
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,4 +49,5 @@ dependencies {
     api rootProject.desLibs.viewModelKtx
     kapt rootProject.desLibs.theRouter
     api rootProject.desLibs.therouter
+    compileOnly rootProject.desLibs.mmkv
 }

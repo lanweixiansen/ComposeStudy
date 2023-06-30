@@ -22,6 +22,7 @@ import android.widget.OverScroller;
 
 
 import com.example.uilibrary.R;
+import com.example.uilibrary.uiUtils.Utils;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

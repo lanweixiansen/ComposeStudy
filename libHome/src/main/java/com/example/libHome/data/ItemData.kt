@@ -14,7 +14,6 @@ val itemData = listOf(
     ItemData("viewStub延迟加载布局实现秒开", RouteConsts.HOME_ROUTER_VIEW_STUB_ACTIVITY),
     ItemData("Room & net实现数据持久化", RouteConsts.HOME_ROUTER_ROOM_ACTIVITY),
     ItemData("跳转并提示开启权限", RouteConsts.HOME_ROUTER_INTENT_SETTING_ACTIVITY),
-    ItemData("Compose列表展示，图片加载"),
     ItemData("Compose & ViewModel"),
     ItemData("Intent实现转场动画"),
     ItemData("Compose基本布局"),

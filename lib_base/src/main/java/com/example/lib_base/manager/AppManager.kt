@@ -1,6 +1,7 @@
 package com.example.lib_base.manager
 
 import android.app.Application
+import com.example.lib_base.BuildConfig
 import com.example.lib_base.interfaces.RouteServer
 import com.therouter.TheRouter
 
@@ -19,5 +20,5 @@ object AppManager {
         return app
     }
 
-    fun isAgreePrivacy() = true
+    fun getApplicationId(): String = BuildConfig.APPLICATION_ID
 }

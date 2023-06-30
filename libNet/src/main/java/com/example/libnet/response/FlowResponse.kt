@@ -56,16 +56,17 @@ suspend fun <T> flowResponse(
             throw ApiException(response.errorCode, response.errorMsg)
         }
         emit(response)
-    }.flowOn(Dispatchers.IO).onStart {
+    }.flowOn(Dispatchers.IO)
+        .onStart {
 //        if (showLoading) LoadingUtils.showLoading()
-    }.catch { e ->
-        e.printStackTrace()
-        val handler = ErrorExceptionManager.handlerException(e)
-        errorBlock?.invoke(handler.errCode, handler.errMsg)
-    }.onCompletion {
+        }.catch { e ->
+            e.printStackTrace()
+            val handler = ErrorExceptionManager.handlerException(e)
+            errorBlock?.invoke(handler.errCode, handler.errMsg)
+        }.onCompletion {
 //        if (showLoading) LoadingUtils.disLoading()
-        onComplete?.invoke()
-    }
+            onComplete?.invoke()
+        }
 }
 
 data class BaseResponse<out T>(

@@ -16,25 +16,25 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : BaseViewModel() {
     private val repository = BannerRepository()
-
     val mBanner: MutableLiveData<MutableList<Banner>> = MutableLiveData()
+    val mComplete: MutableLiveData<Boolean> = MutableLiveData()
     val mDBBanner: LiveData<List<HomeBannerEntry>> =
         HomeBannerDataBase.newInstance().getBannerDao().getPlants()
 
-
     fun getBanner() {
-        netRequest(action = { repository.mHomeApi.getHomeBanner() }) {
-            onSuccess {
-                "加载成功".toast()
-                mBanner.value = it
+        if (mBanner.value == null)
+            netRequest(action = { repository.mHomeApi.getHomeBanner() }) {
+                onSuccess {
+                    mBanner.value = it
+                }
+                onError {
+                    "加载失败".toast()
+                }
+                onComplete {
+                    "加载完成".toast()
+                    mComplete.value = true
+                }
             }
-            onError {
-                "加载失败".toast()
-            }
-            onComplete {
-                "加载完成".toast()
-            }
-        }
     }
 
     fun getBannerByDB() {

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import androidx.annotation.DrawableRes
+import com.example.lib_base.manager.AppData
 
 fun showMaterialDialog(
     context: Context,
@@ -40,6 +41,7 @@ fun showPrivacyDialog(context: Context, onSuccess: () -> Unit) {
         rightBtnTest = "同意",
         onRightClick = {
             onSuccess()
+            AppData.agreePrivacy()
         },
         onLeftClick = { it.dismiss() }
     )

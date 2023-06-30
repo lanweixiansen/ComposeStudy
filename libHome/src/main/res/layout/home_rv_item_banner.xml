@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
-    android:layout_marginHorizontal="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="10dp">
 
-    <com.example.uilibrary.widget.RoundImageView
-        android:id="@+id/iv_banner"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="3:1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:riv_radius="8dp"
-        app:srcCompat="@mipmap/img1" />
+        android:paddingHorizontal="8dp"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/iv_banner"
-        tools:text="xxxxx" />
+        <com.example.uilibrary.widget.RoundImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_radius="8dp"
+            app:srcCompat="@mipmap/img1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/iv_banner"
+            tools:text="xxxxx" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

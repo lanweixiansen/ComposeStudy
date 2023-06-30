@@ -1,9 +1,9 @@
 package com.example.libHome.eventBus
 
-import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts.HOME_EVENT_BUS_ACTIVITY
 import com.example.lib_home.databinding.HomeActivityEventBusTestBinding
+import com.therouter.router.Route
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -12,7 +12,6 @@ class EventBusTestActivity : BaseActivity<HomeActivityEventBusTestBinding>() {
     private var mFragment: EventBusTestView? = null
 
     override fun initView() {
-
     }
 
     override fun initDate() {

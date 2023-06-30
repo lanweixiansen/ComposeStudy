@@ -70,6 +70,7 @@ ext {
             roomCompiler       : "androidx.room:room-compiler:${versions["roomVersion"]}",
             theRouter          : "cn.therouter:apt:${versions["theRouterVersion"]}",
             therouter          : "cn.therouter:router:${versions["theRouterVersion"]}",
+            mmkv               : "com.tencent:mmkv:1.3.0",
 
 
     ]

@@ -32,7 +32,7 @@ class NewsFragment : BaseFragment<NewsFragmentNewsBinding>() {
     }
 
     private fun showFragment(it: String) {
-        val fragmentTransient = parentFragmentManager.beginTransaction()
+        val fragmentTransient = childFragmentManager.beginTransaction()
         fragmentTransient.replace(
             R.id.fragment,
             ObjectAnimFragment()

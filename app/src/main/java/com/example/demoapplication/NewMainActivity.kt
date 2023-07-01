@@ -18,9 +18,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         }
     }
 
-    override fun initDate() {
-
-    }
+    override fun initDate() {}
 
     override fun onBackPressed() {
         // 最小化到桌面

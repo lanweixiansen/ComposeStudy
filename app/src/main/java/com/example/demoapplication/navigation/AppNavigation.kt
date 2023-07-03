@@ -8,35 +8,39 @@ import com.example.lib_me.MeFragment
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
 
+/**
+ * APP导航
+ */
 object AppNavigation {
-    private lateinit var supportFragmentManager: FragmentManager
-
+    private var mSupportFragmentManager: FragmentManager? = null
 
     private fun commitFragment(fragmentTag: FragmentTag) {
-        val showFragment: Fragment =
-            if (supportFragmentManager.findFragmentByTag(fragmentTag.tag) == null) {
-                fragmentTag.fragment
+        mSupportFragmentManager?.let { supportManager ->
+            val showFragment: Fragment =
+                if (supportManager.findFragmentByTag(fragmentTag.tag) == null) {
+                    createdFragment(fragmentTag)
+                } else {
+                    supportManager.findFragmentByTag(fragmentTag.tag)!!
+                }
+            val ft = supportManager.beginTransaction()
+            // 在显示一个 Fragment 之前，隐藏其他 Fragment
+            for (fragment in supportManager.fragments) {
+                if (fragment != showFragment) {
+                    ft.hide(fragment)
+                }
+            }
+            // 显示目标 Fragment
+            if (showFragment.isAdded) {
+                ft.show(showFragment)
             } else {
-                supportFragmentManager.findFragmentByTag(fragmentTag.tag)!!
+                ft.add(R.id.fragment, showFragment, fragmentTag.tag)
             }
-        val ft = supportFragmentManager.beginTransaction()
-        // 在显示一个 Fragment 之前，隐藏其他 Fragment
-        for (fragment in supportFragmentManager.fragments) {
-            if (fragment != showFragment) {
-                ft.hide(fragment)
-            }
+            ft.commit()
         }
-        // 显示目标 Fragment
-        if (showFragment.isAdded) {
-            ft.show(showFragment)
-        } else {
-            ft.add(R.id.fragment, showFragment, fragmentTag.tag)
-        }
-        ft.commit()
     }
 
     fun init(manager: FragmentManager) {
-        supportFragmentManager = manager
+        mSupportFragmentManager = manager
         commitFragment(FragmentTag.HOME)
     }
 
@@ -52,10 +56,19 @@ object AppNavigation {
         )
     }
 
-    enum class FragmentTag(val tag: String, val fragment: Fragment) {
-        HOME("HomeFragment", HomeFragment()),
-        SQUARE("SquareFragment", SquareFragment()),
-        NEWS("NewsFragment", NewsFragment()),
-        ME("MeFragment", MeFragment())
+    private fun createdFragment(tag: FragmentTag): Fragment {
+        return when (tag) {
+            FragmentTag.HOME -> HomeFragment()
+            FragmentTag.SQUARE -> SquareFragment()
+            FragmentTag.NEWS -> NewsFragment()
+            FragmentTag.ME -> MeFragment()
+        }
+    }
+
+    enum class FragmentTag(val tag: String) {
+        HOME("HomeFragment"),
+        SQUARE("SquareFragment"),
+        NEWS("NewsFragment"),
+        ME("MeFragment")
     }
 }

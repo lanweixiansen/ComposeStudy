@@ -38,8 +38,8 @@ object AppExit {
             handler.sendEmptyMessageDelayed(0, 2000)
         } else {
             exitCallback()
-            activity.finishAfterTransition()
-            exitProcess(0)
+            activity.finish()
+//            exitProcess(0)
         }
     }
 }

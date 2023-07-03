@@ -7,15 +7,19 @@ import com.example.lib_base.ext.toExInt
 import com.example.lib_base.ext.toast
 import com.example.lib_square.bean.JobInfoBean
 import com.example.lib_square.databinding.SquareFragmentSquareBinding
+import com.example.lib_square.databinding.SquareFragmentSquareStubBinding
 
-class SquareFragment : BaseFragment<SquareFragmentSquareBinding>() {
-    override fun initView() {}
+class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
+    private lateinit var mBind: SquareFragmentSquareBinding
+    override fun initView() {
+        mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
+    }
 
     override fun initDate() {}
 
     override fun initListener() {
         super.initListener()
-        mBinding.btnJob.setOnClickListener {
+        mBind.btnJob.setOnClickListener {
             val info = checkInput {
                 return@setOnClickListener
             }
@@ -26,7 +30,7 @@ class SquareFragment : BaseFragment<SquareFragmentSquareBinding>() {
     }
 
     private inline fun checkInput(checkError: () -> Unit): JobInfoBean {
-        with(mBinding) {
+        with(mBind) {
             if (etMoney.text.isNullOrBlank()) {
                 "你钱呢".toast(requireContext())
                 checkError()

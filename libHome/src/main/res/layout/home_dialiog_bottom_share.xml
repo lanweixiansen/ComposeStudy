@@ -33,6 +33,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
+        android:alpha="0"
         android:src="@mipmap/img10"
         app:layout_constraintEnd_toStartOf="@+id/anim_2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -42,12 +43,14 @@
         app:riv_border_width="2dp"
         app:riv_oval="true"
         app:riv_radius="10dp"
+        tools:alpha="1"
         tools:layout_editor_absoluteY="211dp" />
 
     <com.example.uilibrary.widget.RoundImageView
         android:id="@+id/anim_2"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:alpha="0"
         android:src="@mipmap/img9"
         app:layout_constraintBottom_toBottomOf="@+id/anim_1"
         app:layout_constraintEnd_toStartOf="@+id/anim_3"
@@ -57,12 +60,14 @@
         app:riv_border_color="@color/base_252525"
         app:riv_border_width="2dp"
         app:riv_oval="true"
-        app:riv_radius="10dp" />
+        app:riv_radius="10dp"
+        tools:alpha="1" />
 
     <com.example.uilibrary.widget.RoundImageView
         android:id="@+id/anim_3"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:alpha="0"
         android:src="@mipmap/img8"
         app:layout_constraintBottom_toBottomOf="@+id/anim_2"
         app:layout_constraintEnd_toStartOf="@+id/anim_4"
@@ -72,12 +77,14 @@
         app:riv_border_color="@color/base_252525"
         app:riv_border_width="2dp"
         app:riv_oval="true"
-        app:riv_radius="10dp" />
+        app:riv_radius="10dp"
+        tools:alpha="1" />
 
     <com.example.uilibrary.widget.RoundImageView
         android:id="@+id/anim_4"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:alpha="0"
         android:src="@mipmap/img7"
         app:layout_constraintBottom_toBottomOf="@+id/anim_3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +94,8 @@
         app:riv_border_color="@color/base_252525"
         app:riv_border_width="2dp"
         app:riv_oval="true"
-        app:riv_radius="10dp" />
+        app:riv_radius="10dp"
+        tools:alpha="1" />
 
     <TextView
         android:id="@+id/btn_cancel"

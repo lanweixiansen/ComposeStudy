@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.uilibrary.R
 
-class RoundImageView @JvmOverloads constructor(
+open class RoundImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatImageView(context, attrs) {
     private val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView)

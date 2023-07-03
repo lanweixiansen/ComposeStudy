@@ -40,8 +40,8 @@ class BottomShareDialog(context: Context) :
 
     private fun startAnim(vararg view: ImageView) {
         mAnimList = view.map {
-            val anim1 = PropertyValuesHolder.ofFloat("translationY", dp2px(300f), dp2px(0f))
-            val anim2 = PropertyValuesHolder.ofFloat("alpha", 0f, 0.2f, 1f)
+            val anim1 = PropertyValuesHolder.ofFloat("translationY", dp2px(100f), dp2px(0f))
+            val anim2 = PropertyValuesHolder.ofFloat("alpha", 0f, 1f)
             ObjectAnimator.ofPropertyValuesHolder(it, anim1, anim2).apply {
                 duration = 500
                 interpolator = DecelerateInterpolator()

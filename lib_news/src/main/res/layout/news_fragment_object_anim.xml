@@ -16,13 +16,41 @@
         android:id="@+id/an_1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/img1"
         app:layout_constraintBottom_toTopOf="@+id/news_guideline"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/news_guideline5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar"
+        app:riv_radius="20dp" />
+
+    <com.example.uilibrary.widget.RoundImageView
+        android:id="@+id/an_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/img2"
+        app:layout_constraintBottom_toTopOf="@+id/news_guideline"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/news_guideline6"
+        app:layout_constraintStart_toStartOf="@+id/news_guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar"
+        app:riv_radius="20dp" />
+
+    <com.example.lib_news.widget.RotationView
+        android:id="@+id/an_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/img3"
+        app:layout_constraintBottom_toTopOf="@+id/news_guideline"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/news_guideline7"
+        app:layout_constraintStart_toStartOf="@+id/news_guideline6"
         app:layout_constraintTop_toBottomOf="@+id/top_bar"
         app:riv_radius="20dp" />
 

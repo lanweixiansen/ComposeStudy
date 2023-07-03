@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
+import com.example.libHome.bottomSheetDialog.BottomShareDialog
 import com.example.libHome.bottomSheetDialog.SheetDialog
 import com.example.libHome.data.itemData
 import com.example.libHome.net.HomeApi
@@ -49,7 +50,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
         mAdapter.setOnItemClickListener { adapter, view, position ->
             val bean = adapter.getItem(position)
             if (bean?.route.isNullOrBlank()) {
-                SheetDialog(requireContext()).show()
+                BottomShareDialog(requireContext()).show()
             } else {
 //                val anim = ActivityOptionsCompat.makeSceneTransitionAnimation(
 //                    requireActivity(), view.findViewById(R.id.parent), "activity_anim"
@@ -76,15 +77,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             }).observe(viewLifecycleOwner) {
             mBannerAdapter.submitList(it)
         }
-
-//        mViewModel.getBanner()
-//        mViewModel.mBanner.observe(viewLifecycleOwner) {
-//            mBannerAdapter.submitList(it)
-//        }
-//        mViewModel.mComplete.observe(viewLifecycleOwner) {
-//            disLoading()
-//            mBinding.smartRefresh.finishRefresh()
-//        }
     }
 
     companion object {

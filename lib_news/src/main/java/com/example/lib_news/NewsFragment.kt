@@ -5,7 +5,7 @@ import com.example.lib_base.BaseFragment
 import com.example.lib_news.adapter.AnimAdapter
 import com.example.lib_news.data.AnimBean
 import com.example.lib_news.databinding.NewsFragmentNewsBinding
-import com.example.lib_news.fragment.ObjectAnimFragment
+import com.therouter.TheRouter
 
 class NewsFragment : BaseFragment<NewsFragmentNewsBinding>() {
     private val mAdapter = AnimAdapter()
@@ -32,11 +32,6 @@ class NewsFragment : BaseFragment<NewsFragmentNewsBinding>() {
     }
 
     private fun showFragment(it: String) {
-        val fragmentTransient = childFragmentManager.beginTransaction()
-        fragmentTransient.replace(
-            R.id.fragment,
-            ObjectAnimFragment()
-        )
-        fragmentTransient.commit()
+        TheRouter.build(it).navigation()
     }
 }

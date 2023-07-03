@@ -22,19 +22,18 @@ class HomeViewModel : BaseViewModel() {
         HomeBannerDataBase.newInstance().getBannerDao().getPlants()
 
     fun getBanner() {
-        if (mBanner.value == null)
-            netRequest(action = { repository.mHomeApi.getHomeBanner() }) {
-                onSuccess {
-                    mBanner.value = it
-                }
-                onError {
-                    "加载失败".toast()
-                }
-                onComplete {
-                    "加载完成".toast()
-                    mComplete.value = true
-                }
+        netRequest(action = { repository.mHomeApi.getHomeBanner() }) {
+            onSuccess {
+                mBanner.value = it
             }
+            onError {
+                "加载失败".toast()
+            }
+            onComplete {
+                "加载完成".toast()
+                mComplete.value = true
+            }
+        }
     }
 
     fun getBannerByDB() {

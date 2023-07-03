@@ -1,39 +1,15 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-}
+apply from: this.rootProject.file('singleModule.gradle')
+project.ext.setAppOrLibDefaultConfig project
 
 android {
     namespace 'com.example.lib_home'
     resourcePrefix "home_"
-    compileSdk rootProject.android.compileSdk
-
-    defaultConfig {
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildFeatures {
-        viewBinding true
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
-
 
 dependencies {
     implementation project(path: ':lib_base')
     implementation rootProject.desLibs.coreKtx
-    compileOnly project(path: ':libNet')
+    implementation project(path: ':libNet')
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     testImplementation 'junit:junit:4.13.2'

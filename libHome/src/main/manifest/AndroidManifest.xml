@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application
+        android:name="com.example.libHome.HomeApp"
+        android:icon="@mipmap/img1"
+        android:label="home"
+        android:theme="@style/Theme.DemoApplication">
+        <activity android:name="com.example.libHome.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name="com.example.libHome.linearLayout.LinearLayoutTestActivity" />
+        <activity android:name="com.example.libHome.eventBus.EventBusTestActivity" />
+        <activity android:name="com.example.libHome.viewStub.ViewStubTestActivity" />
+        <activity android:name="com.example.libHome.viewStub.ViewStubTest2Activity" />
+        <activity android:name="com.example.libHome.therouter.RouterTestActivity" />
+        <activity android:name="com.example.libHome.therouter.RouteSearchTranslationTestActivity" />
+        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity1" />
+        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity2" />
+        <activity android:name="com.example.libHome.therouter.InterceptorTestActivity3" />
+        <activity android:name="com.example.libHome.viewStub.ViewStubActivity" />
+        <activity android:name="com.example.libHome.room.RoomActivity" />
+        <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity" />
+    </application>
+</manifest>

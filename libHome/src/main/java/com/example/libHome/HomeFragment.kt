@@ -65,19 +65,19 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     }
 
     private fun loadData() {
-        showLoading()
-        requestLiveData(
-            showLoading = true,
-            requestCall = { mHomeApi.getHomeBanner() },
-            onComplete = {
-                "加载完成".toast()
-                mBind.smartRefresh.finishRefresh()
-                disLoading()
-            },
-            errorBlock = { errorCode, errorMsg ->
-                "加载失败：$errorCode - $errorMsg".toast()
-            }).observe(viewLifecycleOwner) {
-            mBannerAdapter.submitList(it)
-        }
+//        showLoading()
+//        requestLiveData(
+//            showLoading = true,
+//            requestCall = { mHomeApi.getHomeBanner() },
+//            onComplete = {
+//                "加载完成".toast()
+//                mBind.smartRefresh.finishRefresh()
+//                disLoading()
+//            },
+//            errorBlock = { errorCode, errorMsg ->
+//                "加载失败：$errorCode - $errorMsg".toast()
+//            }).observe(viewLifecycleOwner) {
+//            mBannerAdapter.submitList(it)
+//        }
     }
 }

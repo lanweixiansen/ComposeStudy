@@ -85,6 +85,7 @@ class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
             }
 
             override fun onFinish() {
+                mBinding.loOver.playAnimation()
                 "打卡下班！".toast(this@JobTimeActivity)
             }
         }

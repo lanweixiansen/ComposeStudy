@@ -23,7 +23,6 @@ class CommonTopBar @JvmOverloads constructor(
         initListener()
     }
 
-
     private fun initListener() {
         mBinding.btnBack.setOnClickListener {
             if (context is Activity) {

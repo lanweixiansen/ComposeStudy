@@ -17,6 +17,10 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
 
     override fun initDate() {}
 
+    override fun needDelay(): Boolean {
+        return true
+    }
+
     override fun initListener() {
         super.initListener()
         mBind.btnJob.setOnClickListener {

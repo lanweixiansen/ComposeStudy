@@ -7,6 +7,7 @@ import com.example.libHome.HomeFragment
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
 import io.flutter.embedding.android.FlutterFragment
+import io.flutter.embedding.android.RenderMode
 
 /**
  * APP导航
@@ -61,8 +62,9 @@ object AppNavigation {
             FragmentTag.HOME -> HomeFragment()
             FragmentTag.SQUARE -> SquareFragment()
             FragmentTag.NEWS -> NewsFragment()
-            FragmentTag.ME -> FlutterFragment.withCachedEngine("my_engine_id")
-                .shouldAttachEngineToActivity(false).build()
+            FragmentTag.ME -> FlutterFragment.withCachedEngine("my_engine_id").renderMode(
+                RenderMode.texture
+            ).build()
         }
     }
 

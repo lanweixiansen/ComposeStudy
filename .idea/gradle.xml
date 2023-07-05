@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/flutter_module" />
             <option value="$PROJECT_DIR$/libHome" />
             <option value="$PROJECT_DIR$/libLogin" />
             <option value="$PROJECT_DIR$/libNet" />

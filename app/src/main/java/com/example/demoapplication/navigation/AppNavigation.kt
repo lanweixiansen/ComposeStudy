@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.demoapplication.R
 import com.example.libHome.HomeFragment
-import com.example.lib_me.MeFragment
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
 import io.flutter.embedding.android.FlutterFragment
@@ -62,7 +61,8 @@ object AppNavigation {
             FragmentTag.HOME -> HomeFragment()
             FragmentTag.SQUARE -> SquareFragment()
             FragmentTag.NEWS -> NewsFragment()
-            FragmentTag.ME -> FlutterFragment()
+            FragmentTag.ME -> FlutterFragment.withCachedEngine("my_engine_id")
+                .shouldAttachEngineToActivity(false).build()
         }
     }
 

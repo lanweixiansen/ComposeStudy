@@ -10,6 +10,10 @@ import com.tencent.mmkv.MMKV
 import com.therouter.TheRouter
 import com.therouter.app.flowtask.lifecycle.FlowTask
 import com.therouter.flow.TheRouterFlowTask
+import io.flutter.embedding.android.FlutterFragment
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.embedding.engine.FlutterEngineCache
+import io.flutter.embedding.engine.dart.DartExecutor
 
 /**
  * TheRouter业务节点订阅（自动初始化功能）
@@ -53,5 +57,18 @@ object ApplicationTask {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
             CustomRefreshHeader(ctx)
         }
+    }
+
+
+    @FlowTask("init_flutter_engin", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
+    @JvmStatic
+    fun initFlutterEngin(context: Context) {
+        val flutterEngine = FlutterEngine(context)
+        flutterEngine.dartExecutor.executeDartEntrypoint(
+            DartExecutor.DartEntrypoint.createDefault()
+        )
+        FlutterEngineCache
+            .getInstance()
+            .put("my_engine_id", flutterEngine)
     }
 }

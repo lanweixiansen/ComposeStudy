@@ -1,0 +1,42 @@
+# 应用名称
+name: my_flutter
+# 应用描述
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+# 版本号
+version: 1.0.0+1
+# Dart运行环境区间
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+# Flutter依赖库
+dependencies:
+  date_format: 2.0.7
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+#  # 路径依赖
+#  package1:
+#    path: ../package1/
+#  # git依赖
+#  date_format:
+#    git:
+#      url: https://github.com/xxx/package2.git
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+# 资源声明
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icon.png
+
+  module:
+    androidX: true
+    androidPackage: com.example.flutter_module
+    iosBundleIdentifier: com.example.flutterModule
+
+
+

@@ -12,10 +12,10 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven {
-            url 'D:\\flutter_projects\\DemoApplication\\flutter_library\\build\\host\\outputs\\repo'
+            url 'D:/flutter_projects/DemoApplication/flutter_module/build/host/outputs/repo'
         }
         maven {
-            url 'https://storage.googleapis.com/download.flutter.io'
+            url "https://storage.flutter-io.cn/download.flutter.io"
         }
     }
 }

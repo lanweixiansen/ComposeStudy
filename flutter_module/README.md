@@ -1,4 +1,4 @@
-# flutter_library
+# flutter_module
 
 A new Flutter module project.
 

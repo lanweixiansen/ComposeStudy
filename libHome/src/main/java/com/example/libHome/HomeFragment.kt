@@ -2,6 +2,7 @@ package com.example.libHome
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blankj.utilcode.util.BarUtils
 import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
@@ -27,6 +28,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     private lateinit var mBind: HomeFragmentHomeBinding
 
     override fun initView() {
+        BarUtils.addMarginTopEqualStatusBarHeight(mBinding.homeStub)
         mBind = HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
         with(mBind) {
             mAdapter = ItemAdapter()

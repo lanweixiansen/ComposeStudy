@@ -1,5 +1,6 @@
 package com.example.lib_news.fragment
 
+import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
@@ -60,6 +61,17 @@ class ObjectAnimFragment : BaseActivity<NewsFragmentObjectAnimBinding>() {
         objectAnimator.duration = 500
         objectAnimator.interpolator = CycleInterpolator(3f)
         objectAnimator.start()
+        objectAnimator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {}
+
+            override fun onAnimationEnd(animation: Animator) {
+                an2.rotation = 0f
+            }
+
+            override fun onAnimationCancel(animation: Animator) {}
+
+            override fun onAnimationRepeat(animation: Animator) {}
+        })
     }
 
     // 放大缩小加回弹效果

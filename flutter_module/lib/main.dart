@@ -1,4 +1,3 @@
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:my_flutter/data/AppleShopBean.dart';
 
@@ -48,19 +47,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: AppleShopUpdateWidget(
-        model: AppleShopModel(
-            appIcon: "assets/icon.png",
-            appDescription:
-            "Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
-            appName: "Google Maps - Transit & Fond",
-            appSize: "137.2",
-            appVersion: "Version 5.19",
-            appDate: "2019年6月5日"),
-        onPressed: () {
-          print(formatDate(DateTime.now(), ['第', m, '月第', w, '周']));
-        },
-      ),
+      // body: AppleShopUpdateWidget(
+      //   model: AppleShopModel(
+      //       appIcon: "assets/icon.png",
+      //       appDescription:
+      //           "Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
+      //       appName: "Google Maps - Transit & Fond",
+      //       appSize: "137.2",
+      //       appVersion: "Version 5.19",
+      //       appDate: "2019年6月5日"),
+      //   onPressed: () {
+      //     print(formatDate(DateTime.now(), ['第', m, '月第', w, '周']));
+      //   },
+      // ),
+      body: const ListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
 /// 仿苹果商店布局页面Widget
 class AppleShopUpdateWidget extends StatelessWidget {
   AppleShopModel? model;
-  int line = 1;
+  int line = 3;
   final VoidCallback? onPressed;
 
   AppleShopUpdateWidget({super.key, this.model, this.onPressed});
@@ -100,25 +100,25 @@ class AppleShopUpdateWidget extends StatelessWidget {
                 ))),
         Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(model!.appName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 16, color: Color(0xFF000000))),
-                Text(model!.appDate,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 12, color: Color(0xFF8E8D92)))
-              ],
-            )),
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(model!.appName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 16, color: Color(0xFF000000))),
+            Text(model!.appDate,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 12, color: Color(0xFF8E8D92)))
+          ],
+        )),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 0, 10, 0),
           child: TextButton(
             style: ButtonStyle(
                 backgroundColor:
-                MaterialStateProperty.all(const Color(0xFFF1F0F7)),
+                    MaterialStateProperty.all(const Color(0xFFF1F0F7)),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)))),
             onPressed: onPressed,
@@ -143,6 +143,7 @@ class AppleShopUpdateWidget extends StatelessWidget {
             Text(
               model!.appDescription,
               maxLines: line,
+              overflow: TextOverflow.ellipsis,
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -160,19 +161,20 @@ class AppleShopUpdateWidget extends StatelessWidget {
 ///
 
 /// 列表Widget
+var list = List.of([1, 2, 3, 4]);
+
 class ListWidget extends StatelessWidget {
   const ListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return ListView.builder(
         itemCount: 50,
         itemExtent: 50.0,
         itemBuilder: (BuildContext context, int index) => ListTile(
-          title: Text("这是第$index个"),
-          subtitle: Text("body$index"),
-        ));
+              title: Text("这是第$index个"),
+              subtitle: Text("${list[index]}"),
+            ));
   }
 }
 
@@ -180,9 +182,9 @@ class ListWidget extends StatelessWidget {
 class ColumnTextWidget extends StatelessWidget {
   final int _counter = 0;
   TextStyle textBlackStyle =
-  const TextStyle(color: Colors.black, fontStyle: FontStyle.italic);
+      const TextStyle(color: Colors.black, fontStyle: FontStyle.italic);
   TextStyle textRedStyle =
-  const TextStyle(color: Colors.red, fontWeight: FontWeight.bold);
+      const TextStyle(color: Colors.red, fontWeight: FontWeight.bold);
   TextStyle textStyle = const TextStyle(color: Colors.cyan);
 
   ColumnTextWidget({super.key});

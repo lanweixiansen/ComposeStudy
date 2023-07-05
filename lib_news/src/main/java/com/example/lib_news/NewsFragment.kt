@@ -1,6 +1,7 @@
 package com.example.lib_news
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blankj.utilcode.util.BarUtils
 import com.example.lib_base.BaseFragment
 import com.example.lib_news.adapter.AnimAdapter
 import com.example.lib_news.data.AnimBean
@@ -13,6 +14,7 @@ class NewsFragment : BaseFragment<NewsFragmentNewsStubBinding>() {
     private lateinit var mBind: NewsFragmentNewsBinding
 
     override fun initView() {
+        BarUtils.addMarginTopEqualStatusBarHeight(mBinding.viewStub)
         mBind = NewsFragmentNewsBinding.bind(mBinding.viewStub.inflate())
         with(mBind) {
             rvAnim.layoutManager = LinearLayoutManager(context)

@@ -30,7 +30,6 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         window.statusBarColor = Color.TRANSPARENT
         setStatusBarTextColor(isLight = false)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        BarUtils.addMarginTopEqualStatusBarHeight(mBinding.fragment)
     }
 
     override fun initDate() {}

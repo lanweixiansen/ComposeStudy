@@ -3,6 +3,6 @@
     <string name="tab_home">首页</string>
     <string name="tab_square">上班</string>
     <string name="tab_news">动画</string>
-    <string name="tab_me">交互</string>
+    <string name="tab_me">Flutter</string>
 
 </resources>

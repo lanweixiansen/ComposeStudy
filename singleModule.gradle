@@ -4,7 +4,7 @@
 project.ext {
     //是否允许module单独调试
     isModuleDebug = false
-    moduleName = "libHome"//单独调试module名
+    moduleName = ""//单独调试module名
     minSdk = 24
     targetSdk = 33
     versionCode = 1

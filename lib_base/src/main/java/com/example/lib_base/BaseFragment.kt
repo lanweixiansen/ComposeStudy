@@ -35,7 +35,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (needDelay()) {
             lifecycleScope.launch {
-                delay(150)
+                delay(50)
                 initView()
                 initDate()
                 initListener()

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter/data/AppleShopBean.dart';
+import 'package:my_flutter/ios.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {"ios_page": (context) => const IosWidget()},
       title: 'Flutter Demo',
       theme: ThemeData(
         brightness: Brightness.light,
@@ -47,110 +48,13 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      // body: AppleShopUpdateWidget(
-      //   model: AppleShopModel(
-      //       appIcon: "assets/icon.png",
-      //       appDescription:
-      //           "Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
-      //       appName: "Google Maps - Transit & Fond",
-      //       appSize: "137.2",
-      //       appVersion: "Version 5.19",
-      //       appDate: "2019年6月5日"),
-      //   onPressed: () {
-      //     print(formatDate(DateTime.now(), ['第', m, '月第', w, '周']));
-      //   },
-      // ),
       body: const ListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
-  }
-}
-
-/// 仿苹果商店布局页面Widget
-class AppleShopUpdateWidget extends StatelessWidget {
-  AppleShopModel? model;
-  int line = 3;
-  final VoidCallback? onPressed;
-
-  AppleShopUpdateWidget({super.key, this.model, this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [shopTopWidget(context), shopBottomWidget(context)],
-    );
-  }
-
-  /// 更新布局上部分
-  Widget shopTopWidget(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-            padding: const EdgeInsets.all(10),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(
-                  model!.appIcon,
-                  width: 70,
-                  height: 70,
-                ))),
-        Expanded(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(model!.appName,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 16, color: Color(0xFF000000))),
-            Text(model!.appDate,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 12, color: Color(0xFF8E8D92)))
-          ],
-        )),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 0, 10, 0),
-          child: TextButton(
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFFF1F0F7)),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)))),
-            onPressed: onPressed,
-            child: const Text(
-              "Update",
-              style: TextStyle(
-                  color: Color(0xFF007AFE), fontWeight: FontWeight.bold),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
-  /// 更新布局下部分
-  Widget shopBottomWidget(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              model!.appDescription,
-              maxLines: line,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: Text("${model!.appVersion} • ${model!.appSize} MB"),
-            )
-          ],
-        ));
   }
 }
 
@@ -161,20 +65,57 @@ class AppleShopUpdateWidget extends StatelessWidget {
 ///
 
 /// 列表Widget
-var list = List.of([1, 2, 3, 4]);
 
 class ListWidget extends StatelessWidget {
   const ListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    /// 默认创建方法
+    // return ListView.builder(
+    //     itemCount: 50,
+    //     itemExtent: 80.0,
+    //     itemBuilder: (BuildContext context, int index) => ListTile(
+    //           title: Text("这是第$index个"),
+    //           subtitle: Text("$index"),
+    //         ));
+    /// 展示分割线
+    // return ListView.separated(
+    //     itemBuilder: (BuildContext context, int index) => ListTile(
+    //           title: Text("这是第$index 个"),
+    //           subtitle: Text("$index"),
+    //         ),
+    //     separatorBuilder: (BuildContext context, int index) => const Divider(
+    //           color: Colors.blue,
+    //         ),
+    //     itemCount: 20);
+    /// 展示分割线2
     return ListView.builder(
-        itemCount: 50,
-        itemExtent: 50.0,
-        itemBuilder: (BuildContext context, int index) => ListTile(
-              title: Text("这是第$index个"),
-              subtitle: Text("${list[index]}"),
-            ));
+      itemCount: 20,
+      itemExtent: 80.0,
+      itemBuilder: (BuildContext context, int index) => GestureDetector(
+          onTap: () {Navigator.pushNamed(context, "ios_page");},
+          child: Container(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            margin: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.black, width: 1)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("$index"),
+                Text("这是第$index 个"),
+                Container(
+                  height: 1,
+                  color: Colors.blueAccent,
+                )
+              ],
+            ),
+          )),
+    );
   }
 }
 

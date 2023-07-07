@@ -19,9 +19,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         if (AppData.isAgreePrivacy()) {
             gotoMain()
         } else {
-            showPrivacyDialog(this) {
+            showPrivacyDialog(this, {
                 TheRouter.runTask(AGREE_PRIVACY)
                 gotoMain()
+            }) {
+                finish()
             }
         }
     }

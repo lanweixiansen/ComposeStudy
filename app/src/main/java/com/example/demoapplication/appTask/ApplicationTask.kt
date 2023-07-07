@@ -10,10 +10,11 @@ import com.tencent.mmkv.MMKV
 import com.therouter.TheRouter
 import com.therouter.app.flowtask.lifecycle.FlowTask
 import com.therouter.flow.TheRouterFlowTask
-import io.flutter.embedding.android.FlutterFragment
+import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.dart.DartExecutor
+import io.flutter.plugin.common.MethodChannel
 
 /**
  * TheRouter业务节点订阅（自动初始化功能）
@@ -59,9 +60,9 @@ object ApplicationTask {
         }
     }
 
-
-    @FlowTask("init_flutter_engin", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
-    @JvmStatic
+    /**
+     * Flutter引擎初始化及回调事件
+     */
     fun initFlutterEngin(context: Context) {
         val flutterEngine = FlutterEngine(context)
         flutterEngine.dartExecutor.executeDartEntrypoint(
@@ -70,5 +71,14 @@ object ApplicationTask {
         FlutterEngineCache
             .getInstance()
             .put("my_engine_id", flutterEngine)
+        val channel = MethodChannel(flutterEngine.dartExecutor, "dev.flutter.example/route")
+        channel.setMethodCallHandler { call, result ->
+            val route: String = call.argument<String>("data").toString()
+            when (call.method) {
+                "routeActivity" -> context.startActivity(
+                    FlutterActivity.withNewEngine().initialRoute(route).build(context)
+                )
+            }
+        }
     }
 }

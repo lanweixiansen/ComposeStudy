@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'data/AppleShopBean.dart';
 
 class IosWidget extends StatelessWidget {

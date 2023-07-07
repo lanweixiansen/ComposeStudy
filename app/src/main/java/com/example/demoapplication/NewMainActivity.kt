@@ -3,6 +3,7 @@ package com.example.demoapplication
 import android.graphics.Color
 import android.view.KeyEvent
 import androidx.core.view.WindowCompat
+import com.example.demoapplication.appTask.ApplicationTask
 import com.example.demoapplication.databinding.ActivityNewMainBinding
 import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
@@ -16,11 +17,12 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         RouterInterceptor.addLoginInterceptor()
         RouterInterceptor.addRouterInterceptor()
         // Fragment相关
-        AppNavigation.init(supportFragmentManager)
+        AppNavigation.init(supportFragmentManager, this)
         mBinding.bottomView.setTabClickListener {
             AppNavigation.checkedFragment(it)
         }
         initStatusBar()
+        ApplicationTask.initFlutterEngin(this)
     }
 
     private fun initStatusBar() {
@@ -31,15 +33,15 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
 
     override fun initDate() {}
 
-//    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            // 最小化到桌面
-////            moveTaskToBack(true)
-//            // 退出APP
-////            AppExit.onBackPressed(this)
-//        }
-//        return false
-//    }
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // 最小化到桌面
+            moveTaskToBack(true)
+            // 退出APP
+//            AppExit.onBackPressed(this)
+        }
+        return false
+    }
 
     override fun onPostResume() {
         supportFragmentManager.findFragmentByTag("MeFragment")?.let {

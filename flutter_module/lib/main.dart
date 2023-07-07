@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:my_flutter/data/Route.dart';
 import 'package:my_flutter/ios.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  final model = CounterModel();
+
+  runApp(
+    ChangeNotifierProvider.value(
+      value: model,
+      child: const MyApp(),
+    ),
+  );
+}
+
+class CounterModel extends ChangeNotifier {
+  final _channel = const MethodChannel('dev.flutter.example/route');
+
+  void increment(String route) {
+    _channel.invokeMethod<void>('routeActivity', {'data': route});
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +30,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {"ios_page": (context) => const IosWidget()},
+      routes: {
+        "ios_page": (context) => const IosWidget(),
+        "": (context) => const IosWidget()
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
         brightness: Brightness.light,
@@ -91,31 +112,38 @@ class ListWidget extends StatelessWidget {
     //     itemCount: 20);
     /// 展示分割线2
     return ListView.builder(
-      itemCount: 20,
-      itemExtent: 80.0,
-      itemBuilder: (BuildContext context, int index) => GestureDetector(
-          onTap: () {Navigator.pushNamed(context, "ios_page");},
-          child: Container(
-            padding: const EdgeInsets.only(left: 8, right: 8),
-            margin: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black, width: 1)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("$index"),
-                Text("这是第$index 个"),
-                Container(
-                  height: 1,
-                  color: Colors.blueAccent,
-                )
-              ],
-            ),
-          )),
-    );
+        itemCount: routeList.length,
+        itemExtent: 80.0,
+        itemBuilder: (BuildContext context, int index) =>
+            Consumer<CounterModel>(
+              builder: (context, model, child) {
+                return GestureDetector(
+                    onTap: () {
+                      model.increment(routeList[index].route);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 8, right: 8),
+                      margin:
+                          const EdgeInsets.only(left: 16, right: 16, bottom: 8),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.black, width: 1)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("$index"),
+                          Text(routeList[index].title),
+                          Container(
+                            height: 1,
+                            color: Colors.blueAccent,
+                          )
+                        ],
+                      ),
+                    ));
+              },
+            ));
   }
 }
 

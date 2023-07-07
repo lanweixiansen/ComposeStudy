@@ -32,18 +32,21 @@ fun showMaterialDialog(
     }
 }
 
-fun showPrivacyDialog(context: Context, onSuccess: () -> Unit) {
+fun showPrivacyDialog(context: Context, onSuccess: () -> Unit, onRefuse: () -> Unit) {
     showMaterialDialog(
         context,
         title = "用户隐私政策",
         message = "是否同意用户协议与隐私政策",
-        leftBtnTest = "拒绝",
+        leftBtnTest = "退出APP",
         rightBtnTest = "同意",
         onRightClick = {
             onSuccess()
             AppData.agreePrivacy()
         },
-        onLeftClick = { it.dismiss() }
+        onLeftClick = {
+            onRefuse.invoke()
+            it.dismiss()
+        }
     )
 }
 

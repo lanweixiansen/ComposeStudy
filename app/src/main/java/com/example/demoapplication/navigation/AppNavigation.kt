@@ -2,6 +2,7 @@ package com.example.demoapplication.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.demoapplication.NewMainActivity
 import com.example.demoapplication.R
 import com.example.libHome.HomeFragment
 import com.example.lib_news.NewsFragment
@@ -40,7 +41,7 @@ object AppNavigation {
         }
     }
 
-    fun init(manager: FragmentManager) {
+    fun init(manager: FragmentManager, newMainActivity: NewMainActivity) {
         mSupportFragmentManager = manager
         commitFragment(FragmentTag.HOME)
     }

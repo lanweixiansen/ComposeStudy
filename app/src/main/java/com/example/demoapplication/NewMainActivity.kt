@@ -8,6 +8,7 @@ import com.example.demoapplication.databinding.ActivityNewMainBinding
 import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
+import com.example.lib_base.ext.addMarginToNavigationBar
 import io.flutter.embedding.android.FlutterFragment
 
 class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
@@ -29,6 +30,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         window.statusBarColor = Color.TRANSPARENT
         setStatusBarTextColor(isLight = false)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        mBinding.bottomView.addMarginToNavigationBar()
     }
 
     override fun initDate() {}

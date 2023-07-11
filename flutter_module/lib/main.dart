@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:my_flutter/data/Route.dart';
 import 'package:my_flutter/ios.dart';
+import 'package:my_flutter/normalWidget.dart';
+import 'package:my_flutter/routeMethods.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,14 +16,6 @@ void main() {
   );
 }
 
-class CounterModel extends ChangeNotifier {
-  final _channel = const MethodChannel('dev.flutter.example/route');
-
-  void increment(String route) {
-    _channel.invokeMethod<void>('routeActivity', {'data': route});
-  }
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -31,8 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        "ios_page": (context) => const IosWidget(),
-        "": (context) => const IosWidget()
+        "ios_page": (context) => IosWidget(),
+        "normal_widget": (context) => const NormalWidget()
       },
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -119,7 +112,10 @@ class ListWidget extends StatelessWidget {
               builder: (context, model, child) {
                 return GestureDetector(
                     onTap: () {
-                      model.increment(routeList[index].route);
+                      // 原生跳转方法
+                      // model.increment(routeList[index].route);
+                      // 本地跳转方法
+                      Navigator.pushNamed(context, "normal_widget");
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 8, right: 8),
@@ -133,7 +129,7 @@ class ListWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("$index"),
+                          Text("${index + 1}"),
                           Text(routeList[index].title),
                           Container(
                             height: 1,

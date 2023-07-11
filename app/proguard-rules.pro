@@ -45,17 +45,6 @@
 -dontwarn butterknife.internal.**
 -keep class **$$ViewBinder { *; }
 
-# ARouter
--keep public class com.alibaba.android.arouter.routes.**{*;}
--keep public class com.alibaba.android.arouter.facade.**{*;}
--keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
-
-# 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
--keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
-
-# 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
--keep class * implements com.alibaba.android.arouter.facade.template.IProvider
-
 # Retrofit
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
  # EnclosingMethod is required to use InnerClasses.
@@ -69,7 +58,6 @@
  @retrofit2.http.* <methods>;
 }
    # Ignore annotation used for build tooling.
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
    # Ignore JSR 305 annotations for embedding nullability information.
 -dontwarn javax.annotation.**
    # Guarded by a NoClassDefFoundError try/catch and only used when on the classpath.
@@ -222,11 +210,8 @@
 }
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 
-# If using AsyncExecutord, keep required constructor of default event used.
-# Adjust the class name if a custom failure event type is used.
 -keepclassmembers class org.greenrobot.eventbus.util.ThrowableFailureEvent {
     <init>(java.lang.Throwable);
 }
 
-# Accessed via reflection, avoid renaming or removal
 -keep class org.greenrobot.eventbus.android.AndroidComponentsImpl

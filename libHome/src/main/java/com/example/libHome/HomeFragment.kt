@@ -2,7 +2,6 @@ package com.example.libHome
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.blankj.utilcode.util.BarUtils
 import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
@@ -11,6 +10,7 @@ import com.example.libHome.data.itemData
 import com.example.libHome.net.HomeApi
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
+import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_base.ext.toast
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
@@ -28,8 +28,8 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     private lateinit var mBind: HomeFragmentHomeBinding
 
     override fun initView() {
-        BarUtils.addMarginTopEqualStatusBarHeight(mBinding.homeStub)
         mBind = HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
+        mBinding.home.addMarginToEqualStatusBar()
         with(mBind) {
             mAdapter = ItemAdapter()
             mHelper = QuickAdapterHelper.Builder(mAdapter)

@@ -1,8 +1,8 @@
 package com.example.lib_square
 
 import android.content.Intent
-import com.blankj.utilcode.util.BarUtils
 import com.example.lib_base.BaseFragment
+import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_base.ext.toExFloat
 import com.example.lib_base.ext.toExInt
 import com.example.lib_base.ext.toast
@@ -13,7 +13,7 @@ import com.example.lib_square.databinding.SquareFragmentSquareStubBinding
 class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private lateinit var mBind: SquareFragmentSquareBinding
     override fun initView() {
-        BarUtils.addMarginTopEqualStatusBarHeight(mBinding.viewStub)
+        mBinding.parent.addMarginToEqualStatusBar()
         mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
     }
 

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter/routeMethods.dart';
 
 import 'data/AppleShopBean.dart';
 
-class IosWidget extends StatelessWidget {
+class IosWidget extends StatefulWidget {
   const IosWidget({super.key});
 
+  @override
+  State<StatefulWidget> createState() => _IosState();
+}
+
+class _IosState extends State<IosWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,16 +43,14 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       body: AppleShopUpdateWidget(
-        model: AppleShopModel(
-            appIcon: "assets/icon.png",
-            appDescription:
-                "Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
-            appName: "Google Maps - Transit & Fond",
-            appSize: "137.2",
-            appVersion: "Version 5.19",
-            appDate: "2019年6月5日"),
-        onPressed: () {},
-      ),
+          model: AppleShopModel(
+              appIcon: "assets/icon.png",
+              appDescription:
+                  "Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
+              appName: "Google Maps - Transit & Fond",
+              appSize: "137.2",
+              appVersion: "Version 5.19",
+              appDate: "2019年6月5日")),
     );
   }
 }
@@ -55,9 +59,8 @@ class MyHomePage extends StatelessWidget {
 class AppleShopUpdateWidget extends StatelessWidget {
   AppleShopModel? model;
   int line = 3;
-  final VoidCallback? onPressed;
 
-  AppleShopUpdateWidget({super.key, this.model, this.onPressed});
+  AppleShopUpdateWidget({super.key, this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +71,7 @@ class AppleShopUpdateWidget extends StatelessWidget {
 
   /// 更新布局上部分
   Widget shopTopWidget(BuildContext context) {
+    final pressModel = CounterModel();
     return Row(
       children: [
         Padding(
@@ -81,19 +85,19 @@ class AppleShopUpdateWidget extends StatelessWidget {
                 ))),
         Expanded(
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(model!.appName,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 16, color: Color(0xFF000000))),
-            Text(model!.appDate,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 12, color: Color(0xFF8E8D92)))
-          ],
-        )),
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(model!.appName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 16, color: Color(0xFF000000))),
+                Text(model!.appDate,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 12, color: Color(0xFF8E8D92)))
+              ],
+            )),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 0, 10, 0),
           child: TextButton(
@@ -102,7 +106,9 @@ class AppleShopUpdateWidget extends StatelessWidget {
                     MaterialStateProperty.all(const Color(0xFFF1F0F7)),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)))),
-            onPressed: onPressed,
+            onPressed: () {
+              pressModel.showToast("开始更新");
+            },
             child: const Text(
               "Update",
               style: TextStyle(

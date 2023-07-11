@@ -36,6 +36,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icon.png
+    - assets/image_loading.gif
 
   module:
     androidX: true

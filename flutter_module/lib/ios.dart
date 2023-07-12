@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter/routeMethods.dart';
 
 import 'data/AppleShopBean.dart';
+import 'normalWidget.dart';
 
 class IosWidget extends StatefulWidget {
   const IosWidget({super.key});
@@ -15,6 +16,9 @@ class _IosState extends State<IosWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      routes: {
+        "normal_widget": (context) => const NormalWidget()
+      },
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.cyan,
@@ -108,6 +112,7 @@ class AppleShopUpdateWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0)))),
             onPressed: () {
               pressModel.showToast("开始更新");
+              Navigator.pushNamed(context, "normal_widget");
             },
             child: const Text(
               "Update",

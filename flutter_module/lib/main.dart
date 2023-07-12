@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        "ios_page": (context) => IosWidget(),
+        "ios_page": (context) => const IosWidget(),
         "normal_widget": (context) => const NormalWidget()
       },
       title: 'Flutter Demo',
@@ -113,9 +113,9 @@ class ListWidget extends StatelessWidget {
                 return GestureDetector(
                     onTap: () {
                       // 原生跳转方法
-                      // model.increment(routeList[index].route);
+                      model.increment(routeList[index].route);
                       // 本地跳转方法
-                      Navigator.pushNamed(context, "normal_widget");
+                      // Navigator.pushNamed(context, "normal_widget");
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 8, right: 8),

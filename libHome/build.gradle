@@ -8,13 +8,13 @@ android {
 
 dependencies {
     implementation project(path: ':lib_base')
-    implementation rootProject.desLibs.coreKtx
     implementation project(path: ':libNet')
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    kapt rootProject.desLibs.roomCompiler
-    kapt rootProject.desLibs.theRouter
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.coreKtx
+    testImplementation libs.junit
+    androidTestImplementation libs.extJunit
+    androidTestImplementation libs.espresso
+    kapt libs.roomCompiler
+    kapt libs.theRouter
 }

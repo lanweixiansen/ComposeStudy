@@ -1,43 +1,20 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-}
+apply from: this.rootProject.file('singleModule.gradle')
+project.ext.setAppOrLibDefaultConfig project
 
 android {
     namespace 'com.example.uilibrary'
-
-    compileSdk rootProject.android.compileSdk
-
-    defaultConfig {
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-    buildFeatures {
-        viewBinding true
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
 
 dependencies {
-    api rootProject.desLibs.lottie
-    api rootProject.desLibs.smartRefresh
-    api rootProject.desLibs.adapterHelper
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation rootProject.desLibs.coreKtx
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    api libs.lottie
+    api libs.smartRefresh
+    api libs.adapterHelper
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.coreKtx
+    testImplementation libs.junit
+    androidTestImplementation libs.extJunit
+    androidTestImplementation libs.espresso
     api 'com.blankj:utilcodex:1.31.1'
-    api rootProject.desLibs.glide
+    api libs.glide
 }

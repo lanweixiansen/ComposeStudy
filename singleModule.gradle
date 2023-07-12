@@ -7,17 +7,19 @@ project.ext {
     moduleName = ""//单独调试module名
     minSdk = 24
     targetSdk = 33
-    versionCode = 1
-    versionName = "1.0"
     compileSdk = 33
 
-        //动态改变，用于单模块调试
-        setAppOrLibDefaultConfig = {
-            extension ->
-                if (project.ext.isModuleDebug && project.ext.moduleName == project.name) {
-                    extension.apply plugin: 'com.android.application'
-                    extension.description "app"
-                    // 单模块模式下添加theRouter插件
+    // 单模块的版本号（随便写）
+    versionCode = 1
+    versionName = "1.0"
+
+    //动态改变，用于单模块调试
+    setAppOrLibDefaultConfig = {
+        extension ->
+            if (project.ext.isModuleDebug && project.ext.moduleName == project.name) {
+                extension.apply plugin: 'com.android.application'
+                extension.description "app"
+                // 单模块模式下添加theRouter插件
                     extension.apply plugin: 'therouter'
                 } else {
                     extension.apply plugin: 'com.android.library'

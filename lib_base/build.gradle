@@ -1,53 +1,32 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-}
+apply from: this.rootProject.file('singleModule.gradle')
+project.ext.setAppOrLibDefaultConfig project
 
 
 android {
     namespace 'com.example.lib_base'
     resourcePrefix "base_"
-    compileSdk rootProject.android.compileSdk
 
     defaultConfig {
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-        buildConfigField "String", "APPLICATION_ID", "\"${rootProject.android.applicationId}\""
-    }
-
-    buildFeatures {
-        viewBinding true
-        buildConfig true
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
+        buildConfigField "String", "APPLICATION_ID", "\"${libs.versions.applicationId.get()}\""
     }
 }
 
 dependencies {
     api project(path: ':uilibrary')
-    implementation rootProject.desLibs.coreKtx
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    api rootProject.desLibs.lifecycleRuntimeKtx
-    api rootProject.desLibs.eventBus
-    api rootProject.desLibs.fragmentKtx
-    kapt rootProject.desLibs.glideCompiler
-    api rootProject.desLibs.moshi
-    api rootProject.desLibs.liveDataKtx
-    api rootProject.desLibs.viewModelKtx
-    kapt rootProject.desLibs.theRouter
-    api rootProject.desLibs.therouter
-    compileOnly rootProject.desLibs.mmkv
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.coreKtx
+    testImplementation libs.junit
+    androidTestImplementation libs.extJunit
+    androidTestImplementation libs.espresso
+    api libs.lifecycleRuntimeKtx
+    api libs.eventBus
+    api libs.fragmentKtx
+    kapt libs.glideCompiler
+    api libs.moshi
+    api libs.liveDataKtx
+    api libs.viewModelKtx
+    kapt libs.theRouter
+    api libs.therouter
+    compileOnly libs.mmkv
 }

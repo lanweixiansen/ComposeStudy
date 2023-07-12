@@ -16,14 +16,14 @@ android {
     }
 
     namespace 'com.example.demoapplication'
-    compileSdk rootProject.android.compileSdk
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        applicationId rootProject.android.application
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
-        versionCode rootProject.android.versionCode
-        versionName rootProject.android.versionName
+        applicationId libs.versions.applicationId.get()
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+        versionCode libs.versions.versionCode.get().toInteger()
+        versionName libs.versions.versionName.get()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -42,9 +42,9 @@ android {
         }
 
         release {
-            debuggable true
-            shrinkResources false
-            minifyEnabled false
+            debuggable false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -88,29 +88,29 @@ dependencies {
     implementation project(path: ':uilibrary')
     implementation project(path: ':libLogin')
     implementation project(path: ':libNet')
-    implementation rootProject.desLibs.coreKtx
-    implementation rootProject.desLibs.activityCompose
-    implementation platform(rootProject.desLibs.composeBom)
-    implementation rootProject.desLibs.ui
-    implementation rootProject.desLibs.uiGraphics
-    implementation rootProject.desLibs.uiPreview
-    implementation rootProject.desLibs.material3
-    implementation rootProject.desLibs.navFrgKtx
-    implementation rootProject.desLibs.navUIKtx
-    implementation 'com.google.android.material:material:1.9.0'
-    testImplementation rootProject.desLibs.junit
-    androidTestImplementation rootProject.desLibs.extJunit
-    androidTestImplementation rootProject.desLibs.espresso
-    androidTestImplementation platform(rootProject.desLibs.composeBom)
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation libs.coreKtx
+    implementation libs.activityCompose
+    implementation platform(libs.composeBom)
+    implementation libs.ui
+    implementation libs.uiGraphics
+    implementation libs.uiPreview
+    implementation libs.material3
+    implementation libs.navFrgKtx
+    implementation libs.navUIKtx
+    debugApi libs.leakcanary
+    kapt libs.theRouter
+    implementation libs.mmkv
+    testImplementation libs.junit
+    androidTestImplementation libs.extJunit
+    androidTestImplementation libs.espresso
+    androidTestImplementation platform(libs.composeBom)
+    implementation libs.appcompat
+    implementation libs.material
+
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
     implementation "org.jetbrains.kotlin:kotlin-reflect"
-    debugApi rootProject.desLibs.leakcanary
-    kapt rootProject.desLibs.theRouter
-    implementation rootProject.desLibs.mmkv
     debugImplementation 'com.example.flutter_module:flutter_debug:1.0'
     releaseImplementation 'com.example.flutter_module:flutter_release:1.0'
-
 }

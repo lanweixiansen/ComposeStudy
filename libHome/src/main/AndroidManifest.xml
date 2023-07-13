@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
 
     <application>
@@ -17,5 +18,6 @@
         <activity android:name="com.example.libHome.viewStub.ViewStubActivity" />
         <activity android:name="com.example.libHome.room.RoomActivity" />
         <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity" />
+        <activity android:name="com.example.libHome.calendar.CalendarRemindActivity" />
     </application>
 </manifest>

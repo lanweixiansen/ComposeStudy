@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/news_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:src="@mipmap/bg_ad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:background="#80FF356C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/news_imageview" />
 
     <Button
         android:id="@+id/home_add"
@@ -29,8 +47,8 @@
     <RadioGroup
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:checkedButton="@id/home_radiobutton"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/home_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +57,8 @@
         <RadioButton
             android:id="@+id/home_radiobutton"
             android:layout_width="0dp"
-            android:layout_marginStart="20dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:text="老师1" />
 
@@ -54,8 +72,8 @@
         <RadioButton
             android:id="@+id/home_radiobutton3"
             android:layout_width="0dp"
-            android:layout_marginEnd="20dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:text="老师3" />
     </RadioGroup>

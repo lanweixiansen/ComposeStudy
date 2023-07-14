@@ -8,11 +8,9 @@ project.ext {
     minSdk = 24
     targetSdk = 33
     compileSdk = 33
-
     // 单模块的版本号（随便写）
     versionCode = 1
     versionName = "1.0"
-
     //动态改变，用于单模块调试
     setAppOrLibDefaultConfig = {
         extension ->

@@ -34,16 +34,20 @@ class CalendarRemindActivity : BaseActivity<HomeActivityCalendarRemindBinding>()
             val start: Long = mCalendar.time.time
             mCalendar.timeInMillis = start + 2 * 60 * 1000
             val end: Long = mCalendar.time.time
-            CalendarReminderUtils.addCalendarEvent(
-                this,
-                mTeacherId,
-                "$mContent 开启了直播",
-                "$mContent 开启了直播，快去直播间围观吧！",
-                start,
-                end,
-                1,
-                false
-            )
+            var needAdd = true
+            repeat(3) {
+                if (!needAdd) {
+                    return@repeat
+                }
+                val id = CalendarReminderUtils.addCalendarEvent(
+                    this, mTeacherId, "$mContent 开启 了直播",
+                    "$mContent 开启了直播，快去直播间围观吧！",
+                    start, end, 1, false
+                )
+                if (id != -1L) {
+                    needAdd = false
+                }
+            }
         }
         mBinding.homeDelete.setOnClickListener {
             getSelectInfo()

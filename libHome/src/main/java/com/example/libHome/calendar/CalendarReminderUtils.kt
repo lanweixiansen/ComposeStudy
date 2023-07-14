@@ -32,6 +32,8 @@ object CalendarReminderUtils {
     private fun checkAndAddCalendarAccount(context: Context): Int {
         val oldId = checkCalendarAccount(context)
         return if (oldId >= 0) {
+
+
             oldId
         } else {
             val addId = addCalendarAccount(context)
@@ -55,22 +57,22 @@ object CalendarReminderUtils {
             null,
             null
         )
-        return userCursor.use { userCursor ->
-            if (userCursor == null) { //查询返回空值
+        return userCursor.use { cursor ->
+            if (cursor == null) { //查询返回空值
                 return -1
             }
-            val count = userCursor.count
+            val count = cursor.count
             if (count > 0) { //存在现有账户，取第一个账户的id返回
                 for (i in 0 until count) {
                     if (i == 0) {
-                        userCursor.moveToFirst()
+                        cursor.moveToFirst()
                     } else {
-                        userCursor.moveToNext()
+                        cursor.moveToNext()
                     }
                     val type =
-                        userCursor.getString(userCursor.getColumnIndex(CalendarContract.Calendars.ACCOUNT_TYPE))
+                        cursor.getString(cursor.getColumnIndex(CalendarContract.Calendars.ACCOUNT_TYPE))
                     if (type == CALENDARS_ACCOUNT_TYPE) {
-                        return userCursor.getInt(userCursor.getColumnIndex(CalendarContract.Calendars._ID))
+                        return cursor.getInt(cursor.getColumnIndex(CalendarContract.Calendars._ID))
                     }
                 }
             }

@@ -13,6 +13,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven {
+            // win 前需要加 / , mac前不用
             url '/flutter_module/build/host/outputs/repo'
         }
         maven {

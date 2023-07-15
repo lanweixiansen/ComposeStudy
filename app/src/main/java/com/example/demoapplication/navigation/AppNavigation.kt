@@ -5,10 +5,14 @@ import androidx.fragment.app.FragmentManager
 import com.example.demoapplication.NewMainActivity
 import com.example.demoapplication.R
 import com.example.libHome.HomeFragment
+import com.example.lib_base.manager.AppManager
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.android.RenderMode
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.embedding.engine.FlutterEngineCache
+import io.flutter.embedding.engine.dart.DartExecutor
 
 /**
  * APP导航
@@ -63,16 +67,28 @@ object AppNavigation {
             FragmentTag.HOME -> HomeFragment()
             FragmentTag.SQUARE -> SquareFragment()
             FragmentTag.NEWS -> NewsFragment()
-            FragmentTag.ME -> FlutterFragment.withCachedEngine("my_engine_id").renderMode(
-                RenderMode.texture
-            ).build()
+            FragmentTag.ME -> createdFlutterFragment()
         }
     }
 
+    private fun createdFlutterFragment(): Fragment {
+        kotlin.runCatching {
+            return FlutterFragment.withCachedEngine("my_engine_id").renderMode(
+                RenderMode.texture
+            ).build()
+        }.onFailure {
+            val flutterEngine = FlutterEngine(AppManager.getApplicationContext())
+            flutterEngine.dartExecutor.executeDartEntrypoint(
+                DartExecutor.DartEntrypoint.createDefault()
+            )
+            FlutterEngineCache.getInstance().put("my_engine_id", flutterEngine)
+        }
+        return FlutterFragment.withCachedEngine("my_engine_id").renderMode(
+            RenderMode.texture
+        ).build()
+    }
+
     enum class FragmentTag(val tag: String) {
-        HOME("HomeFragment"),
-        SQUARE("SquareFragment"),
-        NEWS("NewsFragment"),
-        ME("MeFragment")
+        HOME("HomeFragment"), SQUARE("SquareFragment"), NEWS("NewsFragment"), ME("MeFragment")
     }
 }

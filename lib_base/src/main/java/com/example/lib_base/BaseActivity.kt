@@ -1,18 +1,19 @@
 package com.example.lib_base
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ContentFrameLayout
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
-import com.blankj.utilcode.util.BarUtils
-import com.therouter.TheRouter
+import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
 import com.example.uilibrary.widget.LoadingDialog
+import com.therouter.TheRouter
 import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.ParameterizedType
 
@@ -28,15 +29,22 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         mBinding = method.invoke(this, layoutInflater)!!.saveAsUnChecked()
         setWindowStyle(window)
         setContentView(mBinding.root)
-        findViewById<ContentFrameLayout>(android.R.id.content).transitionName = "activity_anim"
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
+        initStatus()
         TheRouter.inject(this)
         initView()
         initDate()
         initListener()
         initObserver()
+    }
+
+    private fun initStatus() {
+        window.statusBarColor = Color.WHITE
+        setStatusBarTextColor(isLight = false)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        findViewById<ContentFrameLayout>(android.R.id.content).addMarginToEqualStatusBar()
     }
 
     open fun setWindowStyle(window: Window) {}

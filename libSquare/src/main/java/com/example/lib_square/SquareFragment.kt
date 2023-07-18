@@ -13,7 +13,6 @@ import com.example.lib_square.databinding.SquareFragmentSquareStubBinding
 class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private lateinit var mBind: SquareFragmentSquareBinding
     override fun initView() {
-        mBinding.parent.addMarginToEqualStatusBar()
         mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
     }
 

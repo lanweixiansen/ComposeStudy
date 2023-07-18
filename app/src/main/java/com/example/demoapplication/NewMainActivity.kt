@@ -27,9 +27,6 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
     }
 
     private fun initStatusBar() {
-        window.statusBarColor = Color.TRANSPARENT
-        setStatusBarTextColor(isLight = false)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         mBinding.bottomView.addMarginToNavigationBar()
     }
 

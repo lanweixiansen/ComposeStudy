@@ -4,10 +4,12 @@ import android.Manifest
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeActivityCalendarRemindBinding
 import com.therouter.router.Route
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 
@@ -35,6 +37,9 @@ class CalendarRemindActivity : BaseActivity<HomeActivityCalendarRemindBinding>()
             mCalendar.timeInMillis = start + 2 * 60 * 1000
             val end: Long = mCalendar.time.time
             var needAdd = true
+            lifecycleScope.launch {
+
+            }
             repeat(3) {
                 if (!needAdd) {
                     return@repeat

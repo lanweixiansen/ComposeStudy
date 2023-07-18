@@ -13,15 +13,15 @@ import com.example.lib_base.ext.toast
 import java.util.TimeZone
 
 object CalendarReminderUtils {
-    private const val CALENDARS_NAME = "calendar_test"
-    private const val CALENDARS_ACCOUNT_NAME = "test"
-    private const val CALENDARS_ACCOUNT_TYPE = "test"
+    private const val CALENDARS_NAME = "gn"
+    private const val CALENDARS_ACCOUNT_NAME = "gn_android"
+    private const val CALENDARS_ACCOUNT_TYPE = "gn"
     private val mEventIdMap = LinkedHashMap<String, Long>()
 
     /**
      * 这里创建账户的展示名称，系统日历为我们提供了创建账户的入口，那我们就不使用系统自带的账户，创建一个自己app的账户
      */
-    private const val CALENDARS_DISPLAY_NAME = "日历测试"
+    private const val CALENDARS_DISPLAY_NAME = "calendar_gaoneng"
 
 
     /**

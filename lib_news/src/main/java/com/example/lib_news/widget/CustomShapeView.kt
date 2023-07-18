@@ -10,8 +10,6 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.graphics.Shader
 import android.util.AttributeSet
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.lib_base.utils.dp2px
 
@@ -71,8 +69,9 @@ class CustomShapeView @JvmOverloads constructor(
         shapeRect[0f, height - 2 * bottomLeftCornerRadius, 2 * bottomLeftCornerRadius] =
             height.toFloat()
         path.arcTo(shapeRect, 90f, 90f)
+//
 
-        // 绘制梯形
+//        // 绘制梯形
         path.lineTo(topLeftCornerRadius / 2 + dp2px(10f), 0f)
         canvas.drawPath(path, paint)
         super.onDraw(canvas)

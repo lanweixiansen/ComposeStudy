@@ -29,7 +29,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
 
     override fun initView() {
         mBind = HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
-        mBinding.home.addMarginToEqualStatusBar()
         with(mBind) {
             mAdapter = ItemAdapter()
             mHelper = QuickAdapterHelper.Builder(mAdapter)

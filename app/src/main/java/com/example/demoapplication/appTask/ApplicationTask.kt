@@ -24,6 +24,9 @@ object ApplicationTask {
 
     const val AGREE_PRIVACY = "agree_privacy"
 
+    /**
+     * MMKV初始化完成之后检查是否同意隐私协议，同意之后初始化隐私相关SDK
+     */
     @FlowTask(taskName = "check_privacy", dependsOn = "init_mmkv")
     @JvmStatic
     fun checkPrivacy(context: Context) {
@@ -42,7 +45,18 @@ object ApplicationTask {
     }
 
     /**
-     * 模拟第三方SDK初始化
+     * 模拟不需要同意隐私协议的SDK初始化
+     */
+    @FlowTask("init_no_privacy_sdk", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
+    @JvmStatic
+    fun initNoPrivacySdk(context: Context) {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
+            CustomRefreshHeader(ctx)
+        }
+    }
+
+    /**
+     * 初始化MMKV
      */
     @FlowTask("init_mmkv", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
     @JvmStatic
@@ -57,17 +71,6 @@ object ApplicationTask {
     @JvmStatic
     fun initAppManager(context: Context) {
         AppManager.init(context as Application)
-    }
-
-    /**
-     * SmartRefresh 添加默认头部加载更多
-     */
-    @FlowTask("init_smart_refresh", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
-    @JvmStatic
-    fun initSmartRefresh(context: Context) {
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
-            CustomRefreshHeader(ctx)
-        }
     }
 
     /**

@@ -16,5 +16,5 @@ dependencies {
     androidTestImplementation libs.extJunit
     androidTestImplementation libs.espresso
     kapt libs.roomCompiler
-    kapt libs.theRouter
+    kapt libs.theRouterApt
 }

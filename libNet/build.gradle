@@ -23,5 +23,5 @@ dependencies {
     implementation libs.retrofitMoshi
     api libs.room
     kapt libs.roomCompiler
-    kapt libs.theRouter
+    kapt libs.theRouterApt
 }

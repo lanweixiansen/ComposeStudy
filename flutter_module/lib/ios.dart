@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter/routeMethods.dart';
+import 'package:my_flutter/route/routeMethods.dart';
 
 import 'data/AppleShopBean.dart';
 import 'normalWidget.dart';

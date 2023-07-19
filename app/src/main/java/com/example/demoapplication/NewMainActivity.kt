@@ -1,8 +1,6 @@
 package com.example.demoapplication
 
-import android.graphics.Color
 import android.view.KeyEvent
-import androidx.core.view.WindowCompat
 import com.example.demoapplication.appTask.ApplicationTask
 import com.example.demoapplication.databinding.ActivityNewMainBinding
 import com.example.demoapplication.navigation.AppNavigation
@@ -23,7 +21,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
             AppNavigation.checkedFragment(it)
         }
         initStatusBar()
-        ApplicationTask.initFlutterEngin(this)
+        ApplicationTask.initFlutterChannel(this)
     }
 
     private fun initStatusBar() {
@@ -39,7 +37,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
             // 退出APP
 //            AppExit.onBackPressed(this)
         }
-        return false
+        return true
     }
 
     override fun onPostResume() {

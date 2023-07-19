@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter/ListTitle.dart';
 import 'package:my_flutter/data/Route.dart';
 import 'package:my_flutter/ios.dart';
 import 'package:my_flutter/normalWidget.dart';
-import 'package:my_flutter/routeMethods.dart';
+import 'package:my_flutter/route/routeMethods.dart';
+import 'package:my_flutter/setting.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -11,7 +13,7 @@ void main() {
   runApp(
     ChangeNotifierProvider.value(
       value: model,
-      child: const MyApp(),
+      child: const ListTileApp(),
     ),
   );
 }
@@ -25,15 +27,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         "ios_page": (context) => const IosWidget(),
-        "normal_widget": (context) => const NormalWidget()
+        "normal_widget": (context) => const NormalWidget(),
+        "setting_widget": (context) => const SettingWidget(),
+        "list_title": (context) => const ListTileApp(),
       },
-      title: 'Flutter Demo',
       theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.cyan,
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo'),
     );
   }
 }
@@ -58,9 +59,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final pressModel = CounterModel();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                pressModel.increment("setting_widget");
+              },
+              icon: const Icon(Icons.settings))
+        ],
       ),
       body: const ListWidget(),
       floatingActionButton: FloatingActionButton(
@@ -71,12 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-///
-///
-///
-///
-///
 
 /// 列表Widget
 
@@ -140,41 +144,5 @@ class ListWidget extends StatelessWidget {
                     ));
               },
             ));
-  }
-}
-
-/// 文字Widget
-class ColumnTextWidget extends StatelessWidget {
-  final int _counter = 0;
-  TextStyle textBlackStyle =
-      const TextStyle(color: Colors.black, fontStyle: FontStyle.italic);
-  TextStyle textRedStyle =
-      const TextStyle(color: Colors.red, fontWeight: FontWeight.bold);
-  TextStyle textStyle = const TextStyle(color: Colors.cyan);
-
-  ColumnTextWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        const Text(
-          'You have pushed the button this many times:',
-          style: TextStyle(
-              color: Colors.cyan, fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          '$_counter',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        Text.rich(TextSpan(children: <TextSpan>[
-          TextSpan(text: "这是", style: textStyle),
-          TextSpan(text: "黑色斜体，", style: textBlackStyle),
-          TextSpan(text: "这是", style: textStyle),
-          TextSpan(text: "红色粗体。", style: textRedStyle)
-        ]))
-      ],
-    );
   }
 }

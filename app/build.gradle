@@ -97,7 +97,7 @@ dependencies {
     implementation libs.navFrgKtx
     implementation libs.navUIKtx
     debugApi libs.leakcanary
-    kapt libs.theRouter
+    kapt libs.theRouterApt
     implementation libs.mmkv
     testImplementation libs.junit
     androidTestImplementation libs.extJunit

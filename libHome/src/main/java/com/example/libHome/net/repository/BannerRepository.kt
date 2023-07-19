@@ -6,7 +6,7 @@ import com.example.libnet.manager.HttpManager
 import com.example.libnet.room.dataBase.HomeBannerDataBase
 import com.example.libnet.room.entry.HomeBannerEntry
 
-class BannerRepository : BaseRepository() {
+class BannerRepository {
     val mHomeApi by lazy { HttpManager.created(HomeApi::class.java) }
 
     suspend fun getBanner() {
@@ -36,5 +36,3 @@ class BannerRepository : BaseRepository() {
     }
 
 }
-
-open class BaseRepository {}

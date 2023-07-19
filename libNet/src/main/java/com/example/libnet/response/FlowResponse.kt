@@ -14,14 +14,13 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.withTimeout
 
 fun <T> requestLiveData(
-    showLoading: Boolean = false,
     requestCall: suspend () -> BaseResponse<T>?,
     errorBlock: ((Int, String?) -> Unit)? = null,
     onComplete: (() -> Unit)? = null,
 ): LiveData<T?> {
     return liveData {
         var data: T? = null
-        flowResponse(requestCall, errorBlock, onComplete, showLoading).collect {
+        flowResponse(requestCall, errorBlock, onComplete).collect {
             data = it?.data
         }
         emit(data)
@@ -32,10 +31,9 @@ suspend fun <T> requestFlow(
     requestCall: suspend () -> BaseResponse<T>?,
     errorBlock: ((Int, String?) -> Unit)? = null,
     onComplete: (() -> Unit)? = null,
-    showLoading: Boolean = false
 ): T? {
     var data: T? = null
-    flowResponse(requestCall, errorBlock, onComplete, showLoading).collect {
+    flowResponse(requestCall, errorBlock, onComplete).collect {
         data = it?.data
     }
     return data
@@ -45,7 +43,6 @@ suspend fun <T> flowResponse(
     requestCall: suspend () -> BaseResponse<T>?,
     errorBlock: ((Int, String?) -> Unit)? = null,
     onComplete: (() -> Unit)? = null,
-    showLoading: Boolean = false
 ): Flow<BaseResponse<T>?> {
     return flow {
         //设置超时时间

@@ -39,8 +39,4 @@ class NewsFragment : BaseFragment<NewsFragmentNewsStubBinding>() {
     private fun showFragment(it: String) {
         TheRouter.build(it).navigation()
     }
-
-    override fun needDelay(): Boolean {
-        return true
-    }
 }

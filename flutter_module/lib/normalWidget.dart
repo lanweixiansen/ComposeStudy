@@ -8,8 +8,6 @@ class NormalWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.cyan,
         useMaterial3: true,
       ),
       home: const NormalPage(title: '基本布局'),

@@ -3,9 +3,9 @@ package com.example.demoapplication.appTask
 import android.app.Application
 import android.content.Context
 import android.content.Intent
-import com.example.demoapplication.MyFlutterActivity
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
+import com.example.lib_me.MyFlutterActivity
 import com.example.uilibrary.widget.CustomRefreshHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
@@ -71,8 +71,10 @@ object ApplicationTask {
     }
 
     /**
-     * Flutter引擎初始化及回调事件
+     * Flutter引擎初始化
      */
+    @FlowTask("init_flutter", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
+    @JvmStatic
     fun initFlutterEngin(context: Context) {
         val flutterEngine = FlutterEngine(context)
         flutterEngine.dartExecutor.executeDartEntrypoint(
@@ -81,8 +83,18 @@ object ApplicationTask {
         FlutterEngineCache
             .getInstance()
             .put("my_engine_id", flutterEngine)
-        val channel = MethodChannel(flutterEngine.dartExecutor, "dev.flutter.example/route")
-        channel.setMethodCallHandler { call, _ ->
+    }
+
+
+    fun initFlutterChannel(context: Context) {
+        val flutterEngine = FlutterEngineCache.getInstance().get("my_engine_id")
+        val channel = flutterEngine?.dartExecutor?.let {
+            MethodChannel(
+                it,
+                "dev.flutter.example/route"
+            )
+        }
+        channel?.setMethodCallHandler { call, _ ->
             val route: String = call.argument<String>("data").toString()
             when (call.method) {
                 "routeActivity" -> {

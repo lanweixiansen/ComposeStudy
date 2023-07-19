@@ -71,10 +71,9 @@ moshiKotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi
 retrofitMoshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofitVersion" }
 room = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
-theRouter = { module = "cn.therouter:apt", version.ref = "theRouterVersion" }
+theRouterApt = { module = "cn.therouter:apt", version.ref = "theRouterVersion" }
 therouter = { module = "cn.therouter:router", version.ref = "theRouterVersion" }
 mmkv = { module = "com.tencent:mmkv", version.ref = "mmkvVersion" }
 
 [bundles]
-lib_base = ["coreKtx", "lifecycleRuntimeKtx", "eventBus", "fragmentKtx", "glideCompiler",
-    "moshi", "liveDataKtx", "viewModelKtx", "theRouter", "therouter", "mmkv"]
+room = ["room", "roomCompiler"]

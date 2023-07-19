@@ -7,5 +7,6 @@ class RouteBean {
 
 final routeList = List.of([
   RouteBean(title: "IOS 布局仿写", route: "ios_page"),
-  RouteBean(title: "基本控件", route: "normal_widget")
+  RouteBean(title: "基本控件", route: "normal_widget"),
+  RouteBean(title: "list_title", route: "list_title")
 ]);

@@ -10,11 +10,9 @@ import com.example.libHome.data.itemData
 import com.example.libHome.net.HomeApi
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
-import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_base.ext.toast
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
-import com.example.libnet.response.requestLiveData
 import com.example.libnet.viewModel.createdApi
 import com.example.uilibrary.widget.HeaderAdapter
 import com.therouter.TheRouter
@@ -24,7 +22,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     private val mBannerAdapter = BannerAdapter()
     private lateinit var mHelper: QuickAdapterHelper
     private val mViewModel by viewModels<HomeViewModel>()
-    private val mHomeApi = HomeApi::class.java.createdApi()
     private lateinit var mBind: HomeFragmentHomeBinding
 
     override fun initView() {
@@ -66,19 +63,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     }
 
     private fun loadData() {
-        showLoading()
-        requestLiveData(
-            requestCall = { mHomeApi.getHomeBanner() },
-            onComplete = {
-                "加载完成".toast()
-                mBind.smartRefresh.finishRefresh()
-                disLoading()
-            },
-            errorBlock = { errorCode, errorMsg ->
-                "加载失败：$errorCode - $errorMsg".toast()
-            }).observe(viewLifecycleOwner) {
-            mBannerAdapter.submitList(it)
-        }
+//        showLoading()
 //        mViewModel.getBanner()
     }
 
@@ -86,6 +71,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     override fun initObserver() {
         super.initObserver()
         mViewModel.mComplete.observe(viewLifecycleOwner) {
+            mBind.smartRefresh.finishRefresh()
             disLoading()
         }
         mViewModel.mBanner.observe(viewLifecycleOwner) {

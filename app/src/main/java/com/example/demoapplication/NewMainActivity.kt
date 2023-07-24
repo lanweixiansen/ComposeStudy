@@ -7,8 +7,10 @@ import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.addMarginToNavigationBar
+import com.therouter.router.Route
 import io.flutter.embedding.android.FlutterFragment
 
+@Route(path = "/app/NewMainActivity")
 class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
 
     override fun initView() {
@@ -59,4 +61,6 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
             (it as? FlutterFragment)?.onBackPressed()
         }
     }
+
+    override fun addTopMargin() = false
 }

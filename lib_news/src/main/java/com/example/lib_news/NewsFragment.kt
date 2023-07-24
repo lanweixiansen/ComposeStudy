@@ -15,6 +15,7 @@ class NewsFragment : BaseFragment<NewsFragmentNewsStubBinding>() {
 
     override fun initView() {
         mBind = NewsFragmentNewsBinding.bind(mBinding.viewStub.inflate())
+        mBinding.parent.addMarginToEqualStatusBar()
         with(mBind) {
             rvAnim.layoutManager = LinearLayoutManager(context)
             rvAnim.adapter = mAdapter

@@ -7,13 +7,11 @@ import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
 import com.example.libHome.bottomSheetDialog.BottomShareDialog
 import com.example.libHome.data.itemData
-import com.example.libHome.net.HomeApi
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
-import com.example.lib_base.ext.toast
+import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
-import com.example.libnet.viewModel.createdApi
 import com.example.uilibrary.widget.HeaderAdapter
 import com.therouter.TheRouter
 
@@ -26,6 +24,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
 
     override fun initView() {
         mBind = HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
+        mBinding.home.addMarginToEqualStatusBar()
         with(mBind) {
             mAdapter = ItemAdapter()
             mHelper = QuickAdapterHelper.Builder(mAdapter)
@@ -39,7 +38,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
 
     override fun initDate() {
         mAdapter.submitList(itemData)
-        loadData()
+//        loadData()
     }
 
     override fun initListener() {
@@ -63,8 +62,8 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     }
 
     private fun loadData() {
-//        showLoading()
-//        mViewModel.getBanner()
+        showLoading()
+        mViewModel.getBanner()
     }
 
 

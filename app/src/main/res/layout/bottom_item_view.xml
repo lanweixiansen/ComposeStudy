@@ -13,15 +13,11 @@
         android:layout_height="25dp"
         tools:src="@drawable/home" />
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="1dp" />
-
     <TextView
         android:id="@+id/tv_tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:textSize="11sp"
         android:visibility="gone"
         tools:text="@string/tab_home"
         tools:visibility="visible" />

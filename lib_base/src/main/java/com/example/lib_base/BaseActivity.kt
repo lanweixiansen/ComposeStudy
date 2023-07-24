@@ -3,7 +3,6 @@ package com.example.lib_base
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ContentFrameLayout
 import androidx.core.view.WindowCompat
@@ -27,7 +26,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         val vbClass: Class<VB> = type!!.saveAs<ParameterizedType>().actualTypeArguments[0].saveAs()
         val method = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         mBinding = method.invoke(this, layoutInflater)!!.saveAsUnChecked()
-        setWindowStyle(window)
         setContentView(mBinding.root)
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
@@ -44,10 +42,10 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         window.statusBarColor = Color.WHITE
         setStatusBarTextColor(isLight = false)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        findViewById<ContentFrameLayout>(android.R.id.content).addMarginToEqualStatusBar()
+        if (addTopMargin()) {
+            findViewById<ContentFrameLayout>(android.R.id.content).addMarginToEqualStatusBar()
+        }
     }
-
-    open fun setWindowStyle(window: Window) {}
 
     fun showLoading() {
         mLoading ?: run {
@@ -78,6 +76,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     open fun initObserver() {}
     open fun useEventBus() = false
+    open fun addTopMargin() = true
 
 
     fun setStatusBarTextColor(isLight: Boolean = false) {

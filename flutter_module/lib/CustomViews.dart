@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter/route/routeMethods.dart';
 
+/// 通用标题返回键AppBar
 class CustomAppBar extends AppBar {
   CustomAppBar(this.content, {super.key});
 
@@ -25,6 +26,7 @@ class CustomAppBar extends AppBar {
   bool? get centerTitle => true;
 }
 
+/// 通用设置条目样式
 class SettingItem extends StatelessWidget {
   final String item;
   final VoidCallback onPressed;

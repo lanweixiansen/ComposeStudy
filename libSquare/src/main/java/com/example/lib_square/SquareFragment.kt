@@ -14,6 +14,7 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private lateinit var mBind: SquareFragmentSquareBinding
     override fun initView() {
         mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
+        mBinding.parent.addMarginToEqualStatusBar()
     }
 
     override fun initDate() {}

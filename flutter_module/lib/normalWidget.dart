@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter/route/routeMethods.dart';
 
 class NormalWidget extends StatelessWidget {
   const NormalWidget({super.key});
@@ -22,12 +23,19 @@ class NormalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pressModel = CounterModel();
     const TextStyle titleTextStyle = TextStyle(
         fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black);
     BoxDecoration boxDecoration = BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.black, width: 1));
+
+    final TextEditingController _controller = TextEditingController();
+
+    void _onSubmitted(String value) {
+      pressModel.showToast("搜索内容: $value");
+    }
 
     return Scaffold(
         appBar: AppBar(
@@ -112,10 +120,13 @@ class NormalPage extends StatelessWidget {
               margin: const EdgeInsets.only(left: 16, right: 16, top: 8),
               padding: const EdgeInsets.all(8),
               decoration: boxDecoration,
-              child: const TextField(
-                decoration: InputDecoration(hintText: "输入内容", labelText: "文本"),
+              child: TextField(
+                controller: _controller,
+                decoration:
+                    const InputDecoration(hintText: "输入内容", labelText: "文本"),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.search,
+                onSubmitted: _onSubmitted,
               ),
             ),
           ],

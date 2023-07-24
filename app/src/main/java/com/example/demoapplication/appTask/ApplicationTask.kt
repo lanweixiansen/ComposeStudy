@@ -6,6 +6,7 @@ import android.content.Intent
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
 import com.example.lib_me.MyFlutterActivity
+import com.example.uilibrary.widget.CustomRefreshFooter
 import com.example.uilibrary.widget.CustomRefreshHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
@@ -52,6 +53,9 @@ object ApplicationTask {
     fun initNoPrivacySdk(context: Context) {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
             CustomRefreshHeader(ctx)
+        }
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { ctx, _ ->
+            CustomRefreshFooter(context = ctx)
         }
     }
 

@@ -12,6 +12,7 @@ class MyFlutterActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         withNewEngine().initialRoute(intent.getStringExtra("route").toString())
         val channel = flutterEngine?.dartExecutor?.let {
             MethodChannel(

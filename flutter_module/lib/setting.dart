@@ -150,7 +150,7 @@ class LogoutItem extends StatelessWidget {
     return Center(
       child: TextButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
+            backgroundColor: MaterialStateProperty.all(Colors.black),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0))),
             padding: MaterialStateProperty.all(const EdgeInsets.only(

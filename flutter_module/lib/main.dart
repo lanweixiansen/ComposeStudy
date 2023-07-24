@@ -8,6 +8,7 @@ import 'package:my_flutter/setting.dart';
 import 'package:provider/provider.dart';
 
 import 'AboutMe.dart';
+import 'mine.dart';
 
 void main() {
   final model = CounterModel();
@@ -15,7 +16,7 @@ void main() {
   runApp(
     ChangeNotifierProvider.value(
       value: model,
-      child: const MyApp(),
+      child: const MineWidget(),
     ),
   );
 }

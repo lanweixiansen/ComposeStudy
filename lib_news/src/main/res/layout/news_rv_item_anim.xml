@@ -17,14 +17,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_fileName="lottie/lottie_anim.json" />
+            app:lottie_fileName="lottie/lottie_anim.json"
+            app:lottie_loop="true" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="5" />
-
+            android:textSize="16sp"
+            android:layout_weight="5"
+            android:ellipsize="end"
+            android:maxLines="1" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </com.google.android.material.card.MaterialCardView>

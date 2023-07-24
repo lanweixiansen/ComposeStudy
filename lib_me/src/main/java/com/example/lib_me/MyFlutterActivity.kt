@@ -2,6 +2,7 @@ package com.example.lib_me
 
 import android.os.Bundle
 import com.blankj.utilcode.util.FileUtils
+import com.example.lib_base.BuildConfig
 import com.example.lib_base.ext.toast
 import com.example.lib_base.manager.AppManager
 import io.flutter.embedding.android.FlutterActivity
@@ -32,6 +33,10 @@ class MyFlutterActivity : FlutterActivity() {
                     FileUtils.deleteAllInDir(cacheDir)
                     FileUtils.deleteAllInDir(externalCacheDir)
                     "缓存清理完成".toast()
+                }
+
+                "version_name" -> {
+                    result.success("v.${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}")
                 }
             }
         }

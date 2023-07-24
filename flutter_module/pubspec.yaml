@@ -37,6 +37,7 @@ flutter:
   assets:
     - assets/icon.png
     - assets/image_loading.gif
+    - assets/ic_launcher.png
 
   module:
     androidX: true

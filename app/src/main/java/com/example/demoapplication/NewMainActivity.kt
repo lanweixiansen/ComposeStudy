@@ -16,7 +16,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         RouterInterceptor.addLoginInterceptor()
         RouterInterceptor.addRouterInterceptor()
         // Fragment相关
-        AppNavigation.init(supportFragmentManager, this)
+        AppNavigation.init(supportFragmentManager)
         mBinding.bottomView.setTabClickListener {
             AppNavigation.checkedFragment(it)
         }

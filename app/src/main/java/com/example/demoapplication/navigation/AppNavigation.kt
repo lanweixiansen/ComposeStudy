@@ -43,7 +43,7 @@ object AppNavigation {
         }
     }
 
-    fun init(manager: FragmentManager, newMainActivity: NewMainActivity) {
+    fun init(manager: FragmentManager) {
         mSupportFragmentManager = manager
         commitFragment(FragmentTag.HOME)
     }

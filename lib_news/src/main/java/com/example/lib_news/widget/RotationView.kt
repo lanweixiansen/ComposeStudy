@@ -18,16 +18,17 @@ class RotationView @JvmOverloads constructor(
     private var mRadius = 1f
     private var mTime = 1f
     private var mJob: Job? = null
-
+    private var mIsRunning = false
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         this.rotation = mRadius
     }
 
-    fun startRotation() {
+    private fun startRotation() {
         mJob?.cancel()
-        mJob = CoroutineScope(Dispatchers.Main).launch {
+        mIsRunning = true
+        mJob = CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 delay(10)
                 mRadius += mTime
@@ -37,9 +38,21 @@ class RotationView @JvmOverloads constructor(
         }
     }
 
+    private fun endRotation() {
+        mJob?.cancel()
+        mIsRunning = false
+    }
+
+    fun beginRotation() {
+        if (mIsRunning) {
+            endRotation()
+        } else {
+            startRotation()
+        }
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
         super.onDestroy(owner)
         mJob?.cancel()
     }
-
 }

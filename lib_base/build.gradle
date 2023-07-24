@@ -8,6 +8,8 @@ android {
 
     defaultConfig {
         buildConfigField "String", "APPLICATION_ID", "\"${libs.versions.applicationId.get()}\""
+        buildConfigField "String", "VERSION_NAME", "\"${libs.versions.versionName.get()}\""
+        buildConfigField "String", "VERSION_CODE", "\"${libs.versions.versionCode.get()}\""
     }
 }
 

@@ -7,13 +7,15 @@ import 'package:my_flutter/route/routeMethods.dart';
 import 'package:my_flutter/setting.dart';
 import 'package:provider/provider.dart';
 
+import 'AboutMe.dart';
+
 void main() {
   final model = CounterModel();
 
   runApp(
     ChangeNotifierProvider.value(
       value: model,
-      child: const ListTileApp(),
+      child: const MyApp(),
     ),
   );
 }

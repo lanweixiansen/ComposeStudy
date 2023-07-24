@@ -36,7 +36,7 @@ class ObjectAnimFragment : BaseActivity<NewsFragmentObjectAnimBinding>() {
     // 无限旋转
     private fun showAnim3(imageView: RotationView) {
         lifecycle.addObserver(imageView)
-        imageView.startRotation()
+        imageView.beginRotation()
     }
 
     // view抖动效果实现

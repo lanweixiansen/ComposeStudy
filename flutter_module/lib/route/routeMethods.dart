@@ -32,6 +32,18 @@ class CounterModel extends ChangeNotifier {
     }
   }
 
+  Future<String> getAppVersionName() async {
+    try {
+      // 调用原生方法并等待返回结果
+      final String data = await _channel.invokeMethod('version_name');
+
+      // 处理返回的数据
+      return data;
+    } catch (e) {
+      return "v.0.0";
+    }
+  }
+
   void clearCache() {
     _channel.invokeMethod<void>('clearCacheSize');
   }

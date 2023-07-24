@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter/route/routeMethods.dart';
 
+import 'AboutMe.dart';
+import 'CustomViews.dart';
+
 class SettingWidget extends StatelessWidget {
   const SettingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        "about_me": (context) => const AboutMeWidget(),
+      },
       theme: ThemeData(
         useMaterial3: true,
       ),
@@ -55,7 +61,7 @@ class SettingPage extends StatelessWidget {
           SettingItem(
               item: "关于我们",
               onPressed: () {
-                pressModel.showToast("关于我们");
+                Navigator.pushNamed(context, "about_me");
               }),
           const Expanded(
             flex: 4,
@@ -71,33 +77,6 @@ class SettingPage extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class SettingItem extends StatelessWidget {
-  final String item;
-  final VoidCallback onPressed;
-
-  const SettingItem({super.key, required this.item, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        padding:
-            const EdgeInsets.only(left: 20, top: 16, right: 16, bottom: 16),
-        child: GestureDetector(
-          onTap: onPressed,
-          child: Row(
-            children: [
-              Text(
-                item,
-                style: const TextStyle(fontSize: 16, color: Colors.black87),
-              ),
-              const Expanded(child: Text("")),
-              const Icon(Icons.chevron_right)
-            ],
-          ),
-        ));
   }
 }
 

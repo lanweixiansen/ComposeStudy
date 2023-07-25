@@ -41,7 +41,7 @@ object HttpManager {
             .writeTimeout(12, TimeUnit.MINUTES)
             .readTimeout(12, TimeUnit.MINUTES)
         //TODO: Header拦截器
-//        build.addInterceptor()
+//        build.addInterceptor(NetHeaderInterceptor())
 //        build.addInterceptor()
         val httpLoggingInterceptor = HttpLoggingInterceptor {
             Log.i("okHttp", "msg: $it")

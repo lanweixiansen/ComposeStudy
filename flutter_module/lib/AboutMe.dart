@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter/route/routeMethods.dart';
-
 import 'CustomViews.dart';
 
 class AboutMeWidget extends StatelessWidget {

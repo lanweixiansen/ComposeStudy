@@ -2,10 +2,10 @@ package com.example.demoapplication.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.demoapplication.NewMainActivity
 import com.example.demoapplication.R
 import com.example.demoapplication.appTask.ApplicationTask
 import com.example.libHome.HomeFragment
+import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
@@ -19,6 +19,10 @@ object AppNavigation {
     private var mSupportFragmentManager: FragmentManager? = null
 
     private fun commitFragment(fragmentTag: FragmentTag) {
+        if (fragmentTag == FragmentTag.ME && !AppData.isLogin()) {
+            AppManager.goLogin()
+            return
+        }
         mSupportFragmentManager?.let { supportManager ->
             val showFragment: Fragment =
                 if (supportManager.findFragmentByTag(fragmentTag.tag) == null) {
@@ -82,6 +86,10 @@ object AppNavigation {
             fragment = it
         }
         return fragment!!
+    }
+
+    fun finishInit() {
+        mSupportFragmentManager = null
     }
 
     enum class FragmentTag(val tag: String) {

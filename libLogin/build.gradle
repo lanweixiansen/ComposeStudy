@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation project(path: ':lib_base')
+    implementation project(path: ':libNet')
     implementation libs.appcompat
     implementation libs.material
     implementation libs.coreKtx

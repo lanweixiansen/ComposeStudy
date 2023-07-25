@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
 import com.example.uilibrary.widget.LoadingDialog
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.ParameterizedType
 
@@ -33,20 +30,10 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (needDelay()) {
-            lifecycleScope.launch {
-                delay(100)
-                initView()
-                initDate()
-                initListener()
-                initObserver()
-            }
-        } else {
-            initView()
-            initDate()
-            initListener()
-            initObserver()
-        }
+        initView()
+        initDate()
+        initListener()
+        initObserver()
     }
 
     override fun onStart() {
@@ -85,6 +72,4 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     open fun initObserver() {}
 
     open fun useEventBus() = false
-
-    open fun needDelay() = false
 }

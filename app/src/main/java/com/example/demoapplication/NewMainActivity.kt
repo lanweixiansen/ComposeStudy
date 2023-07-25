@@ -7,6 +7,7 @@ import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.addMarginToNavigationBar
+import com.example.lib_base.manager.AppManager
 import com.therouter.router.Route
 import io.flutter.embedding.android.FlutterFragment
 
@@ -60,6 +61,16 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         supportFragmentManager.findFragmentByTag("MeFragment")?.let {
             (it as? FlutterFragment)?.onBackPressed()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setStatusBarTextColor()
+    }
+
+    override fun onDestroy() {
+        AppNavigation.finishInit()
+        super.onDestroy()
     }
 
     override fun addTopMargin() = false

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter/route/routeMethods.dart';
-
 import 'AboutMe.dart';
 import 'CustomViews.dart';
 
@@ -31,19 +30,7 @@ class SettingPage extends StatelessWidget {
     final pressModel = CounterModel();
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            pressModel.onBackPress();
-          },
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(fontSize: 16),
-        ),
-        centerTitle: true,
-      ),
+      appBar: CustomAppBar("设置"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

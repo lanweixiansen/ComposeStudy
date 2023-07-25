@@ -28,7 +28,7 @@ class TestLinearLayout @JvmOverloads constructor(
      * 检查当前View数量
      */
     fun checkViewCount() {
-        "${this.childCount}".toast(context)
+        "${this.childCount}".toast()
     }
 
     /**

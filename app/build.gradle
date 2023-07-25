@@ -43,8 +43,8 @@ android {
 
         release {
             debuggable false
-            shrinkResources true
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -63,7 +63,6 @@ android {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
     buildFeatures {
-        compose true
         viewBinding true
         buildConfig true
     }
@@ -79,6 +78,7 @@ android {
 
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':lib_base')
     implementation project(path: ':libHome')
     implementation project(path: ':libSquare')
@@ -88,12 +88,6 @@ dependencies {
     implementation project(path: ':libLogin')
     implementation project(path: ':libNet')
     implementation libs.coreKtx
-    implementation libs.activityCompose
-    implementation platform(libs.composeBom)
-    implementation libs.ui
-    implementation libs.uiGraphics
-    implementation libs.uiPreview
-    implementation libs.material3
     implementation libs.navFrgKtx
     implementation libs.navUIKtx
     debugApi libs.leakcanary
@@ -102,14 +96,8 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.extJunit
     androidTestImplementation libs.espresso
-    androidTestImplementation platform(libs.composeBom)
     implementation libs.appcompat
     implementation libs.material
-
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
-    debugImplementation 'androidx.compose.ui:ui-tooling'
-    debugImplementation 'androidx.compose.ui:ui-test-manifest'
-    implementation "org.jetbrains.kotlin:kotlin-reflect"
     debugImplementation 'com.example.flutter_module:flutter_debug:1.0'
     releaseImplementation 'com.example.flutter_module:flutter_release:1.0'
 }

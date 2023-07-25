@@ -1,5 +1,6 @@
 package com.example.libHome.intentSetting
 
+import android.Manifest
 import android.content.Intent
 import android.graphics.PixelFormat
 import android.hardware.input.InputManager
@@ -11,12 +12,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeActivityIntentSettingBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @Route(path = RouteConsts.HOME_ROUTER_INTENT_SETTING_ACTIVITY)
@@ -24,17 +29,26 @@ class IntentSettingActivity : BaseActivity<HomeActivityIntentSettingBinding>() {
     private var view: View? = null
 
     override fun initView() {
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ), 100
+        )
         mBinding.btnSetting.setOnClickListener {
-            if (!Settings.canDrawOverlays(this)) {
-                val intent = Intent(
-                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                    Uri.parse("package:$packageName")
-                )
-                startActivityForResult(intent, 10)
-            } else {
-                // 已经获得了SYSTEM_ALERT_WINDOW权限，执行相关操作
-                startActivity(Intent(Settings.ACTION_SETTINGS))
-                showAlertDialog()
+//            if (!Settings.canDrawOverlays(this)) {
+//                val intent = Intent(
+//                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                    Uri.parse("package:$packageName")
+//                )
+//                startActivityForResult(intent, 10)
+//            } else {
+//                // 已经获得了SYSTEM_ALERT_WINDOW权限，执行相关操作
+//                startActivity(Intent(Settings.ACTION_SETTINGS))
+//                showAlertDialog()
+//            }
+            lifecycleScope.launch(Dispatchers.IO) {
+                FileUnitTest.main()
             }
         }
     }

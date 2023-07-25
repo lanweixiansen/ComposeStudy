@@ -54,9 +54,9 @@ object ApplicationTask {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
             CustomRefreshHeader(ctx)
         }
-        SmartRefreshLayout.setDefaultRefreshFooterCreator { ctx, _ ->
-            CustomRefreshFooter(context = ctx)
-        }
+//        SmartRefreshLayout.setDefaultRefreshFooterCreator { ctx, _ ->
+//            CustomRefreshFooter(context = ctx)
+//        }
     }
 
     /**

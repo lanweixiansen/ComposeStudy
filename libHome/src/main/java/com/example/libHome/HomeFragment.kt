@@ -12,6 +12,7 @@ import com.example.lib_base.BaseFragment
 import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
+import com.example.uilibrary.widget.FooterAdapter
 import com.example.uilibrary.widget.HeaderAdapter
 import com.therouter.TheRouter
 
@@ -30,6 +31,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
             mHelper = QuickAdapterHelper.Builder(mAdapter)
                 .build()
                 .addAfterAdapter(mBannerAdapter)
+                .addAfterAdapter(FooterAdapter())
                 .addBeforeAdapter(HeaderAdapter())
             recycleView.adapter = mHelper.adapter
             recycleView.layoutManager = LinearLayoutManager(context)

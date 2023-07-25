@@ -32,7 +32,7 @@ class TestFragment : BaseFragment<HomeFragmentTestFragmentBinding>() {
 
     override fun onDestroy() {
         mTimer?.cancel()
-        "倒计时结束".toast(requireContext())
+        "倒计时结束".toast()
         super.onDestroy()
     }
 }

@@ -1,29 +1,32 @@
-package com.example.demoapplication
+package com.example.libHome.intentSetting
 
-import androidx.compose.ui.graphics.Color
+import android.graphics.Color
+import com.blankj.utilcode.util.FileUtils
+import com.example.lib_base.ext.toast
 import com.example.lib_base.manager.AppManager
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.junit.Test
 import java.io.File
 import java.net.HttpURLConnection
 import java.util.concurrent.TimeUnit
 
-class FileUnitTest {
-    private lateinit var  outputFile: File
+object FileUnitTest {
+    private lateinit var outputFile: File
     private val url =
         "https://raw.githubusercontent.com/chaxiu/ImageProcessor/main/src/main/resources/images/android.png"
 
-    @Test
-    fun main() {
-        runBlocking {
-            val path = AppManager.getApplicationContext().filesDir
-            outputFile = File(path, "down.png")
-            downloadSync()
+    suspend fun main() {
+        val path = AppManager.getApplicationContext().filesDir
+        outputFile = File(path, "down2.png")
+        kotlin.runCatching {
+            if (FileUtils.isFileExists(outputFile)) {
+                "文件已存在".toast()
+                return
+            }
         }
+        downloadSync()
     }
 
     /**
@@ -51,13 +54,12 @@ class FileUnitTest {
                         copyTo(fileOut)
                     }
                 }
+                "下载完成".toast()
             }
         }
     }
 
-    private fun loadImage(file: File) {
-
-    }
+    private fun loadImage(file: File) {}
 
     class Image(private val image: Array<Array<Color>>) {
         fun getWidth(): Int {

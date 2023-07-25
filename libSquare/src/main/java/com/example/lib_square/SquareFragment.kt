@@ -19,10 +19,6 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
 
     override fun initDate() {}
 
-    override fun needDelay(): Boolean {
-        return true
-    }
-
     override fun initListener() {
         super.initListener()
         mBind.btnJob.setOnClickListener {
@@ -38,19 +34,19 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private inline fun checkInput(checkError: () -> Unit): JobInfoBean {
         with(mBind) {
             if (etMoney.text.isNullOrBlank()) {
-                "你钱呢".toast(requireContext())
+                "你钱呢".toast()
                 checkError()
             }
             if (etStartTime.text.isNullOrBlank()) {
-                "你啥时候开始上班啊".toast(requireContext())
+                "你啥时候开始上班啊".toast()
                 checkError()
             }
             if (etEndTime.text.isNullOrBlank()) {
-                "你不下班啊".toast(requireContext())
+                "你不下班啊".toast()
                 checkError()
             }
             if (etReleaseTime.text.isNullOrBlank()) {
-                "你不休息啊".toast(requireContext())
+                "你不休息啊".toast()
             }
             return JobInfoBean(
                 money = etMoney.text.toString().toExInt(),

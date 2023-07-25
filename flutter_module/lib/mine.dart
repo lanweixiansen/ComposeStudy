@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter/AnimsWidget.dart';
 import 'package:my_flutter/route/routeMethods.dart';
 import 'package:my_flutter/setting.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,8 @@ class MineWidget extends StatelessWidget {
         "normal_widget": (context) => const NormalWidget(),
         "setting_widget": (context) => const SettingWidget(),
         "list_title": (context) => const ListTileApp(),
+        "logo_app": (context) => const LogoApp(),
+
       },
       theme: ThemeData(
         useMaterial3: true,
@@ -72,7 +75,7 @@ class _MineTopPage extends StatelessWidget {
         const Padding(
             padding: EdgeInsets.only(top: 17),
             child: CircleAvatar(
-              backgroundImage: AssetImage('assets/img6.jpg'),
+              backgroundImage: AssetImage('assets/image/img6.jpg'),
               radius: 50,
             )),
         const Padding(
@@ -99,7 +102,7 @@ class _MineTopPage extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: const Image(
-              image: AssetImage('assets/img11.jpg'),
+              image: AssetImage('assets/image/img11.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -124,7 +127,7 @@ class _MineBottomPage extends StatelessWidget {
                           // 原生跳转方法
                           model.increment(routeList[index].route);
                           // 本地跳转方法
-                          // Navigator.pushNamed(context, "normal_widget");
+                          Navigator.pushNamed(context, routeList[index].route);
                         },
                         child: Container(
                           padding: const EdgeInsets.only(left: 4, right: 8),
@@ -139,8 +142,8 @@ class _MineBottomPage extends StatelessWidget {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
-                                child: const Image(
-                                  image: AssetImage('assets/img11.jpg'),
+                                child: Image(
+                                  image: AssetImage(routeList[index].image),
                                   fit: BoxFit.cover,
                                 ),
                               ),

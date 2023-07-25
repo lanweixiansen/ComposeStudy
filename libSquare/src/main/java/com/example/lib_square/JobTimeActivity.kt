@@ -39,7 +39,7 @@ class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
         window.statusBarColor = Color.TRANSPARENT
         setStatusBarTextColor(true)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        "摸鱼启动！".toast(this)
+        "摸鱼启动！".toast()
     }
 
     override fun initDate() {
@@ -86,7 +86,7 @@ class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
 
             override fun onFinish() {
                 mBinding.loOver.playAnimation()
-                "打卡下班！".toast(this@JobTimeActivity)
+                "打卡下班！".toast()
             }
         }
         mJobTimer?.start()

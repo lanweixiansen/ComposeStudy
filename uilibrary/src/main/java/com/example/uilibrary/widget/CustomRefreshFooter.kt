@@ -19,13 +19,11 @@ class CustomRefreshFooter @JvmOverloads constructor(
         inflate(context, R.layout.layout_custom_refresh_footer, this)
     }
 
-
     override fun onStateChanged(
         refreshLayout: RefreshLayout,
         oldState: RefreshState,
         newState: RefreshState
     ) {
-
     }
 
     override fun getView(): View {
@@ -36,13 +34,9 @@ class CustomRefreshFooter @JvmOverloads constructor(
         return SpinnerStyle.Translate
     }
 
-    override fun setPrimaryColors(vararg colors: Int) {
+    override fun setPrimaryColors(vararg colors: Int) {}
 
-    }
-
-    override fun onInitialized(kernel: RefreshKernel, height: Int, maxDragHeight: Int) {
-
-    }
+    override fun onInitialized(kernel: RefreshKernel, height: Int, maxDragHeight: Int) {}
 
     override fun onMoving(
         isDragging: Boolean,
@@ -51,24 +45,17 @@ class CustomRefreshFooter @JvmOverloads constructor(
         height: Int,
         maxDragHeight: Int
     ) {
-
     }
 
-    override fun onReleased(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {
+    override fun onReleased(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {}
 
-    }
-
-    override fun onStartAnimator(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {
-
-    }
+    override fun onStartAnimator(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {}
 
     override fun onFinish(refreshLayout: RefreshLayout, success: Boolean): Int {
         return 0
     }
 
-    override fun onHorizontalDrag(percentX: Float, offsetX: Int, offsetMax: Int) {
-
-    }
+    override fun onHorizontalDrag(percentX: Float, offsetX: Int, offsetMax: Int) {}
 
     override fun isSupportHorizontalDrag(): Boolean {
         return false
@@ -81,5 +68,4 @@ class CustomRefreshFooter @JvmOverloads constructor(
     override fun setNoMoreData(noMoreData: Boolean): Boolean {
         return noMoreData
     }
-
 }

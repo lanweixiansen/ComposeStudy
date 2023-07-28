@@ -7,7 +7,7 @@ import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.addMarginToNavigationBar
-import com.example.lib_base.manager.AppManager
+import com.example.lib_base.manager.AppData
 import com.therouter.router.Route
 import io.flutter.embedding.android.FlutterFragment
 
@@ -65,6 +65,13 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
 
     override fun onResume() {
         super.onResume()
+        if (mBinding.bottomView.isMeChecked()) {
+            if (AppData.isLogin()) {
+                mBinding.bottomView.checkMe()
+            } else {
+                mBinding.bottomView.checkHome()
+            }
+        }
         setStatusBarTextColor()
     }
 

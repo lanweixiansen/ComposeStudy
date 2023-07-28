@@ -25,17 +25,22 @@ class MyFlutterActivity : FlutterActivity() {
             when (call.method) {
                 "showToast" -> toast.toast()
                 "onBackPress" -> this.onBackPressed()
-                "logout" -> AppManager.goLogin()
+                // 退出登陆
+                "logout" -> {
+                    AppManager.goLogin()
+                    finish()
+                }
+                // 获取缓存大小
                 "getCacheSize" -> {
                     result.success(FileUtils.getSize(cacheDir))
                 }
-
+                // 清除缓存
                 "clearCacheSize" -> {
                     FileUtils.deleteAllInDir(cacheDir)
                     FileUtils.deleteAllInDir(externalCacheDir)
                     "缓存清理完成".toast()
                 }
-
+                // 版本号
                 "version_name" -> {
                     result.success("v.${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}")
                 }

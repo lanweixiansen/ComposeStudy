@@ -139,7 +139,7 @@ class LogoutItem extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.black),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0))),
+                borderRadius: BorderRadius.circular(12.0))),
             padding: MaterialStateProperty.all(const EdgeInsets.only(
                 left: 100, top: 16, bottom: 16, right: 100))),
         onPressed: onPressed,

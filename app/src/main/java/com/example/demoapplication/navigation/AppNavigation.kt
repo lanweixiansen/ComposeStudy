@@ -19,10 +19,6 @@ object AppNavigation {
     private var mSupportFragmentManager: FragmentManager? = null
 
     private fun commitFragment(fragmentTag: FragmentTag) {
-        if (fragmentTag == FragmentTag.ME && !AppData.isLogin()) {
-            AppManager.goLogin()
-            return
-        }
         mSupportFragmentManager?.let { supportManager ->
             val showFragment: Fragment =
                 if (supportManager.findFragmentByTag(fragmentTag.tag) == null) {
@@ -53,6 +49,10 @@ object AppNavigation {
     }
 
     fun checkedFragment(id: Int) {
+        if (id == R.id.tab_me && !AppData.isLogin()) {
+            AppManager.goLogin()
+            return
+        }
         commitFragment(
             when (id) {
                 R.id.tab_home -> FragmentTag.HOME

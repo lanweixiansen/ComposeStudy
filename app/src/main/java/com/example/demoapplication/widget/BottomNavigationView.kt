@@ -7,6 +7,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.example.demoapplication.R
 import com.example.demoapplication.databinding.BottomItemViewBinding
 import com.example.demoapplication.databinding.ViewBottomNavigationLayoutBinding
@@ -23,7 +24,7 @@ class BottomNavigationView @JvmOverloads constructor(
         TabData(R.string.tab_home, R.drawable.home),
         TabData(R.string.tab_square, R.drawable.square),
         TabData(R.string.tab_news, R.drawable.news),
-        TabData(R.string.tab_me, R.drawable.me),
+        TabData(R.string.tab_me, R.drawable.me, true),
     )
 
     init {
@@ -52,6 +53,7 @@ class BottomNavigationView @JvmOverloads constructor(
         tab.forEachIndexed { index, bottomItemView ->
             bottomItemView.setIcon(mTabData[index].tabIcon)
             bottomItemView.setTab(mTabData[index].tabName)
+            bottomItemView.setCanRefresh(mTabData[index].canRefresh)
         }
     }
 
@@ -74,13 +76,18 @@ class BottomNavigationView @JvmOverloads constructor(
         this.mOnTabChecked = onTabChecked
     }
 
+    fun isMeChecked() = mBinding.tabMe.isChecked()
+
+    fun checkMe() = checkSelect(mBinding.tabMe)
+
+    fun checkHome() = checkSelect(mBinding.tabHome)
 }
 
 class BottomItemView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : LinearLayoutCompat(context, attrs) {
-
     private val mBinding: BottomItemViewBinding
+    private var mCanRefresh = false
 
     init {
         mBinding = BottomItemViewBinding.inflate(LayoutInflater.from(context), this, true)
@@ -102,12 +109,17 @@ class BottomItemView @JvmOverloads constructor(
         mBinding.tvTab.toGone()
     }
 
-    fun canChange() = mBinding.tvTab.isGone
+    fun canChange() = mBinding.tvTab.isGone || mCanRefresh
+    fun isChecked() = mBinding.tvTab.isVisible
+    fun setCanRefresh(canRefresh: Boolean?) {
+        mCanRefresh = canRefresh ?: false
+    }
 }
 
 data class TabData(
     @StringRes
     val tabName: Int,
     @DrawableRes
-    val tabIcon: Int
+    val tabIcon: Int,
+    val canRefresh: Boolean? = false
 )

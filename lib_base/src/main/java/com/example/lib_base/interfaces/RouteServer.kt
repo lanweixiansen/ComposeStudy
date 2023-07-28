@@ -11,7 +11,6 @@ interface RouteServer {
 
     fun goLogin() {
         TheRouter.build(RouteConsts.LOGIN_LOGIN)
-            .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             .navigation()
         AppData.saveToken("")
     }

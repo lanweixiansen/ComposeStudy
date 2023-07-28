@@ -10,7 +10,7 @@ object AnimBean {
 
     val itemData = listOf(
         AnimData("属性动画", RouteConsts.NEWS_ROUTE_OBJECT_ANIM_FRAGMENT),
-        AnimData("属性动画"),
+        AnimData("文字变化", RouteConsts.NEWS_ROUTE_SCROLL_TEXT_FRAGMENT),
         AnimData(""),
         AnimData(""),
         AnimData(""),

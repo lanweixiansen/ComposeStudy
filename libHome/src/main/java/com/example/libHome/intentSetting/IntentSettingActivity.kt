@@ -29,12 +29,12 @@ class IntentSettingActivity : BaseActivity<HomeActivityIntentSettingBinding>() {
     private var view: View? = null
 
     override fun initView() {
-        ActivityCompat.requestPermissions(
-            this, arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ), 100
-        )
+//        ActivityCompat.requestPermissions(
+//            this, arrayOf(
+//                Manifest.permission.READ_EXTERNAL_STORAGE,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            ), 100
+//        )
         mBinding.btnSetting.setOnClickListener {
 //            if (!Settings.canDrawOverlays(this)) {
 //                val intent = Intent(
@@ -47,9 +47,10 @@ class IntentSettingActivity : BaseActivity<HomeActivityIntentSettingBinding>() {
 //                startActivity(Intent(Settings.ACTION_SETTINGS))
 //                showAlertDialog()
 //            }
-            lifecycleScope.launch(Dispatchers.IO) {
-                FileUnitTest.main()
-            }
+//            lifecycleScope.launch(Dispatchers.IO) {
+//                FileUnitTest.main()
+//            }
+            PdfDownloadUtils.startDownLoad(this, "https://raw.githubusercontent.com/chaxiu/ImageProcessor/main/src/main/resources/images/android.png", "png")
         }
     }
 

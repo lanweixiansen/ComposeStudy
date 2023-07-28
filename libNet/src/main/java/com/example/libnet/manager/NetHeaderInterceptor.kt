@@ -10,9 +10,12 @@ class NetHeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val builder = request.newBuilder()
-        val headerMap = mutableMapOf<String, String?>()
-        headerMap["token"] = AppData.getToken()
-        headerMap["system_time"] = (System.currentTimeMillis() / 1000).toString()
-        return chain.proceed(builder.headers(Headers.of(headerMap)).url(request.url()).build())
+        Headers.headersOf(
+            "token",
+            AppData.getToken().toString(),
+            "system_time",
+            (System.currentTimeMillis() / 1000).toString()
+        )
+        return chain.proceed(builder.headers(Headers.headersOf()).url(request.url).build())
     }
 }

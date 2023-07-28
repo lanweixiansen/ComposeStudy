@@ -1,6 +1,5 @@
 package com.example.libHome.intentSetting
 
-import android.graphics.Color
 import com.blankj.utilcode.util.FileUtils
 import com.example.lib_base.ext.toast
 import com.example.lib_base.manager.AppManager
@@ -42,8 +41,8 @@ object FileUnitTest {
             val request = Request.Builder().url(url).build()
             val response = okHttpClient.newCall(request).execute()
 
-            val body = response.body()
-            val responseCode = response.code()
+            val body = response.body
+            val responseCode = response.code
 
             if (responseCode >= HttpURLConnection.HTTP_OK &&
                 responseCode < HttpURLConnection.HTTP_MULT_CHOICE &&
@@ -57,17 +56,5 @@ object FileUnitTest {
                 "下载完成".toast()
             }
         }
-    }
-
-    private fun loadImage(file: File) {}
-
-    class Image(private val image: Array<Array<Color>>) {
-        fun getWidth(): Int {
-            return image[0].size
-        }
-
-        fun getHeight() = image.size
-
-        fun getPixel(x: Int, y: Int) = image[y][x]
     }
 }

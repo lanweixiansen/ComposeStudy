@@ -26,5 +26,6 @@ object RouteConsts {
 
     // lib_news
     const val NEWS_ROUTE_OBJECT_ANIM_FRAGMENT = "/newsLib/ObjectAnimFragment"
+    const val NEWS_ROUTE_SCROLL_TEXT_FRAGMENT = "/newsLib/ScrollTextViewActivity"
 
 }

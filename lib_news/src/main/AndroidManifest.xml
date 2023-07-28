@@ -3,5 +3,6 @@
 
     <application>
         <activity android:name=".fragment.ObjectAnimFragment" />
+        <activity android:name=".fragment.ScrollTextViewActivity"/>
     </application>
 </manifest>

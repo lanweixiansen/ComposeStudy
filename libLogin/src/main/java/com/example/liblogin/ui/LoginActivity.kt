@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>() {
     override fun initObserver() {
         super.initObserver()
         mViewModel.loginSuccess.observe(this) {
-            TheRouter.build("/app/NewMainActivity").navigation()
+            finishAfterTransition()
         }
     }
 

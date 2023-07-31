@@ -19,11 +19,6 @@ dependencyResolutionManagement {
             url "https://storage.flutter-io.cn/download.flutter.io"
         }
     }
-    versionCatalogs {
-        libs {
-            from(files("./libs.versions.toml"))
-        }
-    }
 }
 
 rootProject.name = "Demo Application"

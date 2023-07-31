@@ -68,7 +68,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
         mViewModel.getBanner()
     }
 
-
     override fun initObserver() {
         super.initObserver()
         mViewModel.mComplete.observe(viewLifecycleOwner) {

@@ -15,6 +15,6 @@ dependencies {
     androidTestImplementation libs.extJunit
     androidTestImplementation libs.espresso
     kapt libs.theRouterApt
-    debugCompileOnly 'com.example.flutter_module:flutter_debug:1.0'
-    releaseCompileOnly 'com.example.flutter_module:flutter_release:1.0'
+    debugCompileOnly(libs.flutterDebug)
+    releaseCompileOnly(libs.flutterRelease)
 }

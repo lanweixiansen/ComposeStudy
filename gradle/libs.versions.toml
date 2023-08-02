@@ -32,6 +32,8 @@ cardStackVersion = "2.3.4"
 leakcanaryVersion = "2.11"
 appcompatVersion = "1.6.1"
 materialVersion = "1.9.0"
+flutterVersion = "1.0"
+blankjVersion = "1.31.1"
 
 #依赖库
 [libraries]
@@ -66,6 +68,9 @@ roomCompiler = { module = "androidx.room:room-compiler", version.ref = "roomVers
 theRouterApt = { module = "cn.therouter:apt", version.ref = "theRouterVersion" }
 therouter = { module = "cn.therouter:router", version.ref = "theRouterVersion" }
 mmkv = { module = "com.tencent:mmkv", version.ref = "mmkvVersion" }
+flutterDebug = { module = "com.example.flutter_module:flutter_debug", version.ref = "flutterVersion" }
+flutterRelease = { module = "com.example.flutter_module:flutter_release", version.ref = "flutterVersion" }
+blankj = { module = "com.blankj:utilcodex", version.ref = "blankjVersion" }
 
 [bundles]
 room = ["room", "roomCompiler"]

@@ -9,9 +9,13 @@ import com.example.libnet.viewModel.BaseViewModel
 class LoginViewModel : BaseViewModel() {
     private val _loginSuccess: MutableLiveData<Boolean> = MutableLiveData()
     val loginSuccess: LiveData<Boolean> = _loginSuccess
+    val loginError: MutableLiveData<Boolean> = MutableLiveData()
 
     fun login(phone: String?, password: String?) {
-        checkLogin(phone, password) { return }
+        checkLogin(phone, password) {
+            loginError.value = true
+            return
+        }
         _loginSuccess.value = true
         "登录成功".toast()
         AppData.saveToken("token")

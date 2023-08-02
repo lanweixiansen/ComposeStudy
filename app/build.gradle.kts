@@ -80,7 +80,7 @@ dependencies {
     implementation(project(":libSquare"))
     implementation(project(":lib_news"))
     implementation(project(":lib_me"))
-    implementation(project(":uilibrary"))
+    implementation(project(":uiLibrary"))
     implementation(project(":libLogin"))
     implementation(project(":libNet"))
     implementation(libs.coreKtx)
@@ -94,6 +94,6 @@ dependencies {
     androidTestImplementation(libs.espresso)
     implementation(libs.appcompat)
     implementation(libs.material)
-    debugImplementation("com.example.flutter_module:flutter_debug:1.0")
-    releaseImplementation("com.example.flutter_module:flutter_release:1.0")
+    debugImplementation(libs.flutterDebug)
+    releaseImplementation(libs.flutterRelease)
 }

@@ -14,7 +14,7 @@ android {
 }
 
 dependencies {
-    api project(path: ':uilibrary')
+    api project(path: ':uiLibrary')
     implementation libs.appcompat
     implementation libs.material
     implementation libs.coreKtx

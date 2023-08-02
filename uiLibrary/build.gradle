@@ -15,6 +15,6 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.extJunit
     androidTestImplementation libs.espresso
-    api 'com.blankj:utilcodex:1.31.1'
+    api(libs.blankj)
     api libs.glide
 }

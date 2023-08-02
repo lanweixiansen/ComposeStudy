@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/login_transition"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+
+        <OnSwipe
+            motion:touchRegionId="@id/login"
+            motion:touchAnchorId="@id/login"
+            motion:dragDirection="dragRight"/>
+        <KeyFrameSet >
+            <KeyAttribute
+                motion:motionTarget="@+id/login"
+                motion:framePosition="78"
+                android:alpha="1" />
+            <KeyAttribute
+                motion:motionTarget="@+id/loading_progress"
+                motion:framePosition="78"
+                android:alpha="0" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/line_bottom"
+            motion:layout_constraintEnd_toEndOf="@+id/layout_password"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="@+id/layout_password"
+            motion:layout_constraintTop_toBottomOf="@+id/layout_password" />
+        <Constraint
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginStart="2dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/btn_login"
+            motion:layout_constraintStart_toStartOf="@+id/btn_login"
+            motion:layout_constraintTop_toTopOf="@+id/btn_login" />
+        <Constraint
+            android:id="@+id/loading_progress"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@+id/btn_login"
+            motion:layout_constraintEnd_toEndOf="@+id/btn_login"
+            motion:layout_constraintStart_toStartOf="@+id/btn_login"
+            motion:layout_constraintTop_toTopOf="@+id/btn_login"
+            android:alpha="0" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginEnd="2dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@+id/btn_login"
+            motion:layout_constraintEnd_toEndOf="@+id/btn_login"
+            motion:layout_constraintTop_toTopOf="@+id/btn_login"
+            motion:transitionEasing="linear"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/loading_progress"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:visibility="visible"
+            motion:layout_constraintStart_toStartOf="@+id/btn_login"
+            motion:layout_constraintBottom_toBottomOf="@+id/btn_login"
+            motion:layout_constraintEnd_toEndOf="@+id/btn_login"
+            motion:layout_constraintTop_toTopOf="@+id/btn_login" />
+        <Constraint
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/line_bottom"
+            motion:layout_constraintEnd_toEndOf="@+id/layout_password"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="@+id/layout_password"
+            motion:layout_constraintTop_toBottomOf="@+id/layout_password" />
+    </ConstraintSet>
+</MotionScene>

@@ -21,7 +21,6 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.extJunit
     androidTestImplementation libs.espresso
-    api libs.lifecycleRuntimeKtx
     api libs.eventBus
     api libs.fragmentKtx
     kapt libs.glideCompiler

@@ -27,13 +27,9 @@
     <ConstraintSet android:id="@+id/start">
         <Constraint
             android:id="@+id/btn_login"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/line_bottom"
-            motion:layout_constraintEnd_toEndOf="@+id/layout_password"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="@+id/layout_password"
-            motion:layout_constraintTop_toBottomOf="@+id/layout_password" />
+            motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/login"
             android:layout_width="wrap_content"
@@ -77,12 +73,8 @@
             motion:layout_constraintTop_toTopOf="@+id/btn_login" />
         <Constraint
             android:id="@+id/btn_login"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/line_bottom"
-            motion:layout_constraintEnd_toEndOf="@+id/layout_password"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="@+id/layout_password"
-            motion:layout_constraintTop_toBottomOf="@+id/layout_password" />
+            motion:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
 </MotionScene>

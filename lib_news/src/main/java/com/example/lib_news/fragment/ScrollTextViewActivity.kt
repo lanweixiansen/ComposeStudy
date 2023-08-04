@@ -19,6 +19,7 @@ class ScrollTextViewActivity : BaseActivity<NewsActivityScrollTextviewBinding>()
         super.initListener()
         mBinding.btnChange.setOnClickListener {
             mBinding.text1.setTextNum(mBinding.etNum.text.toString().toInt())
+            mBinding.text2.setText(mBinding.etNum.text.toString())
         }
     }
 }

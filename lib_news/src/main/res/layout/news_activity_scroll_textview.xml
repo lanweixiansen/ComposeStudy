@@ -10,7 +10,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:topBarTitle="数字更新" />
 
-    <com.example.lib_news.widget.ScrollTextView
+    <com.example.uilibrary.widget.ChangeTextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,6 +22,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.uilibrary.widget.ScrollTextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:sl_textColor="#000000"
+        app:sl_textSize="28sp"
+        app:sl_textStyle="bold" />
 
     <EditText
         android:id="@+id/et_num"
@@ -39,12 +51,12 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:paddingVertical="9dp"
         android:text="确定"
         android:textColor="#333333"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/et_num"
         app:layout_constraintEnd_toEndOf="@+id/et_num" />
 

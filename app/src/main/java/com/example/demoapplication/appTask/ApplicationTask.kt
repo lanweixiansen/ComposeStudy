@@ -2,18 +2,14 @@ package com.example.demoapplication.appTask
 
 import android.app.Application
 import android.content.Context
-import android.content.Intent
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
-import com.example.lib_me.MyFlutterActivity
-import com.example.uilibrary.widget.CustomRefreshFooter
 import com.example.uilibrary.widget.CustomRefreshHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
 import com.therouter.TheRouter
 import com.therouter.app.flowtask.lifecycle.FlowTask
 import com.therouter.flow.TheRouterFlowTask
-import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.MethodChannel
@@ -77,39 +73,7 @@ object ApplicationTask {
         AppManager.init(context as Application)
     }
 
-    /**
-     * Flutter引擎初始化
-     */
-    @FlowTask("init_flutter", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
-    @JvmStatic
-    fun initFlutterEngin(context: Context) {
-        val flutterEngine = FlutterEngine(context)
-        flutterEngine.dartExecutor.executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
-        )
-        FlutterEngineCache
-            .getInstance()
-            .put("my_engine_id", flutterEngine)
-    }
-
-
-    fun initFlutterChannel(context: Context) {
-        val flutterEngine = FlutterEngineCache.getInstance().get("my_engine_id")
-        val channel = flutterEngine?.dartExecutor?.let {
-            MethodChannel(
-                it,
-                "dev.flutter.example/route"
-            )
-        }
-        channel?.setMethodCallHandler { call, _ ->
-            val route: String = call.argument<String>("data").toString()
-            when (call.method) {
-                "routeActivity" -> {
-                    val intent = Intent(context, MyFlutterActivity::class.java)
-                    intent.putExtra("route", route)
-                    context.startActivity(intent)
-                }
-            }
-        }
+    fun initFlutterChannel(topBindings: EngineBindings) {
+        FlutterEngineCache.getInstance().put("MeFragment", topBindings.engine)
     }
 }

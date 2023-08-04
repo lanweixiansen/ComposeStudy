@@ -11,7 +11,7 @@ import android.graphics.RectF
 import android.graphics.Shader
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import com.example.lib_base.utils.dp2px
+import com.example.uilibrary.uiUtils.dp2px
 
 
 class CustomShapeView @JvmOverloads constructor(

@@ -8,6 +8,7 @@ import 'package:my_flutter/setting.dart';
 import 'package:provider/provider.dart';
 
 import 'AboutMe.dart';
+import 'AnimsWidget.dart';
 import 'mine.dart';
 
 void main() {
@@ -20,6 +21,21 @@ void main() {
     ),
   );
 }
+
+@pragma('vm:entry-point')
+void ios_page() => runApp(const IosWidget());
+
+@pragma('vm:entry-point')
+void normal_widget() => runApp(const NormalWidget());
+
+@pragma('vm:entry-point')
+void setting_widget() => runApp(const SettingWidget());
+
+@pragma('vm:entry-point')
+void list_title() => runApp(const ListTileApp());
+
+@pragma('vm:entry-point')
+void logo_app() => runApp(const LogoApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

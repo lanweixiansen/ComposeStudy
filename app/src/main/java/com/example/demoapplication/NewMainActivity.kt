@@ -2,6 +2,7 @@ package com.example.demoapplication
 
 import android.view.KeyEvent
 import com.example.demoapplication.appTask.ApplicationTask
+import com.example.demoapplication.appTask.EngineBindings
 import com.example.demoapplication.databinding.ActivityNewMainBinding
 import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
@@ -13,6 +14,9 @@ import io.flutter.embedding.android.FlutterFragment
 
 @Route(path = "/app/NewMainActivity")
 class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
+    private val mainBindings: EngineBindings by lazy {
+        EngineBindings(activity = this, entrypoint = "main")
+    }
 
     override fun initView() {
         // 添加TheRouter拦截器
@@ -24,7 +28,8 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
             AppNavigation.checkedFragment(it)
         }
         initStatusBar()
-        ApplicationTask.initFlutterChannel(this)
+        ApplicationTask.initFlutterChannel(mainBindings)
+        mainBindings.attach()
     }
 
     private fun initStatusBar() {
@@ -78,6 +83,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
     override fun onDestroy() {
         AppNavigation.finishInit()
         super.onDestroy()
+        mainBindings.detach()
     }
 
     override fun addTopMargin() = false

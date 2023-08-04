@@ -1,26 +1,28 @@
-package com.example.lib_me
+package com.example.demoapplication
 
+import android.content.Context
 import android.os.Bundle
 import com.blankj.utilcode.util.FileUtils
+import com.example.demoapplication.appTask.EngineBindings
 import com.example.lib_base.BuildConfig
 import com.example.lib_base.ext.toast
 import com.example.lib_base.manager.AppManager
 import io.flutter.embedding.android.FlutterActivity
-import io.flutter.plugin.common.MethodChannel
+import io.flutter.embedding.engine.FlutterEngine
 
 class MyFlutterActivity : FlutterActivity() {
+    private lateinit var mFlutterEngine: EngineBindings
+
+    override fun provideFlutterEngine(context: Context): FlutterEngine? {
+        val route = intent.getStringExtra("route").toString()
+        mFlutterEngine = EngineBindings(this, route)
+        return mFlutterEngine.engine
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        withNewEngine().initialRoute(intent.getStringExtra("route").toString())
-        val channel = flutterEngine?.dartExecutor?.let {
-            MethodChannel(
-                it,
-                "dev.flutter.example/route"
-            )
-        }
-        channel?.setMethodCallHandler { call, result ->
+        val channel = mFlutterEngine.channel
+        channel.setMethodCallHandler { call, result ->
             val toast: String = call.argument<String>("toast").toString()
             when (call.method) {
                 "showToast" -> toast.toast()
@@ -46,5 +48,10 @@ class MyFlutterActivity : FlutterActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mFlutterEngine.detach()
     }
 }

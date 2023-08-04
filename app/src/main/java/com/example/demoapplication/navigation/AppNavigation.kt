@@ -74,18 +74,7 @@ object AppNavigation {
     }
 
     private fun createdFlutterFragment(): FlutterFragment {
-        var fragment: FlutterFragment? = null
-        kotlin.runCatching {
-            FlutterFragment.withCachedEngine("my_engine_id").renderMode(
-                RenderMode.texture
-            ).build() as FlutterFragment
-        }.onFailure {
-            ApplicationTask.initFlutterEngin(AppManager.getApplicationContext())
-            fragment = FlutterFragment.withNewEngine().renderMode(RenderMode.texture).build()
-        }.onSuccess {
-            fragment = it
-        }
-        return fragment!!
+       return FlutterFragment.withCachedEngine("MeFragment").build<FlutterFragment>()
     }
 
     fun finishInit() {

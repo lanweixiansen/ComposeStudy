@@ -46,4 +46,20 @@
     <attr name="riv_border_width" format="dimension" />
     <attr name="riv_radius" format="dimension" />
 
+
+    <declare-styleable name="ScrollTextView">
+        <attr name="sl_textColor" />
+        <attr name="sl_textSize" />
+        <attr name="sl_text" />
+        <attr name="sl_textStyle" />
+    </declare-styleable>
+    <attr name="sl_textSize" format="dimension" />
+    <attr name="sl_textColor" format="color" />
+    <attr name="sl_textStyle" format="enum">
+        <enum name="bold" value="1" />
+        <enum name="normal" value="0" />
+    </attr>
+    <attr name="sl_text" format="string" />
+
+
 </resources>

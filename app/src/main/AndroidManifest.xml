@@ -45,6 +45,13 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".MyFlutterActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

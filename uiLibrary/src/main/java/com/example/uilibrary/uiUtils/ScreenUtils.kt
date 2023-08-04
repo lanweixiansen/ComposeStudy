@@ -1,4 +1,4 @@
-package com.example.lib_base.utils
+package com.example.uilibrary.uiUtils
 
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ScreenUtils

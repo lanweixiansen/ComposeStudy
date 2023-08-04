@@ -11,8 +11,8 @@ class LoginViewModel : BaseViewModel() {
     val loginSuccess: LiveData<Boolean> = _loginSuccess
     val loginError: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun login(phone: String?, password: String?) {
-        checkLogin(phone, password) {
+    fun login(phone: String?, password: String?, checked: Boolean) {
+        checkLogin(phone, password, checked) {
             loginError.value = true
             return
         }
@@ -21,13 +21,29 @@ class LoginViewModel : BaseViewModel() {
         AppData.saveToken("token")
     }
 
-    private inline fun checkLogin(phone: String?, password: String?, checkError: () -> Unit) {
-        if (phone.isNullOrBlank()) {
-            "请输入手机号".toast()
-            checkError()
-        } else if (password.isNullOrBlank()) {
-            "请输入密码".toast()
-            checkError()
+    private inline fun checkLogin(
+        phone: String?,
+        password: String?,
+        checked: Boolean,
+        checkError: () -> Unit
+    ) {
+        when {
+            !checked -> {
+                "请先阅读并同意用户协议和隐私政策".toast()
+                checkError()
+            }
+
+            phone.isNullOrBlank() -> {
+                "请输入手机号".toast()
+                checkError()
+            }
+
+            password.isNullOrBlank() -> {
+                "请输入密码".toast()
+                checkError()
+            }
+
+            else -> {}
         }
     }
 

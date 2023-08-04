@@ -1,15 +1,14 @@
-package com.example.lib_news.widget
+package com.example.uilibrary.widget
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 
-class ScrollTextView @JvmOverloads constructor(
+class ChangeTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatTextView(context, attrs), DefaultLifecycleObserver {
     private var mNowNum = 0

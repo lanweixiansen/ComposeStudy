@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
-import com.example.lib_base.utils.dp2px
+import com.example.uilibrary.uiUtils.dp2px
 import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeDialiogBottomShareBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog

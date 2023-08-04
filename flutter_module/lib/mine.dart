@@ -127,7 +127,7 @@ class _MineBottomPage extends StatelessWidget {
                           // 原生跳转方法
                           model.increment(routeList[index].route);
                           // 本地跳转方法
-                          Navigator.pushNamed(context, routeList[index].route);
+                          // Navigator.pushNamed(context, routeList[index].route);
                         },
                         child: Container(
                           padding: const EdgeInsets.only(left: 4, right: 8),

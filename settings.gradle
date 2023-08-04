@@ -21,7 +21,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Demo Application"
+rootProject.name = "demo-code"
+includeBuild("build-logic")
 include ':app'
 include ':lib_base'
 include ':libHome'

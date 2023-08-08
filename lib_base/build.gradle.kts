@@ -15,9 +15,6 @@ android {
 
 dependencies {
     api(project(":uiLibrary"))
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.coreKtx)
     api(libs.eventBus)
     api(libs.fragmentKtx)
     kapt(libs.glideCompiler)

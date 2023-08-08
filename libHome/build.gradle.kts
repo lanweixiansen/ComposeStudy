@@ -10,9 +10,6 @@ android {
 dependencies {
     implementation(project(":lib_base"))
     implementation(project(":libNet"))
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.coreKtx)
     kapt(libs.roomCompiler)
     kapt(libs.theRouterApt)
 }

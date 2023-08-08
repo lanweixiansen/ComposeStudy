@@ -12,9 +12,6 @@ android {
 
 dependencies {
     implementation(project(":lib_base"))
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.coreKtx)
     api(libs.retrofit2)
     implementation(libs.loggingInterceptor)
     implementation(libs.moshiKotlin)

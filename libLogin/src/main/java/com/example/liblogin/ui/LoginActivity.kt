@@ -8,12 +8,15 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.SpanUtils
+import com.blankj.utilcode.util.SpanUtils.ALIGN_BASELINE
+import com.blankj.utilcode.util.SpanUtils.ALIGN_CENTER
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.toast
 import com.example.lib_base.utils.RouteConsts
 import com.example.liblogin.LoginViewModel
 import com.example.liblogin.R
 import com.example.liblogin.databinding.LoginActivityLoginBinding
+import com.example.uilibrary.uiUtils.dp2px
 import com.therouter.router.Route
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

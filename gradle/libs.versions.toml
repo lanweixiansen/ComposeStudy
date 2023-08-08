@@ -34,12 +34,9 @@ appcompatVersion = "1.6.1"
 materialVersion = "1.9.0"
 flutterVersion = "1.0"
 blankjVersion = "1.31.1"
-agp = "8.0.1"
+agp = "8.1.0"
 org-jetbrains-kotlin-android = "1.7.20"
 kotlin = "1.8.22"
-androidGradlePlugin = "7.3.0"
-ksp = "1.8.22-1.0.11"
-protobufPlugin = "0.9.3"
 
 #依赖库
 [libraries]
@@ -77,12 +74,13 @@ mmkv = { module = "com.tencent:mmkv", version.ref = "mmkvVersion" }
 flutterDebug = { module = "com.example.flutter_module:flutter_debug", version.ref = "flutterVersion" }
 flutterRelease = { module = "com.example.flutter_module:flutter_release", version.ref = "flutterVersion" }
 blankj = { module = "com.blankj:utilcodex", version.ref = "blankjVersion" }
-android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [bundles]
 room = ["room", "roomCompiler"]
 
 [plugins]
-com-android-library = { id = "com.android.library", version.ref = "agp" }
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+the_router = {id = "cn.therouter", version.ref = "theRouterVersion"}

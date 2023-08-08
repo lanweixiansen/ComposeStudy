@@ -1,6 +1,6 @@
 package com.example.demoapplication
 
-import androidx.compose.ui.graphics.Color
+import android.graphics.Color
 import com.example.lib_base.manager.AppManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -39,8 +39,8 @@ class FileUnitTest {
             val request = Request.Builder().url(url).build()
             val response = okHttpClient.newCall(request).execute()
 
-            val body = response.body()
-            val responseCode = response.code()
+            val body = response.body
+            val responseCode = response.code
 
             if (responseCode >= HttpURLConnection.HTTP_OK &&
                 responseCode < HttpURLConnection.HTTP_MULT_CHOICE &&

@@ -19,5 +19,6 @@
         <activity android:name="com.example.libHome.room.RoomActivity" />
         <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity" />
         <activity android:name="com.example.libHome.calendar.CalendarRemindActivity" />
+        <activity android:name="com.example.libHome.span.ReplacementSpanActivity"/>
     </application>
 </manifest>

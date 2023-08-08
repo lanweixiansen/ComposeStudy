@@ -15,7 +15,7 @@ val itemData = listOf(
     ItemData("Room & net实现数据持久化", RouteConsts.HOME_ROUTER_ROOM_ACTIVITY),
     ItemData("跳转并提示开启权限", RouteConsts.HOME_ROUTER_INTENT_SETTING_ACTIVITY),
     ItemData("日历提醒", RouteConsts.HOME_ROUTER_CALENDAR_REMIND_ACTIVITY),
-    ItemData("Intent实现转场动画"),
+    ItemData("textSpan", RouteConsts.HOME_ROUTER_REPLACEMENT_SPAN_ACTIVITY),
     ItemData("Compose基本布局"),
     ItemData("Compose列表展示，图片加载"),
     ItemData("Compose & ViewModel"),

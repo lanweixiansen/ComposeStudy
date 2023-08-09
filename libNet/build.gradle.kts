@@ -6,7 +6,7 @@ android {
     namespace = "com.example.libnet"
 
     defaultConfig {
-        buildConfigField ("String", "BASE_URL", "\"https://www.wanandroid.com\"")
+        buildConfigField("String", "BASE_URL", "\"${project.active["baseUrl"]}\"")
     }
 }
 

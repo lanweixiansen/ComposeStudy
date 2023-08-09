@@ -7,10 +7,10 @@ android {
 }
 
 dependencies {
-    api (libs.lottie)
-    api (libs.smartRefresh)
-    api (libs.adapterHelper)
-    api (libs.lifecycleRuntimeKtx)
+    api(libs.lottie)
+    api(libs.smartRefresh)
+    api(libs.adapterHelper)
+    api(libs.lifecycleRuntimeKtx)
     api(libs.blankj)
-    api (libs.glide)
+    api(libs.glide)
 }

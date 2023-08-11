@@ -12,6 +12,7 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.style.ReplacementSpan
 import android.widget.TextView
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.example.uilibrary.uiUtils.dp2px
 
@@ -25,6 +26,7 @@ class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
     private var mRightMargin = dp2px(2f) //右边距
     private var mTextSize = 0f //文字大小
     private var mTextColorResId = 0 //文字颜色
+    private var mIsBgFull = true
 
     init {
         //初始化默认数值
@@ -75,6 +77,13 @@ class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
         mRightMargin = dp2px(rightMarginDpValue.toFloat())
     }
 
+    fun setStyle(@ColorRes textColor: Int, bgIsFull: Boolean, bgRadiusDp: Int) {
+        if (textColor != -1)
+            mTextColorResId = textColor
+        mIsBgFull = bgIsFull
+        mRadius = dp2px(bgRadiusDp).toFloat()
+    }
+
     /**
      * 设置宽度，宽度=背景宽度+右边距
      */
@@ -102,7 +111,7 @@ class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
         //画背景
         val bgPaint = Paint()
         bgPaint.color = ContextCompat.getColor(context, mBgColorResId)
-        bgPaint.style = Paint.Style.FILL
+        bgPaint.style = if (mIsBgFull) Paint.Style.FILL else Paint.Style.STROKE
         bgPaint.isAntiAlias = true
         val metrics = paint.fontMetrics
         val textHeight = metrics.descent - metrics.ascent

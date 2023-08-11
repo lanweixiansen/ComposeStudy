@@ -115,4 +115,8 @@ class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
         mMoneyTimer?.cancel()
         super.onDestroy()
     }
+
+    override fun addTopMargin(): Boolean {
+        return false
+    }
 }

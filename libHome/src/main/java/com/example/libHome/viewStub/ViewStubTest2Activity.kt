@@ -17,8 +17,6 @@ class ViewStubTest2Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         setContentView(HomeActivityViewStubTest2Binding.inflate(layoutInflater).root)
         lifecycleScope.launch {
             delay(100L)

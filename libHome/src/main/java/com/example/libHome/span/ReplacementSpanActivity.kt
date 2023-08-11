@@ -11,6 +11,7 @@ class ReplacementSpanActivity : BaseActivity<HomeActivityReplacementSpanBinding>
     private var mTextSpan: TextSpanUtils? = null
     override fun initView() {
         mTextSpan = mBinding.tvSpan.withTextSpan()
+        mTextSpan?.addTextAroundSpan(this, com.example.uilibrary.R.mipmap.img1)
         mTextSpan?.created()
     }
 
@@ -18,12 +19,21 @@ class ReplacementSpanActivity : BaseActivity<HomeActivityReplacementSpanBinding>
 
     override fun initListener() {
         super.initListener()
-        mBinding.btnAddIcon.setOnClickListener {
-            mTextSpan?.addIconTextSpan(this, com.example.uilibrary.R.color.color_FFB12742, "置顶")?.created(false)
-        }
-        mBinding.btnAddImg.setOnClickListener {
-            mTextSpan?.addImgSpan(this, R.mipmap.gn_live_label_vip)?.created(false)
+        with(mBinding) {
+            btnAddIcon.setOnClickListener {
+                mTextSpan?.addIconTextSpan(
+                    this@ReplacementSpanActivity,
+                    com.example.uilibrary.R.color.color_FFB12742,
+                    "置顶"
+                )?.created()
+            }
+            btnAddImg.setOnClickListener {
+                mTextSpan?.addImgSpan(this@ReplacementSpanActivity, R.mipmap.gn_live_label_vip)
+                    ?.created()
+            }
+            btnRemove.setOnClickListener {
+                mTextSpan?.previous()
+            }
         }
     }
-
 }

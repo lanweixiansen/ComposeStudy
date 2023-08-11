@@ -62,6 +62,14 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>(), MotionLayout.Tr
         mBinding.btnClose.setOnClickListener {
             finishAfterTransition()
         }
+        mBinding.checkedPrivacy.setOnClickListener {
+            mBinding.checkedPrivacy.isSelected = !mBinding.checkedPrivacy.isSelected
+            if (mBinding.checkedPrivacy.isSelected) {
+                mBinding.checkedPrivacy.playAnimation()
+            } else {
+                mBinding.checkedPrivacy.progress = 0f
+            }
+        }
     }
 
     override fun initObserver() {
@@ -79,12 +87,10 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>(), MotionLayout.Tr
         finishAfterTransition()
     }
 
-    override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
-
-    }
+    override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
 
     override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
-        if (p3 == 0f) {
+        if (p3 <= 2f) {
             mBinding.motionParent.enableTransition(R.id.login_transition, true)
         }
     }
@@ -96,7 +102,7 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>(), MotionLayout.Tr
                 mViewModel.login(
                     mBinding.etAccount.text.toString(),
                     mBinding.etPassword.text.toString(),
-                    mBinding.checkedPrivacy.isChecked
+                    mBinding.checkedPrivacy.isSelected
                 )
             }
         }

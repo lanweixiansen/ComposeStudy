@@ -1,4 +1,4 @@
-import java.net.URI
+
 
 pluginManagement {
     repositories {
@@ -8,6 +8,8 @@ pluginManagement {
     }
 }
 
+val repoPath = File(settings.rootDir, "flutter_module/build/host/outputs/repo")
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -15,10 +17,10 @@ dependencyResolutionManagement {
         mavenCentral()
         maven {
             // win 前需要加 / , mac前不用
-            url = URI("file:/flutter_module/build/host/outputs/repo")
+            url = uri(repoPath.absolutePath)
         }
         maven {
-            url = URI("https://storage.flutter-io.cn/download.flutter.io")
+            url = uri("https://storage.flutter-io.cn/download.flutter.io")
         }
     }
 }

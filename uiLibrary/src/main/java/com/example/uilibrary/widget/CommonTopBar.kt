@@ -2,6 +2,7 @@ package com.example.uilibrary.widget
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.appcompat.widget.LinearLayoutCompat
@@ -15,12 +16,15 @@ class CommonTopBar @JvmOverloads constructor(
     private val typeArray = context.obtainStyledAttributes(attrs, R.styleable.CommonTopBar)
 
     init {
+        orientation = VERTICAL
+        setBackgroundColor(Color.WHITE)
         mBinding = CommonTopBarLayoutBinding.bind(
             LayoutInflater.from(context).inflate(R.layout.common_top_bar_layout, this, true)
         )
         val mTitle = typeArray.getString(R.styleable.CommonTopBar_topBarTitle)
         mBinding.tvTitle.text = mTitle
         initListener()
+        typeArray.recycle()
     }
 
     private fun initListener() {

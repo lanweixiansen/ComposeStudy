@@ -12,6 +12,7 @@ android {
 
 dependencies {
     implementation(project(":lib_base"))
+    api(libs.airbnb.mavericks)
     api(libs.retrofit2)
     implementation(libs.loggingInterceptor)
     implementation(libs.moshiKotlin)

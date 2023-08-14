@@ -17,6 +17,8 @@ object RouteConsts {
     const val HOME_ROUTER_INTENT_SETTING_ACTIVITY = "/homeLib/IntentSettingActivity"
     const val HOME_ROUTER_CALENDAR_REMIND_ACTIVITY = "/homeLib/CalendarRemindActivity"
     const val HOME_ROUTER_REPLACEMENT_SPAN_ACTIVITY = "/homeLib/ReplacementSpanActivity"
+    const val HOME_ROUTER_MAVERICKS_ACTIVITY = "/homeLib/MavericksActivity"
+    const val HOME_ROUTER_EPOXY_ACTIVITY = "/homeLib/EpoxyActivity"
 
     // lib_me
     const val ROUTE_ME_TEST = "/meLib/MeTest"

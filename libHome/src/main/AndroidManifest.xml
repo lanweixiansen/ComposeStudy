@@ -20,5 +20,7 @@
         <activity android:name="com.example.libHome.intentSetting.IntentSettingActivity" />
         <activity android:name="com.example.libHome.calendar.CalendarRemindActivity" />
         <activity android:name="com.example.libHome.span.ReplacementSpanActivity"/>
+        <activity android:name="com.example.libHome.mavericks.MavericksActivity"/>
+        <activity android:name="com.example.libHome.epoxy.EpoxyActivity"/>
     </application>
 </manifest>

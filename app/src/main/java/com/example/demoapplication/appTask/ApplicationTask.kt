@@ -2,6 +2,7 @@ package com.example.demoapplication.appTask
 
 import android.app.Application
 import android.content.Context
+import com.airbnb.mvrx.Mavericks
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
 import com.example.uilibrary.widget.CustomRefreshHeader
@@ -47,30 +48,20 @@ object ApplicationTask {
     @FlowTask("init_no_privacy_sdk", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
     @JvmStatic
     fun initNoPrivacySdk(context: Context) {
+        AppManager.init(context as Application)
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
             CustomRefreshHeader(ctx)
         }
-//        SmartRefreshLayout.setDefaultRefreshFooterCreator { ctx, _ ->
-//            CustomRefreshFooter(context = ctx)
-//        }
+        Mavericks.initialize(context)
     }
 
     /**
-     * 初始化MMKV
+     * 初始化mmkv
      */
     @FlowTask("init_mmkv", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
     @JvmStatic
     fun initMMKV(context: Context) {
         MMKV.initialize(context)
-    }
-
-    /**
-     * 初始化APP管理类
-     */
-    @FlowTask("init_app_manager", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
-    @JvmStatic
-    fun initAppManager(context: Context) {
-        AppManager.init(context as Application)
     }
 
     fun initFlutterChannel(topBindings: EngineBindings) {

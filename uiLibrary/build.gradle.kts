@@ -7,6 +7,7 @@ android {
 }
 
 dependencies {
+    api(libs.airbnb.expory)
     api(libs.lottie)
     api(libs.smartRefresh)
     api(libs.adapterHelper)

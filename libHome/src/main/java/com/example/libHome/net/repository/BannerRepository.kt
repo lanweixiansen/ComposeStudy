@@ -17,8 +17,8 @@ class BannerRepository {
         }
     }
 
-    private suspend fun getBannerList(): MutableList<Banner> {
-        var list = mutableListOf<Banner>()
+    private suspend fun getBannerList(): List<Banner> {
+        var list = listOf<Banner>()
         kotlin.runCatching {
             mHomeApi.getHomeBanner().data
         }.onSuccess {

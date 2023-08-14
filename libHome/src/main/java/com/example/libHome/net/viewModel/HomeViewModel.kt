@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : BaseViewModel() {
     private val repository = BannerRepository()
-    val mBanner: MutableLiveData<MutableList<Banner>> = MutableLiveData()
+    val mBanner: MutableLiveData<List<Banner>> = MutableLiveData()
     val mComplete: MutableLiveData<Boolean> = MutableLiveData()
     val mDBBanner: LiveData<List<HomeBannerEntry>> =
         HomeBannerDataBase.newInstance().getBannerDao().getPlants()

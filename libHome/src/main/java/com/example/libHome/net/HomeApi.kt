@@ -9,12 +9,12 @@ interface HomeApi {
     /**
      * 首页轮播图
      */
-    @GET("/banner/json")
+    @GET("banner/json")
     suspend fun getHomeBanner(): BaseResponse<List<Banner>?>
 
     /**
      * 首页轮播图(Mavericks)
      */
-    @GET("/banner/json")
+    @GET("banner/json")
     suspend fun getHomeBanner2(): TestBannerBean
 }

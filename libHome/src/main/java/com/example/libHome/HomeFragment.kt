@@ -9,9 +9,10 @@ import com.example.libHome.bottomSheetDialog.BottomShareDialog
 import com.example.libHome.data.itemData
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
-import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
+import com.example.uilibrary.uiUtils.dp2px
+import com.example.uilibrary.uiUtils.onHeaderMoving
 import com.example.uilibrary.widget.FooterAdapter
 import com.example.uilibrary.widget.HeaderAdapter
 import com.therouter.TheRouter
@@ -25,7 +26,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
 
     override fun initView() {
         mBind = HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
-        mBinding.home.addMarginToEqualStatusBar()
         with(mBind) {
             mAdapter = ItemAdapter()
             mHelper = QuickAdapterHelper.Builder(mAdapter)
@@ -40,7 +40,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
 
     override fun initDate() {
         mAdapter.submitList(itemData)
-//        loadData()
     }
 
     override fun initListener() {
@@ -48,23 +47,22 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
         mBind.smartRefresh.setOnRefreshListener {
             loadData()
         }
-        mAdapter.setOnItemClickListener { adapter, view, position ->
+        mBind.smartRefresh.onHeaderMoving {
+            mBind.lottieView.layoutParams = mBind.lottieView.layoutParams.apply {
+                height = dp2px(220) + it
+            }
+        }
+        mAdapter.setOnItemClickListener { adapter, _, position ->
             val bean = adapter.getItem(position)
             if (bean?.route.isNullOrBlank()) {
                 BottomShareDialog(requireContext()).show()
             } else {
-//                val anim = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                    requireActivity(), view.findViewById(R.id.parent), "activity_anim"
-//                )
-//                TheRouter.build(bean?.route).withOptionsCompat(anim)
-//                    .navigation(requireActivity())
                 TheRouter.build(bean?.route).navigation()
             }
         }
     }
 
     private fun loadData() {
-        showLoading()
         mViewModel.getBanner()
     }
 
@@ -72,7 +70,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
         super.initObserver()
         mViewModel.mComplete.observe(viewLifecycleOwner) {
             mBind.smartRefresh.finishRefresh()
-            disLoading()
         }
         mViewModel.mBanner.observe(viewLifecycleOwner) {
             mBannerAdapter.submitList(it)

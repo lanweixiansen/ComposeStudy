@@ -11,6 +11,7 @@ environment:
 # Flutter依赖库
 dependencies:
   date_format: 2.0.7
+  lottie: 2.6.0
 
   flutter:
     sdk: flutter
@@ -38,6 +39,8 @@ flutter:
     - assets/icon.png
     - assets/image_loading.gif
     - assets/ic_launcher.png
+    - assets/setting.png
+    - assets/anim_4.json
     - assets/image/
 
   module:

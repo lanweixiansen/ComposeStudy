@@ -1,6 +1,7 @@
 package com.example.lib_square
 
 import android.content.Intent
+import androidx.core.view.isVisible
 import com.example.lib_base.BaseFragment
 import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_base.ext.toExFloat
@@ -14,7 +15,6 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private lateinit var mBind: SquareFragmentSquareBinding
     override fun initView() {
         mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
-        mBinding.parent.addMarginToEqualStatusBar()
     }
 
     override fun initDate() {}
@@ -28,6 +28,9 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
             val intent = Intent(context, JobTimeActivity::class.java)
             intent.putExtra("JOB_INFO", info)
             startActivity(intent)
+        }
+        mBind.switchView.setOnSwitchCheckedStateChangeListener {
+            mBind.xiu.isVisible = it
         }
     }
 

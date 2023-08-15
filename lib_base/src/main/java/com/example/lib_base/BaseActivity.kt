@@ -39,7 +39,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
     private fun initStatus() {
-        window.statusBarColor = Color.WHITE
+        window.statusBarColor = Color.TRANSPARENT
         setStatusBarTextColor(isLight = false)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         if (addTopMargin()) {

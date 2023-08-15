@@ -11,9 +11,8 @@ object AndroidConfigConventions {
     val JAVA_VERSION = JavaVersion.VERSION_1_8
 
     object LittleGoose {
-        private const val PACKAGE_NAME = "little.goose.account"
+        private const val PACKAGE_NAME = "xxxxxxxxx"
         const val APPLICATION_ID = PACKAGE_NAME
-
         const val VERSION_CODE = 1
         const val VERSION_NAME = "1.0.0"
     }

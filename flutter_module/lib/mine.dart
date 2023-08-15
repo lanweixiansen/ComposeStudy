@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:my_flutter/AnimsWidget.dart';
 import 'package:my_flutter/route/routeMethods.dart';
 import 'package:my_flutter/setting.dart';
@@ -21,7 +22,6 @@ class MineWidget extends StatelessWidget {
         "setting_widget": (context) => const SettingWidget(),
         "list_title": (context) => const ListTileApp(),
         "logo_app": (context) => const LogoApp(),
-
       },
       theme: ThemeData(
         useMaterial3: true,
@@ -44,7 +44,10 @@ class _MineHomePage extends StatelessWidget {
               onPressed: () {
                 pressModel.increment("setting_widget");
               },
-              icon: const Icon(Icons.settings))
+              icon: const Image(
+                  image: AssetImage("assets/setting.png"),
+                  width: 25,
+                  height: 25))
         ],
         backgroundColor: Colors.white,
       ),
@@ -72,12 +75,9 @@ class _MineTopPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Padding(
-            padding: EdgeInsets.only(top: 17),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/image/img6.jpg'),
-              radius: 50,
-            )),
+        Padding(
+            padding: const EdgeInsets.only(top: 17),
+            child: Lottie.asset('assets/anim_4.json', width: 100, height: 100, repeat: false)),
         const Padding(
             padding: EdgeInsets.only(top: 14),
             child: Text(

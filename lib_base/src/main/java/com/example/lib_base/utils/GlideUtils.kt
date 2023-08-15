@@ -7,7 +7,6 @@ import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.example.lib_base.GlideApp
-import com.example.lib_base.R
 import java.io.File
 
 /**
@@ -24,7 +23,8 @@ inline fun Context.checkContext(checkError: () -> Unit) {
 
 fun ImageView.loadImage(url: String?) {
     this.context.checkContext { return }
-    GlideApp.with(this).load(url).placeholder(com.example.uilibrary.R.color.white).centerCrop().into(this)
+    GlideApp.with(this).load(url).placeholder(com.example.uilibrary.R.color.white).centerCrop()
+        .into(this)
 }
 
 fun ImageView.loadImage(@DrawableRes drawable: Int) {
@@ -45,4 +45,9 @@ fun ImageView.loadImage(uri: Uri) {
 fun ImageView.loadImage(file: File) {
     this.context.checkContext { return }
     GlideApp.with(this).load(file).centerCrop().into(this)
+}
+
+fun ImageView.loadWebp(@DrawableRes drawable: Int) {
+    this.context.checkContext { true }
+    GlideApp.with(this).asGif().load(drawable).into(this)
 }

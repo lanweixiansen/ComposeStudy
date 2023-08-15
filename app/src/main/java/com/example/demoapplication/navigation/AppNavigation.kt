@@ -74,7 +74,7 @@ object AppNavigation {
     }
 
     private fun createdFlutterFragment(): FlutterFragment {
-       return FlutterFragment.withCachedEngine("MeFragment").build<FlutterFragment>()
+        return FlutterFragment.withCachedEngine("MeFragment").build<FlutterFragment>()
     }
 
     fun finishInit() {

@@ -1,5 +1,6 @@
 package com.example.liblogin.ui
 
+import android.graphics.Color
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
@@ -31,7 +32,7 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>(), MotionLayout.Tr
     override fun initDate() {
         SpanUtils.with(mBinding.tvPrivacy)
             .append("我已阅读并同意").append("《用户协议》").setBold()
-            .setForegroundColor(ContextCompat.getColor(this, com.example.lib_base.R.color.primary))
+            .setForegroundColor(Color.BLACK)
             .setClickSpan(object : ClickableSpan() {
                 override fun onClick(widget: View) {
                     "用户协议".toast()
@@ -42,7 +43,7 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>(), MotionLayout.Tr
                 }
             })
             .append("和").append("《隐私政策》").setBold()
-            .setForegroundColor(ContextCompat.getColor(this, com.example.lib_base.R.color.primary))
+            .setForegroundColor(Color.BLACK)
             .setClickSpan(object : ClickableSpan() {
                 override fun onClick(widget: View) {
                     "隐私政策".toast()

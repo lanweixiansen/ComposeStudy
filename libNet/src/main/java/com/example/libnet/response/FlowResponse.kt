@@ -55,13 +55,12 @@ suspend fun <T> flowResponse(
         emit(response)
     }.flowOn(Dispatchers.IO)
         .onStart {
-//        if (showLoading) LoadingUtils.showLoading()
+
         }.catch { e ->
             e.printStackTrace()
             val handler = ErrorExceptionManager.handlerException(e)
             errorBlock?.invoke(handler.errCode, handler.errMsg)
         }.onCompletion {
-//        if (showLoading) LoadingUtils.disLoading()
             onComplete?.invoke()
         }
 }

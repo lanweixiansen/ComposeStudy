@@ -65,6 +65,6 @@ object ApplicationTask {
     }
 
     fun initFlutterChannel(topBindings: EngineBindings) {
-        FlutterEngineCache.getInstance().put("MeFragment", topBindings.engine)
+        FlutterEngineCache.getInstance().put("FlutterEngin", topBindings.engine)
     }
 }

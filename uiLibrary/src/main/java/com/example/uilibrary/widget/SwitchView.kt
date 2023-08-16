@@ -23,12 +23,7 @@ class SwitchView @JvmOverloads constructor(
         mBinding.switchView.speed = 2f
         mBinding.switchView.onClick {
             this.isSelected = !this.isSelected
-            if (this.isSelected) {
-                mBinding.switchView.playAnimation()
-            } else {
-                mBinding.switchView.progress = 0f
-            }
-            mOnChecked?.invoke(this.isSelected)
+            updateStateChange()
         }
     }
 
@@ -37,4 +32,18 @@ class SwitchView @JvmOverloads constructor(
     }
 
     fun isChecked() = this.isSelected
+
+    fun isChecked(check: Boolean) {
+        this.isSelected = check
+        updateStateChange()
+    }
+
+    private fun updateStateChange() {
+        if (this.isSelected) {
+            mBinding.switchView.playAnimation()
+        } else {
+            mBinding.switchView.progress = 0f
+        }
+        mOnChecked?.invoke(this.isSelected)
+    }
 }

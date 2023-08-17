@@ -1,7 +1,7 @@
 package com.example.demoapplication
 
 import android.content.Intent
-import com.example.demoapplication.appTask.ApplicationTask.AGREE_PRIVACY
+import com.example.demoapplication.appTask.AGREE_PRIVACY
 import com.example.demoapplication.databinding.ActivitySplashBinding
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.showPrivacyDialog

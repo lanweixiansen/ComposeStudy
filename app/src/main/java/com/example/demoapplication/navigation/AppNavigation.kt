@@ -3,14 +3,12 @@ package com.example.demoapplication.navigation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.demoapplication.R
-import com.example.demoapplication.appTask.ApplicationTask
 import com.example.libHome.HomeFragment
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
 import io.flutter.embedding.android.FlutterFragment
-import io.flutter.embedding.android.RenderMode
 
 /**
  * APP导航

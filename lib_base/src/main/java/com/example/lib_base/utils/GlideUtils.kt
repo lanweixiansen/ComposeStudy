@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import com.example.lib_base.GlideApp
+import com.bumptech.glide.Glide
 import java.io.File
 
 /**
@@ -23,31 +23,31 @@ inline fun Context.checkContext(checkError: () -> Unit) {
 
 fun ImageView.loadImage(url: String?) {
     this.context.checkContext { return }
-    GlideApp.with(this).load(url).placeholder(com.example.uilibrary.R.color.white).centerCrop()
+    Glide.with(this).load(url).placeholder(com.example.uilibrary.R.color.white).centerCrop()
         .into(this)
 }
 
 fun ImageView.loadImage(@DrawableRes drawable: Int) {
     this.context.checkContext { return }
-    GlideApp.with(this).load(drawable).centerCrop().into(this)
+    Glide.with(this).load(drawable).centerCrop().into(this)
 }
 
 fun ImageView.loadImage(bitmap: Bitmap) {
     this.context.checkContext { return }
-    GlideApp.with(this).load(bitmap).centerCrop().into(this)
+    Glide.with(this).load(bitmap).centerCrop().into(this)
 }
 
 fun ImageView.loadImage(uri: Uri) {
     this.context.checkContext { return }
-    GlideApp.with(this).load(uri).centerCrop().into(this)
+    Glide.with(this).load(uri).centerCrop().into(this)
 }
 
 fun ImageView.loadImage(file: File) {
     this.context.checkContext { return }
-    GlideApp.with(this).load(file).centerCrop().into(this)
+    Glide.with(this).load(file).centerCrop().into(this)
 }
 
 fun ImageView.loadWebp(@DrawableRes drawable: Int) {
     this.context.checkContext { true }
-    GlideApp.with(this).asGif().load(drawable).into(this)
+    Glide.with(this).asGif().load(drawable).into(this)
 }

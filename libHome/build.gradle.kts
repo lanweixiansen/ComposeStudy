@@ -10,6 +10,6 @@ android {
 dependencies {
     implementation(project(":lib_base"))
     implementation(project(":libNet"))
-    kapt(libs.roomCompiler)
-    kapt(libs.theRouterApt)
+    ksp(libs.roomCompiler)
+    ksp(libs.theRouterApt)
 }

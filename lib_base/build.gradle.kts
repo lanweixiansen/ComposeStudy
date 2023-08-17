@@ -17,11 +17,11 @@ dependencies {
     api(project(":uiLibrary"))
     api(libs.eventBus)
     api(libs.fragmentKtx)
-    kapt(libs.glideCompiler)
+    ksp(libs.glideCompiler)
     api(libs.moshi)
     api(libs.liveDataKtx)
     api(libs.viewModelKtx)
-    kapt(libs.theRouterApt)
+    ksp(libs.theRouterApt)
     api(libs.therouter)
     compileOnly(libs.mmkv)
 }

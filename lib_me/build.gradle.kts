@@ -9,7 +9,7 @@ android {
 
 dependencies {
     implementation(project(":lib_base"))
-    kapt(libs.theRouterApt)
+    ksp(libs.theRouterApt)
     debugCompileOnly(libs.flutterDebug)
     releaseCompileOnly(libs.flutterRelease)
 }

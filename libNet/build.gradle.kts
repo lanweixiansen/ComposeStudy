@@ -18,6 +18,6 @@ dependencies {
     implementation(libs.moshiKotlin)
     implementation(libs.retrofitMoshi)
     api(libs.room)
-    kapt(libs.roomCompiler)
-    kapt(libs.theRouterApt)
+    ksp(libs.roomCompiler)
+    ksp(libs.theRouterApt)
 }

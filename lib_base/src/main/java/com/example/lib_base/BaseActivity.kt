@@ -8,7 +8,7 @@ import androidx.appcompat.widget.ContentFrameLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
-import com.example.lib_base.ext.addMarginToEqualStatusBar
+import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
 import com.example.uilibrary.widget.LoadingDialog

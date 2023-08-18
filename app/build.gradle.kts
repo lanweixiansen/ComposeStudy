@@ -35,7 +35,7 @@ android {
         }
 
         getByName("release") {
-            isDebuggable = false
+            isDebuggable = true
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

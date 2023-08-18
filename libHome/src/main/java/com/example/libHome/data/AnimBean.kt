@@ -1,4 +1,4 @@
-package com.example.lib_news.data
+package com.example.libHome.data
 
 import com.example.lib_base.utils.RouteConsts
 

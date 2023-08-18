@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.ViewStub
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.lib_base.ext.toGone
-import com.example.lib_base.ext.toVisible
+import com.example.uilibrary.uiUtils.toGone
+import com.example.uilibrary.uiUtils.toVisible
 import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeActivityViewStubTest2Binding
 import com.example.lib_home.databinding.HomeViewStubHeadersBinding

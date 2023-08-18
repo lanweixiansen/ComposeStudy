@@ -30,7 +30,6 @@ class HomeViewModel : BaseViewModel() {
                 "加载失败".toast()
             }
             onComplete {
-                "加载完成".toast()
                 mComplete.value = true
             }
         }

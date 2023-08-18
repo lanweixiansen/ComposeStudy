@@ -3,7 +3,6 @@ package com.example.lib_square
 import android.content.Intent
 import androidx.core.view.isVisible
 import com.example.lib_base.BaseFragment
-import com.example.lib_base.ext.addMarginToEqualStatusBar
 import com.example.lib_base.ext.toExFloat
 import com.example.lib_base.ext.toExInt
 import com.example.lib_base.ext.toast

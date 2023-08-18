@@ -11,8 +11,8 @@ import androidx.core.view.isVisible
 import com.example.demoapplication.R
 import com.example.demoapplication.databinding.BottomItemViewBinding
 import com.example.demoapplication.databinding.ViewBottomNavigationLayoutBinding
-import com.example.lib_base.ext.toGone
-import com.example.lib_base.ext.toVisible
+import com.example.uilibrary.uiUtils.toGone
+import com.example.uilibrary.uiUtils.toVisible
 import com.example.lib_base.utils.loadImage
 
 class BottomNavigationView @JvmOverloads constructor(

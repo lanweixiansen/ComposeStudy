@@ -27,10 +27,12 @@
     <!--  -->
     <declare-styleable name="CommonTopBar">
         <attr name="topBarTitle" />
+        <attr name="show_back_icon" />
 
     </declare-styleable>
 
     <attr name="topBarTitle" format="string" />
+    <attr name="show_back_icon" format="boolean" />
 
 
     <!--  -->

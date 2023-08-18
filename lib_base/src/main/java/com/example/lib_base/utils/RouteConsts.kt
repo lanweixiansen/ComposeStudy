@@ -19,6 +19,7 @@ object RouteConsts {
     const val HOME_ROUTER_REPLACEMENT_SPAN_ACTIVITY = "/homeLib/ReplacementSpanActivity"
     const val HOME_ROUTER_MAVERICKS_ACTIVITY = "/homeLib/MavericksActivity"
     const val HOME_ROUTER_EPOXY_ACTIVITY = "/homeLib/EpoxyActivity"
+    const val HOME_ROUTER_DEMO_FRAGMENT = "/homeLib/DemoFragment"
 
     // lib_me
     const val ROUTE_ME_TEST = "/meLib/MeTest"
@@ -30,5 +31,6 @@ object RouteConsts {
     // lib_news
     const val NEWS_ROUTE_OBJECT_ANIM_FRAGMENT = "/newsLib/ObjectAnimFragment"
     const val NEWS_ROUTE_SCROLL_TEXT_FRAGMENT = "/newsLib/ScrollTextViewActivity"
+    const val NEWS_ROUTE_NEWS_FRAGMENT = "/newsLib/NewsFragment"
 
 }

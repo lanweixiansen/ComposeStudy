@@ -7,8 +7,7 @@ import com.example.demoapplication.databinding.ActivityNewMainBinding
 import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
-import com.example.lib_base.ext.addMarginToNavigationBar
-import com.example.lib_base.ext.toast
+import com.example.uilibrary.uiUtils.addMarginToNavigationBar
 import com.example.lib_base.manager.AppData
 import com.therouter.router.Route
 import io.flutter.embedding.android.FlutterFragment
@@ -31,7 +30,6 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         initStatusBar()
         initFlutterChannel(mainBindings)
         mainBindings.attach()
-        Test.testfun()
     }
 
     private fun initStatusBar() {
@@ -89,13 +87,4 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
     }
 
     override fun addTopMargin() = false
-}
-
-object Test {
-
-    @JvmStatic
-    fun testfun() {
-        "测试代码调用".toast()
-    }
-
 }

@@ -5,25 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.example.uilibrary.widget.CommonTopBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingVertical="16dp"
-        android:textSize="16sp"
-        android:text="动画"
-        android:textStyle="bold" />
+        app:show_back_icon="false"
+        app:topBarTitle="xx" />
 
-    <com.scwang.smart.refresh.layout.SmartRefreshLayout
-        android:id="@+id/smart_refresh"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlEnableLoadMore="false"
-        app:srlEnableRefresh="false">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_anim"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+        android:gravity="center"
+        android:text="x x"
+        android:textStyle="bold" />
 </LinearLayout>

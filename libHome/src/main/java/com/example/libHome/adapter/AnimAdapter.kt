@@ -1,18 +1,18 @@
-package com.example.lib_news.adapter
+package com.example.libHome.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.example.lib_news.data.AnimBean
-import com.example.lib_news.databinding.NewsRvItemAnimBinding
+import com.example.libHome.data.AnimBean
+import com.example.lib_home.databinding.HomeRvItemAnimBinding
 
 class AnimAdapter : BaseQuickAdapter<AnimBean.AnimData, AnimAdapter.VM>() {
 
     class VM(
         parent: ViewGroup,
-        val mBinding: NewsRvItemAnimBinding = NewsRvItemAnimBinding.inflate(
+        val mBinding: HomeRvItemAnimBinding = HomeRvItemAnimBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

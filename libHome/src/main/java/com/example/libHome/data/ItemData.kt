@@ -18,7 +18,7 @@ val itemData = listOf(
     ItemData("textSpan", RouteConsts.HOME_ROUTER_REPLACEMENT_SPAN_ACTIVITY),
     ItemData("Mavericks", RouteConsts.HOME_ROUTER_MAVERICKS_ACTIVITY),
     ItemData("Epoxy", RouteConsts.HOME_ROUTER_EPOXY_ACTIVITY),
-    ItemData("Compose & ViewModel"),
+    ItemData("CommonDemoActivity", RouteConsts.HOME_ROUTER_DEMO_ACTIVITY),
     ItemData("Intent实现转场动画"),
     ItemData("Compose基本布局"),
     ItemData("Compose列表展示，图片加载"),

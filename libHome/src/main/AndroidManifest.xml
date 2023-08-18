@@ -22,5 +22,6 @@
         <activity android:name="com.example.libHome.span.ReplacementSpanActivity"/>
         <activity android:name="com.example.libHome.mavericks.MavericksActivity"/>
         <activity android:name="com.example.libHome.epoxy.EpoxyActivity"/>
+        <activity android:name="com.example.libHome.ui.DemoActivity"/>
     </application>
 </manifest>

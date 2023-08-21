@@ -15,4 +15,10 @@ class DemoActivity : BaseActivity<HomeActivityDemoBinding>() {
     override fun initDate() {
 
     }
+
+    override fun addTopMargin(): Boolean {
+        return false
+    }
+
+
 }

@@ -1,6 +1,5 @@
 package com.example.libHome.therouter
 
-import android.annotation.SuppressLint
 import androidx.core.app.ActivityOptionsCompat
 import com.example.libHome.utils.HomeRouteServeImpl
 import com.example.lib_base.BaseActivity

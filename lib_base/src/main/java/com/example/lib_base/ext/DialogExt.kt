@@ -14,8 +14,7 @@ fun showMaterialDialog(
     rightBtnTest: String? = "",
     @DrawableRes icon: Int = 0,
     onLeftClick: ((DialogInterface) -> Unit)? = null,
-    onRightClick: ((DialogInterface) -> Unit)? = null,
-    isContentCenter: Boolean = true
+    onRightClick: ((DialogInterface) -> Unit)? = null
 ) {
     AlertDialog.Builder(context).apply {
         if (!title.isNullOrBlank())

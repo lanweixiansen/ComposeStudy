@@ -57,18 +57,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/r15_top_ffffff"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
-                    app:tabBackground="@color/white"
-                    android:layout_marginTop="15dp"
+                    android:background="@drawable/r15_top_ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/view_pager"
+                    android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>

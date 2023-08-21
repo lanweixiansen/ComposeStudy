@@ -19,7 +19,6 @@ import com.therouter.TheRouter
 import com.therouter.router.Route
 import org.greenrobot.eventbus.Subscribe
 
-@Route(path = RouteConsts.HOME_ROUTER_DEMO_FRAGMENT)
 class DemoFragment : BaseFragment<HomeFragmentDemoBinding>() {
     private var type: Int = 0
     private val mAnimAdapter = AnimAdapter()

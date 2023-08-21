@@ -48,6 +48,6 @@ fun ImageView.loadImage(file: File) {
 }
 
 fun ImageView.loadWebp(@DrawableRes drawable: Int) {
-    this.context.checkContext { true }
+    this.context.checkContext { return }
     Glide.with(this).asGif().load(drawable).into(this)
 }

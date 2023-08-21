@@ -19,7 +19,6 @@ object RouteConsts {
     const val HOME_ROUTER_REPLACEMENT_SPAN_ACTIVITY = "/homeLib/ReplacementSpanActivity"
     const val HOME_ROUTER_MAVERICKS_ACTIVITY = "/homeLib/MavericksActivity"
     const val HOME_ROUTER_EPOXY_ACTIVITY = "/homeLib/EpoxyActivity"
-    const val HOME_ROUTER_DEMO_FRAGMENT = "/homeLib/DemoFragment"
     const val HOME_ROUTER_DEMO_ACTIVITY = "/homeLib/DemoActivity"
 
     // lib_me

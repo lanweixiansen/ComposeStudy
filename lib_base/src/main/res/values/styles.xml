@@ -8,4 +8,12 @@
     <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="CollapsedTitle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="ExpandedTitle" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">25sp</item>
+    </style>
 </resources>

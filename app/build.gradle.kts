@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("kotlin-kapt")
     id("therouter")
 }
 
@@ -89,7 +90,7 @@ dependencies {
     implementation(libs.navFrgKtx)
     implementation(libs.navUIKtx)
     debugImplementation(libs.leakcanary)
-    ksp(libs.theRouterApt)
+    kapt(libs.theRouterApt)
     implementation(libs.mmkv)
     testImplementation(libs.junit)
     androidTestImplementation(libs.extJunit)

@@ -11,5 +11,5 @@ dependencies {
     implementation(project(":lib_base"))
     implementation(project(":libNet"))
     ksp(libs.roomCompiler)
-    ksp(libs.theRouterApt)
+    kapt(libs.theRouterApt)
 }

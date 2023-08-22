@@ -8,17 +8,11 @@ import com.therouter.router.Route
 
 @Route(path = RouteConsts.HOME_ROUTER_DEMO_ACTIVITY)
 class DemoActivity : BaseActivity<HomeActivityDemoBinding>() {
-    override fun initView() {
-        supportFragmentManager.beginTransaction().add(R.id.fragment, TitleFragment()).commit()
-    }
+    override fun initView() {}
 
-    override fun initDate() {
-
-    }
+    override fun initDate() {}
 
     override fun addTopMargin(): Boolean {
         return false
     }
-
-
 }

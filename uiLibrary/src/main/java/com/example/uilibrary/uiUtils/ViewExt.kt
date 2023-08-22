@@ -51,8 +51,11 @@ fun View.addMarginToEqualStatusBar() {
     }
 }
 
-inline fun <reified T : ViewBinding> ViewGroup.viewBinding() = ViewBindingDelegate(T::class.java, this)
-inline fun <reified T : ViewBinding> Fragment.viewBinding() = FragmentViewBindingDelegate(T::class.java, this)
+inline fun <reified T : ViewBinding> ViewGroup.viewBinding() =
+    ViewBindingDelegate(T::class.java, this)
+
+inline fun <reified T : ViewBinding> Fragment.viewBinding() =
+    FragmentViewBindingDelegate(T::class.java, this)
 
 class ViewBindingDelegate<T : ViewBinding>(
     private val bindingClass: Class<T>,
@@ -63,7 +66,8 @@ class ViewBindingDelegate<T : ViewBinding>(
     override fun getValue(thisRef: ViewGroup, property: KProperty<*>): T {
         binding?.let { return it }
 
-        val inflateMethod = bindingClass.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java)
+        val inflateMethod =
+            bindingClass.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java)
         @Suppress("UNCHECKED_CAST")
         binding = inflateMethod.invoke(null, LayoutInflater.from(thisRef.context), thisRef) as T
         return binding!!
@@ -84,9 +88,6 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
             fragment.viewLifecycleOwnerLiveData.observe(fragment) { viewLifecycleOwner ->
                 viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
                     override fun onDestroy(owner: LifecycleOwner) {
-                        // Lifecycle listeners are called before onDestroyView in a Fragment.
-                        // However, we want views to be able to use bindings in onDestroyView
-                        // to do cleanup so we clear the reference one frame later.
                         clearBindingHandler.post { binding = null }
                     }
                 })
@@ -95,18 +96,14 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
     }
 
     override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
-        // onCreateView may be called between onDestroyView and next Main thread cycle.
-        // In this case [binding] refers to the previous fragment view. Check that binding's root view matches current fragment view
         if (binding != null && binding?.root !== thisRef.view) {
             binding = null
         }
         binding?.let { return it }
-
         val lifecycle = fragment.viewLifecycleOwner.lifecycle
         if (!lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)) {
             error("Cannot access view bindings. View lifecycle is ${lifecycle.currentState}!")
         }
-
         @Suppress("UNCHECKED_CAST")
         binding = bindMethod.invoke(null, thisRef.requireView()) as T
         return binding!!

@@ -19,7 +19,6 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     override fun initDate() {}
 
     override fun initListener() {
-        super.initListener()
         mBind.btnJob.setOnClickListener {
             val info = checkInput {
                 return@setOnClickListener

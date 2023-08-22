@@ -18,6 +18,7 @@ import com.example.liblogin.LoginViewModel
 import com.example.liblogin.R
 import com.example.liblogin.databinding.LoginActivityLoginBinding
 import com.example.uilibrary.uiUtils.dp2px
+import com.example.uilibrary.uiUtils.onClick
 import com.therouter.router.Route
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -63,7 +64,7 @@ class LoginActivity : BaseActivity<LoginActivityLoginBinding>(), MotionLayout.Tr
         mBinding.btnClose.setOnClickListener {
             finishAfterTransition()
         }
-        mBinding.checkedPrivacy.setOnClickListener {
+        mBinding.checkedPrivacy.onClick {
             mBinding.checkedPrivacy.isSelected = !mBinding.checkedPrivacy.isSelected
             if (mBinding.checkedPrivacy.isSelected) {
                 mBinding.checkedPrivacy.playAnimation()

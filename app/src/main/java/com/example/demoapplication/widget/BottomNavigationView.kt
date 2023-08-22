@@ -2,18 +2,21 @@ package com.example.demoapplication.widget
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.example.demoapplication.R
 import com.example.demoapplication.databinding.BottomItemViewBinding
 import com.example.demoapplication.databinding.ViewBottomNavigationLayoutBinding
+import com.example.lib_base.utils.loadImage
+import com.example.uilibrary.uiUtils.dp2px
 import com.example.uilibrary.uiUtils.toGone
 import com.example.uilibrary.uiUtils.toVisible
-import com.example.lib_base.utils.loadImage
 
 class BottomNavigationView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -51,9 +54,7 @@ class BottomNavigationView @JvmOverloads constructor(
 
     private fun initTab(vararg tab: BottomItemView) {
         tab.forEachIndexed { index, bottomItemView ->
-            bottomItemView.setIcon(mTabData[index].tabIcon)
-            bottomItemView.setTab(mTabData[index].tabName)
-            bottomItemView.setCanRefresh(mTabData[index].canRefresh)
+            bottomItemView.setInfo(mTabData[index])
         }
     }
 
@@ -91,14 +92,8 @@ class BottomItemView @JvmOverloads constructor(
 
     init {
         mBinding = BottomItemViewBinding.inflate(LayoutInflater.from(context), this, true)
-    }
-
-    fun setTab(@StringRes title: Int) {
-        mBinding.tvTab.text = context.getString(title)
-    }
-
-    fun setIcon(@DrawableRes icon: Int) {
-        mBinding.ivTab.loadImage(icon)
+        orientation = VERTICAL
+        gravity = Gravity.CENTER
     }
 
     fun checked() {
@@ -111,8 +106,11 @@ class BottomItemView @JvmOverloads constructor(
 
     fun canChange() = mBinding.tvTab.isGone || mCanRefresh
     fun isChecked() = mBinding.tvTab.isVisible
-    fun setCanRefresh(canRefresh: Boolean?) {
-        mCanRefresh = canRefresh ?: false
+
+    fun setInfo(tabData: TabData) {
+        mBinding.tvTab.text = context.getString(tabData.tabName)
+        mBinding.ivTab.loadImage(tabData.tabIcon)
+        mCanRefresh = tabData.canRefresh ?: false
     }
 }
 

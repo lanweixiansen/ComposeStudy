@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:gravity="center"
+    android:animateLayoutChanges="true"
     android:orientation="vertical">
 
     <ImageView
@@ -15,7 +16,7 @@
     <TextView
         android:id="@+id/tv_tab"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:textColor="@color/white"
         android:textSize="11sp"
         android:visibility="gone"

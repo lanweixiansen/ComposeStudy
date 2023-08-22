@@ -1,7 +1,6 @@
 package com.example.lib_news
 
 import com.example.lib_base.BaseFragment
-import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_news.databinding.NewsFragmentNewsBinding
 import com.example.lib_news.databinding.NewsFragmentNewsStubBinding
@@ -14,7 +13,6 @@ class NewsFragment : BaseFragment<NewsFragmentNewsStubBinding>() {
 
     override fun initView() {
         mBind = NewsFragmentNewsBinding.bind(mBinding.viewStub.inflate())
-        mBinding.parent.addMarginToEqualStatusBar()
     }
 
     override fun initDate() {}

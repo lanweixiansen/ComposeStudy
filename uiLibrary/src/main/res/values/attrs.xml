@@ -28,11 +28,13 @@
     <declare-styleable name="CommonTopBar">
         <attr name="topBarTitle" />
         <attr name="show_back_icon" />
+        <attr name="add_top_padding" />
 
     </declare-styleable>
 
     <attr name="topBarTitle" format="string" />
     <attr name="show_back_icon" format="boolean" />
+    <attr name="add_top_padding" format="boolean" />
 
 
     <!--  -->

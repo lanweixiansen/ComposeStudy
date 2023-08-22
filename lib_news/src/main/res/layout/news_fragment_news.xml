@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:show_back_icon="false"
+        app:add_top_padding="true"
         app:topBarTitle="xx" />
 
     <TextView

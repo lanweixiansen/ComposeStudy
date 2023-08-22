@@ -50,6 +50,7 @@ class _MineHomePage extends StatelessWidget {
                   height: 25))
         ],
         backgroundColor: Colors.white,
+        toolbarHeight: 100,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

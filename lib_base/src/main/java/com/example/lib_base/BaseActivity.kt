@@ -8,9 +8,9 @@ import androidx.appcompat.widget.ContentFrameLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
-import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
+import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 import com.example.uilibrary.widget.LoadingDialog
 import com.therouter.TheRouter
 import org.greenrobot.eventbus.EventBus
@@ -21,6 +21,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     private var mLoading: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        beforeOnCreated()
         super.onCreate(savedInstanceState)
         val type = javaClass.genericSuperclass
         val vbClass: Class<VB> = type!!.saveAs<ParameterizedType>().actualTypeArguments[0].saveAs()
@@ -37,6 +38,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         initListener()
         initObserver()
     }
+
+    open fun beforeOnCreated() {}
 
     private fun initStatus() {
         window.statusBarColor = Color.TRANSPARENT

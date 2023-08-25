@@ -1,14 +1,18 @@
 package com.example.demoapplication
 
 import android.view.KeyEvent
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.demoapplication.appTask.AGREE_PRIVACY
 import com.example.demoapplication.appTask.EngineBindings
 import com.example.demoapplication.appTask.initFlutterChannel
 import com.example.demoapplication.databinding.ActivityNewMainBinding
 import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
-import com.example.uilibrary.uiUtils.addMarginToNavigationBar
+import com.example.lib_base.ext.showPrivacyDialog
 import com.example.lib_base.manager.AppData
+import com.example.uilibrary.uiUtils.addMarginToNavigationBar
+import com.therouter.TheRouter
 import com.therouter.router.Route
 import io.flutter.embedding.android.FlutterFragment
 
@@ -18,8 +22,23 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
         EngineBindings(activity = this, entrypoint = "main")
     }
 
+    override fun beforeOnCreated() {
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition {
+            false
+        }
+    }
+
     override fun initView() {
         // 添加TheRouter拦截器
+        if (!AppData.isAgreePrivacy()) {
+            showPrivacyDialog(this,
+                onSuccess = {
+                    TheRouter.runTask(AGREE_PRIVACY)
+                }, onRefuse = {
+                    finish()
+                })
+        }
         RouterInterceptor.addLoginInterceptor()
         RouterInterceptor.addRouterInterceptor()
         // Fragment相关

@@ -185,4 +185,6 @@
     <color name="crane_theme_dark_shadow">#000000</color>
     <color name="crane_theme_dark_surfaceTint">#FFAEDE</color>
     <color name="crane_theme_dark_surfaceTintColor">#FFAEDE</color>
+    <color name="ic_launcher_background_tint">#E98D89</color>
+    <color name="ic_launcher_foreground_tint">#FCFCFC</color>
 </resources>

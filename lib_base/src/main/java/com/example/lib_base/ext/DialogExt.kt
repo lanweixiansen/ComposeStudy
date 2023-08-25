@@ -27,6 +27,7 @@ fun showMaterialDialog(
             setPositiveButton(rightBtnTest) { dialog, _ -> onRightClick?.invoke(dialog) }
         if (icon != 0)
             setIcon(icon)
+        setCancelable(false)
         show()
     }
 }

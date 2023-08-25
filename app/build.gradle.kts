@@ -86,6 +86,7 @@ dependencies {
     implementation(project(":uiLibrary"))
     implementation(project(":libLogin"))
     implementation(project(":libNet"))
+    implementation(libs.androidx.splash.screen)
     implementation(libs.coreKtx)
     implementation(libs.navFrgKtx)
     implementation(libs.navUIKtx)

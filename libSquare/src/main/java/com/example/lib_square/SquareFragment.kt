@@ -2,6 +2,7 @@ package com.example.lib_square
 
 import android.content.Intent
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.example.lib_base.BaseFragment
 import com.example.lib_base.ext.toExFloat
 import com.example.lib_base.ext.toExInt
@@ -9,16 +10,22 @@ import com.example.lib_base.ext.toast
 import com.example.lib_square.bean.JobInfoBean
 import com.example.lib_square.databinding.SquareFragmentSquareBinding
 import com.example.lib_square.databinding.SquareFragmentSquareStubBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private lateinit var mBind: SquareFragmentSquareBinding
     override fun initView() {
-        mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
+        lifecycleScope.launch {
+            delay(200)
+            mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
+            initListenerr()
+        }
     }
 
     override fun initDate() {}
 
-    override fun initListener() {
+    private fun initListenerr() {
         mBind.btnJob.setOnClickListener {
             val info = checkInput {
                 return@setOnClickListener
@@ -57,7 +64,6 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
             )
         }
     }
-
 }
 
 

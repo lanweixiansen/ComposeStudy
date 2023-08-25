@@ -1,6 +1,5 @@
 package com.example.libHome.epoxy
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeActivityEpoxyBinding

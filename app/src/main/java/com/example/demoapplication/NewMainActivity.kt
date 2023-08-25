@@ -69,6 +69,7 @@ class NewMainActivity : BaseActivity<ActivityNewMainBinding>() {
     }
 
     override fun onResume() {
+        initFlutterChannel(mainBindings)
         super.onResume()
         if (mBinding.bottomView.isMeChecked()) {
             if (AppData.isLogin()) {

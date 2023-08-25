@@ -57,6 +57,11 @@ fun initMMKV(context: Context) {
     MMKV.initialize(context)
 }
 
+/**
+ * 初始化Flutter引擎
+ */
 fun initFlutterChannel(topBindings: EngineBindings) {
-    FlutterEngineCache.getInstance().put("FlutterEngin", topBindings.engine)
+    if (FlutterEngineCache.getInstance().get("FlutterEngin") == null) {
+        FlutterEngineCache.getInstance().put("FlutterEngin", topBindings.engine)
+    }
 }

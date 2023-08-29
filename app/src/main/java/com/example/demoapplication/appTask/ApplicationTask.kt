@@ -52,7 +52,7 @@ fun initNoPrivacySdk(context: Context) {
 /**
  * 初始化mmkv
  */
-@FlowTask("init_mmkv")
+@FlowTask("init_mmkv", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
 fun initMMKV(context: Context) {
     MMKV.initialize(context)
 }

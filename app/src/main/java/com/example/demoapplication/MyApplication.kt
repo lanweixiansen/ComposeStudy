@@ -10,6 +10,5 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         engines = FlutterEngineGroup(this)
-        initMMKV(this)
     }
 }

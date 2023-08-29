@@ -9,6 +9,7 @@ import com.example.lib_base.manager.AppManager
 import com.example.lib_news.NewsFragment
 import com.example.lib_square.SquareFragment
 import io.flutter.embedding.android.FlutterFragment
+import io.flutter.embedding.android.RenderMode
 
 /**
  * APP导航
@@ -72,7 +73,7 @@ object AppNavigation {
     }
 
     private fun createdFlutterFragment(): FlutterFragment {
-        return FlutterFragment.withCachedEngine("FlutterEngin").build()
+        return FlutterFragment.withCachedEngine("FlutterEngin").renderMode(RenderMode.texture).build()
     }
 
     fun finishInit() {

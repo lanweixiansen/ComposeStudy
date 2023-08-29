@@ -7,12 +7,8 @@ import com.therouter.router.Route
 
 @Route(path = RouteConsts.HOME_ROUTER_EPOXY_ACTIVITY)
 class EpoxyActivity : BaseActivity<HomeActivityEpoxyBinding>() {
-    override fun initView() {
+    override fun initView() {}
 
-    }
-
-    override fun initDate() {
-
-    }
+    override fun initDate() {}
 
 }

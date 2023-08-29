@@ -28,6 +28,10 @@ android {
         versionName = libs.versions.versionName.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        ndk {
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
+        }
     }
 
     buildTypes {
@@ -74,6 +78,16 @@ android {
             excludes.add("/META-INF/atomicfu.kotlin_module")
         }
     }
+
+    android.applicationVariants.all {
+        val buildType = this.buildType.name
+        outputs.all {
+            if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
+                this.outputFileName =
+                    "demo-${defaultConfig.versionName}-${defaultConfig.versionCode}-$buildType.apk"
+            }
+        }
+    }
 }
 
 dependencies {
@@ -88,8 +102,6 @@ dependencies {
     implementation(project(":libNet"))
     implementation(libs.androidx.splash.screen)
     implementation(libs.coreKtx)
-    implementation(libs.navFrgKtx)
-    implementation(libs.navUIKtx)
     debugImplementation(libs.leakcanary)
     kapt(libs.theRouterApt)
     implementation(libs.mmkv)

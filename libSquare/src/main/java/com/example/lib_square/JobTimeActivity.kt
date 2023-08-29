@@ -10,10 +10,16 @@ import com.example.lib_square.bean.JobInfoBean
 import com.example.lib_square.databinding.SquareActivityJobTimeBinding
 import com.example.lib_square.utils.MoneyUtils
 import com.example.lib_square.utils.TimeUtils.getPresentTime
+import com.therouter.router.Autowired
+import com.therouter.router.Route
 import kotlinx.coroutines.launch
 
+@Route(path = "/libHome/JobTimeActivity")
 class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
-    private var mJobInfoBean: JobInfoBean? = null
+
+    @JvmField
+    @Autowired
+    var bean: JobInfoBean? = null
 
     /**
      * 每天平均工时(秒)
@@ -43,9 +49,8 @@ class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
     }
 
     override fun initDate() {
-        mJobInfoBean = intent.getSerializableExtra("JOB_INFO") as JobInfoBean?
         lifecycleScope.launch {
-            mJobInfoBean?.let {
+            bean?.let {
                 MoneyUtils.init(it)
                 timeCalculation(it)
             }
@@ -98,7 +103,7 @@ class JobTimeActivity : BaseActivity<SquareActivityJobTimeBinding>() {
         if (surplusTime <= 0 || mMillisecondMoneyMoney <= 0)
             return
         var haveMoney =
-            MoneyUtils.getHaveObtainedMoney(getPresentTime(mJobInfoBean?.startTime ?: 0f))
+            MoneyUtils.getHaveObtainedMoney(getPresentTime(bean?.startTime ?: 0f))
         mMoneyTimer = object : CountDownTimer(surplusTime.toLong(), 1000L) {
             override fun onTick(millisUntilFinished: Long) {
                 mBinding.tvMoney.text = ("￥${String.format("%.2f", haveMoney)}")

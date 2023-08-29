@@ -1,59 +1,107 @@
 package com.example.demoapplication
 
-import android.os.Bundle
-import android.view.ViewStub
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.example.demoapplication.databinding.ActivityMainBinding
-import com.example.demoapplication.databinding.HomeActivityStubMainBinding
-import com.example.demoapplication.navigation.SumFragmentNavigator
+import android.view.KeyEvent
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.demoapplication.appTask.AGREE_PRIVACY
+import com.example.demoapplication.appTask.EngineBindings
+import com.example.demoapplication.appTask.initFlutterChannel
+import com.example.demoapplication.databinding.ActivityNewMainBinding
+import com.example.demoapplication.navigation.AppNavigation
 import com.example.libHome.therouter.RouterInterceptor
-import com.example.lib_base.utils.LoadingUtils
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.lib_base.BaseActivity
+import com.example.lib_base.ext.showPrivacyDialog
+import com.example.lib_base.manager.AppData
+import com.example.uilibrary.uiUtils.addMarginToNavigationBar
+import com.therouter.TheRouter
+import com.therouter.router.Route
+import io.flutter.embedding.android.FlutterFragment
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var navController: NavController
-    private lateinit var mBinding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(HomeActivityStubMainBinding.inflate(layoutInflater).root)
-        lifecycleScope.launch {
-            delay(50L)
-            mBinding =
-                ActivityMainBinding.bind(findViewById<ViewStub>(R.id.main_stub).inflate())
-            initView()
-        }
-        RouterInterceptor.addLoginInterceptor()
-        RouterInterceptor.addRouterInterceptor()
+@Route(path = "/app/NewMainActivity")
+class MainActivity : BaseActivity<ActivityNewMainBinding>() {
+    private val mainBindings: EngineBindings by lazy {
+        EngineBindings(activity = this, entrypoint = "main")
     }
 
-    private fun initView() {
-        val navView = mBinding.navView
-        navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val fragmentNavigator =
-            SumFragmentNavigator(this, navHostFragment.childFragmentManager, navHostFragment.id)
-        navController.navigatorProvider.addNavigator(fragmentNavigator)
-        navController.setGraph(R.navigation.navi_host)
-        navView.setupWithNavController(navController)
+    override fun beforeOnCreated() {
+        installSplashScreen()
+    }
+
+    override fun initView() {
+        if (!AppData.isAgreePrivacy()) {
+            showPrivacyDialog(this,
+                onSuccess = {
+                    TheRouter.runTask(AGREE_PRIVACY)
+                }, onRefuse = {
+                    finish()
+                })
+        }
+        // 添加TheRouter拦截器
+        RouterInterceptor.addLoginInterceptor()
+        RouterInterceptor.addRouterInterceptor()
+        // Fragment相关
+        AppNavigation.init(supportFragmentManager)
+        mBinding.bottomView.setTabClickListener {
+            AppNavigation.checkedFragment(it)
+        }
+        initStatusBar()
+        initFlutterChannel(mainBindings)
+        mainBindings.attach()
+    }
+
+    private fun initStatusBar() {
+        mBinding.bottomView.addMarginToNavigationBar()
+    }
+
+    override fun initDate() {}
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // 最小化到桌面
+            moveTaskToBack(true)
+            // 退出APP
+//            AppExit.onBackPressed(this)
+        }
+        return true
+    }
+
+    override fun onPostResume() {
+        supportFragmentManager.findFragmentByTag("MeFragment")?.let {
+            (it as? FlutterFragment)?.onPostResume()
+        }
+        super.onPostResume()
+    }
+
+    override fun onUserLeaveHint() {
+        supportFragmentManager.findFragmentByTag("MeFragment")?.let {
+            (it as? FlutterFragment)?.onUserLeaveHint()
+        }
+        super.onUserLeaveHint()
     }
 
     override fun onBackPressed() {
-        // 最小化到桌面
-        moveTaskToBack(true)
-        // 退出APP
-//        AppExit.onBackPressed(this)
+        supportFragmentManager.findFragmentByTag("MeFragment")?.let {
+            (it as? FlutterFragment)?.onBackPressed()
+        }
+    }
+
+    override fun onResume() {
+        initFlutterChannel(mainBindings)
+        super.onResume()
+        if (mBinding.bottomView.isMeChecked()) {
+            if (AppData.isLogin()) {
+                mBinding.bottomView.checkMe()
+            } else {
+                mBinding.bottomView.checkHome()
+            }
+        }
+        setStatusBarTextColor()
     }
 
     override fun onDestroy() {
-        LoadingUtils.disLoading()
+        AppNavigation.finishInit()
         super.onDestroy()
+        mainBindings.detach()
     }
+
+    override fun addTopMargin() = false
 }

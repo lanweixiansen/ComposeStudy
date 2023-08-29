@@ -33,12 +33,14 @@ class JobUnitTest {
                 result.add(getRE3())
             }
 
-            val results: List<String>
+            val results = mutableListOf<String>()
             val time2 = measureTimeMillis {
                 val result1 = async { getRE1() }
                 val result2 = async { getRE2() }
                 val result3 = async { getRE3() }
-                results = listOf(result1.await(), result2.await(), result3.await())
+                results.add(result1.await())
+                results.add(result2.await())
+                results.add(result3.await())
             }
 
             println("Time: $time")

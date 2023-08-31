@@ -12,13 +12,15 @@ import com.example.uilibrary.uiUtils.onHeaderMoving
 import org.greenrobot.eventbus.EventBus
 
 class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
-    private lateinit var mBind: HomeFragmentHomeBinding
+    private val mBind: HomeFragmentHomeBinding by lazy {
+        HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
+    }
     private val tab = listOf("demo", "动画")
 
     override fun initView() {
-        mBind = HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
         with(mBind) {
             viewPager.adapter = PagerAdapter(childFragmentManager, tab)
+            viewPager.offscreenPageLimit = 0
             tabLayout.setupWithViewPager(viewPager)
         }
     }
@@ -30,7 +32,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
     }
 
     override fun initListener() {
-        super.initListener()
         mBind.smartRefresh.setOnRefreshListener {
             EventBus.getDefault().post(RefreshEvent())
             mBind.smartRefresh.finishRefresh()
@@ -40,6 +41,11 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
                 height = dp2px(220) + it
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mBind.lottieView.playAnimation()
     }
 
     class PagerAdapter(fm: FragmentManager, private val tabs: List<String>) :

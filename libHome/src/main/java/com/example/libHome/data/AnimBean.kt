@@ -8,7 +8,7 @@ object AnimBean {
         val route: String? = "",
     )
 
-    val itemData = listOf(
+    val animItemData = listOf(
         AnimData("属性动画", RouteConsts.NEWS_ROUTE_OBJECT_ANIM_FRAGMENT),
         AnimData("文字变化", RouteConsts.NEWS_ROUTE_SCROLL_TEXT_FRAGMENT),
         AnimData(""),

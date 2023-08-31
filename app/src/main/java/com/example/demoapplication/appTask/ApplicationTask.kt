@@ -3,6 +3,7 @@ package com.example.demoapplication.appTask
 import android.app.Application
 import android.content.Context
 import com.airbnb.mvrx.Mavericks
+import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
 import com.example.uilibrary.widget.CustomRefreshHeader
@@ -32,7 +33,7 @@ fun checkPrivacy(context: Context) {
 /**
  * 模拟需要同意隐私协议才能初始化的SDK
  */
-@FlowTask(taskName = "init_privacy_sdk", dependsOn = AGREE_PRIVACY)
+@FlowTask(taskName = "init_privacy_sdk", dependsOn = AGREE_PRIVACY, async = true)
 fun initPrivacySdk(context: Context) {
 
 }
@@ -40,7 +41,7 @@ fun initPrivacySdk(context: Context) {
 /**
  * 模拟不需要同意隐私协议的SDK初始化
  */
-@FlowTask("init_no_privacy_sdk", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
+@FlowTask("init_no_privacy_sdk", async = true)
 fun initNoPrivacySdk(context: Context) {
     AppManager.init(context as Application)
     SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
@@ -52,10 +53,20 @@ fun initNoPrivacySdk(context: Context) {
 /**
  * 初始化mmkv
  */
-@FlowTask("init_mmkv", dependsOn = TheRouterFlowTask.APP_ONSPLASH)
+@FlowTask("init_mmkv", async = true)
 fun initMMKV(context: Context) {
     MMKV.initialize(context)
 }
+
+/**
+ * 初始化TheRouter拦截器
+ */
+@FlowTask("init_interceptor", dependsOn = TheRouterFlowTask.APP_ONSPLASH, async = true)
+fun initInterceptor(context: Context) {
+    RouterInterceptor.addLoginInterceptor()
+    RouterInterceptor.addRouterInterceptor()
+}
+
 
 /**
  * 初始化Flutter引擎

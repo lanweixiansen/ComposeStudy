@@ -11,7 +11,9 @@ import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.ext.showPrivacyDialog
 import com.example.lib_base.manager.AppData
+import com.example.lib_base.manager.AppManager
 import com.example.uilibrary.uiUtils.addMarginToNavigationBar
+import com.example.uilibrary.uiUtils.viewBinding
 import com.therouter.TheRouter
 import com.therouter.router.Route
 import io.flutter.embedding.android.FlutterFragment
@@ -27,18 +29,9 @@ class MainActivity : BaseActivity<ActivityNewMainBinding>() {
     }
 
     override fun initView() {
-        if (!AppData.isAgreePrivacy()) {
-            showPrivacyDialog(this,
-                onSuccess = {
-                    TheRouter.runTask(AGREE_PRIVACY)
-                }, onRefuse = {
-                    finish()
-                })
-        }
-        // 添加TheRouter拦截器
-        RouterInterceptor.addLoginInterceptor()
-        RouterInterceptor.addRouterInterceptor()
-        // Fragment相关
+        AppManager.setTime2(System.currentTimeMillis())
+        privacyCheck()
+        // Fragment初始化
         AppNavigation.init(supportFragmentManager)
         mBinding.bottomView.setTabClickListener {
             AppNavigation.checkedFragment(it)
@@ -46,6 +39,17 @@ class MainActivity : BaseActivity<ActivityNewMainBinding>() {
         initStatusBar()
         initFlutterChannel(mainBindings)
         mainBindings.attach()
+    }
+
+    private fun privacyCheck() {
+        if (!AppData.isAgreePrivacy()) {
+            showPrivacyDialog(this,
+                onSuccess = {
+                    TheRouter.runTask(AGREE_PRIVACY)
+                }, onRefuse = {
+                    finishAfterTransition()
+                })
+        }
     }
 
     private fun initStatusBar() {

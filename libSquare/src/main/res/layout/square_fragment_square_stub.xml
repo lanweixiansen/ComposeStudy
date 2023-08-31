@@ -1,17 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:id="@+id/parent"
     android:layout_height="match_parent">
 
-
-
-
-
-    <ViewStub
-        android:id="@+id/view_stub"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout="@layout/square_fragment_square"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:animateLayoutChanges="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="anim_5.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="上班信息登记"
+            android:textColor="#252525"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_money"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/square_et_text_bg"
+            android:gravity="center_vertical"
+            android:hint="你工资多少，悄悄告诉我"
+            android:inputType="numberPassword"
+            android:paddingStart="10dp"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/square_et_text_bg"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="几点上班？"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/square_et_text_bg"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="几点下班？"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <ViewStub
+            android:id="@+id/view_stub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/square_fragment_square" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

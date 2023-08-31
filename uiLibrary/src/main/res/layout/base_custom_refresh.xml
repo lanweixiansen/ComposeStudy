@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="20dp"
-        app:lottie_autoPlay="true"
         app:lottie_fileName="lottie/lottie_refresh2.json"
         app:lottie_loop="true" />
 

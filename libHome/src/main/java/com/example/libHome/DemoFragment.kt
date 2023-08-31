@@ -8,15 +8,13 @@ import com.example.libHome.adapter.AnimAdapter
 import com.example.libHome.adapter.BannerAdapter
 import com.example.libHome.adapter.ItemAdapter
 import com.example.libHome.bottomSheetDialog.BottomShareDialog
-import com.example.libHome.data.AnimBean.itemData
 import com.example.libHome.data.RefreshEvent
 import com.example.libHome.net.viewModel.HomeViewModel
 import com.example.lib_base.BaseFragment
-import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeFragmentDemoBinding
+import com.example.uilibrary.uiUtils.toGone
 import com.example.uilibrary.widget.FooterAdapter
 import com.therouter.TheRouter
-import com.therouter.router.Route
 import org.greenrobot.eventbus.Subscribe
 
 class DemoFragment : BaseFragment<HomeFragmentDemoBinding>() {
@@ -29,7 +27,6 @@ class DemoFragment : BaseFragment<HomeFragmentDemoBinding>() {
 
     override fun initView() {
         type = arguments?.getInt("type") ?: 0
-
         mAdapter = ItemAdapter()
         mHelper = QuickAdapterHelper.Builder(mAdapter)
             .build()
@@ -47,18 +44,17 @@ class DemoFragment : BaseFragment<HomeFragmentDemoBinding>() {
 
     override fun initDate() {
         loadData()
+
     }
 
     private fun loadData() {
         when (type) {
             0 -> {
-                mAdapter.submitList(com.example.libHome.data.itemData)
+                mViewModel.getItemData(type)
                 mViewModel.getBanner()
             }
 
-            1 -> {
-                mAnimAdapter.submitList(itemData)
-            }
+            1 -> mViewModel.getItemData(type)
         }
     }
 
@@ -84,6 +80,16 @@ class DemoFragment : BaseFragment<HomeFragmentDemoBinding>() {
         super.initObserver()
         mViewModel.mBanner.observe(viewLifecycleOwner) {
             mBannerAdapter.submitList(it)
+        }
+        mViewModel.mItemData1.observe(viewLifecycleOwner) {
+            mAdapter.submitList(it)
+            mBinding.loading.cancelAnimation()
+            mBinding.loading.toGone()
+        }
+        mViewModel.mItemData2.observe(viewLifecycleOwner) {
+            mAnimAdapter.submitList(it)
+            mBinding.loading.cancelAnimation()
+            mBinding.loading.toGone()
         }
     }
 

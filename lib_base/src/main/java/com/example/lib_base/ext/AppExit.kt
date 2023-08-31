@@ -39,7 +39,6 @@ object AppExit {
         } else {
             exitCallback()
             activity.finish()
-//            exitProcess(0)
         }
     }
 }

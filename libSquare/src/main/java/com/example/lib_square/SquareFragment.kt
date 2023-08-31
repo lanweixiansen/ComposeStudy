@@ -1,10 +1,8 @@
 package com.example.lib_square
 
-import android.content.Intent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import com.example.lib_base.BaseFragment
 import com.example.lib_base.ext.toExFloat
 import com.example.lib_base.ext.toExInt
@@ -16,8 +14,6 @@ import com.example.uilibrary.uiUtils.onClick
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.therouter.TheRouter
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private lateinit var mBind: SquareFragmentSquareBinding
@@ -25,16 +21,12 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
     private var mEndTime = 0f
 
     override fun initView() {
-        lifecycleScope.launch {
-            delay(200)
-            mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
-            initListenerr()
-        }
+        mBind = SquareFragmentSquareBinding.bind(mBinding.viewStub.inflate())
     }
 
     override fun initDate() {}
 
-    private fun initListenerr() {
+    override fun initListener() {
         mBind.btnJob.setOnClickListener {
             val info = checkInput {
                 return@setOnClickListener
@@ -44,16 +36,16 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
         mBind.switchView.setOnSwitchCheckedStateChangeListener {
             mBind.xiu.isVisible = it
         }
-        mBind.etStartTime.onClick {
-            showTimeDialog(mBind.etStartTime)
+        mBinding.etStartTime.onClick {
+            showTimeDialog(mBinding.etStartTime)
         }
-        mBind.etEndTime.onClick {
-            showTimeDialog(mBind.etEndTime)
+        mBinding.etEndTime.onClick {
+            showTimeDialog(mBinding.etEndTime)
         }
     }
 
     private inline fun checkInput(checkError: () -> Unit): JobInfoBean {
-        with(mBind) {
+        with(mBinding) {
             if (etMoney.text.isNullOrBlank()) {
                 "你钱呢".toast()
                 checkError()
@@ -66,14 +58,14 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
                 "你不下班啊".toast()
                 checkError()
             }
-            if (etReleaseTime.text.isNullOrBlank()) {
+            if (mBind.etReleaseTime.text.isNullOrBlank()) {
                 "你不休息啊".toast()
             }
             return JobInfoBean(
                 money = etMoney.text.toString().toExInt(),
                 startTime = mStartTime,
                 endTime = mEndTime,
-                releaseTime = etReleaseTime.text.toString().toExFloat()
+                releaseTime = mBind.etReleaseTime.text.toString().toExFloat()
             )
         }
     }
@@ -89,7 +81,7 @@ class SquareFragment : BaseFragment<SquareFragmentSquareStubBinding>() {
             val newHour = materialTimePicker.hour
             val newMinute = materialTimePicker.minute
             etView.setText(if (newMinute < 10) "$newHour:0$newMinute" else "$newHour:$newMinute")
-            if (etView == mBind.etEndTime) {
+            if (etView == mBinding.etEndTime) {
                 mEndTime = (newHour + newMinute / 60f)
             } else {
                 mStartTime = (newHour + newMinute / 60f)

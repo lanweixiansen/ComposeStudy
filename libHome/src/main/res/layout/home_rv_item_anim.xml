@@ -14,10 +14,10 @@
         android:gravity="center_vertical">
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_lottie"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:lottie_autoPlay="true"
             app:lottie_fileName="lottie/lottie_anim.json"
             app:lottie_loop="true" />
 

@@ -50,16 +50,19 @@ class CustomRefreshHeader @JvmOverloads constructor(
         offset: Int,
         height: Int,
         maxDragHeight: Int
-    ) {}
+    ) {
+
+    }
 
     override fun onReleased(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {
-
+        findViewById<LottieAnimationView>(R.id.lottie_refresh).playAnimation()
     }
 
     override fun onStartAnimator(refreshLayout: RefreshLayout, height: Int, maxDragHeight: Int) {
     }
 
     override fun onFinish(refreshLayout: RefreshLayout, success: Boolean): Int {
+        findViewById<LottieAnimationView>(R.id.lottie_refresh).cancelAnimation()
         return 0
     }
 

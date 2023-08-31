@@ -5,6 +5,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -57,6 +58,10 @@ inline fun <reified T : ViewBinding> ViewGroup.viewBinding() =
 inline fun <reified T : ViewBinding> Fragment.viewBinding() =
     FragmentViewBindingDelegate(T::class.java, this)
 
+inline fun <reified T : ViewBinding> AppCompatActivity.viewBinding() =
+    ActivityBindingDelegate(T::class.java)
+
+
 class ViewBindingDelegate<T : ViewBinding>(
     private val bindingClass: Class<T>,
     val fragment: ViewGroup
@@ -73,6 +78,26 @@ class ViewBindingDelegate<T : ViewBinding>(
         return binding!!
     }
 }
+
+class ActivityBindingDelegate<T : ViewBinding>(
+    private val bindingClass: Class<T>,
+) : ReadOnlyProperty<AppCompatActivity, T> {
+    private var binding: T? = null
+
+    override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T {
+        binding?.let { return it }
+
+        val inflateMethod =
+            bindingClass.getMethod(
+                "inflate",
+                LayoutInflater::class.java,
+                AppCompatActivity::class.java
+            )
+        binding = inflateMethod.invoke(null, LayoutInflater.from(thisRef), thisRef) as T
+        return binding!!
+    }
+}
+
 
 class FragmentViewBindingDelegate<T : ViewBinding>(
     bindingClass: Class<T>,

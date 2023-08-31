@@ -21,10 +21,17 @@ class AnimAdapter : BaseQuickAdapter<AnimBean.AnimData, AnimAdapter.VM>() {
 
     override fun onBindViewHolder(holder: VM, position: Int, item: AnimBean.AnimData?) {
         holder.mBinding.tvTitle.text = item?.title
+        holder.mBinding.animLottie.playAnimation()
     }
 
     override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): VM {
         return VM(parent)
+    }
+
+
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+        super.onViewRecycled(holder)
+        (holder as VM).mBinding.animLottie.cancelAnimation()
     }
 
 }

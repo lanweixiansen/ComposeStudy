@@ -28,7 +28,7 @@ class RotationView @JvmOverloads constructor(
     private fun startRotation() {
         mJob?.cancel()
         mIsRunning = true
-        mJob = CoroutineScope(Dispatchers.Default).launch {
+        mJob = CoroutineScope(Dispatchers.Main).launch {
             while (true) {
                 delay(10)
                 mRadius += mTime

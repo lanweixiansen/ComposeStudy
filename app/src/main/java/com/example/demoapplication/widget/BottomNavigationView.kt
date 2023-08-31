@@ -1,5 +1,6 @@
 package com.example.demoapplication.widget
 
+import android.animation.LayoutTransition
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
@@ -7,7 +8,6 @@ import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.example.demoapplication.R
@@ -27,13 +27,15 @@ class BottomNavigationView @JvmOverloads constructor(
         TabData(R.string.tab_home, R.drawable.home),
         TabData(R.string.tab_square, R.drawable.square),
         TabData(R.string.tab_news, R.drawable.news),
-        TabData(R.string.tab_me, R.drawable.me, true),
+        TabData(R.string.tab_me, R.drawable.me, true)
     )
 
     init {
         mBinding =
-            ViewBottomNavigationLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+            ViewBottomNavigationLayoutBinding.inflate(LayoutInflater.from(context), this)
         initView()
+//        setPadding(0, dp2px(4), 0, dp2px(4))
+        setBackgroundResource(R.drawable.bottom_tab_bg)
     }
 
     private fun initView() {
@@ -91,9 +93,10 @@ class BottomItemView @JvmOverloads constructor(
     private var mCanRefresh = false
 
     init {
-        mBinding = BottomItemViewBinding.inflate(LayoutInflater.from(context), this, true)
+        mBinding = BottomItemViewBinding.inflate(LayoutInflater.from(context), this)
         orientation = VERTICAL
         gravity = Gravity.CENTER
+        layoutTransition = LayoutTransition()
     }
 
     fun checked() {

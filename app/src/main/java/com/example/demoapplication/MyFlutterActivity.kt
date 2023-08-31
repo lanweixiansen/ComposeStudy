@@ -13,7 +13,7 @@ import io.flutter.embedding.engine.FlutterEngine
 class MyFlutterActivity : FlutterActivity() {
     private lateinit var mFlutterEngine: EngineBindings
 
-    override fun provideFlutterEngine(context: Context): FlutterEngine? {
+    override fun provideFlutterEngine(context: Context): FlutterEngine {
         val route = intent.getStringExtra("route").toString()
         mFlutterEngine = EngineBindings(this, route)
         return mFlutterEngine.engine

@@ -19,5 +19,7 @@
     <com.example.demoapplication.widget.BottomNavigationView
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="16dp"
         android:layout_height="wrap_content" />
 </LinearLayout>

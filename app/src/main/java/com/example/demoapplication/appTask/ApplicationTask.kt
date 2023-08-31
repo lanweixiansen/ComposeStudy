@@ -41,7 +41,7 @@ fun initPrivacySdk(context: Context) {
 /**
  * 模拟不需要同意隐私协议的SDK初始化
  */
-@FlowTask("init_no_privacy_sdk", async = true)
+@FlowTask("init_no_privacy_sdk", dependsOn = TheRouterFlowTask.APP_ONSPLASH, async = true)
 fun initNoPrivacySdk(context: Context) {
     AppManager.init(context as Application)
     SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->

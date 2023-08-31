@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bottom_tab_bg"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginBottom="16dp"
-    android:paddingVertical="4dp">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout">
 
     <com.example.demoapplication.widget.BottomItemView
         android:id="@+id/tab_home"
@@ -30,4 +26,4 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_weight="1" />
-</LinearLayout>
+</merge>

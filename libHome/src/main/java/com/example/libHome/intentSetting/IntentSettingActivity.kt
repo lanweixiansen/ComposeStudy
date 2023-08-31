@@ -7,11 +7,14 @@ import android.hardware.input.InputManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.registerForActivityResult
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import com.therouter.router.Route
@@ -29,28 +32,27 @@ class IntentSettingActivity : BaseActivity<HomeActivityIntentSettingBinding>() {
     private var view: View? = null
 
     override fun initView() {
-//        ActivityCompat.requestPermissions(
-//            this, arrayOf(
-//                Manifest.permission.READ_EXTERNAL_STORAGE,
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE
-//            ), 100
-//        )
+        val test = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            Log.d("registerForActivityResult", "resultCode: ${it.resultCode}")
+        }
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ), 100
+        )
         mBinding.btnSetting.setOnClickListener {
-//            if (!Settings.canDrawOverlays(this)) {
-//                val intent = Intent(
-//                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-//                    Uri.parse("package:$packageName")
-//                )
-//                startActivityForResult(intent, 10)
-//            } else {
-//                // 已经获得了SYSTEM_ALERT_WINDOW权限，执行相关操作
-//                startActivity(Intent(Settings.ACTION_SETTINGS))
-//                showAlertDialog()
-//            }
-//            lifecycleScope.launch(Dispatchers.IO) {
-//                FileUnitTest.main()
-//            }
-            PdfDownloadUtils.startDownLoad(this, "https://raw.githubusercontent.com/chaxiu/ImageProcessor/main/src/main/resources/images/android.png", "png")
+            if (!Settings.canDrawOverlays(this)) {
+                val intent = Intent(
+                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:$packageName")
+                )
+                test.launch(intent)
+            } else {
+                // 已经获得了SYSTEM_ALERT_WINDOW权限，执行相关操作
+                startActivity(Intent(Settings.ACTION_SETTINGS))
+                showAlertDialog()
+            }
         }
     }
 

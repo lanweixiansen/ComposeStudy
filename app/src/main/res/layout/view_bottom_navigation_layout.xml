@@ -7,23 +7,27 @@
         android:id="@+id/tab_home"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginVertical="4dp"
         android:layout_weight="1" />
 
     <com.example.demoapplication.widget.BottomItemView
         android:id="@+id/tab_square"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginVertical="4dp"
         android:layout_weight="1" />
 
     <com.example.demoapplication.widget.BottomItemView
         android:id="@+id/tab_news"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginVertical="4dp"
         android:layout_weight="1" />
 
     <com.example.demoapplication.widget.BottomItemView
         android:id="@+id/tab_me"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginVertical="4dp"
         android:layout_weight="1" />
 </merge>

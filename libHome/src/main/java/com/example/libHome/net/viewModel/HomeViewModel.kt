@@ -44,7 +44,7 @@ class HomeViewModel : BaseViewModel() {
 
     fun getItemData(position: Int) {
         viewModelScope.launch {
-            delay(1500)
+            delay(500)
             if (position == 0) {
                 mItemData1.value = itemData
             } else {

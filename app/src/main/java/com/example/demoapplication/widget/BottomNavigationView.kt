@@ -34,7 +34,6 @@ class BottomNavigationView @JvmOverloads constructor(
         mBinding =
             ViewBottomNavigationLayoutBinding.inflate(LayoutInflater.from(context), this)
         initView()
-//        setPadding(0, dp2px(4), 0, dp2px(4))
         setBackgroundResource(R.drawable.bottom_tab_bg)
     }
 

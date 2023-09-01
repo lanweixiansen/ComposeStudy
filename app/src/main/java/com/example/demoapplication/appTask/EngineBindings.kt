@@ -23,11 +23,8 @@ class EngineBindings(private val activity: Activity, entrypoint: String) {
         channel = MethodChannel(engine.dartExecutor.binaryMessenger, "dev.flutter.example/route")
     }
 
-    /**
-     * This setups the messaging connections on the platform channel and the DataModel.
-     */
     fun attach() {
-        channel.setMethodCallHandler { call, result ->
+        channel.setMethodCallHandler { call, _ ->
             val route: String = call.argument<String>("data").toString()
             when (call.method) {
                 "routeActivity" -> {

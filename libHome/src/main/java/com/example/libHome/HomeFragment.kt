@@ -3,12 +3,15 @@ package com.example.libHome
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.lifecycleScope
 import com.example.libHome.data.RefreshEvent
 import com.example.lib_base.BaseFragment
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
 import com.example.uilibrary.uiUtils.dp2px
 import com.example.uilibrary.uiUtils.onHeaderMoving
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 
 class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
@@ -22,6 +25,10 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
             viewPager.adapter = PagerAdapter(childFragmentManager, tab)
             viewPager.offscreenPageLimit = 0
             tabLayout.setupWithViewPager(viewPager)
+        }
+        lifecycleScope.launch {
+            delay(1000)
+            mBind.lottieView.playAnimation()
         }
     }
 
@@ -41,11 +48,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
                 height = dp2px(220) + it
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mBind.lottieView.playAnimation()
     }
 
     class PagerAdapter(fm: FragmentManager, private val tabs: List<String>) :

@@ -83,13 +83,9 @@ class DemoFragment : BaseFragment<HomeFragmentDemoBinding>() {
         }
         mViewModel.mItemData1.observe(viewLifecycleOwner) {
             mAdapter.submitList(it)
-            mBinding.loading.cancelAnimation()
-            mBinding.loading.toGone()
         }
         mViewModel.mItemData2.observe(viewLifecycleOwner) {
             mAnimAdapter.submitList(it)
-            mBinding.loading.cancelAnimation()
-            mBinding.loading.toGone()
         }
     }
 

@@ -1,16 +1,12 @@
 package com.example.lib_base
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.ContentFrameLayout
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewbinding.ViewBinding
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
-import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 import com.example.uilibrary.widget.LoadingDialog
 import com.therouter.TheRouter
 import org.greenrobot.eventbus.EventBus
@@ -42,12 +38,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     open fun beforeOnCreated() {}
 
     private fun initStatus() {
-        window.statusBarColor = Color.TRANSPARENT
         setStatusBarTextColor(isLight = false)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        if (addTopMargin()) {
-            findViewById<ContentFrameLayout>(android.R.id.content).addMarginToEqualStatusBar()
-        }
     }
 
     fun showLoading() {

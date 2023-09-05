@@ -1,4 +1,4 @@
-package com.example.lib_news.fragment
+package com.example.lib_news.activity
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -15,7 +15,7 @@ import com.therouter.router.Route
 
 
 @Route(path = NEWS_ROUTE_OBJECT_ANIM_FRAGMENT)
-class ObjectAnimFragment : BaseActivity<NewsFragmentObjectAnimBinding>() {
+class ObjectAnimActivity : BaseActivity<NewsFragmentObjectAnimBinding>() {
     override fun initView() {}
 
     override fun initDate() {}

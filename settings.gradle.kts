@@ -15,13 +15,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            // win 前需要加 / , mac前不用
-            url = uri(repoPath.absolutePath)
-        }
-        maven {
-            url = uri("https://storage.flutter-io.cn/download.flutter.io")
-        }
+        maven { url = uri(repoPath.absolutePath) }
+        maven { url = uri("https://storage.flutter-io.cn/download.flutter.io") }
+        maven { url = uri("https://jitpack.io") }
     }
 }
 

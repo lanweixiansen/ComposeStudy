@@ -1,4 +1,4 @@
-package com.example.lib_news.fragment
+package com.example.lib_news.activity
 
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts

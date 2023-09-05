@@ -3,6 +3,7 @@ package com.example.demoapplication
 import android.app.Application
 import com.example.demoapplication.appTask.initMMKV
 import com.example.lib_base.manager.AppManager
+import com.petterp.floatingx.FloatingX
 import io.flutter.embedding.engine.FlutterEngineGroup
 
 class MyApplication : Application() {

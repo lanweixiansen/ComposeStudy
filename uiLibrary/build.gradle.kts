@@ -13,4 +13,5 @@ dependencies {
     api(libs.lifecycleRuntimeKtx)
     api(libs.blankj)
     api(libs.glide)
+    api(libs.floatingX)
 }

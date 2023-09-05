@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.uilibrary.widget.CommonTopBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:topBarTitle="悬浮窗" />
+
+
+    <Button
+        android:id="@+id/home_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="App悬浮窗"
+        app:layout_constraintBottom_toTopOf="@+id/home_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/home_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity悬浮窗"
+        app:layout_constraintBottom_toTopOf="@+id/home_fragment"
+        app:layout_constraintEnd_toEndOf="@+id/home_app"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/home_app"
+        app:layout_constraintTop_toBottomOf="@+id/home_app" />
+
+    <Button
+        android:id="@+id/home_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment悬浮窗"
+        app:layout_constraintBottom_toTopOf="@+id/home_view"
+        app:layout_constraintEnd_toEndOf="@+id/home_activity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/home_activity"
+        app:layout_constraintTop_toBottomOf="@+id/home_activity" />
+
+    <Button
+        android:id="@+id/home_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="View悬浮窗"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/home_fragment"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/home_fragment"
+        app:layout_constraintTop_toBottomOf="@+id/home_fragment" />
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="160dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

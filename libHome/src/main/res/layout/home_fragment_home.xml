@@ -47,7 +47,7 @@
                         android:layout_height="?attr/actionBarSize"
                         android:elevation="0dp"
                         app:layout_collapseMode="pin"
-                        app:title="Study Demo"/>
+                        app:title="Study Demo" />
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -60,15 +60,15 @@
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
-                    android:background="@drawable/r15_top_ffffff"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/r15_top_ffffff" />
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/view_pager"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@color/white" />
             </LinearLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>

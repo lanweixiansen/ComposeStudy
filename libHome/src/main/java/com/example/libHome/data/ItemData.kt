@@ -1,6 +1,7 @@
 package com.example.libHome.data
 
 import com.example.lib_base.utils.RouteConsts
+import com.example.lib_base.utils.RouteConsts.HOME_ROUTER_SLIDING_DEMO_ACTIVITY
 
 data class ItemData(
     val content: String,
@@ -19,7 +20,7 @@ val itemData = listOf(
     ItemData("Mavericks", RouteConsts.HOME_ROUTER_MAVERICKS_ACTIVITY),
     ItemData("Epoxy", RouteConsts.HOME_ROUTER_EPOXY_ACTIVITY),
     ItemData("CommonDemoActivity", RouteConsts.HOME_ROUTER_DEMO_ACTIVITY),
-    ItemData("Intent实现转场动画"),
+    ItemData("悬浮窗实现", HOME_ROUTER_SLIDING_DEMO_ACTIVITY),
     ItemData("Compose基本布局"),
     ItemData("Compose列表展示，图片加载"),
     ItemData("Compose & ViewModel"),

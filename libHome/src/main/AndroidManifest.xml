@@ -24,5 +24,6 @@
         <activity android:name="com.example.libHome.epoxy.EpoxyActivity" />
         <activity android:name="com.example.libHome.ui.DemoActivity" />
         <activity android:name="com.example.libHome.sliding.SlidingDemoActivity" />
+        <activity android:name="com.example.libHome.workmanager.WorkManagerActivity" />
     </application>
 </manifest>

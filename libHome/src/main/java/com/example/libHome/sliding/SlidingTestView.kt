@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
 import com.example.lib_base.ext.toast
 import com.example.uilibrary.uiUtils.dp2px
 
@@ -13,7 +14,7 @@ class SlidingTestView @JvmOverloads constructor(
 
     init {
         text = "悬浮窗"
-        setBackgroundColor(Color.BLACK)
+        background = (ContextCompat.getDrawable(context, com.example.uilibrary.R.drawable.bg_view))
         setPadding(dp2px(10), dp2px(40), dp2px(10), dp2px(40))
         setTextColor(Color.WHITE)
         this.setOnClickListener {

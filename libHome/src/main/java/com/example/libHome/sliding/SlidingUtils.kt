@@ -25,7 +25,12 @@ object SlidingUtils {
         }
     }
 
-    fun showSliding(view: View) {
-
+    fun showSliding(view: View, showView: View) {
+        val slidingView = SlidingSuspensionView(view.context).apply {
+            addView(showView)
+        }
+        if (view is ViewGroup) {
+            view.addView(slidingView)
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.example.libHome.data
 
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_base.utils.RouteConsts.HOME_ROUTER_SLIDING_DEMO_ACTIVITY
+import com.example.lib_base.utils.RouteConsts.HOME_ROUTER_WORK_MANAGER_ACTIVITY
 
 data class ItemData(
     val content: String,
@@ -21,7 +22,7 @@ val itemData = listOf(
     ItemData("Epoxy", RouteConsts.HOME_ROUTER_EPOXY_ACTIVITY),
     ItemData("CommonDemoActivity", RouteConsts.HOME_ROUTER_DEMO_ACTIVITY),
     ItemData("悬浮窗实现", HOME_ROUTER_SLIDING_DEMO_ACTIVITY),
-    ItemData("Compose基本布局"),
+    ItemData("WorkManager", HOME_ROUTER_WORK_MANAGER_ACTIVITY),
     ItemData("Compose列表展示，图片加载"),
     ItemData("Compose & ViewModel"),
     ItemData("Intent实现转场动画"),

@@ -14,4 +14,5 @@ dependencies {
     api(libs.blankj)
     api(libs.glide)
     api(libs.floatingX)
+    api(libs.smartRefresh.falsify)
 }

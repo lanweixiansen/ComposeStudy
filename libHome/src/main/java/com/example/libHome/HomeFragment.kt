@@ -7,44 +7,43 @@ import androidx.lifecycle.lifecycleScope
 import com.example.libHome.data.RefreshEvent
 import com.example.lib_base.BaseFragment
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
-import com.example.lib_home.databinding.HomeFragmentHomeStubBinding
 import com.example.uilibrary.uiUtils.dp2px
 import com.example.uilibrary.uiUtils.onHeaderMoving
+import com.scwang.smart.refresh.header.FalsifyHeader
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 
-class HomeFragment : BaseFragment<HomeFragmentHomeStubBinding>() {
-    private val mBind: HomeFragmentHomeBinding by lazy {
-        HomeFragmentHomeBinding.bind(mBinding.homeStub.inflate())
-    }
+class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
+
     private val tab = listOf("demo", "动画")
 
     override fun initView() {
-        with(mBind) {
+        with(mBinding) {
             viewPager.adapter = PagerAdapter(childFragmentManager, tab)
             viewPager.offscreenPageLimit = 0
             tabLayout.setupWithViewPager(viewPager)
         }
         lifecycleScope.launch {
             delay(1000)
-            mBind.lottieView.playAnimation()
+            mBinding.lottieView.playAnimation()
         }
     }
 
     override fun initDate() {
         tab.forEachIndexed { index, s ->
-            mBind.tabLayout.getTabAt(index)?.text = s
+            mBinding.tabLayout.getTabAt(index)?.text = s
         }
     }
 
     override fun initListener() {
-        mBind.smartRefresh.setOnRefreshListener {
+        mBinding.smartRefresh.setRefreshHeader(FalsifyHeader(context))
+        mBinding.smartRefresh.setOnRefreshListener {
             EventBus.getDefault().post(RefreshEvent())
-            mBind.smartRefresh.finishRefresh()
+            mBinding.smartRefresh.finishRefresh()
         }
-        mBind.smartRefresh.onHeaderMoving {
-            mBind.lottieView.layoutParams = mBind.lottieView.layoutParams.apply {
+        mBinding.smartRefresh.onHeaderMoving {
+            mBinding.lottieView.layoutParams = mBinding.lottieView.layoutParams.apply {
                 height = dp2px(220) + it
             }
         }

@@ -133,3 +133,11 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
         return binding!!
     }
 }
+
+internal inline fun <reified T> Any.saveAs(): T {
+    return this as T
+}
+
+internal inline fun <reified T> Any.isEqualType(): Boolean {
+    return this is T
+}

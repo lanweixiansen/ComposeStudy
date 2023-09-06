@@ -21,6 +21,7 @@ object RouteConsts {
     const val HOME_ROUTER_EPOXY_ACTIVITY = "/homeLib/EpoxyActivity"
     const val HOME_ROUTER_DEMO_ACTIVITY = "/homeLib/DemoActivity"
     const val HOME_ROUTER_SLIDING_DEMO_ACTIVITY = "/homeLib/SlidingDemoActivity"
+    const val HOME_ROUTER_WORK_MANAGER_ACTIVITY = "/homeLib/WorkManagerActivity"
 
     // lib_me
     const val ROUTE_ME_TEST = "/meLib/MeTest"

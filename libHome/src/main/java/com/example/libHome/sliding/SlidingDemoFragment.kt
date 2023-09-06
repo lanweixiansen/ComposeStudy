@@ -11,6 +11,6 @@ class SlidingDemoFragment : BaseFragment<HomeFragmentDemoSlidingBinding>() {
     }
 
     override fun initDate() {
-        SlidingUtils.showSliding(this, SlidingTestView(requireContext()))
+        SlidingUtils.showSliding(this, SlidingTestView(requireContext(), "Fragment"))
     }
 }

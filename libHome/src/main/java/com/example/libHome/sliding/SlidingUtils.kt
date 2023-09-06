@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.ContentFrameLayout
 import androidx.fragment.app.Fragment
+import com.example.lib_base.manager.AppManager
 import com.example.uilibrary.widget.SlidingSuspensionView
 
 object SlidingUtils {
@@ -32,5 +33,12 @@ object SlidingUtils {
         if (view is ViewGroup) {
             view.addView(slidingView)
         }
+    }
+
+    fun showSliding(activity: Activity) {
+        AppManager.getApplicationContext()
+            .registerActivityLifecycleCallbacks(SlidingLifecycleCallback().apply {
+                attach(activity)
+            })
     }
 }

@@ -1,6 +1,7 @@
 package com.example.libHome.sliding
 
 import com.example.lib_base.BaseActivity
+import com.example.lib_base.manager.AppManager
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.databinding.HomeSlidingDemoActivityBinding
 import com.example.uilibrary.uiUtils.toGone
@@ -18,11 +19,11 @@ class SlidingDemoActivity : BaseActivity<HomeSlidingDemoActivityBinding>() {
             homeActivity.setOnClickListener {
                 SlidingUtils.showSliding(
                     this@SlidingDemoActivity,
-                    SlidingTestView(this@SlidingDemoActivity)
+                    SlidingTestView(this@SlidingDemoActivity, "Activity")
                 )
             }
             homeApp.setOnClickListener {
-
+                SlidingUtils.showSliding(this@SlidingDemoActivity)
             }
             homeFragment.setOnClickListener {
                 supportFragmentManager.beginTransaction().add(fragment.id, mFragment).commit()

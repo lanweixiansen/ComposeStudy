@@ -7,6 +7,7 @@ import androidx.work.WorkerParameters
 
 class UserHeartWork(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
+    private var i = 0
 
     override fun doWork(): Result {
         var timeCount = System.currentTimeMillis()
@@ -14,7 +15,8 @@ class UserHeartWork(context: Context, workerParams: WorkerParameters) :
         while (true) {
             if (System.currentTimeMillis() - timeCount >= refreshTime * 1000) {
                 timeCount = System.currentTimeMillis()
-                Log.d("WorkManager", "doWork: 用户心跳")
+                i += 1
+                Log.d("WorkManager", "doWork: 用户心跳 + $i")
             }
         }
     }

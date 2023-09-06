@@ -15,8 +15,5 @@ class MyApplication : Application() {
         super.onCreate()
         AppManager.setTime1(System.currentTimeMillis())
         engines = FlutterEngineGroup(this)
-
-
-
     }
 }

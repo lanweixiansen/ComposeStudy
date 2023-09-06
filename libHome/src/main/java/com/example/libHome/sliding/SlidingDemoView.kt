@@ -19,7 +19,7 @@ class SlidingDemoView @JvmOverloads constructor(
         super.setVisibility(visibility)
         if (visibility == View.VISIBLE) {
             if (childCount == 0)
-                SlidingUtils.showSliding(this, SlidingTestView(context))
+                SlidingUtils.showSliding(this, SlidingTestView(context, "View"))
         }
     }
 

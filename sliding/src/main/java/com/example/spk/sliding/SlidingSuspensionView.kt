@@ -1,30 +1,24 @@
-package com.example.uilibrary.widget
+package com.example.spk.sliding
 
 import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.BarUtils
-import com.example.uilibrary.uiUtils.dp2px
-import com.example.uilibrary.uiUtils.getScreenHeight
-import com.example.uilibrary.uiUtils.isEqualType
-import com.example.uilibrary.uiUtils.saveAs
-import com.example.uilibrary.uiUtils.toGone
-import com.example.uilibrary.uiUtils.toVisible
+import com.blankj.utilcode.util.ConvertUtils
+import com.blankj.utilcode.util.ScreenUtils
 import kotlin.math.abs
 import kotlin.math.max
 
-class SlidingSuspensionView @JvmOverloads constructor(
+internal class SlidingSuspensionView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), DefaultLifecycleObserver {
+) : LinearLayout(context, attrs, defStyleAttr) {
     /**
      * 判断用户是点击事件还是滑动事件
      */
@@ -59,13 +53,9 @@ class SlidingSuspensionView @JvmOverloads constructor(
      */
     private var mMargin = dp2px(8f)
 
-    private val lifecycle by lazy {
-        if (context.isEqualType<LifecycleOwner>())
-            context.saveAs<LifecycleOwner>().lifecycle else null
-    }
 
     init {
-        lifecycle?.addObserver(this)
+
         layoutTransition = LayoutTransition()
     }
 
@@ -180,9 +170,16 @@ class SlidingSuspensionView @JvmOverloads constructor(
         anim.interpolator = OvershootInterpolator()
         anim.start()
     }
+}
 
-    override fun onDestroy(owner: LifecycleOwner) {
-        super.onDestroy(owner)
-        lifecycle?.removeObserver(this)
-    }
+internal fun dp2px(dp: Float) = ConvertUtils.dp2px(dp).toFloat()
+
+internal fun getScreenHeight() = ScreenUtils.getScreenHeight().toFloat()
+
+internal fun View.toGone() {
+    this.visibility = View.GONE
+}
+
+internal fun View.toVisible() {
+    this.visibility = View.VISIBLE
 }

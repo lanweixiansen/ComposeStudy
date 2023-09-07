@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.lib_home.databinding.HomeViewSlidingDemoBinding
+import com.example.spk.sliding.SlidingUtils
 
 class SlidingDemoView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -22,6 +23,5 @@ class SlidingDemoView @JvmOverloads constructor(
                 SlidingUtils.showSliding(this, SlidingTestView(context, "View"))
         }
     }
-
 
 }

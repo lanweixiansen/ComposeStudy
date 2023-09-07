@@ -1,9 +1,8 @@
 package com.example.libHome.sliding
 
 import com.example.lib_base.BaseFragment
-import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeFragmentDemoSlidingBinding
-import com.petterp.floatingx.util.createFx
+import com.example.spk.sliding.SlidingUtils
 
 class SlidingDemoFragment : BaseFragment<HomeFragmentDemoSlidingBinding>() {
     override fun initView() {

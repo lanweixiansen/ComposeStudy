@@ -1,4 +1,4 @@
-package com.example.libHome.sliding
+package com.example.spk.sliding
 
 import android.app.Activity
 import android.app.Application
@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.example.uilibrary.uiUtils.toVisible
-import com.example.uilibrary.widget.SlidingSuspensionView
 import java.lang.ref.WeakReference
 
-class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks {
+internal class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks {
 
     private var managerView: SlidingSuspensionView? = null
     private var mContainer: WeakReference<ViewGroup>? = null
+    private var mView: View? = null
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
@@ -23,10 +22,12 @@ class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks {
         attach(activity)
     }
 
-    fun attach(activity: Activity) {
+    fun attach(activity: Activity, view: View? = null) {
+        view ?: return
+        mView = view
         activity.decorView?.let {
             if (managerView == null) {
-                initManagerView(activity)
+                initManagerView(activity, mView)
             } else {
                 if (managerView?.visibility != View.VISIBLE) {
                     managerView?.toVisible()
@@ -49,9 +50,10 @@ class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks {
         }
     }
 
-    private fun initManagerView(activity: Activity) {
+    private fun initManagerView(activity: Activity, mView: View?) {
+        mView ?: return
         managerView = SlidingSuspensionView(activity).apply {
-            addView(SlidingTestView(activity, "App"))
+            addView(mView)
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT

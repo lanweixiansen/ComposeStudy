@@ -19,7 +19,7 @@ internal class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks
     override fun onActivityStarted(activity: Activity) {}
 
     override fun onActivityResumed(activity: Activity) {
-        attach(activity)
+        attach(activity, mView)
     }
 
     fun attach(activity: Activity, view: View? = null) {

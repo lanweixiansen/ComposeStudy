@@ -1,6 +1,3 @@
-include(":sliding")
-
-
 pluginManagement {
     repositories {
         google()

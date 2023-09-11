@@ -3,6 +3,7 @@ package com.example.spk.sliding
 import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
+import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ScreenUtils
@@ -115,7 +117,7 @@ internal class SlidingSuspensionView @JvmOverloads constructor(
             if (rawY1 == null) 0
             else if ((rawY1 - this.height / 2) <= BarUtils.getStatusBarHeight() * 2)
                 BarUtils.getStatusBarHeight()
-            else if (BarUtils.isNavBarVisible(context as Activity)
+            else if (BarUtils.isNavBarVisible(ActivityUtils.getTopActivity())
                 && (rawY1 + this.height / 2 + BarUtils.getNavBarHeight()) >= getScreenHeight()
             )
                 BarUtils.getNavBarHeight()

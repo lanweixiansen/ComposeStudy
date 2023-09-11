@@ -3,8 +3,6 @@ package com.example.libHome.intentSetting
 import android.Manifest
 import android.content.Intent
 import android.graphics.PixelFormat
-import android.hardware.input.InputManager
-import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
@@ -14,17 +12,12 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.lifecycleScope
-import com.therouter.router.Route
 import com.example.lib_base.BaseActivity
-import com.example.lib_base.ext.saveAs
 import com.example.lib_base.utils.RouteConsts
 import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeActivityIntentSettingBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.therouter.router.Route
 
 
 @Route(path = RouteConsts.HOME_ROUTER_INTENT_SETTING_ACTIVITY)
@@ -42,17 +35,20 @@ class IntentSettingActivity : BaseActivity<HomeActivityIntentSettingBinding>() {
             ), 100
         )
         mBinding.btnSetting.setOnClickListener {
-            if (!Settings.canDrawOverlays(this)) {
-                val intent = Intent(
-                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                    Uri.parse("package:$packageName")
-                )
-                test.launch(intent)
-            } else {
-                // 已经获得了SYSTEM_ALERT_WINDOW权限，执行相关操作
-                startActivity(Intent(Settings.ACTION_SETTINGS))
-                showAlertDialog()
-            }
+            mBinding.progressCircular.progress = 50
+            mBinding.progressCircular.invalidate()
+
+//            if (!Settings.canDrawOverlays(this)) {
+//                val intent = Intent(
+//                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                    Uri.parse("package:$packageName")
+//                )
+//                test.launch(intent)
+//            } else {
+//                // 已经获得了SYSTEM_ALERT_WINDOW权限，执行相关操作
+//                startActivity(Intent(Settings.ACTION_SETTINGS))
+//                showAlertDialog()
+//            }
         }
     }
 
@@ -69,7 +65,7 @@ class IntentSettingActivity : BaseActivity<HomeActivityIntentSettingBinding>() {
         layoutParams.flags = (WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        layoutParams.format= PixelFormat.RGBA_8888
+        layoutParams.format = PixelFormat.RGBA_8888
         layoutParams.gravity = Gravity.CENTER
         val windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         windowManager.addView(view, layoutParams)

@@ -5,6 +5,20 @@ plugins {
     id("maven-publish")
 }
 
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.my-company"
+            artifactId = "my-library"
+            version = "1.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
+
 android {
     namespace = "com.example.spk.sliding"
     compileSdk = 33

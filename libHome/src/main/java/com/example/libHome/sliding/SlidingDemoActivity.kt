@@ -26,7 +26,7 @@ class SlidingDemoActivity : BaseActivity<HomeSlidingDemoActivityBinding>() {
                 SlidingUtils.showApplicationSliding(
                     this@SlidingDemoActivity,
                     AppManager.getApplicationContext(),
-                    SlidingTestView(this@SlidingDemoActivity, "App")
+                    SlidingTestView(AppManager.getApplicationContext(), "App")
                 )
             }
             homeFragment.onClick {

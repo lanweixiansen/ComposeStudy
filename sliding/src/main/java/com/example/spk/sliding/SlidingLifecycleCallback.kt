@@ -2,32 +2,32 @@ package com.example.spk.sliding
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.example.spk.sliding.SlidingUtils.isShowApplicationSliding
 import java.lang.ref.WeakReference
 
-internal class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks {
+internal object SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks {
 
     private var managerView: SlidingSuspensionView? = null
     private var mContainer: WeakReference<ViewGroup>? = null
-    private var mView: View? = null
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
     override fun onActivityStarted(activity: Activity) {}
 
     override fun onActivityResumed(activity: Activity) {
-        attach(activity, mView)
+        if (isShowApplicationSliding)
+            attach(activity)
     }
 
     fun attach(activity: Activity, view: View? = null) {
-        view ?: return
-        mView = view
         activity.decorView?.let {
             if (managerView == null) {
-                initManagerView(activity, mView)
+                initManagerView(activity.applicationContext, view)
             } else {
                 if (managerView?.visibility != View.VISIBLE) {
                     managerView?.toVisible()
@@ -50,7 +50,7 @@ internal class SlidingLifecycleCallback : Application.ActivityLifecycleCallbacks
         }
     }
 
-    private fun initManagerView(activity: Activity, mView: View?) {
+    private fun initManagerView(activity: Context, mView: View?) {
         mView ?: return
         managerView = SlidingSuspensionView(activity).apply {
             addView(mView)

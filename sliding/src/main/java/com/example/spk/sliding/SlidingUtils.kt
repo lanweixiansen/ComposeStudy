@@ -6,9 +6,12 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.ContentFrameLayout
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 
 object SlidingUtils {
+    var isShowApplicationSliding = true
+
     private fun createdView(context: Context, view: View): SlidingSuspensionView {
         val slidingView = SlidingSuspensionView(context).apply {
             addView(view)
@@ -19,7 +22,6 @@ object SlidingUtils {
         )
         return slidingView
     }
-
 
     /**
      * 添加Activity悬浮窗
@@ -49,10 +51,72 @@ object SlidingUtils {
 
     /**
      * 添加APP悬浮窗
+     * @param view : view的context必须为Application
      */
     fun showApplicationSliding(activity: Activity, applicationContext: Application, view: View) {
-        applicationContext.registerActivityLifecycleCallbacks(SlidingLifecycleCallback().apply {
-            attach(activity, view)
-        })
+        if (view.context !is Application) {
+            throw IllegalArgumentException("view.context != Application,The global floating window must use application as context!")
+        } else {
+            isShowApplicationSliding = true
+            applicationContext.registerActivityLifecycleCallbacks(SlidingLifecycleCallback.apply {
+                attach(activity, view)
+            })
+        }
+    }
+
+    /**
+     * 移除悬浮窗View
+     */
+    fun removeView(activity: Activity) {
+        for (child in activity.findViewById<ContentFrameLayout>(android.R.id.content).children) {
+            if (child is SlidingSuspensionView) {
+                activity.findViewById<ContentFrameLayout>(android.R.id.content).removeView(child)
+            }
+        }
+    }
+
+    /**
+     * 移除Fragment悬浮窗View
+     */
+    fun removeView(fragment: Fragment) {
+        if (fragment.view is ViewGroup) {
+            for (child in (fragment.view as ViewGroup).children) {
+                if (child is SlidingSuspensionView) {
+                    (fragment.view as ViewGroup).removeView(child)
+                }
+            }
+        }
+    }
+
+    /**
+     * 移除ViewGroup 悬浮窗View
+     * @param view SlidingSuspensionView的上层ViewGroup
+     */
+    fun removeView(view: View) {
+        if (view.context is Application) {
+            removeApplicationView(view)
+        } else {
+            remove(view)
+        }
+    }
+
+    /**
+     * 移除Application 悬浮窗View
+     * @param view SlidingSuspensionView的上层ViewGroup
+     */
+    private fun removeApplicationView(view: View) {
+        remove(view)
+        isShowApplicationSliding = false
+    }
+
+
+    private fun remove(view: View) {
+        if (view.parent is SlidingSuspensionView) {
+            for (child in (view.parent.parent as ViewGroup).children) {
+                if (child is SlidingSuspensionView) {
+                    (view.parent.parent as ViewGroup).removeView(child)
+                }
+            }
+        }
     }
 }

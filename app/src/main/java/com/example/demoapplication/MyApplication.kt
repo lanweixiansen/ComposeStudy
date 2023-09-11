@@ -15,5 +15,10 @@ class MyApplication : Application() {
         super.onCreate()
         AppManager.setTime1(System.currentTimeMillis())
         engines = FlutterEngineGroup(this)
+//        FloatingX.install {
+//            setContext(this@MyApplication)
+//            setLayout(com.example.lib_news.R.layout.news_test)
+//            enableFx()
+//        }
     }
 }

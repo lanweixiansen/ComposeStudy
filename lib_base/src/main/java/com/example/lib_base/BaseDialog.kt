@@ -31,7 +31,6 @@ abstract class BaseDialog<VB : ViewBinding>(context: Context) : Dialog(context),
         lifecycle?.addObserver(this)
     }
 
-
     override fun onDestroy(owner: LifecycleOwner) {
         super.onDestroy(owner)
         lifecycle?.removeObserver(this)

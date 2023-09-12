@@ -1,6 +1,9 @@
 package com.example.lib_base
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ContentFrameLayout
@@ -9,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.BarUtils
 import com.example.lib_base.ext.saveAs
 import com.example.lib_base.ext.saveAsUnChecked
+import com.example.lib_base.utils.ScreenShotListenManager
 import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 import com.example.uilibrary.widget.LoadingDialog
 import com.therouter.TheRouter
@@ -18,6 +22,8 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     lateinit var mBinding: VB
     private var mLoading: LoadingDialog? = null
+    private var screenShotListenManager: ScreenShotListenManager? = null
+    private var isHasScreenShotListener = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeOnCreated()
@@ -30,12 +36,15 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
+        //截屏监听
+        screenShotListenManager = ScreenShotListenManager.newInstance(this)
         initStatus()
         TheRouter.inject(this)
         initView()
         initDate()
         initListener()
         initObserver()
+
     }
 
     open fun beforeOnCreated() {}
@@ -95,4 +104,34 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         }
     }
 
+
+    /**
+     * 监听
+     */
+    open fun startScreenShotListen() {
+        if (!isHasScreenShotListener && screenShotListenManager != null) {
+            screenShotListenManager?.setListener { imagePath ->
+                val path: String = imagePath
+                Log.d("msg", "BaseActivity -> onShot: 获得截图路径：$imagePath")
+                val bitmap =
+                    BitmapFactory.decodeResource(resources, com.example.uilibrary.R.mipmap.img8)
+                val addBitmap: Bitmap =
+                    screenShotListenManager!!.concatBitmap(this@BaseActivity, imagePath, bitmap)
+                // 此处只要分享这个合成的Bitmap图片就行了
+                BaseTestDialog(this, addBitmap).show()
+            }
+            screenShotListenManager?.startListen()
+            isHasScreenShotListener = true
+        }
+    }
+
+    /**
+     * 停止监听
+     */
+    open fun stopScreenShotListen() {
+        if (isHasScreenShotListener && screenShotListenManager != null) {
+            screenShotListenManager?.stopListen()
+            isHasScreenShotListener = false
+        }
+    }
 }

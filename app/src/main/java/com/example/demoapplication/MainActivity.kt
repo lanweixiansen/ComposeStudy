@@ -25,10 +25,14 @@ class MainActivity : BaseActivity<ActivityNewMainBinding>() {
     }
 
     override fun beforeOnCreated() {
-        installSplashScreen()
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition {
+            false
+        }
     }
 
     override fun initView() {
+        startScreenShotListen()
         AppManager.setTime2(System.currentTimeMillis())
         privacyCheck()
         initFlutterChannel(mainBindings)
@@ -38,7 +42,6 @@ class MainActivity : BaseActivity<ActivityNewMainBinding>() {
             AppNavigation.checkedFragment(it)
         }
     }
-
 
     private fun privacyCheck() {
         if (!AppData.isAgreePrivacy()) {
@@ -88,6 +91,7 @@ class MainActivity : BaseActivity<ActivityNewMainBinding>() {
     }
 
     override fun onDestroy() {
+        stopScreenShotListen()
         AppNavigation.finishInit()
         super.onDestroy()
         mainBindings.detach()

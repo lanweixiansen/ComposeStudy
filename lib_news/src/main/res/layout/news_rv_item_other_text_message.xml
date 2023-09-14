@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:minWidth="30dp"
+    android:minHeight="30dp">
+
+    <include layout="@layout/news_rv_item_other_header_view" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/news_other_message_bg"
+        android:layout_marginStart="8dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp">
+
+        <ImageView
+            android:id="@+id/iv_emoji"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/bian" />
+    </LinearLayout>
+</LinearLayout>

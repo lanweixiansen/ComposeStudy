@@ -44,7 +44,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         initDate()
         initListener()
         initObserver()
-
     }
 
     open fun beforeOnCreated() {}

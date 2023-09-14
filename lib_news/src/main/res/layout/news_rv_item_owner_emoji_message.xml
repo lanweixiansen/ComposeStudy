@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="end"
+    android:minWidth="30dp"
+    android:minHeight="30dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/news_owner_message_bg"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp">
+
+        <ImageView
+            android:id="@+id/iv_emoji"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/zha" />
+    </LinearLayout>
+
+    <include layout="@layout/news_rv_item_owner_header_view" />
+</LinearLayout>

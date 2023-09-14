@@ -34,5 +34,6 @@ object RouteConsts {
     const val NEWS_ROUTE_OBJECT_ANIM_FRAGMENT = "/newsLib/ObjectAnimFragment"
     const val NEWS_ROUTE_SCROLL_TEXT_FRAGMENT = "/newsLib/ScrollTextViewActivity"
     const val NEWS_ROUTE_NEWS_FRAGMENT = "/newsLib/NewsFragment"
+    const val NEWS_ROUTE_WX_EMOJI_ACTIVITY = "/newsLib/WxEmojiActivity"
 
 }

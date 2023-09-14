@@ -81,6 +81,7 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 androidx-splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreenVersion" }
 floatingX = {module = "com.github.Petterpx:FloatingX", version.ref = "floatingXVersion"}
 androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version = "2.8.1" }
+sliding = { module = "com.github.lanweixiansen:MySliding", version = "1.0.0" }
 
 
 [bundles]

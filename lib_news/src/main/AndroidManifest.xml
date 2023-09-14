@@ -4,5 +4,6 @@
     <application>
         <activity android:name=".activity.ObjectAnimActivity" />
         <activity android:name=".activity.ScrollTextViewActivity"/>
+        <activity android:name=".activity.WxEmojiActivity"/>
     </application>
 </manifest>

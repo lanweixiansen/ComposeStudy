@@ -15,4 +15,5 @@ dependencies {
     api(libs.glide)
     api(libs.floatingX)
     api(libs.smartRefresh.falsify)
+    api(libs.flexbox)
 }

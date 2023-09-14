@@ -1,7 +1,6 @@
 package com.example.lib_news.activity
 
 import android.animation.Animator
-import androidx.core.animation.doOnEnd
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
@@ -20,6 +19,7 @@ class WxEmojiActivity : BaseActivity<NewsWxEmojiActivityBinding>() {
             layoutManager = LinearLayoutManager(context)
             adapter = mWxAdapter
         }
+        lifecycle.addObserver(mBinding.animShit)
     }
 
     override fun initDate() {}
@@ -54,4 +54,9 @@ class WxEmojiActivity : BaseActivity<NewsWxEmojiActivityBinding>() {
         }
     }
 
+    override fun onDestroy() {
+        mBinding.lottieFire.cancelAnimation()
+        mBinding.lottieFire.removeAllAnimatorListeners()
+        super.onDestroy()
+    }
 }

@@ -10,6 +10,8 @@ import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.doOnEnd
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.example.lib_news.R
 import com.example.uilibrary.uiUtils.dp2px
 import com.example.uilibrary.uiUtils.getScreenHeight
@@ -19,8 +21,9 @@ import kotlin.random.Random
 
 class ShiteView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs) {
+) : ConstraintLayout(context, attrs), DefaultLifecycleObserver {
     private val list = LinkedList<ImageView>()
+    private val animList = LinkedList<AnimatorSet>()
 
     fun beginAnim(number: Int) {
         for (i in 0 until number) {
@@ -33,6 +36,11 @@ class ShiteView @JvmOverloads constructor(
             it.translationY = getTransY()
             it.rotation = getRation().toFloat()
             startAnim(it)
+        }
+        animList[animList.size - 1].doOnEnd {
+            this.removeAllViews()
+            list.clear()
+            animList.clear()
         }
     }
 
@@ -54,10 +62,7 @@ class ShiteView @JvmOverloads constructor(
         val animSet = AnimatorSet()
         animSet.play(anim2).after(1000).after(anim)
         animSet.start()
-        animSet.doOnEnd {
-            this.removeAllViews()
-            list.clear()
-        }
+        animList.add(animSet)
     }
 
     private fun getIvWidth() = Random.nextInt(dp2px(30), dp2px(51))
@@ -65,6 +70,12 @@ class ShiteView @JvmOverloads constructor(
     private fun getTransY(): Float = getScreenHeight() - Random.nextInt(dp2px(200), dp2px(400))
     private fun getTransY2(): Float = Random.nextInt(dp2px(30), dp2px(300)).toFloat()
     private fun getRation() = Random.nextInt(0, 180)
-
     private fun getRoScale() = Random.nextInt(1, 5).toFloat()
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        animList.forEach {
+            it.cancel()
+        }
+        super.onDestroy(owner)
+    }
 }

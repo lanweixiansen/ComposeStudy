@@ -1,42 +1,60 @@
 package com.example.lib_news.activity
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.QuickAdapterHelper
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts
-import com.example.lib_news.R
+import com.example.lib_news.adapter.MySongAdapter
 import com.example.lib_news.adapter.MySongListBean
 import com.example.lib_news.adapter.SongAdapter
-import com.example.lib_news.adapter.WySongAdapter
 import com.example.lib_news.adapter.WySongEntry
 import com.example.lib_news.databinding.NewsActivityWxManagerBinding
 import com.therouter.router.Route
 
 @Route(path = RouteConsts.NEWS_ROUTE_WY_MANAGER_ACTIVITY)
 class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
-    private val mMyAdapter = SongAdapter(true)
-    private val mAllAdapter = SongAdapter(false)
+    private val mMyAdapter = MySongAdapter()
+    private val mAllAdapter = SongAdapter()
+    private lateinit var helper: QuickAdapterHelper
 
     override fun initView() {
+        helper = QuickAdapterHelper.Builder(mAllAdapter).build().addBeforeAdapter(mMyAdapter)
         with(mBinding) {
-            rvMySong.adapter = mMyAdapter
-            rvMySong.layoutManager = LinearLayoutManager(this@WyManagerActivity)
             rvAllSong.layoutManager = LinearLayoutManager(this@WyManagerActivity)
-            rvAllSong.adapter = mAllAdapter
+            rvAllSong.adapter = helper.adapter
             rvAllSong.setHasFixedSize(true)
         }
     }
 
     override fun initDate() {
-        mMyAdapter.submitList(mMySongList)
+        mMyAdapter.item = mMySongList[0]
         mAllAdapter.submitList(mSongList)
     }
 
     override fun initListener() {
         super.initListener()
+        // 点击下方标签，添加到我的歌单
+        mAllAdapter.setOnClickListener { bean, _ ->
+            val songList = mMyAdapter.item?.songList?.toMutableList()
+                ?.apply { add(bean.copy(canClick = true)) }
+            val newBean = mMyAdapter.item?.copy(songList = songList)
+            mMyAdapter.item = newBean
+        }
 
-
-
+        mMyAdapter.setOnClickListener { bean, _ ->
+            val songList = mMyAdapter.item?.songList?.toMutableList()?.apply { remove(bean) }
+            val newBean = mMyAdapter.item?.copy(songList = songList)
+            mMyAdapter.item = newBean
+            mSongList.forEach {
+                it.songList?.forEach { data ->
+                    if (data.name == bean.name) {
+                        data.canClick = true
+                    }
+                }
+            }
+            mAllAdapter.submitList(mSongList)
+            mAllAdapter.notifyDataSetChanged()
+        }
     }
 
 
@@ -61,9 +79,9 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
         WySongEntry(
             "语种",
             listOf(
-                MySongListBean("查询", false),
-                MySongListBean("自选", false),
-                MySongListBean("秩序部", false),
+                MySongListBean("查询", true),
+                MySongListBean("自选", true),
+                MySongListBean("秩序部", true),
                 MySongListBean("请问", true),
                 MySongListBean("额外", true),
                 MySongListBean("热天", true),
@@ -75,9 +93,9 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
         WySongEntry(
             "风格",
             listOf(
-                MySongListBean("欧阳", false),
-                MySongListBean("乳突炎", false),
-                MySongListBean("任天宇", false),
+                MySongListBean("欧阳", true),
+                MySongListBean("乳突炎", true),
+                MySongListBean("任天宇", true),
                 MySongListBean("有人讨厌", true),
                 MySongListBean("如同一", true),
                 MySongListBean("二天", true),
@@ -89,9 +107,9 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
         WySongEntry(
             "情感",
             listOf(
-                MySongListBean("回归", false),
-                MySongListBean("根据", false),
-                MySongListBean("感觉", false),
+                MySongListBean("回归", true),
+                MySongListBean("根据", true),
+                MySongListBean("感觉", true),
                 MySongListBean("估计", true),
                 MySongListBean("电饭锅和", true),
                 MySongListBean("深度覆盖", true),
@@ -103,15 +121,43 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
         WySongEntry(
             "主题",
             listOf(
-                MySongListBean("你们", false),
-                MySongListBean("匿名", false),
-                MySongListBean("摇滚", false),
+                MySongListBean("你们", true),
+                MySongListBean("匿名", true),
+                MySongListBean("摇滚", true),
                 MySongListBean("xvv", true),
                 MySongListBean("123", true),
                 MySongListBean("少的发", true),
                 MySongListBean("松岛枫", true),
                 MySongListBean("水电费", true),
                 MySongListBean("斯蒂芬", true)
+            )
+        ),
+        WySongEntry(
+            "xx",
+            listOf(
+                MySongListBean("qw", true),
+                MySongListBean("re", true),
+                MySongListBean("tr", true),
+                MySongListBean("ty", true),
+                MySongListBean("iu", true),
+                MySongListBean("io", true),
+                MySongListBean("po", true),
+                MySongListBean("cv", true),
+                MySongListBean("bn", true)
+            )
+        ),
+        WySongEntry(
+            "xx",
+            listOf(
+                MySongListBean("qw", true),
+                MySongListBean("re", true),
+                MySongListBean("tr", true),
+                MySongListBean("ty", true),
+                MySongListBean("iu", true),
+                MySongListBean("io", true),
+                MySongListBean("po", true),
+                MySongListBean("cv", true),
+                MySongListBean("bn", true)
             )
         ),
     )

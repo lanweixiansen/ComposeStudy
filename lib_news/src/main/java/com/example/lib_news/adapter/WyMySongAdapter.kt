@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseSingleItemAdapter
+import com.example.lib_news.activity.mRvTranslationY
 import com.example.lib_news.databinding.NewsRvItemSongBinding
 import com.example.lib_news.databinding.NewsRvItemSongTitleBinding
 import com.example.uilibrary.uiUtils.dp2px
@@ -32,11 +33,9 @@ data class MySongListBean(
     var y: Int = 0
 )
 
-private val location = IntArray(2)
-
 // 我的歌单Adapter
 class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
-    private var mOnClick: ((MySongListBean, Int, LinearLayout) -> Unit)? = null
+    private var mOnClick: ((MySongListBean, LinearLayout) -> Unit)? = null
     private lateinit var mAdapter: WySongAdapter
 
     class VH(val viewBinding: NewsRvItemSongTitleBinding) :
@@ -50,7 +49,7 @@ class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
                 mAdapter = it
                 it.submitList(item?.songList)
                 it.setOnClickListener { bean, view ->
-                    mOnClick?.invoke(bean, holder.layoutPosition, view)
+                    mOnClick?.invoke(bean, view)
                 }
             }
         }
@@ -60,7 +59,7 @@ class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
         return VH(NewsRvItemSongTitleBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
-    fun setOnClickListener(onClick: (MySongListBean, Int, LinearLayout) -> Unit) {
+    fun setOnClickListener(onClick: (MySongListBean, LinearLayout) -> Unit) {
         mOnClick = onClick
     }
 
@@ -77,7 +76,7 @@ class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
 
 //所有歌单Adapter
 class SongAdapter : BaseQuickAdapter<WySongEntry, SongAdapter.VH>() {
-    private var mOnClick: ((MySongListBean, Int, LinearLayout) -> Unit)? = null
+    private var mOnClick: ((MySongListBean, LinearLayout) -> Unit)? = null
 
     class VH(val viewBinding: NewsRvItemSongTitleBinding) :
         RecyclerView.ViewHolder(viewBinding.root)
@@ -89,7 +88,7 @@ class SongAdapter : BaseQuickAdapter<WySongEntry, SongAdapter.VH>() {
             rvSongs.adapter = WySongAdapter(false).also {
                 it.submitList(item?.songList)
                 it.setOnClickListener { bean, view ->
-                    mOnClick?.invoke(bean, position, view)
+                    mOnClick?.invoke(bean, view)
                 }
             }
         }
@@ -99,7 +98,7 @@ class SongAdapter : BaseQuickAdapter<WySongEntry, SongAdapter.VH>() {
         return VH(NewsRvItemSongTitleBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
-    fun setOnClickListener(onClick: (MySongListBean, Int, LinearLayout) -> Unit) {
+    fun setOnClickListener(onClick: (MySongListBean, LinearLayout) -> Unit) {
         mOnClick = onClick
     }
 }
@@ -126,7 +125,7 @@ class WySongAdapter(private val isMySong: Boolean) :
                     val location = IntArray(2)
                     parent.getLocationOnScreen(location)
                     item.x = location[0]
-                    item.y = location[1]
+                    item.y = location[1] + mRvTranslationY
                 }
             }
             if (item?.isAnimItem == true) {
@@ -149,6 +148,7 @@ class WySongAdapter(private val isMySong: Boolean) :
 }
 
 fun LinearLayout.startAnim(size: Int, rvTranslationY: Int) {
+    val location = IntArray(2)
     this.elevation = dp2px(10f)
     // 根据size计算新添加的item的位置
     // 每个item的宽度
@@ -161,30 +161,6 @@ fun LinearLayout.startAnim(size: Int, rvTranslationY: Int) {
     val oldLocation = IntArray(2)
     this.getLocationOnScreen(oldLocation)
     this.toVisible()
-//    val mCurrentPosition = floatArrayOf(0f, 0f)
-//    val path = Path()
-//    path.lineTo(
-//        (location[0] - oldLocation[0]).toFloat(),
-//        (location[1] - oldLocation[1]).toFloat()
-//    )
-//    val pathMeasure = PathMeasure(path, false)
-//    val valueAnimator = ValueAnimator.ofFloat(0f, pathMeasure.length)
-//    valueAnimator.duration = 500
-//    valueAnimator.interpolator = LinearInterpolator()
-//    valueAnimator.addUpdateListener { animation ->
-//        val animatedValue = animation.animatedValue as Float
-//        pathMeasure.getPosTan(animatedValue, mCurrentPosition, null)
-//        this.translationX = mCurrentPosition[0]
-//        this.translationY = mCurrentPosition[1]
-//    }
-//    valueAnimator.doOnEnd {
-//        this.postDelayed({
-//            this.translationX = 0f
-//            this.translationY = 0f
-//            this@startAnim.toInvisible()
-//        }, 200)
-//    }
-//    valueAnimator.start()
     val animHolderX = PropertyValuesHolder.ofFloat(
         "translationX",
         location[0].toFloat() - oldLocation[0].toFloat()

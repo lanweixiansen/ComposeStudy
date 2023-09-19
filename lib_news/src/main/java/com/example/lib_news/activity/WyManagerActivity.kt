@@ -17,12 +17,15 @@ import com.therouter.router.Route
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
+internal var mRvTranslationY = 0
+
 @Route(path = RouteConsts.NEWS_ROUTE_WY_MANAGER_ACTIVITY)
 class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
     private val mMyAdapter = MySongAdapter()
     private val mAllAdapter = SongAdapter()
     private lateinit var helper: QuickAdapterHelper
-    private var mRvTranslationY = 0
+
 
     override fun initView() {
         helper = QuickAdapterHelper.Builder(mAllAdapter).build().addBeforeAdapter(mMyAdapter)
@@ -41,16 +44,18 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
     override fun initListener() {
         super.initListener()
         // 点击下方标签，添加到我的歌单
-        mAllAdapter.setOnClickListener { bean, _, view ->
+        mAllAdapter.setOnClickListener { bean, view ->
             view.startAnim(mMyAdapter.item?.songList?.size ?: 0, mRvTranslationY)
             mMyAdapter.addItemDate(bean.copy(isAnimItem = true, canClick = true))
         }
 
-        mMyAdapter.setOnClickListener { bean, position, view ->
+        mMyAdapter.setOnClickListener { bean, view ->
+            var position = 0
             lifecycleScope.launch {
-                mSongList.forEach {
-                    it.songList?.forEach { data ->
+                mSongList.forEachIndexed { index, list ->
+                    list.songList?.forEach { data ->
                         if (data.name == bean.name) {
+                            position = index
                             view.endAnim(mMyAdapter.item?.songList?.size ?: 0, mRvTranslationY, data.x, data.y)
                             data.canClick = true
                         }

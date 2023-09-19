@@ -27,7 +27,9 @@ data class WySongEntry(
 data class MySongListBean(
     val name: String?,
     var canClick: Boolean,
-    var isAnimItem: Boolean = false
+    var isAnimItem: Boolean = false,
+    var x: Int = 0,
+    var y: Int = 0
 )
 
 private val location = IntArray(2)
@@ -35,6 +37,7 @@ private val location = IntArray(2)
 // 我的歌单Adapter
 class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
     private var mOnClick: ((MySongListBean, Int, LinearLayout) -> Unit)? = null
+    private lateinit var mAdapter: WySongAdapter
 
     class VH(val viewBinding: NewsRvItemSongTitleBinding) :
         RecyclerView.ViewHolder(viewBinding.root)
@@ -44,6 +47,7 @@ class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
             tvTitle.text = item?.title
             rvSongs.layoutManager = GridLayoutManager(context, 4)
             rvSongs.adapter = WySongAdapter(true).also {
+                mAdapter = it
                 it.submitList(item?.songList)
                 it.setOnClickListener { bean, view ->
                     mOnClick?.invoke(bean, holder.layoutPosition, view)
@@ -58,6 +62,16 @@ class MySongAdapter : BaseSingleItemAdapter<WySongEntry, MySongAdapter.VH>() {
 
     fun setOnClickListener(onClick: (MySongListBean, Int, LinearLayout) -> Unit) {
         mOnClick = onClick
+    }
+
+    fun addItemDate(bean: MySongListBean) {
+        mAdapter.add(bean)
+        notifyItemChanged(0, "sample_pay_load")
+    }
+
+    fun removeItemData(bean: MySongListBean) {
+        mAdapter.remove(bean)
+        notifyItemChanged(0, "sample_pay_load")
     }
 }
 
@@ -104,10 +118,15 @@ class WySongAdapter(private val isMySong: Boolean) :
             btn.isSelected = isMySong
             parent.isEnabled = item?.canClick ?: false
             parent.setOnClickListener {
+                if (isMySong) parent.toInvisible()
                 if (item != null) {
                     mOnClick?.invoke(item, animLayout)
                     item.canClick = false
                     parent.isEnabled = false
+                    val location = IntArray(2)
+                    parent.getLocationOnScreen(location)
+                    item.x = location[0]
+                    item.y = location[1]
                 }
             }
             if (item?.isAnimItem == true) {
@@ -129,7 +148,7 @@ class WySongAdapter(private val isMySong: Boolean) :
     }
 }
 
-fun LinearLayout.startAnim(size: Int) {
+fun LinearLayout.startAnim(size: Int, rvTranslationY: Int) {
     this.elevation = dp2px(10f)
     // 根据size计算新添加的item的位置
     // 每个item的宽度
@@ -175,7 +194,7 @@ fun LinearLayout.startAnim(size: Int) {
         location[1].toFloat() - oldLocation[1].toFloat()
     )
     val anim = ObjectAnimator.ofPropertyValuesHolder(this, animHolderX, animHolderY)
-    anim.duration = 500
+    anim.duration = 400
     anim.interpolator = LinearInterpolator()
     anim.start()
     anim.doOnEnd {
@@ -187,4 +206,30 @@ fun LinearLayout.startAnim(size: Int) {
     }
 }
 
-var rvTranslationY = 0
+fun LinearLayout.endAnim(size: Int, rvTranslationY: Int, x: Int, y: Int) {
+    // 行数变化计算
+    val scrollY = if ((size-1) % 4 == 0) dp2px(40f) else 0f
+    this.elevation = dp2px(10f)
+    val oldLocation = IntArray(2)
+    this.getLocationOnScreen(oldLocation)
+    this.toVisible()
+    val animHolderX = PropertyValuesHolder.ofFloat(
+        "translationX",
+        (x.toFloat() - oldLocation[0].toFloat() - dp2px(4f))
+    )
+    val animHolderY = PropertyValuesHolder.ofFloat(
+        "translationY",
+        (y.toFloat() - oldLocation[1].toFloat() - dp2px(4f) + scrollY - rvTranslationY)
+    )
+    val anim = ObjectAnimator.ofPropertyValuesHolder(this, animHolderX, animHolderY)
+    anim.duration = 400
+    anim.interpolator = LinearInterpolator()
+    anim.start()
+    anim.doOnEnd {
+        this.postDelayed({
+            this.translationX = 0f
+            this.translationY = 0f
+            this.toInvisible()
+        }, 300)
+    }
+}

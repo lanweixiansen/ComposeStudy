@@ -1,6 +1,6 @@
 package com.example.lib_news.activity
 
-import android.util.Log
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.QuickAdapterHelper
@@ -10,16 +10,19 @@ import com.example.lib_news.adapter.MySongAdapter
 import com.example.lib_news.adapter.MySongListBean
 import com.example.lib_news.adapter.SongAdapter
 import com.example.lib_news.adapter.WySongEntry
-import com.example.lib_news.adapter.rvTranslationY
+import com.example.lib_news.adapter.endAnim
 import com.example.lib_news.adapter.startAnim
 import com.example.lib_news.databinding.NewsActivityWxManagerBinding
 import com.therouter.router.Route
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Route(path = RouteConsts.NEWS_ROUTE_WY_MANAGER_ACTIVITY)
 class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
     private val mMyAdapter = MySongAdapter()
     private val mAllAdapter = SongAdapter()
     private lateinit var helper: QuickAdapterHelper
+    private var mRvTranslationY = 0
 
     override fun initView() {
         helper = QuickAdapterHelper.Builder(mAllAdapter).build().addBeforeAdapter(mMyAdapter)
@@ -39,33 +42,31 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
         super.initListener()
         // 点击下方标签，添加到我的歌单
         mAllAdapter.setOnClickListener { bean, _, view ->
-            view.startAnim(mMyAdapter.item?.songList?.size ?: 0)
-            val songList = mMyAdapter.item?.songList?.toMutableList()
-                ?.apply { add(bean.copy(canClick = true, isAnimItem = true)) }
-            val newBean = mMyAdapter.item?.copy(songList = songList)
-            mMyAdapter.item = newBean
+            view.startAnim(mMyAdapter.item?.songList?.size ?: 0, mRvTranslationY)
+            mMyAdapter.addItemDate(bean.copy(isAnimItem = true, canClick = true))
         }
 
-        mMyAdapter.setOnClickListener { bean, _, view ->
-            val songList = mMyAdapter.item?.songList?.toMutableList()?.apply { remove(bean) }
-            val newBean = mMyAdapter.item?.copy(songList = songList)
-            mMyAdapter.item = newBean
-            mSongList.forEach {
-                it.songList?.forEach { data ->
-                    if (data.name == bean.name) {
-                        data.canClick = true
+        mMyAdapter.setOnClickListener { bean, position, view ->
+            lifecycleScope.launch {
+                mSongList.forEach {
+                    it.songList?.forEach { data ->
+                        if (data.name == bean.name) {
+                            view.endAnim(mMyAdapter.item?.songList?.size ?: 0, mRvTranslationY, data.x, data.y)
+                            data.canClick = true
+                        }
                     }
                 }
+                delay(500)
+                mMyAdapter.removeItemData(bean)
+                mAllAdapter.submitList(mSongList)
+                mAllAdapter.notifyItemChanged(position, "sample_pay_load")
             }
-            mAllAdapter.submitList(mSongList)
-            mAllAdapter.notifyDataSetChanged()
         }
 
         mBinding.rvAllSong.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                rvTranslationY += dy
-                Log.d("scroll", "onScrolled: $rvTranslationY")
+                mRvTranslationY += dy
             }
         })
     }
@@ -74,7 +75,7 @@ class WyManagerActivity : BaseActivity<NewsActivityWxManagerBinding>() {
     private val mMySongList = listOf(
         WySongEntry(
             "我的歌单",
-            listOf(
+            mutableListOf(
                 MySongListBean("电子", false),
                 MySongListBean("国风", false),
                 MySongListBean("摇滚", false),

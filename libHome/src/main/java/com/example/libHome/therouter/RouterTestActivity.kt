@@ -1,6 +1,7 @@
 package com.example.libHome.therouter
 
 import androidx.core.app.ActivityOptionsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.libHome.utils.HomeRouteServeImpl
 import com.example.lib_base.BaseActivity
 import com.example.lib_base.interfaces.RouteServer
@@ -9,6 +10,7 @@ import com.example.lib_home.R
 import com.example.lib_home.databinding.HomeActivityArouterTestBinding
 import com.therouter.TheRouter
 import com.therouter.router.Route
+import kotlinx.coroutines.launch
 
 @Route(path = RouteConsts.HOME_ROUTER_ACTIVITY)
 class RouterTestActivity : BaseActivity<HomeActivityArouterTestBinding>() {
@@ -51,6 +53,13 @@ class RouterTestActivity : BaseActivity<HomeActivityArouterTestBinding>() {
         }
         mBinding.btnAction.setOnClickListener {
             TheRouter.build("show_dialog").action()
+        }
+        mBinding.btnAction2.setOnClickListener {
+            lifecycleScope.launch {
+                showDialog(this@RouterTestActivity, "弹窗1", "这是弹窗1", "下一个")
+                showDialog(this@RouterTestActivity, "弹窗2", "这是弹窗2", "下一个")
+                showDialog(this@RouterTestActivity, "弹窗3", "这是弹窗3", "关闭")
+            }
         }
     }
 }

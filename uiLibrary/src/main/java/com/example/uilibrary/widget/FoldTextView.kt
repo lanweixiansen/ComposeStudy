@@ -13,6 +13,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ViewTreeObserver
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.lifecycle.DefaultLifecycleObserver
 import com.example.uilibrary.R
 
 
@@ -20,7 +21,8 @@ class FoldTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
-) : AppCompatTextView(context, attrs, defStyle) {
+) : AppCompatTextView(context, attrs, defStyle), DefaultLifecycleObserver {
+
     companion object {
         val ELLIPSIZE_END = "..."
         val MAX_LINE = 4
@@ -264,6 +266,7 @@ class FoldTextView @JvmOverloads constructor(
                         return true
                     }
                 }
+
                 MotionEvent.ACTION_CANCEL,
                 MotionEvent.ACTION_UP -> {
                     val delTime = System.currentTimeMillis() - clickTime

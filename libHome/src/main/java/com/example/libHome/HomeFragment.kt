@@ -46,6 +46,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             mBinding.lottieView.layoutParams = mBinding.lottieView.layoutParams.apply {
                 height = dp2px(220) + it
             }
+            mBinding.lottieView.speed = if (it != 0) 5f else 1f
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.uilibrary.uiUtils
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -134,7 +135,7 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
     }
 }
 
-internal inline fun <reified T> Any.saveAs(): T {
+internal inline fun <reified T> Any.saveAs(context: Context): T {
     return this as T
 }
 

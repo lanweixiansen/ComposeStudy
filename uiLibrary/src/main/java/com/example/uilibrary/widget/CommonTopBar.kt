@@ -10,6 +10,7 @@ import androidx.core.view.isInvisible
 import com.blankj.utilcode.util.BarUtils
 import com.example.uilibrary.R
 import com.example.uilibrary.databinding.CommonTopBarLayoutBinding
+import com.example.uilibrary.uiUtils.addMarginToEqualStatusBar
 
 class CommonTopBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -32,6 +33,7 @@ class CommonTopBar @JvmOverloads constructor(
         mBinding.tvTitle.text = mTitle
         initListener()
         typeArray.recycle()
+        this.addMarginToEqualStatusBar()
     }
 
     private fun initListener() {

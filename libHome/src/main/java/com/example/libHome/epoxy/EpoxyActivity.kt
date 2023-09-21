@@ -22,13 +22,12 @@ class EpoxyActivity : BaseActivity<HomeActivityEpoxyBinding>() {
         mContent, mContent, mContent, mContent, mContent, mContent, mContent, mContent,
         mContent, mContent, mContent, mContent, mContent, mContent, mContent, mContent,
         mContent, mContent, mContent, mContent, mContent, mContent, mContent, mContent,
+        mContent, mContent, mContent, mContent, mContent, mContent, mContent, mContent,
+        mContent, mContent, mContent, mContent, mContent, mContent, mContent, mContent,
     )
     override fun initView() {
-
         mBinding.rvTest.adapter =  MyAdapter().also { mAdapter = it }
-
         mBinding.smartRefresh.setOnLoadMoreListener {
-            mAdapter.addAll(mList)
             mBinding.smartRefresh.finishLoadMore()
         }
     }
@@ -36,7 +35,6 @@ class EpoxyActivity : BaseActivity<HomeActivityEpoxyBinding>() {
     override fun initDate() {
         mAdapter.submitList(mList)
     }
-
 
     class MyAdapter : BaseQuickAdapter<String, QuickViewHolder>() {
         override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: String?) {

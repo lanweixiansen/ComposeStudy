@@ -85,7 +85,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     open fun initObserver() {}
     open fun useEventBus() = false
-    open fun addTopMargin() = true
+    open fun addTopMargin() = false
 
 
     fun setStatusBarTextColor(isLight: Boolean = false) {

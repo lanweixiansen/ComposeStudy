@@ -7,6 +7,7 @@ import com.example.libHome.therouter.RouterInterceptor
 import com.example.lib_base.manager.AppData
 import com.example.lib_base.manager.AppManager
 import com.example.uilibrary.widget.CustomRefreshHeader
+import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
 import com.therouter.TheRouter
@@ -46,6 +47,9 @@ fun initNoPrivacySdk(context: Context) {
     AppManager.init(context as Application)
     SmartRefreshLayout.setDefaultRefreshHeaderCreator { ctx, _ ->
         CustomRefreshHeader(ctx)
+    }
+    SmartRefreshLayout.setDefaultRefreshFooterCreator { ctx, _ ->
+        ClassicsFooter(ctx).setDrawableSize(20f)
     }
     Mavericks.initialize(context)
 }

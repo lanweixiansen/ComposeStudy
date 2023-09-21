@@ -2,7 +2,6 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
-    id("kotlin-kapt")
     id("therouter")
 }
 
@@ -103,7 +102,7 @@ dependencies {
     implementation(libs.androidx.splash.screen)
     implementation(libs.coreKtx)
     debugImplementation(libs.leakcanary)
-    kapt(libs.theRouterApt)
+    ksp(libs.theRouterApt)
     implementation(libs.mmkv)
     testImplementation(libs.junit)
     androidTestImplementation(libs.extJunit)

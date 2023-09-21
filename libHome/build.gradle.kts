@@ -12,6 +12,6 @@ dependencies {
     implementation(project(":libNet"))
     api(libs.androidx.work.runtime.ktx)
     ksp(libs.roomCompiler)
-    kapt(libs.theRouterApt)
+    ksp(libs.theRouterApt)
     implementation(libs.sliding)
 }

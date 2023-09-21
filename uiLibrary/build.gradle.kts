@@ -16,4 +16,5 @@ dependencies {
     api(libs.floatingX)
     api(libs.smartRefresh.falsify)
     api(libs.flexbox)
+    api(libs.smartRefresh.footer)
 }

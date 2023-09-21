@@ -21,7 +21,7 @@ dependencies {
     api(libs.moshi)
     api(libs.liveDataKtx)
     api(libs.viewModelKtx)
-    kapt(libs.theRouterApt)
+    ksp(libs.theRouterApt)
     api(libs.therouter)
     compileOnly(libs.mmkv)
 }

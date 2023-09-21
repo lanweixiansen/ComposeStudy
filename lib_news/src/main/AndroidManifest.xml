@@ -6,5 +6,6 @@
         <activity android:name=".activity.ScrollTextViewActivity"/>
         <activity android:name=".activity.WxEmojiActivity"/>
         <activity android:name=".activity.WyManagerActivity"/>
+        <activity android:name=".activity.HuYaScreenActivity"/>
     </application>
 </manifest>

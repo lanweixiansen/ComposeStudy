@@ -27,7 +27,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         apply("org.jetbrains.kotlin.android")
         apply("kotlin-parcelize")
         apply("com.google.devtools.ksp")
-        apply("kotlin-kapt")
     }
 
     private fun LibraryExtension.configureAndroid() {

@@ -66,4 +66,19 @@
     <attr name="sl_text" format="string" />
 
 
+    <declare-styleable name="FoldTextView">
+        <attr name="showMaxLine" format="integer" />
+        <attr name="tipGravity" format="enum">
+            <enum name="end" value="0" />
+            <enum name="bottom" value="1" />
+            <enum name="follow" value="2" />
+        </attr>
+
+        <attr name="tipColor" format="reference|color" />
+        <attr name="tipClickable" format="boolean" />
+        <attr name="foldText" format="string" />
+        <attr name="expandText" format="string" />
+        <attr name="showTipAfterExpand" format="boolean" />
+        <attr name="isSetParentClick" format="boolean" />
+    </declare-styleable>
 </resources>

@@ -6,4 +6,3 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.google.ksp) apply false
 }
-apply(plugin = "kotlin-kapt")

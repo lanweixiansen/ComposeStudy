@@ -13,5 +13,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.extJunit)
     androidTestImplementation(libs.espresso)
-    kapt(libs.theRouterApt)
+    ksp(libs.theRouterApt)
 }

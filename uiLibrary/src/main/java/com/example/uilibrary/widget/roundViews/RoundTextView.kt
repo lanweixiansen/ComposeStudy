@@ -11,7 +11,7 @@ class RoundTextView @JvmOverloads constructor(
     private val helper: RoundViewHelper = RoundViewHelper()
 
     init {
-        helper.init(context, attrs, typedArray)
+        helper.init(context, attrs)
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {

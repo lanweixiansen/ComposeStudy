@@ -2,6 +2,7 @@ package com.example.libHome.epoxy
 
 import android.content.Context
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.QuickViewHolder
 import com.example.lib_base.BaseActivity
@@ -47,6 +48,10 @@ class EpoxyActivity : BaseActivity<HomeActivityEpoxyBinding>() {
             viewType: Int
         ): QuickViewHolder {
             return QuickViewHolder(R.layout.home_rv_item_fold_text, parent)
+        }
+
+        override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+            super.onViewRecycled(holder)
         }
     }
 }

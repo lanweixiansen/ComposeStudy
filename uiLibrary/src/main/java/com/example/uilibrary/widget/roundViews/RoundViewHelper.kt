@@ -1,4 +1,4 @@
-package com.example.uilibrary.widget
+package com.example.uilibrary.widget.roundViews
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,14 +6,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.uilibrary.R
 
-open class RoundImageView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
-) : AppCompatImageView(context, attrs) {
-    private val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView)
+class RoundViewHelper {
     private var mBorderWidth = 0f
     private var mBorderColor = Color.parseColor("#00000000")
     private var mOval = false
@@ -24,39 +19,39 @@ open class RoundImageView @JvmOverloads constructor(
         style = Paint.Style.STROKE
     }
 
-    init {
-        this.findViewTreeViewModelStoreOwner()
-        mBorderWidth = typedArray.getDimension(R.styleable.RoundImageView_riv_border_width, 0f)
+    fun init(context: Context, attrs: AttributeSet?) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundViews)
+        mBorderWidth = typedArray.getDimension(R.styleable.RoundViews_riv_border_width, 0f)
         mBorderColor = typedArray.getColor(
-            R.styleable.RoundImageView_riv_border_color,
-            Color.parseColor("#00000000")
+            R.styleable.RoundViews_riv_border_color,
+            Color.TRANSPARENT
         )
-        mOval = typedArray.getBoolean(R.styleable.RoundImageView_riv_oval, false)
-        mRvRadius = typedArray.getDimension(R.styleable.RoundImageView_riv_radius, 0f)
+        mOval = typedArray.getBoolean(R.styleable.RoundViews_riv_oval, false)
+        mRvRadius = typedArray.getDimension(R.styleable.RoundViews_riv_radius, 0f)
         mPaint.color = mBorderColor
         mPaint.strokeWidth = mBorderWidth
+        typedArray.recycle()
     }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
+    fun onLayout(width: Float, height: Float) {
         if (mOval) {
-            mPath.addOval(0f, 0f, width.toFloat(), height.toFloat(), Path.Direction.CW)
+            mPath.addOval(0f, 0f, width, height, Path.Direction.CW)
         } else if (mBorderWidth >= 0) {
             mPath.addRoundRect(
-                0f, 0f, width.toFloat(),
-                height.toFloat(), mRvRadius,
+                0f, 0f, width,
+                height, mRvRadius,
                 mRvRadius, Path.Direction.CW
             )
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    fun onDraw(canvas: Canvas?, width: Int, height: Int, callSuper: () -> Unit) {
         if (mOval) {
             canvas?.clipPath(mPath)
         } else if (mBorderWidth >= 0) {
             canvas?.clipPath(mPath)
         }
-        super.onDraw(canvas)
+        callSuper()
         if (mOval) {
             canvas?.drawOval(0f, 0f, width.toFloat(), height.toFloat(), mPaint)
         } else if (mBorderWidth >= 0) {

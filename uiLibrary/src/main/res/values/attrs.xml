@@ -38,7 +38,7 @@
 
 
     <!--  -->
-    <declare-styleable name="RoundImageView">
+    <declare-styleable name="RoundViews">
         <attr name="riv_oval" />
         <attr name="riv_border_color" />
         <attr name="riv_border_width" />
@@ -73,7 +73,8 @@
             <enum name="bottom" value="1" />
             <enum name="follow" value="2" />
         </attr>
-
+        <attr name="foldIcon" format="reference" />
+        <attr name="expandIcon" format="reference" />
         <attr name="tipColor" format="reference|color" />
         <attr name="tipClickable" format="boolean" />
         <attr name="foldText" format="string" />

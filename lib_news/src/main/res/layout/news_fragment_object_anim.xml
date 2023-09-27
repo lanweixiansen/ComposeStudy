@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:topBarTitle="动画" />
 
-    <com.example.uilibrary.widget.RoundImageView
+    <com.example.uilibrary.widget.roundViews.RoundImageView
         android:id="@+id/an_1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/top_bar"
         app:riv_radius="20dp" />
 
-    <com.example.uilibrary.widget.RoundImageView
+    <com.example.uilibrary.widget.roundViews.RoundImageView
         android:id="@+id/an_2"
         android:layout_width="0dp"
         android:layout_height="0dp"

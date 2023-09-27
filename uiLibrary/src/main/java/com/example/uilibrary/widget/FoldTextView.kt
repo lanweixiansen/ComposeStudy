@@ -216,12 +216,8 @@ class FoldTextView @JvmOverloads constructor(
             if (mTipGravity == END) {
                 val builder = StringBuilder(ELLIPSIZE_END).append(mFoldText)
                 end -= paint.breakText(
-                    mOriginalText,
-                    start,
-                    end,
-                    false,
-                    paint.measureText(builder.toString()),
-                    null
+                    mOriginalText, start, end, false,
+                    paint.measureText(builder.toString()), null
                 )
             } else {
                 end--

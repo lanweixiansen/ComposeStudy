@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.uilibrary.widget.RoundImageView
+import com.example.uilibrary.widget.roundViews.RoundImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

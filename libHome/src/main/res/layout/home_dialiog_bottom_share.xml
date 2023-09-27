@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.uilibrary.widget.RoundImageView
+    <com.example.uilibrary.widget.roundViews.RoundImageView
         android:id="@+id/anim_1"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -46,7 +46,7 @@
         tools:alpha="1"
         tools:layout_editor_absoluteY="211dp" />
 
-    <com.example.uilibrary.widget.RoundImageView
+    <com.example.uilibrary.widget.roundViews.RoundImageView
         android:id="@+id/anim_2"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -63,7 +63,7 @@
         app:riv_radius="10dp"
         tools:alpha="1" />
 
-    <com.example.uilibrary.widget.RoundImageView
+    <com.example.uilibrary.widget.roundViews.RoundImageView
         android:id="@+id/anim_3"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -80,7 +80,7 @@
         app:riv_radius="10dp"
         tools:alpha="1" />
 
-    <com.example.uilibrary.widget.RoundImageView
+    <com.example.uilibrary.widget.roundViews.RoundImageView
         android:id="@+id/anim_4"
         android:layout_width="50dp"
         android:layout_height="50dp"

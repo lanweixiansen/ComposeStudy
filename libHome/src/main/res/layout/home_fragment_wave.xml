@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.example.uilibrary.widget.WaveBezierView
+            android:id="@+id/wave"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/heart_board"
+            app:layout_constraintEnd_toEndOf="@id/heart_board"
+            app:layout_constraintStart_toStartOf="@+id/heart_board"
+            app:layout_constraintTop_toTopOf="@+id/heart_board" />
+
+        <ImageView
+            android:id="@+id/heart_board"
+            android:layout_width="45dp"
+            android:layout_height="41dp"
+            android:src="@mipmap/news_icon_intimacy_heart_border"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:src="@mipmap/news_icon_intimacy_heart_spot"
+            app:layout_constraintStart_toStartOf="@id/heart_board"
+            app:layout_constraintTop_toTopOf="@id/heart_board" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/home_button7"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="-"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/home_button8"
+        app:layout_constraintEnd_toStartOf="@+id/home_button8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/home_button8" />
+
+    <Button
+        android:id="@+id/home_button8"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="164dp"
+        android:text="+"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/home_button7" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

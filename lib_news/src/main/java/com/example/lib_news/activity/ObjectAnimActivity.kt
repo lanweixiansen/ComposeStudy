@@ -10,7 +10,7 @@ import com.example.lib_base.BaseActivity
 import com.example.lib_base.utils.RouteConsts.NEWS_ROUTE_OBJECT_ANIM_FRAGMENT
 import com.example.lib_news.databinding.NewsFragmentObjectAnimBinding
 import com.example.lib_news.widget.RotationView
-import com.example.uilibrary.widget.RoundImageView
+import com.example.uilibrary.widget.roundViews.RoundImageView
 import com.therouter.router.Route
 
 

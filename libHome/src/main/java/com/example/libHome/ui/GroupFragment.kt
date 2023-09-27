@@ -1,22 +1,41 @@
 package com.example.libHome.ui
 
+import android.view.View
+import android.view.ViewGroup
+import androidx.viewpager.widget.PagerAdapter
 import com.example.lib_base.BaseFragment
 import com.example.lib_home.databinding.HomeFragmentGroupBinding
-import com.example.uilibrary.uiUtils.onClick
-import com.example.uilibrary.uiUtils.toGone
-import com.example.uilibrary.uiUtils.toVisible
+import com.example.uilibrary.uiUtils.dp2px
+import com.example.uilibrary.widget.StackCardPageTransformer
 
-class GroupFragment: BaseFragment<HomeFragmentGroupBinding>() {
+class GroupFragment : BaseFragment<HomeFragmentGroupBinding>() {
     override fun initView() {
-        with(mBinding) {
-            homeButton3.onClick { homeGroup.toVisible() }
-            homeButton4.onClick { homeGroup.toGone() }
-            homeButton5.onClick { homeGroup2.toVisible() }
-            homeButton6.onClick { homeGroup2.toGone() }
-        }
+        mBinding.viewPager.adapter = MyPagerAdapter()
+        val s = StackCardPageTransformer.Build()
+            .setTranslationOffset(dp2px(36f))
+            .setAlphaOffset(1f)
+            .create(mBinding.viewPager)
+        mBinding.viewPager.setPageTransformer(true, s)
     }
 
     override fun initDate() {
 
+    }
+
+    class MyPagerAdapter : PagerAdapter() {
+        override fun getCount(): Int = Int.MAX_VALUE
+
+        override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
+
+
+        override fun instantiateItem(container: ViewGroup, position: Int): Any {
+            val view = TestView(container.context)
+            container.addView(view)
+            return view
+        }
+
+        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+            container.removeView(`object` as View?)
+        }
     }
 }

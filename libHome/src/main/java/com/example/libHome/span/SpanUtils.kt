@@ -1,15 +1,11 @@
 package com.example.libHome.span
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.text.SpannableString
 import android.text.Spanned
-import android.text.style.MetricAffectingSpan
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import androidx.core.content.res.ResourcesCompat
-import com.example.uilibrary.uiUtils.dp2px
 import java.util.LinkedList
 
 class TextSpanUtils(private val textView: TextView) {
@@ -43,6 +39,33 @@ class TextSpanUtils(private val textView: TextView) {
         spans.add(topSpan)
         return this
     }
+
+
+    /**
+     * 添加图片icon文本标签
+     * @param bgRes: 背景图片
+     * @param content: 文本内容
+     * @param marginRightDp: 标签右边距（dp）
+     * @param textColor: 文本颜色
+     * @param bgIsFull: 背景是否完全填充
+     * @param bgRadiusDp: 背景圆角（dp）
+     */
+    fun addImgIconTextSpan(
+        context: Context,
+        @DrawableRes bgRes: Int,
+        content: String,
+        marginRightDp: Int = 2,
+        @ColorRes textColor: Int = -1,
+        bgIsFull: Boolean = true,
+        bgRadiusDp: Int = 2
+    ): TextSpanUtils {
+        stringBuilder.append(";")
+        val topSpan = ImgIconTextSpan(context, bgRes, content)
+        topSpan.setRightMarginDpValue(marginRightDp)
+        spans.add(topSpan)
+        return this
+    }
+
 
     fun addImgSpan(context: Context, @DrawableRes img: Int): TextSpanUtils {
         stringBuilder.append(";")

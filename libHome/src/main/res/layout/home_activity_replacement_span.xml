@@ -18,6 +18,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_img_icon"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="添加图片icon"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_icon"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_img"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_add_icon"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_icon" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_icon"
         style="?attr/materialButtonOutlinedStyle"
@@ -25,12 +39,12 @@
         android:layout_height="60dp"
         android:text="添加icon"
         android:textStyle="bold"
-        app:layout_constraintVertical_bias="0.8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_img"
+        app:layout_constraintBottom_toTopOf="@+id/btn_remove"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_img_icon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_img"
@@ -39,19 +53,19 @@
         android:layout_height="60dp"
         android:text="添加img"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_add_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_img_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_add_icon"
-        app:layout_constraintTop_toTopOf="@+id/btn_add_icon" />
+        app:layout_constraintStart_toEndOf="@+id/btn_add_img_icon"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_img_icon" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_remove"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:text="上一步"
         android:paddingHorizontal="20dp"
+        android:text="上一步"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

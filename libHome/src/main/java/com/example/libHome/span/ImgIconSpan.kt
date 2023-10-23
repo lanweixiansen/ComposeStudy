@@ -6,27 +6,27 @@ import android.graphics.Paint
 import android.graphics.Paint.FontMetricsInt
 import android.graphics.Rect
 import android.graphics.RectF
+import android.graphics.drawable.BitmapDrawable
 import android.text.TextPaint
 import android.text.style.ReplacementSpan
-import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.example.uilibrary.uiUtils.dp2px
 
-class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
+class ImgIconTextSpan(val context: Context, @DrawableRes bgRes: Int, text: String) :
     ReplacementSpan() {
-    private var mBgColorResId = 0 //Icon背景颜色
     private var mText: String? = null //Icon内文字
     private var mBgHeight = 0f //Icon背景高度
     private val mBgWidth: Float //Icon背景宽度
-    private var mRadius = 0f //Icon圆角半径
     private var mRightMargin = dp2px(2f) //右边距
     private var mTextSize = 0f //文字大小
     private var mTextColorResId = 0 //文字颜色
-    private var mIsBgFull = true
+    private lateinit var mBgBitMap: BitmapDrawable
+
 
     init {
         //初始化默认数值
-        initDefaultValue(bgColorResId, text)
+        initDefaultValue(bgRes, text)
         //计算背景的宽度
         mBgWidth = calculateBgWidth(text)
     }
@@ -35,11 +35,10 @@ class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
      * 初始化默认数值
      */
     private fun initDefaultValue(bgColorResId: Int, text: String) {
-        mBgColorResId = bgColorResId
+        mBgBitMap = ContextCompat.getDrawable(context, bgColorResId) as BitmapDrawable
         mText = text
         mBgHeight = dp2px(17f)
         mRightMargin = dp2px(2f)
-        mRadius = dp2px(2f)
         mTextSize = dp2px(12f)
         mTextColorResId = com.example.uilibrary.R.color.white
     }
@@ -73,12 +72,6 @@ class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
         mRightMargin = dp2px(rightMarginDpValue.toFloat())
     }
 
-    fun setStyle(@ColorRes textColor: Int, bgIsFull: Boolean, bgRadiusDp: Int) {
-        if (textColor != -1)
-            mTextColorResId = textColor
-        mIsBgFull = bgIsFull
-        mRadius = dp2px(bgRadiusDp).toFloat()
-    }
 
     /**
      * 设置宽度，宽度=背景宽度+右边距
@@ -100,18 +93,15 @@ class IconTextSpan(val context: Context, bgColorResId: Int, text: String) :
     ) {
         //画背景
         val bgPaint = Paint()
-        bgPaint.color = ContextCompat.getColor(context, mBgColorResId)
-        bgPaint.style = if (mIsBgFull) Paint.Style.FILL else Paint.Style.STROKE
         bgPaint.isAntiAlias = true
         val metrics = paint.fontMetrics
         val textHeight = metrics.descent - metrics.ascent
         //算出背景开始画的y坐标
         val bgStartY = y + (textHeight - mBgHeight) / 2 + metrics.ascent
-
         //画背景
-        val bgRect = RectF(x, bgStartY, x + mBgWidth, bgStartY + mBgHeight)
-        canvas.drawRoundRect(bgRect, mRadius, mRadius, bgPaint)
-
+        val bgRecF = RectF(x, bgStartY, x + mBgWidth, bgStartY + mBgHeight)
+        val bgRect = Rect(0, 0, mBgBitMap.bitmap.width, mBgBitMap.bitmap.height)
+        canvas.drawBitmap(mBgBitMap.bitmap, bgRect, bgRecF, bgPaint)
         //把字画在背景中间
         val textPaint = TextPaint()
         textPaint.color = ContextCompat.getColor(context, mTextColorResId)

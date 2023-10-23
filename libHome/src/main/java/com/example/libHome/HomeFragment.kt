@@ -9,6 +9,7 @@ import com.example.lib_base.BaseFragment
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.uilibrary.uiUtils.dp2px
 import com.example.uilibrary.uiUtils.onHeaderMoving
+import com.example.uilibrary.widget.CustomRefreshFooter
 import com.scwang.smart.refresh.header.FalsifyHeader
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -38,9 +39,13 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
 
     override fun initListener() {
         mBinding.smartRefresh.setRefreshHeader(FalsifyHeader(context))
+        mBinding.smartRefresh.setRefreshFooter(CustomRefreshFooter(requireContext()))
         mBinding.smartRefresh.setOnRefreshListener {
             EventBus.getDefault().post(RefreshEvent())
             mBinding.smartRefresh.finishRefresh()
+        }
+        mBinding.smartRefresh.setOnLoadMoreListener {
+            mBinding.smartRefresh.finishLoadMore()
         }
         mBinding.smartRefresh.onHeaderMoving {
             mBinding.lottieView.layoutParams = mBinding.lottieView.layoutParams.apply {

@@ -27,6 +27,13 @@ class ReplacementSpanActivity : BaseActivity<HomeActivityReplacementSpanBinding>
                     "置顶"
                 )?.created()
             }
+            btnAddImgIcon.setOnClickListener {
+                mTextSpan?.addImgIconTextSpan(
+                    this@ReplacementSpanActivity,
+                    com.example.uilibrary.R.mipmap.img1,
+                    "置顶"
+                )?.created()
+            }
             btnAddImg.setOnClickListener {
                 mTextSpan?.addImgSpan(this@ReplacementSpanActivity, R.mipmap.gn_live_label_vip)
                     ?.created()

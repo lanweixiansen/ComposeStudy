@@ -1,7 +1,6 @@
 package com.example.libHome.therouter
 
 import com.example.lib_base.ext.toast
-import com.example.lib_base.manager.AppManager
 import com.example.lib_base.utils.RouteConsts
 import com.therouter.router.RouteItem
 import com.therouter.router.addNavigatorPathFixHandle
@@ -11,6 +10,7 @@ import com.therouter.router.interceptor.NavigatorPathFixHandle
 import com.therouter.router.interceptor.PathReplaceInterceptor
 import com.therouter.router.interceptor.RouterInterceptor
 import com.therouter.router.interceptor.RouterReplaceInterceptor
+import com.therouter.router.matchRouteMap
 import com.therouter.router.setRouterInterceptor
 
 /**
@@ -26,10 +26,10 @@ object RouterInterceptor {
         addRouterReplaceInterceptor(object : RouterReplaceInterceptor() {
             override fun replace(routeItem: RouteItem?): RouteItem? {
                 if (routeItem?.path == RouteConsts.HOME_ROUTER_INTERCEPTOR2_ACTIVITY) {
-//                    return matchRouteMap(RouteConsts.LOGIN_LOGIN)
                     "请先登录".toast()
-                    AppManager.goLogin()
-                    return null
+                    return matchRouteMap(RouteConsts.LOGIN_LOGIN)
+//                    AppManager.goLogin()
+//                    return null
                 }
                 return routeItem
             }

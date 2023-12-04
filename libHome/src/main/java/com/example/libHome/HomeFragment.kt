@@ -30,7 +30,6 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             delay(1000)
             mBinding.lottieView.playAnimation()
         }
-        test
     }
 
     override fun initDate() {

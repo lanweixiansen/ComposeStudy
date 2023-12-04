@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.lifecycleScope
 import com.example.libHome.data.RefreshEvent
 import com.example.lib_base.BaseFragment
+import com.example.lib_base.utils.TimeUtils
 import com.example.lib_home.databinding.HomeFragmentHomeBinding
 import com.example.uilibrary.uiUtils.dp2px
 import com.example.uilibrary.uiUtils.onHeaderMoving
@@ -48,6 +49,7 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             mBinding.smartRefresh.finishLoadMore()
         }
         mBinding.smartRefresh.onHeaderMoving {
+            TimeUtils.getTime(1698854194000)
             mBinding.lottieView.layoutParams = mBinding.lottieView.layoutParams.apply {
                 height = dp2px(220) + it
             }

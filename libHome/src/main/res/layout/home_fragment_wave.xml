@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipChildren="false">
 
     <TextView
         android:id="@+id/tv"
@@ -15,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_constraintlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="130dp"
@@ -76,5 +78,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/home_button7" />
+
+
+    <com.example.uilibrary.widget.roundViews.RoundImageView
+        android:id="@+id/home_roundimageview"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="10dp"
+        android:scaleType="fitXY"
+        android:layout_marginStart="8dp"
+        android:src="@mipmap/img1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_radius="6dp" />
+
+    <ImageView
+        android:id="@+id/home_imageview5"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_marginStart="-4dp"
+        android:src="@mipmap/home_ic_audio_book"
+        app:layout_constraintBottom_toBottomOf="@+id/home_roundimageview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/home_roundimageview" />
+
+
+    <com.example.uilibrary.widget.roundViews.RoundImageView
+        android:id="@+id/home_roundimageview2"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="10dp"
+        android:scaleType="fitXY"
+        android:layout_marginStart="208dp"
+        android:src="@mipmap/img1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_radius="6dp" />
+
+    <TextView
+        android:id="@+id/home_imageview6"
+        android:layout_width="wrap_content"
+        android:layout_height="165dp"
+        android:elevation="15dp"
+        android:layout_marginStart="200dp"
+        android:background="@mipmap/home_ic_audio_book"
+        app:layout_constraintBottom_toBottomOf="@+id/home_roundimageview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/home_roundimageview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

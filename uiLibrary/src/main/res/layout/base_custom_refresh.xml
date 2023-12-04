@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:gravity="center">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -12,6 +13,12 @@
         android:layout_marginTop="20dp"
         app:lottie_fileName="lottie/lottie_refresh2.json"
         app:lottie_loop="true" />
+
+
+    <com.example.uilibrary.widget.RoomImageView
+        android:layout_width="93dp"
+        android:layout_height="88dp"
+        android:src="@mipmap/img1" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
